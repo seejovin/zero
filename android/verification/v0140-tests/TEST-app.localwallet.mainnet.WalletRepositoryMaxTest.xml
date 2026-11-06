@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="app.localwallet.mainnet.WalletRepositoryMaxTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2026-11-06T17:16:48" hostname="34d710c0c368" time="0.067">
+  <properties/>
+  <testcase name="cancellingAnUnsignedReviewOnAnotherNetworkCannotReleaseTheOriginalReservation" classname="app.localwallet.mainnet.WalletRepositoryMaxTest" time="0.017"/>
+  <testcase name="failedRecomputationDoesNotLeaveAPreparedPayment" classname="app.localwallet.mainnet.WalletRepositoryMaxTest" time="0.004"/>
+  <testcase name="expirationOrInconsistentPinnedBalanceDuringPreparationCannotReserveAnIntent" classname="app.localwallet.mainnet.WalletRepositoryMaxTest" time="0.008"/>
+  <testcase name="slowStaleOrReorganizedQuoteDoesNotCreateAnIntentOrReturnACachedMaximum" classname="app.localwallet.mainnet.WalletRepositoryMaxTest" time="0.003"/>
+  <testcase name="quotingMaxReadsLiveBalancesWithoutJournalNonceKeyOrSubmissionSideEffects" classname="app.localwallet.mainnet.WalletRepositoryMaxTest" time="0.001"/>
+  <testcase name="finalEthPreparationRefreshesAmountAndFeeTogetherAndThenFixesTheReviewedAmount" classname="app.localwallet.mainnet.WalletRepositoryMaxTest" time="0.004"/>
+  <testcase name="finalTokenPreparationRefreshesTheEntireExactBalanceBeforeRecordingReview" classname="app.localwallet.mainnet.WalletRepositoryMaxTest" time="0.004"/>
+  <testcase name="editingAReviewMustCancelItsExactUnsignedIntentBeforePreparingTheChangedTransfer" classname="app.localwallet.mainnet.WalletRepositoryMaxTest" time="0.008"/>
+  <testcase name="remainingNativeMaxPreparationsReserveTheActualGasCurrencyWithoutRounding" classname="app.localwallet.mainnet.WalletRepositoryMaxTest" time="0.013"/>
+  <testcase name="editedOrExpiredMaxDraftIsRejectedBeforeAnyJournalIsOpened" classname="app.localwallet.mainnet.WalletRepositoryMaxTest" time="0.005"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

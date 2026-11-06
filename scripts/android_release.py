@@ -10,8 +10,8 @@ import zipfile
 
 
 PACKAGE = "app.localwallet.mainnet"
-VERSION_NAME = "0.13.0-mainnet"
-VERSION_CODE = 16
+VERSION_NAME = "0.14.0-mainnet"
+VERSION_CODE = 17
 CERTIFICATE_SHA256 = "da1632404a817505713e77527ef97543fc6c1028148c401462b96683e2392687"
 ABIS = {"arm64-v8a": 183, "x86_64": 62}
 

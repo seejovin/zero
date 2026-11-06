@@ -1,18 +1,26 @@
-# zerø for Android — 0.13.0 engineering release
+# zerø for Android — 0.14.0 engineering release
 
 **Implemented in source:** the actual local private-note engine and prover, an isolated bundled WebView host, native approval/journal binding, exact private Send/Deposit, encrypted history backup, quarantined restore and finalized self-sweep recovery. Private sponsorship uses the separate OHTTP relay/gateway and restricted gas service. Production private transfer remains disabled until deployment and device qualification are complete.
 
-Metadata is code 16 / `0.13.0-mainnet`. Android compilation, all 270 release JVM tests, release lint (zero errors, 13 warnings), and APK assembly passed. Both 64-bit native libraries and all packaged private-engine resources were checked, including 16 KiB ELF/ZIP alignment. Signing and source provenance are recorded separately in the release `APK_MANIFEST.json`. Device installation, an upgrade preserving a real vault, and live private transfers remain unverified. See [RELEASE_0.13.0.md](../docs/RELEASE_0.13.0.md), [PRIVATE_GAS_UPGRADE.md](../docs/PRIVATE_GAS_UPGRADE.md), and `verification/v0130-android-build.json`.
+Metadata is code 17 / `0.14.0-mainnet`. Android compilation, all 296 release JVM tests, release lint (zero errors, 13 warnings), and APK assembly passed. Both 64-bit native libraries and all packaged private-engine resources were checked, including 16 KiB ELF/ZIP alignment. Signing and source provenance are recorded separately in the release `APK_MANIFEST.json`. Device installation, an upgrade preserving a real vault, and live private transfers remain unverified. See [RELEASE_0.14.0.md](../docs/RELEASE_0.14.0.md), [PRIVATE_GAS_UPGRADE.md](../docs/PRIVATE_GAS_UPGRADE.md), and `verification/v0140-android-build.json`.
 
 The app displays **zerø** and a local opening transition. The package ID, encrypted vault, recovery derivation and storage identifiers remain unchanged. The transition respects disabled animations and screen-reader touch exploration, has a 1.5-second deadline, and yields immediately to authentication, errors or backgrounding.
 
 The private engine is a packaged computational component. It has no browser UI, external navigation, direct network access or downloaded executable code. The native UI remains Kotlin; the host accepts only the pinned synthetic HTTPS origin, hash-verified APK resources and transferred MessagePort messages. `preBuild` runs the locked npm build. An optional `-PprivateProtocolManifest=/absolute/path/manifest.json` supplies qualified, hash-matched circuit artifacts; it cannot enable the independent native release gate. The artifact build and provenance instructions are in [the engine guide](../privacy-engine/README.md).
 
+## Wallet management in 0.14.0
+
+- **Profile → Add wallet:** create a new wallet or import a different recovery phrase. Each wallet has independent encrypted storage, wrapping keys and transaction journals.
+- **Profile → Wallets:** select a saved wallet, identified by its name and public address. Each wallet keeps its own app-lock setting.
+- **Profile → Sign out:** close the active wallet and persist the signed-out state. Saved wallets are retained; restarting does not automatically reopen them.
+- These controls are also available in Settings, including when app lock is Off. Signing out is distinct from locking the current wallet.
+- The existing `wallet-v1` directory is preserved. New wallets use separate UUID directories under `wallets-v1`. Duplicate imports are rejected, and switching invalidates old signing, recovery, private-workspace and document-picker callbacks.
+
 ## Retained public wallet and 0.10.0 network source
 
 This is a native Kotlin application using restricted Rust signing engines through generated UniFFI bindings. The source supports Ethereum, Base, OP Mainnet, Arbitrum One, Avalanche C-Chain, Polygon PoS, BNB Smart Chain, Solana and TRON. The exact native assets and canonical stablecoins supported on each network are listed in [NETWORK_EXPANSION.md](../docs/NETWORK_EXPANSION.md). The public wallet contains no testnet switch, custodial server, dApp connector, token-approval flow, swaps, bridges or arbitrary message-signing endpoint. The separately gated private engine uses the restricted offline WebView described above.
 
-The nine-network source is now compiled into the 0.13.0 APK. The following version sections preserve historical changes; their earlier build limitations are historical, not the current 0.13.0 build result.
+The nine-network source is compiled into the 0.14.0 APK. The following version sections preserve historical changes; their earlier build limitations do not describe the current build result.
 
 ## Historical 0.10.0 remaining networks
 
@@ -120,7 +128,7 @@ The user's earlier generic startup message did not include its underlying device
 
 ### Updating an existing installation
 
-The 0.13.0 release advances to code 16 and must use the retained distribution certificate. The package ID stays `app.localwallet.mainnet`. **Do not uninstall or clear app data to update.** Existing vaults, backup metadata and app-lock settings retain their storage formats. Migration to a new lock mode occurs only after an explicit, authenticated change in Settings. Journals and `activity-v1.sqlite3` observations remain in their original location. Actual in-place device upgrade behavior has not been tested in this environment.
+The 0.14.0 release advances to code 17 and must use the retained distribution certificate. The package ID stays `app.localwallet.mainnet`. **Do not uninstall or clear app data to update.** Existing vaults, backup metadata and app-lock settings retain their storage formats. Migration to a new lock mode occurs only after an explicit, authenticated change in Settings. Journals and `activity-v1.sqlite3` observations remain in their original location. Actual in-place device upgrade behavior has not been tested in this environment.
 
 ### Activity scope
 

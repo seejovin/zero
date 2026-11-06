@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="app.localwallet.mainnet.MaxTransferTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2026-11-06T17:16:45" hostname="34d710c0c368" time="0.025">
+  <properties/>
+  <testcase name="maxNeverClampsTheRequiredGasMarginOrExceedsTheExistingFeePolicy" classname="app.localwallet.mainnet.MaxTransferTest" time="0.002"/>
+  <testcase name="quoteBindingRejectsChangedWalletNetworkAssetRecipientAmountAndExpiredClock" classname="app.localwallet.mainnet.MaxTransferTest" time="0.002"/>
+  <testcase name="oscillatingContractGasDoesNotReturnAGuessedMaximum" classname="app.localwallet.mainnet.MaxTransferTest" time="0.001"/>
+  <testcase name="missingNegativeZeroAndInsufficientBalancesAreRejected" classname="app.localwallet.mainnet.MaxTransferTest" time="0.002"/>
+  <testcase name="tokenMaxKeepsEveryUnitIncludingTheSmallestAndLargestQuantities" classname="app.localwallet.mainnet.MaxTransferTest" time="0.013"/>
+  <testcase name="baseEthMaxSubtractsExecutionL1AndOperatorReserveWithoutLosingAWei" classname="app.localwallet.mainnet.MaxTransferTest" time="0.001"/>
+  <testcase name="anOldOrFutureBlockCannotBeCalledAFreshMaximum" classname="app.localwallet.mainnet.MaxTransferTest" time="0.001"/>
+  <testcase name="tokenMaxNeverSubtractsEthFeesFromTokenUnitsAndReportsMissingGasFunds" classname="app.localwallet.mainnet.MaxTransferTest" time="0.001"/>
+  <testcase name="ethereumEthMaxHasNoBaseFeesAndStillPreservesAllEighteenDecimals" classname="app.localwallet.mainnet.MaxTransferTest" time="0.001"/>
+  <testcase name="contractGasThatDependsOnAmountIsReestimatedForTheActualMaximum" classname="app.localwallet.mainnet.MaxTransferTest" time="0.001"/>
+  <testcase name="rejectedSimulationCannotBeReplacedWithTheOrdinaryPreviewBudgetFallback" classname="app.localwallet.mainnet.MaxTransferTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

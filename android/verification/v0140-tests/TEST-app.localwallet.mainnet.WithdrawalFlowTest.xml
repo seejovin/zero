@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="app.localwallet.mainnet.WithdrawalFlowTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2026-11-06T17:16:48" hostname="34d710c0c368" time="0.025">
+  <properties/>
+  <testcase name="tokenOrGasShortfallCannotEnableReviewAndConservativeBudgetDoesNotClaimSimulation" classname="app.localwallet.mainnet.WithdrawalFlowTest" time="0.001"/>
+  <testcase name="quotesExpireFromMonotonicRequestStartAndRejectClockRollback" classname="app.localwallet.mainnet.WithdrawalFlowTest" time="0.002"/>
+  <testcase name="failedOrMalformedCurrentResponsesLeaveNoFeeOrPreparationAuthority" classname="app.localwallet.mainnet.WithdrawalFlowTest" time="0.001"/>
+  <testcase name="maxUsesEveryTokenUnitAndExactlyOneEthReserveWithoutDecimalTruncation" classname="app.localwallet.mainnet.WithdrawalFlowTest" time="0.01"/>
+  <testcase name="availableAmountComesFromTheSameFreshObservationThatGatesReview" classname="app.localwallet.mainnet.WithdrawalFlowTest" time="0.001"/>
+  <testcase name="tokenFeesRemainSeparateFromRecipientUnitsAndUseOnlyAvailableUsdQuotes" classname="app.localwallet.mainnet.WithdrawalFlowTest" time="0.0"/>
+  <testcase name="inputsRequireAnExplicitSupportedNetworkAndPreserveEveryNativeUnit" classname="app.localwallet.mainnet.WithdrawalFlowTest" time="0.002"/>
+  <testcase name="pastedRecipientIsTrimmedWithoutRemovingItsChecksumAndKnownTokenContractsAreRejected" classname="app.localwallet.mainnet.WithdrawalFlowTest" time="0.003"/>
+  <testcase name="maxRequiresMatchingFreshEvidenceAndCannotBeInjectedIntoAManualAmount" classname="app.localwallet.mainnet.WithdrawalFlowTest" time="0.002"/>
+  <testcase name="pageInvalidationAndAnotherFlowCannotReviveAnOutstandingQuote" classname="app.localwallet.mainnet.WithdrawalFlowTest" time="0.0"/>
+  <testcase name="newNetworkQuotesRetainTheirExactChainAndRejectFeesFromAnotherFeeModel" classname="app.localwallet.mainnet.WithdrawalFlowTest" time="0.001"/>
+  <testcase name="oldNewOldDraftSequenceAndReplayedRepliesCannotOverwriteTheCurrentQuote" classname="app.localwallet.mainnet.WithdrawalFlowTest" time="0.001"/>
+  <testcase name="oneCurrentObservationCanBeClaimedOnlyOnceAndEditsInvalidateItsPreparationResult" classname="app.localwallet.mainnet.WithdrawalFlowTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="app.localwallet.mainnet.WalletCatalogTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2026-11-06T17:16:44" hostname="34d710c0c368" time="0.541">
+  <properties/>
+  <testcase name="catalogReadsFromAnotherInstanceWaitUntilTheVaultWriteFinishes" classname="app.localwallet.mainnet.WalletCatalogTest" time="0.369"/>
+  <testcase name="twoWalletsHaveIndependentKeysStorageAndDurableSelection" classname="app.localwallet.mainnet.WalletCatalogTest" time="0.033"/>
+  <testcase name="damagedWalletAndSelectionArePreservedWithoutSilentFallback" classname="app.localwallet.mainnet.WalletCatalogTest" time="0.01"/>
+  <testcase name="committedWalletSurvivesFailedSelectionAndRemainsDiscoverable" classname="app.localwallet.mainnet.WalletCatalogTest" time="0.024"/>
+  <testcase name="missingSelectionWithMultipleSavedWalletsDoesNotReopenTheLegacyWallet" classname="app.localwallet.mainnet.WalletCatalogTest" time="0.012"/>
+  <testcase name="waitingOldSelectionOrSignOutCannotOverwriteANewerWallet" classname="app.localwallet.mainnet.WalletCatalogTest" time="0.017"/>
+  <testcase name="selectionAcceptsStrictParserNumbersAndRejectsCoercions" classname="app.localwallet.mainnet.WalletCatalogTest" time="0.011"/>
+  <testcase name="legacyUpgradeAndSignOutPreserveVaultKeysAndJournalsAcrossRestart" classname="app.localwallet.mainnet.WalletCatalogTest" time="0.013"/>
+  <testcase name="simultaneousDuplicateEnrollmentsCannotCreateTwoIndependentJournals" classname="app.localwallet.mainnet.WalletCatalogTest" time="0.017"/>
+  <testcase name="uncertainSelectionWriteKeepsBothWalletsAndReadsTheCommittedState" classname="app.localwallet.mainnet.WalletCatalogTest" time="0.011"/>
+  <testcase name="duplicateImportIsRejectedBeforeSavingOrKeepingItsWrappingKey" classname="app.localwallet.mainnet.WalletCatalogTest" time="0.014"/>
+  <testcase name="freshSignedOutStateNeverAdoptsALaterDiscoveredLegacyWallet" classname="app.localwallet.mainnet.WalletCatalogTest" time="0.005"/>
+  <testcase name="emptyReservationsAreHiddenAndNeverOverwriteAnExistingDirectory" classname="app.localwallet.mainnet.WalletCatalogTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

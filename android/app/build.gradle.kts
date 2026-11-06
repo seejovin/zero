@@ -12,8 +12,8 @@ android {
         applicationId = "app.localwallet.mainnet"
         minSdk = 30
         targetSdk = 35
-        versionCode = 16
-        versionName = "0.13.0-mainnet"
+        versionCode = 17
+        versionName = "0.14.0-mainnet"
         ndk { abiFilters += listOf("arm64-v8a", "x86_64") }
     }
     buildTypes {

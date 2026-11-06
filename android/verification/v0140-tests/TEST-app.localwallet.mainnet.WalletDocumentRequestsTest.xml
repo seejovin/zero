@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="app.localwallet.mainnet.WalletDocumentRequestsTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-11-06T17:16:48" hostname="34d710c0c368" time="0.002">
+  <properties/>
+  <testcase name="normalPickerPauseKeepsOwnerButResultIsConsumedOnce" classname="app.localwallet.mainnet.WalletDocumentRequestsTest" time="0.001"/>
+  <testcase name="lateResultFromAIsRejectedEvenAfterSwitchingBackToA" classname="app.localwallet.mainnet.WalletDocumentRequestsTest" time="0.0"/>
+  <testcase name="recreationDoesNotReuseCodesOrAcceptAnotherInstancesResult" classname="app.localwallet.mainnet.WalletDocumentRequestsTest" time="0.0"/>
+  <testcase name="switchingWalletRevokesEveryKindOfOutstandingDocumentResult" classname="app.localwallet.mainnet.WalletDocumentRequestsTest" time="0.0"/>
+  <testcase name="mismatchedOwnerAndDuplicateLaunchCannotGrantAuthority" classname="app.localwallet.mainnet.WalletDocumentRequestsTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

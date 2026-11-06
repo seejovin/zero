@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="app.localwallet.mainnet.PrivatePoolRequestPolicyTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2026-11-06T17:16:45" hostname="34d710c0c368" time="0.016">
+  <properties/>
+  <testcase name="nullifierQueriesRequireExactlySixteenUniquePaddedSlots" classname="app.localwallet.mainnet.PrivatePoolRequestPolicyTest" time="0.002"/>
+  <testcase name="checkpointMustBindTheExactFinalizedBlockTreeAndCount" classname="app.localwallet.mainnet.PrivatePoolRequestPolicyTest" time="0.001"/>
+  <testcase name="fullBlockLogResponseBindsEveryLogToTheRequestedCanonicalBlock" classname="app.localwallet.mainnet.PrivatePoolRequestPolicyTest" time="0.002"/>
+  <testcase name="nullifierResponseMustMatchExactRequestOrderAndBooleanPositions" classname="app.localwallet.mainnet.PrivatePoolRequestPolicyTest" time="0.0"/>
+  <testcase name="publicLogWindowsHaveFixedBoundsAndAlignment" classname="app.localwallet.mainnet.PrivatePoolRequestPolicyTest" time="0.001"/>
+  <testcase name="responseKindNetworkAndExtraFieldsCannotBeConfusedWithReceiptEvidence" classname="app.localwallet.mainnet.PrivatePoolRequestPolicyTest" time="0.001"/>
+  <testcase name="noWalletSpecificFiltersOrArbitraryRpcCanCrossThePort" classname="app.localwallet.mainnet.PrivatePoolRequestPolicyTest" time="0.0"/>
+  <testcase name="fullBlockLogRequestsAcceptOnlyOneExplicitFinalizedBlockAndNoFilters" classname="app.localwallet.mainnet.PrivatePoolRequestPolicyTest" time="0.001"/>
+  <testcase name="duplicateReorderedOrMalformedFullBlockLogsAreRejected" classname="app.localwallet.mainnet.PrivatePoolRequestPolicyTest" time="0.006"/>
+  <testcase name="onlyPinnedNetworkAndVersionAreAccepted" classname="app.localwallet.mainnet.PrivatePoolRequestPolicyTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

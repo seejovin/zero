@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="app.localwallet.mainnet.SecureVaultTest" tests="16" skipped="0" failures="0" errors="0" timestamp="2026-11-06T17:16:45" hostname="34d710c0c368" time="3.108">
+  <properties/>
+  <testcase name="creationReadFailureDoesNotReportSuccessOrDeleteTheCommittedWalletKey" classname="app.localwallet.mainnet.SecureVaultTest" time="0.011"/>
+  <testcase name="creationRejectsMismatchedReadbackWithoutChangingTheSavedBackupState" classname="app.localwallet.mainnet.SecureVaultTest" time="0.007"/>
+  <testcase name="failedProtectionWriteBeforeCommitPreservesOldWalletAndItsKey" classname="app.localwallet.mainnet.SecureVaultTest" time="0.239"/>
+  <testcase name="cancelledProtectionChangeCannotReplaceManifestOrDeleteCurrentKey" classname="app.localwallet.mainnet.SecureVaultTest" time="0.209"/>
+  <testcase name="pinLockoutSurvivesRestartAndSuccessfulUnlockResetsIt" classname="app.localwallet.mainnet.SecureVaultTest" time="1.143"/>
+  <testcase name="staleWrapperCannotOpenAfterSettingsChanged" classname="app.localwallet.mainnet.SecureVaultTest" time="0.178"/>
+  <testcase name="wrapperAuthenticationBindsSelectedLockMethod" classname="app.localwallet.mainnet.SecureVaultTest" time="0.005"/>
+  <testcase name="malformedMetadataCannotSilentlyDisableAppLockOrChangeBackupState" classname="app.localwallet.mainnet.SecureVaultTest" time="0.008"/>
+  <testcase name="failedAttemptReservationDoesNotConsumeCipherOrDecrypt" classname="app.localwallet.mainnet.SecureVaultTest" time="0.165"/>
+  <testcase name="enablingPinNeverTurnsIncompleteBackupIntoConfirmed" classname="app.localwallet.mainnet.SecureVaultTest" time="0.158"/>
+  <testcase name="newWalletOpensImmediatelyAndRestartKeepsSameWordsWithoutClaimingBackup" classname="app.localwallet.mainnet.SecureVaultTest" time="0.012"/>
+  <testcase name="pinAndOffChangesPreserveVaultAddressAndBackupState" classname="app.localwallet.mainnet.SecureVaultTest" time="0.482"/>
+  <testcase name="savedDataContainsNeitherRecoveryWordsNorPin" classname="app.localwallet.mainnet.SecureVaultTest" time="0.172"/>
+  <testcase name="legacyUnverifiedManifestKeepsDeviceAuthenticationAndSameSeed" classname="app.localwallet.mainnet.SecureVaultTest" time="0.006"/>
+  <testcase name="uncertainProtectionWriteRetainsBothKeysAndReopensCommittedVersion" classname="app.localwallet.mainnet.SecureVaultTest" time="0.31"/>
+  <testcase name="exactPinLengthAndLeadingZeroAreUnambiguous" classname="app.localwallet.mainnet.SecureVaultTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

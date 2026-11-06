@@ -1,0 +1,10 @@
+{
+  "java": "openjdk version \"17.0.21\" 2026-10-20 LTS\nOpenJDK Runtime Environment Corretto-17.0.21.0.11 (build 17.0.21+11-LTS)\nOpenJDK 64-Bit Server VM Corretto-17.0.21.0.11 (build 17.0.21+11-LTS, mixed mode, sharing)",
+  "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)",
+  "node": "v24.22.1",
+  "npm": "11.9.0\nnpm warn Unknown env config \"http-proxy\". This will stop working in the next major version of npm.",
+  "platform": "Pkg.Desc=Android SDK Platform 15\nPkg.UserSrc=false\nPlatform.Version=15\nPlatform.CodeName=\nPkg.Revision=2\nAndroidVersion.ApiLevel=35\nAndroidVersion.ExtensionLevel=13\nAndroidVersion.IsBaseSdk=true\nLayoutlib.Api=15\nLayoutlib.Revision=1\nPlatform.MinToolsRev=22",
+  "build_tools": "Pkg.UserSrc=false\nPkg.Revision=35.0.0\n#Pkg.Revision=35.0.0 rc4",
+  "ndk": "Pkg.Desc = Android NDK\nPkg.Revision = 27.2.12479018\nPkg.BaseRevision = 27.2.12479018\nPkg.ReleaseName = r27c",
+  "gradle_wrapper_version": "8.11.1"
+}

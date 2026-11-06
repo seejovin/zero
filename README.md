@@ -2,12 +2,13 @@
 
 An Android non-custodial wallet for receiving, holding and sending supported mainnet assets. The Android app stores wallet secrets and signs locally; the repository also retains the earlier web client and the private gas sponsorship service.
 
-## Current engineering release: 0.13.0
+## Current engineering release: 0.14.0
 
 - **App:** zerø, with a native opening transition and matching launcher icon. The existing `app.localwallet.mainnet` package, wallet storage and app-signing identity are preserved for an in-place update.
 - **Public wallet:** nine supported networks and the retained asset-first Deposit/Send flow. Balances, network fees, recovery and transaction signing remain local-client workflows.
 - **Private gas abstraction:** the local RAILGUN V2 engine, Groth16 prover, Android bridge, encrypted recovery, OHTTP transport and restricted operator service are implemented. **Production private sending is disabled pending the release qualifications below.**
-- **APK:** `zero-0.13.0-mainnet.apk` has been built and signed with the original certificate. The local release passed 270 Android JVM tests and lint (zero errors), plus native/ZIP alignment, package identity and asset checks. [Release evidence](docs/RELEASE_0.13.0.md) records the binary hash and source commit. The [clean GitHub Actions build](https://github.com/seejovin/zero/actions/runs/42244968958) also passed and produced a checked unsigned APK; signing credentials remain outside GitHub.
+- **Wallet management:** Profile and Settings now expose Wallets, Add wallet and Sign out. Create or import additional wallets, switch explicitly, and remain signed out across restart. Existing vaults and journals stay in place; duplicate imports are rejected before saving.
+- **APK:** the 0.14.0 release passed 296 Android JVM tests and lint (zero errors, 13 warnings), plus native/ZIP alignment, package identity and private-engine asset checks. [Release evidence](docs/RELEASE_0.14.0.md) records verification and delivery status; signing credentials remain outside GitHub.
 - **Hosting:** the public wallet does not require a company backend. The private service requires operated infrastructure, production pins and a separately operated privacy relay. Follow [the Tencent deployment guide](docs/TENCENT_DEPLOYMENT.md) for the supplied deployment files and remaining provisioning work.
 
 The private qualification target is **RAILGUN V2 on Arbitrum One with native USDC**. The principal and private recipient are represented by encrypted notes and proofs; the operator sees its own fee and request timing. This flow requires already shielded funds and a private `0zk` recipient. Public shielding, unshielding and public-wallet transactions remain outside that privacy claim.
@@ -17,7 +18,7 @@ The previous implementation's offline checks passed genuine one-input and eleven
 ## Build and deployment documentation
 
 - [Android build and device guidance](android/README.md)
-- [Latest release and delivered APK status](docs/RELEASE_0.13.0.md)
+- [Latest release and delivered APK status](docs/RELEASE_0.14.0.md)
 - [Signed APK identity](docs/APK_MANIFEST.json)
 - [Private engine build and proof verification](privacy-engine/README.md)
 - [Operator service](gas-service/README.md)
@@ -34,7 +35,7 @@ The sections below preserve the earlier source/runtime history. Current build an
 
 **A non-custodial wallet for real mainnet assets.** The Android 0.10.0 source supports nine reviewed networks: Ethereum, Base, OP Mainnet, Arbitrum One, Avalanche C-Chain, Polygon PoS, BNB Smart Chain, Solana and TRON. Wallet creation and transfer signing remain local. The deployed web 0.6.0 runtime remains limited to Ethereum and Base. See [NETWORK_EXPANSION.md](docs/NETWORK_EXPANSION.md) for the exact asset matrix, derivation paths, fee semantics and limitations.
 
-**Historical 0.10.0 status:** that version was a source candidate because the Android toolchain could not be downloaded in the earlier workspace. At that checkpoint, 0.8.0 was the last verified APK. Current binary status and checks are recorded in [RELEASE_0.13.0.md](docs/RELEASE_0.13.0.md) and `docs/APK_MANIFEST.json`.
+**Historical 0.10.0 status:** that version was a source candidate because the Android toolchain could not be downloaded in the earlier workspace. At that checkpoint, 0.8.0 was the last verified APK. Current binary status and checks are recorded in [RELEASE_0.14.0.md](docs/RELEASE_0.14.0.md) and `docs/APK_MANIFEST.json`.
 
 This is an engineering build with security controls and automated verification, not an independently audited production wallet. See [VERIFICATION.md](docs/VERIFICATION.md) for exact tests, build results and validation gaps. No real funds were transferred during development.
 
@@ -50,11 +51,11 @@ The project source includes both clients. Android 0.10.0 adds the five remaining
 
 One portfolio displays positive holdings across the nine Android networks, with a USD estimate from Coinbase's public spot-price API. Each position names its network, such as **USDC (Base)** and **USDC (Arbitrum One)**. Observed zero balances are omitted; unavailable balance or price data is never silently replaced with zero. Optional **Hide small balances** is off by default and uses a user-set USD threshold, initially $1. It changes only home-row visibility, not portfolio value, history or transfer availability. Holdings without a fresh valuation remain visible. The two primary actions remain **DEPOSIT** and **SEND**.
 
-The Profile page contains the wallet name, public address and Settings entry. Renaming, display preferences, app lock and recovery controls are inside Settings; there is no account nickname to manage. Creation opens the saved wallet immediately and shows a confirmation pointing to **Profile → Settings → Recovery phrase**. Backup is no longer an onboarding gate. Words are concealed until an explicit reveal. Switching apps returns to the same recovery page with the words concealed; an enabled app lock still applies. The multiline import field starts at the top of its text box.
+The Profile page contains the wallet name, public address, Wallets, Add wallet, Sign out and Settings. Add wallet creates or imports a separate wallet; Wallets opens the saved-wallet picker. Sign out preserves saved wallets and requires an explicit selection before reopening. Renaming, display preferences, app lock and recovery controls are inside Settings; there is no account nickname to manage. Creation opens the saved wallet immediately and shows a confirmation pointing to **Profile → Settings → Recovery phrase**. Backup is no longer an onboarding gate. Words are concealed until an explicit reveal. Switching apps returns to the same recovery page with the words concealed; an enabled app lock still applies. The multiline import field starts at the top of its text box.
 
 The app keeps the 0.5.1 local journal path fix, existing signing identity and encrypted wallet data. The native app connects directly to approved public RPC providers; it does not require your own hosted site, server or domain. TRON uses TronGrid; a user-owned access key can be stored, encrypted locally, under **Profile → Settings → TRON connection**. Unauthenticated access can be throttled or rejected.
 
-The earlier signed `local-wallet-0.8.0-mainnet.apk` supported Android 11 or newer, ARM64 phones and x86-64 devices; it did not include the new networks. The current 0.13.0 source targets the same devices and package, with version code 16. A release APK must pass the full native/Android build, tests, lint, signature and alignment gates before being supplied as an update. New wallets do not require an app PIN or device screen lock. Optional app protection is in **Profile → Settings**: Off, a fixed 6-digit app PIN, or biometrics/device screen lock. Existing protected wallets retain their authentication until explicitly changed. Updates must use the existing signing identity, without uninstalling or clearing data.
+The earlier signed `local-wallet-0.8.0-mainnet.apk` supported Android 11 or newer, ARM64 phones and x86-64 devices; it did not include the new networks. The current 0.14.0 source targets the same devices and package, with version code 17. A release APK must pass the full native/Android build, tests, lint, signature and alignment gates before being supplied as an update. New wallets do not require an app PIN or device screen lock. Optional app protection is in **Profile → Settings**: Off, a fixed 6-digit app PIN, or biometrics/device screen lock. Existing protected wallets retain their authentication until explicitly changed. Updates must use the existing signing identity, without uninstalling or clearing data.
 
 1. Create a wallet or restore English BIP39 recovery words.
 2. Open **Profile → Settings → Recovery phrase** when ready to record the newly generated 24 words. Copy and screenshots are allowed while the words are explicitly revealed. There is no mandatory word quiz. A clipboard or image copy can expose the wallet through history, photo backups or sync. The operator receives no recovery phrase or private key and cannot recover lost keys.

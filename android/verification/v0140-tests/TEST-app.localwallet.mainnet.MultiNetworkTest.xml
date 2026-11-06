@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="app.localwallet.mainnet.MultiNetworkTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2026-11-06T17:16:45" hostname="34d710c0c368" time="0.015">
+  <properties/>
+  <testcase name="opReceiptFeeNormalizationUsesItsInclusionBlockAndRejectsConflictingEvidence" classname="app.localwallet.mainnet.MultiNetworkTest" time="0.002"/>
+  <testcase name="arbitrumReceiptKeepsCombinedGasAndNeverInventsSeparateOpFees" classname="app.localwallet.mainnet.MultiNetworkTest" time="0.0"/>
+  <testcase name="arbitrumFeeQuoteUsesCombinedGasWithoutCallingOrAddingOpFees" classname="app.localwallet.mainnet.MultiNetworkTest" time="0.002"/>
+  <testcase name="newChainNativeMaxUsesEveryWeiAfterItsOwnFeeReserve" classname="app.localwallet.mainnet.MultiNetworkTest" time="0.001"/>
+  <testcase name="opFeeQuoteIncludesCanonicalBlockDataAndOperatorFeesExactlyOnce" classname="app.localwallet.mainnet.MultiNetworkTest" time="0.0"/>
+  <testcase name="assetFirstSelectionKeepsFourUsdcNetworksButOnlyTwoEurcNetworks" classname="app.localwallet.mainnet.MultiNetworkTest" time="0.002"/>
+  <testcase name="eachNewNetworkReadChecksBothProvidersAndRejectsWrongChainBeforeReading" classname="app.localwallet.mainnet.MultiNetworkTest" time="0.001"/>
+  <testcase name="missingFinalityEvidenceDoesNotSubstituteLatestOrClaimFinalization" classname="app.localwallet.mainnet.MultiNetworkTest" time="0.001"/>
+  <testcase name="explicitFeeProfilesAndGlyphsDoNotClassifyEveryRollupAsBaseOrEthereum" classname="app.localwallet.mainnet.MultiNetworkTest" time="0.001"/>
+  <testcase name="newChainBroadcastTimeoutNeverFallsBackOrChangesTheSignedBytes" classname="app.localwallet.mainnet.MultiNetworkTest" time="0.001"/>
+  <testcase name="newNetworkRoutesKeepChainIdentityAndCannotRestoreUnsupportedEurc" classname="app.localwallet.mainnet.MultiNetworkTest" time="0.001"/>
+  <testcase name="failedArbitrumNativeSimulationNeverInventsA21000GasTotal" classname="app.localwallet.mainnet.MultiNetworkTest" time="0.0"/>
+  <testcase name="newHoldingsUseUsdValueAndMissingRollupCoverageDoesNotEraseOtherBalances" classname="app.localwallet.mainnet.MultiNetworkTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

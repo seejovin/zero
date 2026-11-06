@@ -1,0 +1,240 @@
+{
+  "schema_version": 1,
+  "release": "0.14.0-mainnet",
+  "version_code": 17,
+  "result": "passed",
+  "jvm": {
+    "suites": 34,
+    "tests": 296,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "focused_regressions": {
+    "app.localwallet.mainnet.WalletAccessPolicyTest": {
+      "tests": 8,
+      "testcases": [
+        "oldQueuedSignOutCannotClearANewerSelection",
+        "staleReadsCannotCrossWalletSwitchOrReturnToTheSameWallet",
+        "pendingSignOutCannotRaceStartupOrAuthentication",
+        "signedOutNeverAutoOpensAnUnlockedSavedVault",
+        "newWalletNamesAreDistinctWithoutRenamingExistingWallets",
+        "staleCallbacksCannotReclaimSelectionOrFinishAnotherActivitysRequest",
+        "pendingSignOutSurvivesRecreationButStaleSavedStateCannotOverrideANewerChoice",
+        "selectingWalletRetainsItsOwnProtectionAndRequiresForeground"
+      ]
+    },
+    "app.localwallet.mainnet.WalletCatalogTest": {
+      "tests": 13,
+      "testcases": [
+        "catalogReadsFromAnotherInstanceWaitUntilTheVaultWriteFinishes",
+        "twoWalletsHaveIndependentKeysStorageAndDurableSelection",
+        "damagedWalletAndSelectionArePreservedWithoutSilentFallback",
+        "committedWalletSurvivesFailedSelectionAndRemainsDiscoverable",
+        "missingSelectionWithMultipleSavedWalletsDoesNotReopenTheLegacyWallet",
+        "waitingOldSelectionOrSignOutCannotOverwriteANewerWallet",
+        "selectionAcceptsStrictParserNumbersAndRejectsCoercions",
+        "legacyUpgradeAndSignOutPreserveVaultKeysAndJournalsAcrossRestart",
+        "simultaneousDuplicateEnrollmentsCannotCreateTwoIndependentJournals",
+        "uncertainSelectionWriteKeepsBothWalletsAndReadsTheCommittedState",
+        "duplicateImportIsRejectedBeforeSavingOrKeepingItsWrappingKey",
+        "freshSignedOutStateNeverAdoptsALaterDiscoveredLegacyWallet",
+        "emptyReservationsAreHiddenAndNeverOverwriteAnExistingDirectory"
+      ]
+    },
+    "app.localwallet.mainnet.WalletDocumentRequestsTest": {
+      "tests": 5,
+      "testcases": [
+        "normalPickerPauseKeepsOwnerButResultIsConsumedOnce",
+        "lateResultFromAIsRejectedEvenAfterSwitchingBackToA",
+        "recreationDoesNotReuseCodesOrAcceptAnotherInstancesResult",
+        "switchingWalletRevokesEveryKindOfOutstandingDocumentResult",
+        "mismatchedOwnerAndDuplicateLaunchCannotGrantAuthority"
+      ]
+    }
+  },
+  "lint": {
+    "errors": 0,
+    "warnings": 13,
+    "issues_by_severity": {
+      "Warning": 13
+    }
+  },
+  "unsigned_apk": {
+    "apk": "app-release-unsigned.apk",
+    "bytes": 16852268,
+    "sha256": "bfe5963824c369b6ee8b21a821bbb2b698d6bdab2755ad2be774d2750d419b62",
+    "package_id": "app.localwallet.mainnet",
+    "display_name": "zer\u00f8",
+    "version_code": 17,
+    "version_name": "0.14.0-mainnet",
+    "debuggable": false,
+    "minimum_android_api": 30,
+    "target_android_api": 35,
+    "architectures": [
+      "arm64-v8a",
+      "x86_64"
+    ],
+    "zip_alignment_bytes": 16384,
+    "native_load_alignments": {
+      "lib/arm64-v8a/libjnidispatch.so": [
+        16384,
+        16384
+      ],
+      "lib/arm64-v8a/libwallet_core.so": [
+        16384,
+        16384,
+        16384,
+        16384
+      ],
+      "lib/x86_64/libjnidispatch.so": [
+        16384,
+        16384
+      ],
+      "lib/x86_64/libwallet_core.so": [
+        16384,
+        16384,
+        16384,
+        16384
+      ]
+    },
+    "private_engine_asset_manifest_sha256": "cc6b7b23e3e65bba36f5416ee8fcce8192da143e49bbab70f4c129c85996cb75",
+    "private_engine_checked_assets": 3,
+    "private_transfer_qualification": "not qualified for production"
+  },
+  "checks": [
+    "Android Kotlin compilation, all release JVM tests, release lint and assembly",
+    "Catalog restart/sign-out preservation, independent wallets, duplicate-import rejection and selection failure recovery",
+    "Session authority, stale activity/callback and document-request isolation",
+    "APK name/package/version/minSDK/targetSDK and non-debuggable flag",
+    "16 KiB native PT_LOAD and ZIP alignment",
+    "SHA-256 verification of every declared private engine asset"
+  ],
+  "native_provenance": {
+    "reused_from": "0.13.0-mainnet validated native build",
+    "packaged_libraries_identical_to_previous_signed_apk": true,
+    "library_sha256": {
+      "lib/arm64-v8a/libjnidispatch.so": "ddfc6c965bbe366615c000ec1f06552ddf0bb2b4f9d921d0bff8c75b3cb2ca4c",
+      "lib/arm64-v8a/libwallet_core.so": "1775447d8c8f476df1aa33aa2bfa8d1c5cfbfef033d7fdeb77ca2fe2a6b19716",
+      "lib/x86_64/libjnidispatch.so": "288eafff19a70e833498201071c3d724f03f32ee8ff64a14fca50b57d975db70",
+      "lib/x86_64/libwallet_core.so": "45cafae0a0e6e9ca5dfcd358448c010f972b2c309fc28130adf39b417d9f6335"
+    },
+    "rust_private_engine_recorded_source_hashes_unchanged": 77,
+    "unchanged_rust_suite_rerun": false
+  },
+  "not_executed": [
+    "Physical-device or emulator button/lifecycle instrumentation",
+    "In-place installation and upgrade using a real user vault",
+    "Live transactions or production private-service operations"
+  ],
+  "source_sha256": {
+    ".github/workflows/android.yml": "8a71fbada181235ae3628298275ee7b2d813d7f2a325219edf4f65d64698cdec",
+    "android/app/build.gradle.kts": "d3cc4f57f4150a5465e301d44068e46a96ea108e544b4224d5812dce992919b5",
+    "android/app/src/main/AndroidManifest.xml": "b504eeee53bb2c851368a197320cbb64b4412a0bd2832aa7009e09b609435246",
+    "android/app/src/main/java/app/localwallet/mainnet/ActivityStore.kt": "4325a29e9ae54b239ec0148ec9f45406375fa192da90848ccc4e22b508718cc1",
+    "android/app/src/main/java/app/localwallet/mainnet/AssetSelection.kt": "925bcb0da133706413e2b3de20002db77f614e0b18d92b12b43cac5d4d147325",
+    "android/app/src/main/java/app/localwallet/mainnet/CoinbasePriceClient.kt": "0ad80740227f33b5d6f2c149e03545546f6ff1354b6c1c50bb3be11bab5ac04f",
+    "android/app/src/main/java/app/localwallet/mainnet/CoinbasePriceStore.kt": "0068ccac0d39f1f19b44f22a1839df7b10934876c9d679417c7a5658a17ac004",
+    "android/app/src/main/java/app/localwallet/mainnet/DisplayNamePreferences.kt": "df0a56062a535e7c58f5ceaa9ae3b2047b79daac017843eafd614178ef7d36da",
+    "android/app/src/main/java/app/localwallet/mainnet/FamilyNetworks.kt": "cc11b679839fc04d7db11b680e1c5104fb5368ff6de47806477ada042ca79aae",
+    "android/app/src/main/java/app/localwallet/mainnet/FamilyProtocol.kt": "482d17f9e81bbaff1d9811bbaa9a6054c5633ba5d10a89894201a02450a64062",
+    "android/app/src/main/java/app/localwallet/mainnet/FeeEstimator.kt": "27a384fcce7c8420254a3c30b8fc240b521b841272b0987f95c1bc1aba6f414a",
+    "android/app/src/main/java/app/localwallet/mainnet/MainActivity.kt": "c7da73fd04eb37a6ba1938b43c889768b01f9204ac1bbde16a4ac0d0edf6b5e0",
+    "android/app/src/main/java/app/localwallet/mainnet/MaxTransfer.kt": "1fd7836513306021fdc70b3cf6b9da126d156cbeac3bf21ca6a40bf97d7ec39c",
+    "android/app/src/main/java/app/localwallet/mainnet/MultiNetworkRepository.kt": "1208c0cabde0941182c9e1b0c3bcb9f8583db7eefe751b3b5152cc172497363c",
+    "android/app/src/main/java/app/localwallet/mainnet/NetworkClient.kt": "68f346553ba33d8b60004c68c94e6580234a7710a164aaa7d4a0fdba7a52155e",
+    "android/app/src/main/java/app/localwallet/mainnet/NetworkPolicy.kt": "cc869425fa7d7a752f887cc5a254c64fd4ff8b40f4bdbbee56ad78a6e0a09a82",
+    "android/app/src/main/java/app/localwallet/mainnet/PortfolioPreferences.kt": "f6450d791227d7e74ab94a7eb64bd6268333a6f5fb53a678fc5c196076821a3d",
+    "android/app/src/main/java/app/localwallet/mainnet/PrivateBackupFiles.kt": "7dc1be4fe3bf7c064754e2ab3f1dd8911b3ec9f532c968652f1ba1f33d161850",
+    "android/app/src/main/java/app/localwallet/mainnet/PrivateCancellationCleanup.kt": "470742ba46cc5c08128ef6e490e6dc80b6994551ff985b36b75bedb982c8095b",
+    "android/app/src/main/java/app/localwallet/mainnet/PrivateEngineAssets.kt": "97c2a2738d4476b24deb3aeb6635bfa0959275b617e0b8098eb98420a2eac73b",
+    "android/app/src/main/java/app/localwallet/mainnet/PrivateEngineNativePorts.kt": "32fb0b6270ba6a899f442bd41c7d15ff09e328711b43b49723aba27eb8144b95",
+    "android/app/src/main/java/app/localwallet/mainnet/PrivateEngineRuntime.kt": "502cab805f1b40ca99a33a6b9fdadd25a25fb3bc43fcfdd065184cfeb81357b9",
+    "android/app/src/main/java/app/localwallet/mainnet/PrivateEngineWire.kt": "d9f4500d52a6e026bae77e9997c44fbb619cb45046adc3acd7065223e7dca357",
+    "android/app/src/main/java/app/localwallet/mainnet/PrivateJournalStorage.kt": "368ae18af569add7d08015224ff3d653ec1646444ac0b176d02c5243292e380b",
+    "android/app/src/main/java/app/localwallet/mainnet/PrivateNativeJournal.kt": "c9531e48708d3dfdb7a675c27162e2e6090fe0323f242d82781bf96a03a69e1c",
+    "android/app/src/main/java/app/localwallet/mainnet/PrivateNativeRelease.kt": "c8b0f3df59212a968898c6e7795491919e71774d731b9b6a830c1df7e6cacbbb",
+    "android/app/src/main/java/app/localwallet/mainnet/PrivateObliviousSubmissionTransport.kt": "3f5c79196e810c3528c2b013ca2c90c30584dce9f044aa330c5903ea01678862",
+    "android/app/src/main/java/app/localwallet/mainnet/PrivatePaymentCoordinator.kt": "c98ba89f5bee5c3f8f4c400a810c592ca3a333f27582543e3a58935c675d51cb",
+    "android/app/src/main/java/app/localwallet/mainnet/PrivatePaymentPolicy.kt": "abb59d3d3d4cb23ddf40827bbbaa2541290287697892ae01b6de4e7827973706",
+    "android/app/src/main/java/app/localwallet/mainnet/PrivateRecoveryController.kt": "9d559e6cbe8e7706a62b98614b92bbd7917d0560f22fc095bf47f94102415cd7",
+    "android/app/src/main/java/app/localwallet/mainnet/PrivateSdkSnapshotStore.kt": "fa4eda0d12f713407d6acc8702343cef186b4a8e7973d40bab4f54917016e924",
+    "android/app/src/main/java/app/localwallet/mainnet/PrivateWalletSession.kt": "55d1948fe93ac0241df9983ceb3e78c2a27ff75a105b3193edb8911a7412db4d",
+    "android/app/src/main/java/app/localwallet/mainnet/PrivateWalletWorkspace.kt": "5444195e765c2f8caf118552989d08acf0dd04f37728fc5ee64a9a4e2b8b1e67",
+    "android/app/src/main/java/app/localwallet/mainnet/PrivateWebLocalEngine.kt": "205d110e3026940391f59e9b45d30c079ab8e7a10f7dfa4e9bb6fcf11726ca61",
+    "android/app/src/main/java/app/localwallet/mainnet/RecoveryPhraseSession.kt": "816824987daed4ca5e718eb2320007dee0360fbecf2133d8fdc5f4f89f93482b",
+    "android/app/src/main/java/app/localwallet/mainnet/SecureVault.kt": "23122214ac4f36a27fdaf4c994abe8e46f0a194bad1c4dc0b35806345a5856f7",
+    "android/app/src/main/java/app/localwallet/mainnet/SolanaNetworkAdapter.kt": "4c4e8d25e0c43ecd86a79323a2eb1f29c6b0408812127b011548765ab29ae8c2",
+    "android/app/src/main/java/app/localwallet/mainnet/TronApiAccess.kt": "44ae7738e56769341485e16901a0f5b4d52fa8b0068c2bc9e7a78c5471151122",
+    "android/app/src/main/java/app/localwallet/mainnet/TronNetworkAdapter.kt": "85210e80dc8c1e754ed719c9f7b7957101110f7b1c3c011d1f53a2003ed2bb42",
+    "android/app/src/main/java/app/localwallet/mainnet/UsdPrices.kt": "0a31a57d5b1d6cb74330dddc5a3594deabe950139e15744ed616b68814f15180",
+    "android/app/src/main/java/app/localwallet/mainnet/VaultProtection.kt": "ffc5019843589f037f7567470b326e0b929281086f08824609a6a2f52f57a87f",
+    "android/app/src/main/java/app/localwallet/mainnet/WalletAccessPolicy.kt": "a6c1ccba1c76b53f4eb4cd77ceda31f427e09dac43c7976e572422b865139edb",
+    "android/app/src/main/java/app/localwallet/mainnet/WalletCatalog.kt": "955cf6a88f5f6485569cbeb4f1a4c4f35475efb27c691f8041ea6f95e9bf6a54",
+    "android/app/src/main/java/app/localwallet/mainnet/WalletDocumentRequests.kt": "32e2038f450157fc28c7aed7b4e260e5f8fa5bbf38b7ccfa64cc4fb810f40e9e",
+    "android/app/src/main/java/app/localwallet/mainnet/WalletGlyph.kt": "f4cd7589a77c0b2f0b0ee437ae911737b9d0951420cb1b301b89b6afcdb4cbc6",
+    "android/app/src/main/java/app/localwallet/mainnet/WalletNavigation.kt": "4ed1d781d558f6871c64cea8e36df3441045393a59d9298c829f67df19a6dba6",
+    "android/app/src/main/java/app/localwallet/mainnet/WalletPortfolio.kt": "1cb73bf5d9fe089e4843de74a2a1e675247ba135db84d013607b4dedb58a9700",
+    "android/app/src/main/java/app/localwallet/mainnet/WalletRecords.kt": "83df363dcd6819b5d70eef7383c35dcf0046f6ddaf2847b0c23854e0cbfd3e18",
+    "android/app/src/main/java/app/localwallet/mainnet/WalletRepository.kt": "e3685c02d52907ff0ceb214b6b5cf5a744d679c4175a1ba3a1bfe4f9a7900e28",
+    "android/app/src/main/java/app/localwallet/mainnet/WalletTypes.kt": "48e8d54237c6b92993f6908d749fc90e02657b928042a47633fa6e2a9eb6f5f2",
+    "android/app/src/main/java/app/localwallet/mainnet/WithdrawalFlow.kt": "704e48e26d43fed9fb47e159f47041fab828194ff3f96d67ac933309a896d6d9",
+    "android/app/src/main/java/app/localwallet/mainnet/WithdrawalViews.kt": "bd3f3b60fcc3c7d8e5a6575e24ad28689d870b2a7dae2b2c86cae20dec07b044",
+    "android/app/src/main/java/app/localwallet/mainnet/ZeroOpeningTransition.kt": "1d780922e7f15de8001045bbb1ecfc28406e94ee65e57b081e3054de5eb45123",
+    "android/app/src/main/res/drawable/ic_zero_foreground.xml": "03ea5c49a5ac667f559c45ed463173e2221b0905b64048ea237f7d05adf660ea",
+    "android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml": "f5c6ad74ca03d0a6d2fea827696953d47cfe136e6b96c103963bdfc2076a0f33",
+    "android/app/src/main/res/mipmap-anydpi-v33/ic_launcher.xml": "401a978af526a80bfbbc33423e97a773c8103edf29933907203ec0d4fa047bcd",
+    "android/app/src/main/res/values/colors.xml": "2b1a2e14d9c0b914fef257dcdfad1f862819bab189dd42f2b1bcb56b0a2065f4",
+    "android/app/src/main/res/values/strings.xml": "9d65a89a1c83690818fdcca06d998456eb89147685df416480266b32bacc7b34",
+    "android/app/src/main/res/values/styles.xml": "cb62da4d9bb8bf0bb101271dba8a6e10f6de630deebc285022603a1d0ff51096",
+    "android/app/src/main/res/values-v31/styles.xml": "cc3526580f050da595e9659e73f64ef210e64360de765813f6d1d03902556533",
+    "android/app/src/main/res/xml/backup_rules.xml": "2c5c697984f4c52b526337ab61113f5843e0bfc6af4722374916ffe6da38dd9a",
+    "android/app/src/main/res/xml/data_extraction_rules.xml": "7a4e6defdcb7e21a8cdb4bb4cbdbbef15bcd4c6bae923372fbfa07f0642ac29a",
+    "android/app/src/main/res/xml/network_security_config.xml": "eb5f5c57a88fc656cb97ee142694b996b286064ba973e51e0158bcdff08b34f2",
+    "android/app/src/test/java/app/localwallet/mainnet/AmountsTest.kt": "a6e75b9ea3cefafc06dd32b876063d2d6945a9213152a0ee5f9d1c5e86f858dc",
+    "android/app/src/test/java/app/localwallet/mainnet/AssetSelectionTest.kt": "e8c6bcba36400581147103aa9722c892f1ff0242436fbf0963aff2a75ac68f44",
+    "android/app/src/test/java/app/localwallet/mainnet/CoinbasePriceClientTest.kt": "532e9e09a607fa3827365bf67b49adad36a3807796df16f4d5ed2a3c96e5d191",
+    "android/app/src/test/java/app/localwallet/mainnet/CoreBridgeTest.kt": "721d28de7c67ff4bd2eb70409075397a2c4b88c5c27d97a2d50e4f74ed4d5b32",
+    "android/app/src/test/java/app/localwallet/mainnet/DisplayNamesTest.kt": "9e738b410a5d8615b34659b86654346055663c37ae3348878aaaf57d4e819387",
+    "android/app/src/test/java/app/localwallet/mainnet/FamilyNetworkPolicyTest.kt": "b4b4d55b35f3762c0d909ddfc8d79b2298d5092453881104e34b83f0ab95d567",
+    "android/app/src/test/java/app/localwallet/mainnet/FeeEstimatorTest.kt": "c8f7548631b57cdfadebe5bbd643a6fdbf2444be3705906611f8925da49198a9",
+    "android/app/src/test/java/app/localwallet/mainnet/MaxTransferTest.kt": "df06668a3e220187b956f08d9a54f2562fa09bb377bc794132854fcddb3f4346",
+    "android/app/src/test/java/app/localwallet/mainnet/MultiNetworkTest.kt": "b9740b2cb9bae8659e4d961cd10df78df905bdb5e53bc6e9d9178a8c5d59a941",
+    "android/app/src/test/java/app/localwallet/mainnet/NetworkClientTest.kt": "d0718b52c1315b08007e18c801fc2f88b12399407c8901b8e7749a3ba24057b6",
+    "android/app/src/test/java/app/localwallet/mainnet/PortfolioPreferencesTest.kt": "bedfae369cc2e339e88ddb46295efac5f0693582f3d02d206a362aef97560321",
+    "android/app/src/test/java/app/localwallet/mainnet/PrivateBackupFilesTest.kt": "53611c96267074f9c27c393727264d79c2b0e5eb13e9f84979490add57a2a6f4",
+    "android/app/src/test/java/app/localwallet/mainnet/PrivateCancellationCleanupTest.kt": "ddb5cde7bb89022e8dd9e16d1313b7057e8a3d4d163877dc8a657cab99dbcd6e",
+    "android/app/src/test/java/app/localwallet/mainnet/PrivateEngineWireTest.kt": "a929a5b28f98bc940e42e2e8c14ff4887f0be90bd5b1835305353f119a834ead",
+    "android/app/src/test/java/app/localwallet/mainnet/PrivatePaymentCoordinatorTest.kt": "72dfe654e329251a970913691e51ccdda66c9b4d26940458f824b576c67c2ef7",
+    "android/app/src/test/java/app/localwallet/mainnet/PrivatePaymentPolicyTest.kt": "adbad33d250539445560ba01148ddad76bb2b4bc552bfba06d732ebd8ded156c",
+    "android/app/src/test/java/app/localwallet/mainnet/PrivatePoolRequestPolicyTest.kt": "3f2aebf3229d27f5f3d0f50d691abae3911204a200aa09c25daed2b391758425",
+    "android/app/src/test/java/app/localwallet/mainnet/PrivatePublicRouteGuardTest.kt": "e7839e1bc7847c88af4dc342b7ab54862530956a6f23217d444c192abd9cec24",
+    "android/app/src/test/java/app/localwallet/mainnet/RecoveryPhraseSessionTest.kt": "34a8592482f1edbb74fca6f7fe22f4f6602f02628da4a2a0a1b2b6e7635d3c6e",
+    "android/app/src/test/java/app/localwallet/mainnet/RemainingEvmNetworksTest.kt": "e6ae937e3ada6c9883b08747b197cf93ee60d6749aa158de22ee520cd6d88912",
+    "android/app/src/test/java/app/localwallet/mainnet/SecureVaultTest.kt": "fb9b9927b79416efd3b914220f6986ff186c25afd17a2a5d8205458cbf5825e4",
+    "android/app/src/test/java/app/localwallet/mainnet/SolanaNetworkAdapterTest.kt": "9f5ba5ed2105c3732db3f1572ed371bc0112600518dcebc3a7c3fcb7e10882f3",
+    "android/app/src/test/java/app/localwallet/mainnet/TestNetworks.kt": "40cc10879d3e34905a44ee921bdb0326c2a0101540cb90ce9ea94ae90e683055",
+    "android/app/src/test/java/app/localwallet/mainnet/TronApiAccessTest.kt": "4b789f66d904fb960096dda439dada6096a524933bfc746951dfdab9f0a7b262",
+    "android/app/src/test/java/app/localwallet/mainnet/TronNetworkAdapterTest.kt": "d55a8cc581c60e4d05c7ae21a0b5c3039c0919af1481f3ad0be6e112d09cbe39",
+    "android/app/src/test/java/app/localwallet/mainnet/UsdPricesTest.kt": "b80c2484084478067749a5ed32dd3f107a144bfafc30f165523a35c55e58a45e",
+    "android/app/src/test/java/app/localwallet/mainnet/WalletAccessPolicyTest.kt": "cc672bbd68ddc64dad228b60b0cfc27d50c54dc793729c9ea6444f3a3d34385b",
+    "android/app/src/test/java/app/localwallet/mainnet/WalletCatalogTest.kt": "16a4bf88fe196588d87e07cf98106806d8cdadb39d25f27dc3b5fa29d3a525be",
+    "android/app/src/test/java/app/localwallet/mainnet/WalletDocumentRequestsTest.kt": "26b6b49a16f11b9276acd3070ccbacdb2867dd3f4cd442340a6446a557beb4f3",
+    "android/app/src/test/java/app/localwallet/mainnet/WalletHoldingsTest.kt": "b0ef9cc0712dd2f08af5f6bf74c46017f654425776e037ba8c472c3766d29fa2",
+    "android/app/src/test/java/app/localwallet/mainnet/WalletNavigationTest.kt": "c921821e531b44a28caa47a9d65146d59cf63c9cb0a45a6270168372d19d244a",
+    "android/app/src/test/java/app/localwallet/mainnet/WalletPortfolioTest.kt": "8b6165ed5f31fcc2015f69dc7a04a9c5e29eeb9765bb93134cc42e7de6c19464",
+    "android/app/src/test/java/app/localwallet/mainnet/WalletRepositoryMaxTest.kt": "9f9cc4b926435d6b70fca302a3cc3be37838e64b17ac0aa32412fa27a07bbe15",
+    "android/app/src/test/java/app/localwallet/mainnet/WalletRepositoryStorageTest.kt": "c8f4a68ee9f0eee71c1422b414385f6d4a3225531ee2c923a31cf911a21f0db6",
+    "android/app/src/test/java/app/localwallet/mainnet/WithdrawalFlowTest.kt": "468f91e72ed91914f102c2a87e1ccfc0abae02d93e6e53e07089254cea34ea72",
+    "android/build.gradle.kts": "955d7f5734d0c85b73ed2cb3a8de2bd4f520c28449c8b0f6144bdc91d3cead8b",
+    "android/gradle/verification-metadata.xml": "ab30b49d23c6e657d4a4ac2cf23c4422916d0ef50e2e6312f7c8c1397224564b",
+    "android/gradle/wrapper/gradle-wrapper.jar": "2db75c40782f5e8ba1fc278a5574bab070adccb2d21ca5a6e5ed840888448046",
+    "android/gradle/wrapper/gradle-wrapper.properties": "6963fc4849f2444c39a44bb59fcafa4f65d0e81a1177633c481a9c8d6ba0d31a",
+    "android/gradle.properties": "6ecf10865598cf15e614176f4f2bcfc8e8a19da146999c9c2d8fe2267f493e45",
+    "android/settings.gradle.kts": "5014afec5cb95bcb117bb27d3b0a2cd2813a33305eb7dce3dd366e1c7f7a9c5d",
+    "scripts/android_release.py": "ce6657f06fe7e25ba64319757309431e8bca1cdd20111cb54114dbba6072b4c8",
+    "scripts/build-android.sh": "4f58158cfe7a5e1fd5d701d1ba639212465952044dde49feea624b8690b1659b",
+    "scripts/package-android-release.py": "a9c233fd440f06513ae50dd9e0d07e8242ff999c1a2397bc206c741890efd2b5",
+    "scripts/sign-android-release.py": "16f3e89ca79d1d95a0880fb7e8d9e6cb51a44e9e8384a49c69137998684d64a4"
+  }
+}

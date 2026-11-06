@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="app.localwallet.mainnet.UsdPricesTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2026-11-06T17:16:48" hostname="34d710c0c368" time="0.007">
+  <properties/>
+  <testcase name="unknownOrStalePricesCannotHidePositiveAssetsOrCreateAnEmptyWalletClaim" classname="app.localwallet.mainnet.UsdPricesTest" time="0.001"/>
+  <testcase name="filterUsesUnroundedUsdValueAndAnAdjustableExclusiveThresholdRatherThanTokenQuantity" classname="app.localwallet.mainnet.UsdPricesTest" time="0.001"/>
+  <testcase name="tinyWeiAndSixDecimalStablecoinUnitsRemainExactUntilDisplayFormatting" classname="app.localwallet.mainnet.UsdPricesTest" time="0.0"/>
+  <testcase name="zeroBalancesNeedNoQuoteButMissingBalancesOrUnpricedPositiveAssetsNeverBecomeZeroTotals" classname="app.localwallet.mainnet.UsdPricesTest" time="0.0"/>
+  <testcase name="quoteAgeHasExplicitFreshStaleExpiredAndFutureBoundaries" classname="app.localwallet.mainnet.UsdPricesTest" time="0.0"/>
+  <testcase name="bothNetworksAndAllThreeAssetsContributeExactDollarValuesWithoutAssumingAStablecoinPeg" classname="app.localwallet.mainnet.UsdPricesTest" time="0.0"/>
+  <testcase name="malformedPricesWrongAssetBindingsAndInvalidUnitsRemainUnavailable" classname="app.localwallet.mainnet.UsdPricesTest" time="0.001"/>
+  <testcase name="incompletePortfolioReturnsAnExplicitKnownSubtotalAndRetainsFreshnessOfItsEvidence" classname="app.localwallet.mainnet.UsdPricesTest" time="0.001"/>
+  <testcase name="staleBalancesRemainVisibleEvenWhenAFreshPriceWouldPutThemBelowTheThreshold" classname="app.localwallet.mainnet.UsdPricesTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

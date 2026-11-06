@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="app.localwallet.mainnet.PrivatePaymentCoordinatorTest" tests="25" skipped="0" failures="0" errors="0" timestamp="2026-11-06T17:16:45" hostname="34d710c0c368" time="0.034">
+  <properties/>
+  <testcase name="canonicalReceiptIsRequiredForFinalityAndReadFailuresDoNotInventAReorg" classname="app.localwallet.mainnet.PrivatePaymentCoordinatorTest" time="0.009"/>
+  <testcase name="overlappingCommandsAreRejectedWhileLocalProofRuns" classname="app.localwallet.mainnet.PrivatePaymentCoordinatorTest" time="0.001"/>
+  <testcase name="pauseAfterDurableReleaseKeepsUnknownButDoesNotTransmitOnAutomaticResume" classname="app.localwallet.mainnet.PrivatePaymentCoordinatorTest" time="0.001"/>
+  <testcase name="aMismatchedServiceAcknowledgementCannotShowSuccess" classname="app.localwallet.mainnet.PrivatePaymentCoordinatorTest" time="0.001"/>
+  <testcase name="restoredApprovalWithoutEnvelopeCannotSilentlyGenerateAnotherProof" classname="app.localwallet.mainnet.PrivatePaymentCoordinatorTest" time="0.002"/>
+  <testcase name="factoryRefusesBeforePreparingProvingSavingOrSending" classname="app.localwallet.mainnet.PrivatePaymentCoordinatorTest" time="0.001"/>
+  <testcase name="failedRestorationCannotCopyAnOlderPaymentsFinalityOntoANewIdentity" classname="app.localwallet.mainnet.PrivatePaymentCoordinatorTest" time="0.001"/>
+  <testcase name="processRestartRestoresUnknownWithoutSubmittingOrProving" classname="app.localwallet.mainnet.PrivatePaymentCoordinatorTest" time="0.001"/>
+  <testcase name="timeoutRetainsUnknownAndExplicitRetryUsesOnlyTheExactDurableOperation" classname="app.localwallet.mainnet.PrivatePaymentCoordinatorTest" time="0.002"/>
+  <testcase name="aRevertedOuterAttemptRequiresFreshFinalizedEvidenceBeforeExactRetry" classname="app.localwallet.mainnet.PrivatePaymentCoordinatorTest" time="0.001"/>
+  <testcase name="aRestoredUnminedProofNeverBecomesCancellableBecauseBackupReleaseCountWasZero" classname="app.localwallet.mainnet.PrivatePaymentCoordinatorTest" time="0.001"/>
+  <testcase name="discardOfAReviewClearsOnlyLocalPreparationAndNeverSubmits" classname="app.localwallet.mainnet.PrivatePaymentCoordinatorTest" time="0.001"/>
+  <testcase name="unknownRevertObservationCannotAuthorizeAnotherOuterAttempt" classname="app.localwallet.mainnet.PrivatePaymentCoordinatorTest" time="0.002"/>
+  <testcase name="expiredUnreleasedProofCanBeLocallyAbandonedButNeverSubmitted" classname="app.localwallet.mainnet.PrivatePaymentCoordinatorTest" time="0.001"/>
+  <testcase name="reorgReturnsToUnknownAndNeverMakesPreviouslyReleasedNotesSpendable" classname="app.localwallet.mainnet.PrivatePaymentCoordinatorTest" time="0.002"/>
+  <testcase name="approvalAndProvingAreLocalAndBothReleaseMarkersPrecedeTransport" classname="app.localwallet.mainnet.PrivatePaymentCoordinatorTest" time="0.001"/>
+  <testcase name="exportedReadyEnvelopeCannotBeCancelledOnItsOriginalDevice" classname="app.localwallet.mainnet.PrivatePaymentCoordinatorTest" time="0.001"/>
+  <testcase name="anOldReviewCannotAuthorizeAChangedDraft" classname="app.localwallet.mainnet.PrivatePaymentCoordinatorTest" time="0.0"/>
+  <testcase name="failedLocalProofVerificationPreventsReleaseAndTransport" classname="app.localwallet.mainnet.PrivatePaymentCoordinatorTest" time="0.001"/>
+  <testcase name="preparingAnExpiredQuoteCannotLeaveAnApprovableReview" classname="app.localwallet.mainnet.PrivatePaymentCoordinatorTest" time="0.0"/>
+  <testcase name="committedReleaseFollowedByStorageFailureCannotSendOrCancelUntilRestored" classname="app.localwallet.mainnet.PrivatePaymentCoordinatorTest" time="0.001"/>
+  <testcase name="freshSuccessDuringRevertRetryStopsWithoutAnotherBroadcast" classname="app.localwallet.mainnet.PrivatePaymentCoordinatorTest" time="0.001"/>
+  <testcase name="pausingAndResumingDuringVerificationInvalidatesTheOriginalSendApproval" classname="app.localwallet.mainnet.PrivatePaymentCoordinatorTest" time="0.0"/>
+  <testcase name="backgroundHidesReviewAndProvingCompletionNeverSendsAutomatically" classname="app.localwallet.mainnet.PrivatePaymentCoordinatorTest" time="0.001"/>
+  <testcase name="approvalWriteUncertaintyKeepsTheIdentityReservedUntilReadBack" classname="app.localwallet.mainnet.PrivatePaymentCoordinatorTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

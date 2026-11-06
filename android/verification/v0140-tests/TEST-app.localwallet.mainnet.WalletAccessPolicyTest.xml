@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="app.localwallet.mainnet.WalletAccessPolicyTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-11-06T17:16:48" hostname="34d710c0c368" time="0.002">
+  <properties/>
+  <testcase name="oldQueuedSignOutCannotClearANewerSelection" classname="app.localwallet.mainnet.WalletAccessPolicyTest" time="0.0"/>
+  <testcase name="staleReadsCannotCrossWalletSwitchOrReturnToTheSameWallet" classname="app.localwallet.mainnet.WalletAccessPolicyTest" time="0.0"/>
+  <testcase name="pendingSignOutCannotRaceStartupOrAuthentication" classname="app.localwallet.mainnet.WalletAccessPolicyTest" time="0.0"/>
+  <testcase name="signedOutNeverAutoOpensAnUnlockedSavedVault" classname="app.localwallet.mainnet.WalletAccessPolicyTest" time="0.001"/>
+  <testcase name="newWalletNamesAreDistinctWithoutRenamingExistingWallets" classname="app.localwallet.mainnet.WalletAccessPolicyTest" time="0.0"/>
+  <testcase name="staleCallbacksCannotReclaimSelectionOrFinishAnotherActivitysRequest" classname="app.localwallet.mainnet.WalletAccessPolicyTest" time="0.0"/>
+  <testcase name="pendingSignOutSurvivesRecreationButStaleSavedStateCannotOverrideANewerChoice" classname="app.localwallet.mainnet.WalletAccessPolicyTest" time="0.0"/>
+  <testcase name="selectingWalletRetainsItsOwnProtectionAndRequiresForeground" classname="app.localwallet.mainnet.WalletAccessPolicyTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

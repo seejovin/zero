@@ -53,6 +53,7 @@ import uniffi.wallet_core.revealMnemonic
 import java.math.BigInteger
 import java.util.UUID
 import java.util.concurrent.Executors
+import java.util.concurrent.RejectedExecutionException
 import javax.crypto.Cipher
 
 /** Native UI. The separate private engine uses only hash-verified bundled JS/WASM; no remote code. */
@@ -104,6 +105,23 @@ class MainActivity : Activity() {
     private var recoveryTimeout: Runnable? = null
     private var recoveryConfirmation: AlertDialog? = null
     private lateinit var vault: SecureVault
+    private lateinit var walletCatalog: WalletCatalog
+    private var activeWalletId: String? = null
+    private var savedWallets: List<WalletChoice> = emptyList()
+    // Keeps a failed durable sign-out from reopening the old wallet in this Activity.
+    private var requireSignedOut = false
+    private var walletTransitionPending = false
+    private var selectionClaim = 0L
+    private val selectionAuthority = WalletSelectionAuthority.process
+    private val documentRequests = WalletDocumentRequests()
+    private data class WalletChoice(val saved: StoredWallet, val name: String)
+    private data class OpenedWallet(val id: String, val vault: SecureVault, val manifest: VaultManifest,
+                                    val repository: MultiNetworkRepository, val name: String,
+                                    val settings: PortfolioDisplaySettings)
+    private data class WalletStartup(val choices: List<WalletChoice>, val opened: OpenedWallet?)
+    private data class RetiredWallet(val repository: MultiNetworkRepository?, val privateWorkspace: PrivateWalletWorkspace?) {
+        fun close() { try { privateWorkspace?.close() } finally { repository?.close() } }
+    }
     private var repository: MultiNetworkRepository? = null
     private var manifest: VaultManifest? = null
     private var familyReview: FamilyReview? = null
@@ -136,12 +154,13 @@ class MainActivity : Activity() {
     private var refreshing = false
     private var sendRecipient = ""
     private var sendAmount = ""
-    private val transferDrafts = TransferDrafts()
+    private var transferDrafts = TransferDrafts()
     private val unboundSendRecipients = HashMap<String, String>()
     private var receiveAsset = "USDC"
     private var exportText: String? = null
     private var privateWorkspace: PrivateWalletWorkspace? = null
     private var privateWorkspaceOwner: String? = null
+    private var privateWorkspaceSelection: Long? = null
     private var privateResumePending = false
     private var pendingPrivateBackup: uniffi.wallet_core.PrivateRecoveryBackup? = null
     private var pendingPrivateImport: ByteArray? = null
@@ -162,6 +181,8 @@ class MainActivity : Activity() {
         window.addFlags(WindowManager.LayoutParams.FLAG_SECURE)
         if (Build.VERSION.SDK_INT >= 33) setRecentsScreenshotEnabled(false)
         if (Build.VERSION.SDK_INT >= 31) window.setHideOverlayWindows(true)
+        selectionClaim = selectionAuthority.claimActivity(savedInstanceState?.getBoolean("wallet.session.signed_out", false) ?: false)
+        requireSignedOut = selectionAuthority.requiresSignOut()
         resumeRoute = savedInstanceState?.let { saved ->
             runCatching { WalletNavigation.decode(WalletNavigation.stateKeys.associateWith { saved.getString(it) }) }.getOrNull()
         }
@@ -173,15 +194,23 @@ class MainActivity : Activity() {
     override fun onResume() {
         super.onResume()
         resumed = true
+        if (!selectionAuthority.isCurrent(selectionClaim)) {
+            // Only an actual foreground lifecycle event may take ownership back from another
+            // Activity. A delayed callback must never reclaim a newer wallet selection.
+            val retired = retireWallet()
+            work.execute { retired.close() }
+            selectionClaim = selectionAuthority.claimActivity(false)
+            requireSignedOut = selectionAuthority.requiresSignOut()
+        }
         val authorized = pendingAuthorizedAction
         pendingAuthorizedAction = null
         if (authorized != null) handler.post(authorized)
-        else if (!busy && !authPending && ::vault.isInitialized && vault.exists()) {
+        else if (WalletAccessPolicy.mayInitialize(busy, authPending, walletTransitionPending) && ::walletCatalog.isInitialized) {
             sensitivePaused = false
             initialize()
         } else if (sensitivePaused && !busy && !authPending) {
             sensitivePaused = false
-            renderWelcome()
+            renderSignedOut()
         }
     }
 
@@ -206,12 +235,16 @@ class MainActivity : Activity() {
         if (!authPending) {
             epoch++
             review = null
-            if (::vault.isInitialized && vault.exists()) renderLocked() else renderWelcome()
+            if (!walletTransitionPending) {
+                if (activeWalletId != null && manifest != null) renderLocked() else renderSignedOut()
+            }
         }
         super.onStop()
     }
 
     override fun onDestroy() {
+        epoch++
+        financialViewGeneration++
         openingTransition?.finishImmediately()
         handler.removeCallbacks(autoRefresh)
         authCancel?.cancel()
@@ -220,9 +253,11 @@ class MainActivity : Activity() {
         clearSensitiveViews()
         pendingPrivateBackup?.encryptedBytes?.fill(0); pendingPrivateBackup = null
         pendingPrivateImport?.fill(0); pendingPrivateImport = null
-        val privateSession = privateWorkspace
+        val retired = RetiredWallet(repository, privateWorkspace)
+        repository = null
         privateWorkspace = null
-        work.execute { privateSession?.close(); repository?.close() }
+        documentRequests.revoke()
+        work.execute { retired.close() }
         work.shutdown()
         priceWork.shutdownNow()
         withdrawalQuoteWork.shutdownNow()
@@ -235,6 +270,7 @@ class MainActivity : Activity() {
         super.onSaveInstanceState(outState)
         outState.clear()
         WalletNavigation.encode(resumeRoute).forEach { (key, value) -> outState.putString(key, value) }
+        outState.putBoolean("wallet.session.signed_out", requireSignedOut)
     }
 
     override fun dispatchTouchEvent(event: MotionEvent): Boolean {
@@ -245,6 +281,11 @@ class MainActivity : Activity() {
     @Deprecated("Legacy callback is retained for API 30 compatibility")
     override fun onBackPressed() {
         if (busy || authPending) return
+        if (activeWalletId == null) {
+            if (screen in setOf("restore", "add_wallet")) { clearSensitiveViews(); renderSignedOut() }
+            else super.onBackPressed()
+            return
+        }
         if (unlocked && screen != "home") {
             when (screen) {
                 "asset_picker" -> returnFromAssetPicker()
@@ -295,23 +336,219 @@ class MainActivity : Activity() {
         openingTransition?.contentReady()
     }
 
+    private fun walletChoices(): List<WalletChoice> = walletCatalog.list().map { stored ->
+        WalletChoice(stored, stored.manifest?.let { displayNameStore.loadWallet(it.address) } ?: "Saved wallet")
+    }
+
+    /** Runs only on the serial wallet executor. No currently active Activity fields are read. */
+    private fun loadStoredWallet(id: String): OpenedWallet {
+        val selectedVault = walletCatalog.vault(id)
+        val selectedManifest = selectedVault.load()
+        val selectedRepository = MultiNetworkRepository(selectedVault, selectedManifest, { TronApiAccess(applicationContext).read() })
+        try {
+            return OpenedWallet(id, selectedVault, selectedManifest, selectedRepository,
+                displayNameStore.loadWallet(selectedManifest.address), portfolioPreferences.loadSettings(selectedManifest.address))
+        } catch (error: Exception) { selectedRepository.close(); throw error }
+    }
+
+    private fun discardOpenedWallet(opened: OpenedWallet) {
+        val close = Runnable { runCatching { opened.repository.close() } }
+        try { work.execute(close) }
+        catch (_: RejectedExecutionException) {
+            // The result was never installed and has no queued operations. Activity destruction
+            // may already have shut down its executor; still release it off the UI thread.
+            Thread(close, "zero-wallet-disposal").start()
+        }
+    }
+
+    private fun installWallet(opened: OpenedWallet) {
+        if (!selectionAuthority.selected(selectionClaim)) throw WalletFailure("Wallet selection changed. Choose the wallet again.")
+        activeWalletId = opened.id
+        vault = opened.vault
+        manifest = opened.manifest
+        repository = opened.repository
+        walletName = opened.name
+        portfolioSettings = opened.settings
+        requireSignedOut = false
+        resumeRoute = WalletNavigation.forWallet(resumeRoute, opened.manifest.address)
+    }
+
     private fun initialize() {
-        async("Opening private storage…", {
-            if (!::vault.isInitialized) vault = SecureVault(this)
-            if (vault.exists()) {
-                val loaded = vault.load()
-                Triple(loaded, MultiNetworkRepository(vault, loaded, { TronApiAccess(applicationContext).read() }),
-                    displayNameStore.loadWallet(loaded.address) to portfolioPreferences.loadSettings(loaded.address))
-            } else null
-        }) { loaded ->
-            repository?.close()
-            manifest = loaded?.first
-            repository = loaded?.second
-            walletName = loaded?.third?.first ?: "Wallet 1"
-            portfolioSettings = loaded?.third?.second ?: PortfolioDisplaySettings()
-            resumeRoute = loaded?.first?.address?.let { WalletNavigation.forWallet(resumeRoute, it) }
+        if (!WalletAccessPolicy.mayInitialize(busy, authPending, walletTransitionPending)) return
+        if (!selectionAuthority.isCurrent(selectionClaim)) return
+        val oldRepository = repository
+        repository = null
+        unlocked = false
+        epoch++
+        financialViewGeneration++
+        val forceSignedOut = requireSignedOut
+        val operationEpoch = epoch
+        val claim = selectionClaim
+        val current = { !isDestroyed && operationEpoch == epoch && selectionAuthority.isCurrent(claim) }
+        asyncWithDiscard("Opening private storage…", {
+            oldRepository?.close()
+            if (!::walletCatalog.isInitialized) walletCatalog = WalletCatalog(applicationContext)
+            if (forceSignedOut) walletCatalog.signOut(current)
+            val choices = walletChoices()
+            val selected = walletCatalog.selectedId()
+            WalletStartup(choices, selected?.let(::loadStoredWallet))
+        }, { result -> result.opened?.let(::discardOpenedWallet) }) { loaded ->
+            savedWallets = loaded.choices
+            if (activeWalletId != null && activeWalletId != loaded.opened?.id) {
+                val retired = retireWallet()
+                work.execute { retired.close() }
+            }
+            if (loaded.opened == null) {
+                activeWalletId = null
+                manifest = null
+                resumeRoute = null
+                renderSignedOut()
+            } else {
+                installWallet(loaded.opened)
+                renderStartup()
+            }
+        }
+    }
+
+    /** Removes only in-memory capabilities. Saved vaults and transaction journals are untouched. */
+    private fun retireWallet(): RetiredWallet {
+        privateWorkspace?.setForeground(false)
+        epoch++
+        financialViewGeneration++
+        unlocked = false
+        authCancel?.cancel(); authCancel = null
+        pinDialog?.cancel(); pinDialog = null
+        authPending = false
+        pendingAuthorizedAction = null
+        clearSensitiveViews()
+        copiedPhraseToken?.let(::clearOwnedPhraseClipboard)
+        dismissNetworkDropdown()
+        invalidateWithdrawalForm()
+        val retired = RetiredWallet(repository, privateWorkspace)
+        repository = null
+        privateWorkspace = null
+        privateWorkspaceOwner = null
+        privateWorkspaceSelection = null
+        documentRequests.revoke()
+        privateResumePending = false
+        pendingPrivateBackup?.encryptedBytes?.fill(0); pendingPrivateBackup = null
+        pendingPrivateImport?.fill(0); pendingPrivateImport = null
+        exportText = null
+        activeWalletId = null
+        manifest = null
+        resumeRoute = null
+        review = null
+        familyReview = null
+        reviewEditBlocked = false
+        reviewControlsUpdate = null
+        visibleDataUpdate = null
+        preparingReview = false
+        balanceCache.clear(); activityCache.clear(); historyCache.clear()
+        syncState.clear(); syncMessage.clear()
+        refreshing = false
+        transferDrafts = TransferDrafts()
+        unboundSendRecipients.clear()
+        sendRecipient = ""; sendAmount = ""; transferChain = null
+        selectedChain = 8453L; selectedAsset = "USDC"; receiveAsset = "USDC"; detailAsset = "USDC"
+        assetPickerReturn = "home"; assetPickerAction = "deposit"
+        createdMessagePending = false
+        walletName = "Wallet 1"
+        portfolioSettings = PortfolioDisplaySettings()
+        hideKeyboard()
+        return retired
+    }
+
+    private fun showWallets(add: Boolean = false) {
+        if (walletTransitionPending) return
+        val retired = retireWallet()
+        requireSignedOut = true
+        selectionClaim = selectionAuthority.requestSignOut()
+        val claim = selectionClaim
+        walletTransitionPending = true
+        busy = true
+        screen = "wallet_transition"
+        newPage("Signing out…", "")
+        paragraph("Closing the current session. Your saved wallets and transaction records stay on this device.", 15, muted)
+        work.execute {
+            val result = runCatching {
+                try {
+                    if (!::walletCatalog.isInitialized) walletCatalog = WalletCatalog(applicationContext)
+                    walletCatalog.signOut { !isDestroyed && selectionAuthority.isCurrent(claim) }
+                } finally { retired.close() }
+                walletChoices()
+            }
+            runOnUiThread {
+                walletTransitionPending = false
+                busy = false
+                if (isDestroyed) return@runOnUiThread
+                if (!selectionAuthority.isCurrent(claim)) {
+                    if (resumed) initialize()
+                    return@runOnUiThread
+                }
+                result.fold({ choices ->
+                    savedWallets = choices
+                    if (add && resumed) renderAddWallet() else renderSignedOut()
+                }, { error ->
+                    screen = "wallets"
+                    newPage("Sign out needs to finish", "")
+                    paragraph("The session is closed, but the saved selection could not be verified. Retry sign out before closing the app.", 15, muted)
+                    paragraph(errorMessage(error), 13, warning)
+                    button("Retry sign out") { showWallets() }
+                })
+            }
+        }
+    }
+
+    private fun chooseWallet(id: String) {
+        if (busy || authPending) return
+        val retired = retireWallet()
+        requireSignedOut = true
+        selectionClaim = selectionAuthority.requestSelection()
+        val claim = selectionClaim
+        val operationEpoch = epoch
+        val current = { !isDestroyed && resumed && operationEpoch == epoch && selectionAuthority.isCurrent(claim) }
+        screen = "wallets"
+        newPage("Wallets", "")
+        asyncWithDiscard("Opening selected wallet…", {
+            retired.close()
+            walletCatalog.select(id, current)
+            loadStoredWallet(id)
+        }, ::discardOpenedWallet) { opened ->
+            installWallet(opened)
             renderStartup()
         }
+    }
+
+    private fun renderSignedOut() {
+        if (savedWallets.isEmpty()) { renderWelcome(); return }
+        screen = "wallets"
+        newPage("Your wallets", "")
+        paragraph("Choose a saved wallet to open. Signing out keeps your wallets and recovery phrases encrypted on this device.", 15, muted)
+        for (choice in savedWallets) {
+            val saved = choice.saved
+            val value = saved.manifest
+            card {
+                label(choice.name, 19, true)
+                if (value != null) {
+                    label(shortAddress(value.address), 13, false, muted, monospace = true)
+                    label("App lock: ${value.lockMode.label}", 12, false, muted)
+                    button("Open ${choice.name}", secondary = true, parent = this) { chooseWallet(saved.id) }
+                } else {
+                    label(saved.error ?: "This saved wallet needs attention. Its files have been preserved.", 13, false, warning)
+                }
+            }
+        }
+        button("Add wallet") { renderAddWallet() }
+        linkButton("Refresh saved wallets") { initialize() }
+    }
+
+    private fun renderAddWallet() {
+        screen = "add_wallet"
+        newPage("Add wallet", "")
+        paragraph("Create a separate wallet or import another recovery phrase. Your existing wallets stay saved.", 16, muted)
+        button("Create wallet") { startCreation() }
+        button("Import wallet", secondary = true) { renderRestore() }
+        linkButton("Back to wallets") { renderSignedOut() }
     }
 
     private fun errorMessage(error: Throwable): String = when (error) {
@@ -336,17 +573,22 @@ class MainActivity : Activity() {
         if (busy) return
         busy = true
         val started = epoch
+        val startedSelection = selectionClaim
         status.text = label
         status.visibility = if (screen == "opening" || label in setOf("Opening wallet…", "Opening activity…")) View.GONE else View.VISIBLE
         status.setTextColor(muted)
         work.execute {
             val result = runCatching(action)
             runOnUiThread {
+                if (walletTransitionPending) {
+                    result.getOrNull()?.let(discard)
+                    return@runOnUiThread
+                }
                 busy = false
-                if (isDestroyed || started != epoch) {
+                if (isDestroyed || started != epoch || !selectionAuthority.isCurrent(startedSelection)) {
                     result.getOrNull()?.let(discard)
                     if (isDestroyed) return@runOnUiThread
-                    if (resumed && ::vault.isInitialized && vault.exists()) initialize()
+                    if (resumed && ::walletCatalog.isInitialized) initialize()
                     return@runOnUiThread
                 }
                 result.fold(onSuccess = { value ->
@@ -368,11 +610,19 @@ class MainActivity : Activity() {
         status.text = errorMessage(error)
         status.visibility = View.VISIBLE
         status.setTextColor(Color.rgb(164, 46, 35))
-        if (::vault.isInitialized && vault.exists() && (manifest == null || !unlocked && screen in setOf("welcome", "restore", "resume_backup"))) {
-            // A manifest may have committed before a late storage error. Never offer a new wallet over it.
-            newPage("Wallet data exists", "Creation is paused to protect the wallet already stored on this device.")
+        if (activeWalletId == null && screen in setOf("opening", "welcome", "restore", "add_wallet", "wallets", "locked")) {
+            // Enrollment may have committed before a late write/read-back error. Discover saved
+            // wallets again instead of retrying against or replacing that storage directory.
+            screen = "wallets"
+            newPage("Wallet action paused", "")
+            paragraph(errorMessage(error))
+            button("Return to saved wallets") { showWallets() }
+        } else if (activeWalletId != null && (manifest == null || repository == null)) {
+            screen = "locked"
+            newPage("Wallet data exists", "")
             paragraph(errorMessage(error))
             button("Reopen existing wallet") { initialize() }
+            button("Choose another wallet", secondary = true, allowWhileBusy = true) { showWallets() }
         }
         // async clears busy before showing its failure. Refresh review controls after a key-open
         // cancellation callback may have run earlier on the worker while busy was still true.
@@ -380,7 +630,7 @@ class MainActivity : Activity() {
     }
 
     private fun authorize(title: String, description: String, cipher: Cipher, cancelled: () -> Unit = {}, done: (Cipher) -> Unit) {
-        if (busy || authPending) return
+        if (busy || authPending || !selectionAuthority.isCurrent(selectionClaim)) return
         openingTransition?.finishImmediately()
         try {
             val authenticators = BiometricManager.Authenticators.BIOMETRIC_STRONG or BiometricManager.Authenticators.DEVICE_CREDENTIAL
@@ -391,6 +641,7 @@ class MainActivity : Activity() {
             authPending = true
             val cancellation = CancellationSignal()
             val authorizationEpoch = epoch
+            val authorizationSelection = selectionClaim
             authCancel = cancellation
             val prompt = BiometricPrompt.Builder(this).setTitle(title).setDescription(description)
                 .setAllowedAuthenticators(authenticators).setConfirmationRequired(true).build()
@@ -398,7 +649,8 @@ class MainActivity : Activity() {
                 object : BiometricPrompt.AuthenticationCallback() {
                     override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult) {
                         val action = action@{
-                            if (epoch != authorizationEpoch || authCancel !== cancellation || cancellation.isCanceled || isDestroyed) {
+                            if (epoch != authorizationEpoch || !selectionAuthority.isCurrent(authorizationSelection) ||
+                                authCancel !== cancellation || cancellation.isCanceled || isDestroyed) {
                                 cancelled()
                                 return@action
                             }
@@ -416,12 +668,13 @@ class MainActivity : Activity() {
                         if (resumed) handler.post(action) else pendingAuthorizedAction = action
                     }
                     override fun onAuthenticationError(errorCode: Int, errString: CharSequence) {
-                        if (epoch != authorizationEpoch || authCancel !== cancellation) { cancelled(); return }
+                        if (epoch != authorizationEpoch || !selectionAuthority.isCurrent(authorizationSelection) ||
+                            authCancel !== cancellation) { cancelled(); return }
                         authPending = false
                         authCancel = null
                         cancelled()
                         if (!isDestroyed) {
-                            if (manifest != null) renderLocked() else renderWelcome()
+                            if (activeWalletId != null && manifest != null) renderLocked() else renderSignedOut()
                             status.text = "Authentication cancelled or unavailable. Nothing was signed."
                             status.visibility = View.VISIBLE
                         }
@@ -442,16 +695,19 @@ class MainActivity : Activity() {
                                  beforeDecrypt: ((proceed: () -> Unit, cancel: () -> Unit) -> Unit)? = null,
                                  operationAuthorized: () -> Boolean = { true },
                                  done: (T) -> Unit) {
-        if (busy || authPending) return
+        if (busy || authPending || !selectionAuthority.isCurrent(selectionClaim)) return
         try {
             rememberResumeRoute()
             val current = manifest ?: throw WalletFailure("Open the existing wallet first.")
+            val operationVault = vault
+            val operationSelection = selectionClaim
             fun execute(cipher: Cipher, pin: CharArray? = null) {
                 val authorizationEpoch = epoch
                 // Captured after a device prompt returns. A later pause invalidates queued work
                 // even if Android never stops the Activity before it is resumed again.
                 val authorizationLifecycle = financialViewGeneration
                 val stillAuthorized = { resumed && epoch == authorizationEpoch &&
+                    selectionAuthority.isCurrent(operationSelection) &&
                     financialViewGeneration == authorizationLifecycle && operationAuthorized() }
                 var consumed = false
                 val cancelOperation = {
@@ -464,7 +720,7 @@ class MainActivity : Activity() {
                     asyncWithDiscard("Opening your encrypted wallet…", {
                         try {
                             if (!stillAuthorized()) throw WalletFailure("This operation was interrupted. Reopen the wallet to continue.")
-                            val key = vault.unwrap(current, cipher, pin)
+                            val key = operationVault.unwrap(current, cipher, pin)
                             try {
                                 if (!stillAuthorized()) throw WalletFailure("This operation was interrupted. Reopen the wallet to continue.")
                                 action(key, stillAuthorized)
@@ -476,10 +732,10 @@ class MainActivity : Activity() {
                 if (beforeDecrypt != null) beforeDecrypt(proceed, cancelOperation) else proceed()
             }
             when (current.lockMode) {
-                AppLockMode.OFF -> execute(vault.decryptionCipher(current))
-                AppLockMode.DEVICE -> authorize(title, "$description\nUse your phone's biometrics or screen lock.", vault.decryptionCipher(current), cancelled) { execute(it) }
+                AppLockMode.OFF -> execute(operationVault.decryptionCipher(current))
+                AppLockMode.DEVICE -> authorize(title, "$description\nUse your phone's biometrics or screen lock.", operationVault.decryptionCipher(current), cancelled) { execute(it) }
                 AppLockMode.PIN -> requestPin(title, description, cancelled) { pin ->
-                    try { execute(vault.decryptionCipher(current), pin) }
+                    try { execute(operationVault.decryptionCipher(current), pin) }
                     catch (error: Exception) { pin.fill('\u0000'); cancelled(); showError(error) }
                 }
             }
@@ -487,9 +743,10 @@ class MainActivity : Activity() {
     }
 
     private fun requestPin(title: String, description: String, cancelled: () -> Unit, done: (CharArray) -> Unit) {
-        if (busy || authPending || !resumed) { cancelled(); return }
+        if (busy || authPending || !resumed || !selectionAuthority.isCurrent(selectionClaim)) { cancelled(); return }
         openingTransition?.finishImmediately()
         val started = epoch
+        val startedSelection = selectionClaim
         val input = EditText(this).apply {
             hint = "6-digit app PIN"; textSize = 22f
             inputType = InputType.TYPE_CLASS_NUMBER or InputType.TYPE_NUMBER_VARIATION_PASSWORD
@@ -511,7 +768,9 @@ class MainActivity : Activity() {
                 if (pin.size != 6 || pin.any { it !in '0'..'9' }) {
                     pin.fill('\u0000'); input.error = "Enter exactly 6 digits"; return@setOnClickListener
                 }
-                if (started != epoch || !resumed) { pin.fill('\u0000'); dialog.cancel(); return@setOnClickListener }
+                if (started != epoch || !resumed || !selectionAuthority.isCurrent(startedSelection)) {
+                    pin.fill('\u0000'); dialog.cancel(); return@setOnClickListener
+                }
                 completed = true
                 input.text.clear(); dialog.dismiss(); authPending = false; pinDialog = null
                 done(pin)
@@ -526,18 +785,27 @@ class MainActivity : Activity() {
     }
 
     private fun startCreation(restore: String? = null) {
+        if (activeWalletId != null || manifest != null) return
         val newlyCreated = restore == null
-        async("Creating your encrypted wallet…", {
-            val enrollment = vault.beginEnrollment()
-            // New words are encrypted and committed here. Only the manifest crosses into the UI;
-            // the UI never retains or reveals the generated phrase as part of creation.
-            vault.completeEnrollment(enrollment, enrollment.cipher, restore).manifest
-        }) { created ->
-            manifest = created
-            repository = MultiNetworkRepository(vault, created, { TronApiAccess(applicationContext).read() })
-            walletName = displayNameStore.loadWallet(created.address)
-            portfolioSettings = portfolioPreferences.loadSettings(created.address)
-            unlocked = true
+        requireSignedOut = true
+        selectionClaim = selectionAuthority.requestSelection()
+        val claim = selectionClaim
+        val operationEpoch = epoch
+        val current = { !isDestroyed && resumed && operationEpoch == epoch && selectionAuthority.isCurrent(claim) }
+        asyncWithDiscard("Creating your encrypted wallet…", {
+            val choices = walletChoices()
+            val defaultName = WalletAccessPolicy.nextWalletName(choices.map { it.name })
+            val pending = walletCatalog.allocate()
+            val enrollment = pending.vault.beginEnrollment()
+            // Duplicate imports are rejected before any vault/journal is saved for the new slot.
+            val created = pending.vault.completeEnrollment(enrollment, enrollment.cipher, restore) { address ->
+                walletCatalog.requireUniqueAddress(address, pending.id)
+            }.manifest
+            displayNameStore.saveWallet(created.address, defaultName)
+            walletCatalog.select(pending.id, current)
+            loadStoredWallet(pending.id)
+        }, ::discardOpenedWallet) { opened ->
+            installWallet(opened)
             resumeRoute = null
             createdMessagePending = newlyCreated
             openSavedWallet()
@@ -545,15 +813,17 @@ class MainActivity : Activity() {
     }
 
     private fun renderStartup() {
-        when (walletStart(manifest)) {
-            WalletStart.WELCOME -> renderWelcome()
-            WalletStart.OPEN -> if (resumed) openSavedWallet() else renderLocked()
-            WalletStart.UNLOCK -> renderLocked()
+        when (WalletAccessPolicy.startup(activeWalletId, manifest, savedWallets.isNotEmpty(), resumed)) {
+            WalletAccessDestination.WELCOME -> renderWelcome()
+            WalletAccessDestination.PICKER -> renderSignedOut()
+            WalletAccessDestination.OPEN -> openSavedWallet()
+            WalletAccessDestination.LOCKED -> renderLocked()
         }
     }
 
     private fun openSavedWallet() {
-        withVaultKey("Open zerø", "Open the wallet saved on this device.", { key, _ -> repository!!.initializeFamilyAddresses(key) }) {
+        val selectedRepository = repository ?: return
+        withVaultKey("Open zerø", "Open the wallet saved on this device.", { key, _ -> selectedRepository.initializeFamilyAddresses(key) }) {
             unlocked = true
             if (privateResumePending || pendingPrivateImport != null) {
                 renderPrivateWorkspace()
@@ -641,6 +911,7 @@ class MainActivity : Activity() {
     }
 
     private fun renderLocked() {
+        if (activeWalletId == null) { renderSignedOut(); return }
         if (manifest == null) {
             screen = "locked"
             newPage("Your wallet is saved", "")
@@ -659,6 +930,8 @@ class MainActivity : Activity() {
         page.addView(emblem, LinearLayout.LayoutParams(dp(96), dp(96)).apply { gravity = Gravity.CENTER_HORIZONTAL; topMargin = dp(48); bottomMargin = dp(40) })
         button(when (mode) { AppLockMode.PIN -> "Unlock with 6-digit PIN"; AppLockMode.DEVICE -> "Unlock with device authentication"; AppLockMode.OFF -> "Open wallet" }) { openSavedWallet() }
         paragraph("App lock: ${mode.label}", 12, muted).gravity = Gravity.CENTER
+        button("Choose another wallet", secondary = true, allowWhileBusy = true) { showWallets() }
+        button("Sign out", secondary = true, allowWhileBusy = true) { showWallets() }
     }
 
     /** Opening or resuming this page never decrypts the recovery phrase. */
@@ -1010,7 +1283,8 @@ class MainActivity : Activity() {
     private fun transferViewRequest(): WalletUiRequest = WalletUiRequest(manifest!!.address, epoch, pageSequence, financialViewGeneration)
 
     private fun transferViewCurrent(context: WalletUiRequest): Boolean = context.accepts(
-        manifest?.address, epoch, pageSequence, financialViewGeneration, resumed, unlocked)
+        manifest?.address, epoch, pageSequence, financialViewGeneration, resumed, unlocked) &&
+        selectionAuthority.isCurrent(selectionClaim)
 
     private fun resumeAfterDiscardedQuote(context: WalletUiRequest) {
         // A pause can occur without onStop. Restore the captured public route after the read
@@ -1808,7 +2082,8 @@ class MainActivity : Activity() {
         button("Check transaction") {
             val selected = network()
             val hash = input.text.toString().trim()
-            async("Looking up and verifying this transaction…", { repository!!.trackTransaction(selected, hash) }) { snapshot ->
+            val selectedRepository = repository ?: return@button
+            async("Looking up and verifying this transaction…", { selectedRepository.trackTransaction(selected, hash) }) { snapshot ->
                 activityCache[selected.chainId] = snapshot
                 renderHistory()
             }
@@ -2246,7 +2521,10 @@ class MainActivity : Activity() {
             addView(iconControl("copy", "Copy public address") { copyAddress(address) },
                 LinearLayout.LayoutParams(dp(44), dp(44)).apply { gravity = Gravity.END; topMargin = dp(6) })
         }
+        button("Wallets", secondary = true, allowWhileBusy = true) { showWallets() }
+        button("Add wallet", secondary = true, allowWhileBusy = true) { showWallets(add = true) }
         button("Settings", secondary = true) { renderSecurity() }
+        button("Sign out", secondary = true, allowWhileBusy = true) { showWallets() }
     }
 
     private fun nameRow(label: String, value: String, action: () -> Unit) {
@@ -2295,6 +2573,9 @@ class MainActivity : Activity() {
         newPage("Settings", "")
         sectionTitle("Wallet")
         nameRow("Wallet name", walletName) { renameWallet() }
+        button("Wallets", secondary = true, allowWhileBusy = true) { showWallets() }
+        button("Add wallet", secondary = true, allowWhileBusy = true) { showWallets(add = true) }
+        button("Sign out", secondary = true, allowWhileBusy = true) { showWallets() }
         sectionTitle("Display")
         val smallBalances = CheckBox(this).apply {
             text = "Hide small balances"; textSize = 16f; setTextColor(ink)
@@ -2346,15 +2627,20 @@ class MainActivity : Activity() {
             label(manifest!!.address, 12, false, muted, monospace = true)
             gap(8)
             infoRow("Networks", "9 mainnet networks")
-            infoRow("Version", "0.10.0")
+            infoRow("Version", ZeroBrand.releaseLabel(this@MainActivity))
             label("Your recovery words restore this wallet if you lose your device or remove the app. An app PIN does not replace that backup.", 13, false, muted)
         }
         button("Export transaction history", secondary = true) {
-            async("Preparing public audit records…", { repository!!.auditExport() }) { text ->
+            val selectedRepository = repository ?: return@button
+            async("Preparing public audit records…", { selectedRepository.auditExport() }) { text ->
+                val owner = activeWalletId ?: return@async
+                val request = documentRequests.begin(owner, WalletDocumentKind.AUDIT_EXPORT)
                 exportText = text
-                startActivityForResult(Intent(Intent.ACTION_CREATE_DOCUMENT).apply {
-                    addCategory(Intent.CATEGORY_OPENABLE); type = "application/json"; putExtra(Intent.EXTRA_TITLE, "local-wallet-public-audit.json")
-                }, 41)
+                try {
+                    startActivityForResult(Intent(Intent.ACTION_CREATE_DOCUMENT).apply {
+                        addCategory(Intent.CATEGORY_OPENABLE); type = "application/json"; putExtra(Intent.EXTRA_TITLE, "local-wallet-public-audit.json")
+                    }, request)
+                } catch (error: Exception) { documentRequests.cancel(request); exportText = null; throw error }
             }
         }
         paragraph("History export includes public addresses and transfers. It contains no recovery words or signing keys.", 12, muted)
@@ -2397,8 +2683,12 @@ class MainActivity : Activity() {
     private fun renderPrivateWorkspace() {
         if (!unlocked || manifest == null) { renderStartup(); return }
         val address = manifest!!.address
-        if (privateWorkspaceOwner != address) {
+        val owner = activeWalletId ?: return
+        val ownerSelection = selectionClaim
+        if (!selectionAuthority.isCurrent(ownerSelection)) return
+        if (privateWorkspaceOwner != owner || privateWorkspaceSelection != ownerSelection) {
             val old = privateWorkspace
+            old?.setForeground(false)
             privateWorkspace = null
             if (old != null) work.execute { old.close() }
         }
@@ -2406,11 +2696,15 @@ class MainActivity : Activity() {
         privateResumePending = true
         newPage("Private wallet", "")
         val workspace = privateWorkspace ?: PrivateWalletWorkspace(this, object : PrivateWorkspaceHost {
-            override fun canAct(): Boolean = screen == "private_wallet" && resumed && unlocked && !busy && !authPending
+            override fun canAct(): Boolean = selectionAuthority.isCurrent(ownerSelection) &&
+                activeWalletId == owner && manifest?.address == address &&
+                screen == "private_wallet" && resumed && unlocked && !busy && !authPending
             override fun <T> work(label: String, task: () -> T, discard: (T) -> Unit, complete: (Result<T>) -> Unit) {
+                if (!canAct()) return
                 asyncWithDiscard(label, { runCatching(task) }, { result -> result.getOrNull()?.let(discard) }, complete)
             }
             override fun <T> authorized(label: String, task: (VaultManifest, ByteArray, () -> Boolean) -> T, discard: (T) -> Unit, complete: (Result<T>) -> Unit) {
+                if (!canAct()) return
                 val saved = manifest ?: return
                 var authorizationStillValid: (() -> Boolean)? = null
                 withVaultKey(label, "Authorize this private-wallet operation.", { key, valid ->
@@ -2420,7 +2714,8 @@ class MainActivity : Activity() {
                         task(saved, key, valid)
                     }
                 }, discard = { result -> result.getOrNull()?.let(discard) },
-                    operationAuthorized = { screen == "private_wallet" && manifest?.address == saved.address }) { result ->
+                    operationAuthorized = { selectionAuthority.isCurrent(ownerSelection) &&
+                        activeWalletId == owner && screen == "private_wallet" && manifest?.address == saved.address }) { result ->
                     if (authorizationStillValid?.invoke() == true) {
                         unlocked = true
                         privateWorkspace?.setForeground(true)
@@ -2433,26 +2728,39 @@ class MainActivity : Activity() {
                 }
             }
             override fun exportBackup(value: uniffi.wallet_core.PrivateRecoveryBackup) {
+                if (!canAct()) { value.encryptedBytes.fill(0); return }
+                val request = try { documentRequests.begin(owner, WalletDocumentKind.PRIVATE_EXPORT) }
+                    catch (error: Exception) { value.encryptedBytes.fill(0); throw error }
                 pendingPrivateBackup?.encryptedBytes?.fill(0)
                 pendingPrivateBackup = value
-                startActivityForResult(Intent(Intent.ACTION_CREATE_DOCUMENT).apply {
-                    addCategory(Intent.CATEGORY_OPENABLE); type = "application/octet-stream"
-                    putExtra(Intent.EXTRA_TITLE, "local-wallet-private-backup.lwprivate")
-                }, 51)
+                try {
+                    startActivityForResult(Intent(Intent.ACTION_CREATE_DOCUMENT).apply {
+                        addCategory(Intent.CATEGORY_OPENABLE); type = "application/octet-stream"
+                        putExtra(Intent.EXTRA_TITLE, "local-wallet-private-backup.lwprivate")
+                    }, request)
+                } catch (error: Exception) {
+                    documentRequests.cancel(request); value.encryptedBytes.fill(0); pendingPrivateBackup = null
+                    throw error
+                }
             }
             override fun chooseBackup() {
+                if (!canAct()) return
                 PrivatePaymentRelease.requireAvailable()
-                startActivityForResult(Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
-                    addCategory(Intent.CATEGORY_OPENABLE); type = "application/octet-stream"
-                }, 52)
+                val request = documentRequests.begin(owner, WalletDocumentKind.PRIVATE_IMPORT)
+                try {
+                    startActivityForResult(Intent(Intent.ACTION_OPEN_DOCUMENT).apply {
+                        addCategory(Intent.CATEGORY_OPENABLE); type = "application/octet-stream"
+                    }, request)
+                } catch (error: Exception) { documentRequests.cancel(request); throw error }
             }
             override fun usd(units: BigInteger): String? {
+                if (!selectionAuthority.isCurrent(ownerSelection) || activeWalletId != owner || manifest?.address != address) return null
                 val selected = network(42161L)
                 return UsdPrices.value(PortfolioAsset(selected, selected.asset("USDC")), units, usdQuotes, System.currentTimeMillis())
                     .amount?.let(UsdPrices::formatUsd)
             }
-            override fun settings() { privateResumePending = false; renderSecurity() }
-        }).also { privateWorkspace = it; privateWorkspaceOwner = address }
+            override fun settings() { if (canAct()) { privateResumePending = false; renderSecurity() } }
+        }).also { privateWorkspace = it; privateWorkspaceOwner = owner; privateWorkspaceSelection = ownerSelection }
         (workspace.view.parent as? ViewGroup)?.removeView(workspace.view)
         page.addView(workspace.view, rowParams(0))
         workspace.setForeground(resumed)
@@ -2529,13 +2837,14 @@ class MainActivity : Activity() {
     private fun changeAppLock(mode: AppLockMode, pin: CharArray? = null) {
         if (busy || authPending) { pin?.fill('\u0000'); return }
         val current = manifest ?: run { pin?.fill('\u0000'); return }
+        val operationVault = vault
         val changeEpoch = epoch
         fun cleanup(enrollment: VaultEnrollment? = null) {
             pin?.fill('\u0000')
-            enrollment?.let { vault.abortEnrollment(it) }
+            enrollment?.let { operationVault.abortEnrollment(it) }
         }
         asyncWithDiscard("Preparing app-lock change…", {
-            try { vault.beginProtectionChange(mode) }
+            try { operationVault.beginProtectionChange(mode) }
             catch (error: Exception) { cleanup(); throw error }
         }, { cleanup(it) }) { enrollment ->
             fun commit(cipher: Cipher) {
@@ -2543,13 +2852,13 @@ class MainActivity : Activity() {
                 withVaultKey("Change app lock", "Authorize changing how this wallet is protected.", { key, stillAuthorized ->
                     try {
                         if (!stillAuthorized() || epoch != changeEpoch) throw WalletFailure("App-lock change was interrupted.")
-                        vault.changeProtection(current, key, enrollment, cipher, pin, stillAuthorized)
+                        operationVault.changeProtection(current, key, enrollment, cipher, pin, stillAuthorized)
                     } finally { cleanup(enrollment) }
                 }, cancelled = { cleanup(enrollment) }) { changed ->
                     manifest = changed
                     val previous = repository!!
-                    repository = MultiNetworkRepository(vault, changed, { TronApiAccess(applicationContext).read() }).also { it.retainAuthenticatedAddresses(previous) }
-                    previous.close()
+                    repository = MultiNetworkRepository(operationVault, changed, { TronApiAccess(applicationContext).read() }).also { it.retainAuthenticatedAddresses(previous) }
+                    work.execute { previous.close() }
                     unlocked = true
                     renderSecurity()
                     status.text = "App lock updated: ${changed.lockMode.label}"
@@ -2613,7 +2922,15 @@ class MainActivity : Activity() {
     @Deprecated("Platform document picker callback for API 30 compatibility")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == 51) {
+        if (!selectionAuthority.isCurrent(selectionClaim)) {
+            documentRequests.revoke()
+            pendingPrivateBackup?.encryptedBytes?.fill(0); pendingPrivateBackup = null
+            pendingPrivateImport?.fill(0); pendingPrivateImport = null
+            exportText = null
+            return
+        }
+        val document = documentRequests.consume(requestCode, activeWalletId) ?: return
+        if (document == WalletDocumentKind.PRIVATE_EXPORT) {
             val backup = pendingPrivateBackup
             pendingPrivateBackup = null
             val destination = data?.data
@@ -2631,7 +2948,7 @@ class MainActivity : Activity() {
             }
             return
         }
-        if (requestCode == 52) {
+        if (document == WalletDocumentKind.PRIVATE_IMPORT) {
             val source = data?.data
             if (resultCode != RESULT_OK || source == null) return
             asyncWithDiscard("Reading encrypted private backup…", {
@@ -2646,7 +2963,7 @@ class MainActivity : Activity() {
             }
             return
         }
-        if (requestCode == 41) {
+        if (document == WalletDocumentKind.AUDIT_EXPORT) {
             val text = exportText
             exportText = null
             if (resultCode == RESULT_OK && text != null && data?.data != null) {
@@ -2672,7 +2989,7 @@ class MainActivity : Activity() {
         pendingAuthorizedAction = null
         review = null
         clearSensitiveViews()
-        if (::vault.isInitialized && vault.exists()) renderLocked() else renderWelcome()
+        if (activeWalletId != null && manifest != null) renderLocked() else renderSignedOut()
     }
 
     private fun clearSensitiveViews(systemAuthenticationPending: Boolean = false) {
@@ -2944,7 +3261,7 @@ class MainActivity : Activity() {
             orientation = LinearLayout.HORIZONTAL; gravity = Gravity.CENTER_VERTICAL; setPadding(dp(20), dp(10), dp(14), dp(8))
             minimumHeight = dp(74)
         }
-        val onboarding = screen in setOf("welcome", "locked", "restore")
+        val onboarding = screen in setOf("welcome", "locked", "restore", "wallets", "wallet_transition")
         if (tabs) {
             val mark = FrameLayout(this).apply {
                 background = rounded(elevated, 20)
@@ -2959,7 +3276,7 @@ class MainActivity : Activity() {
             identity.addView(textView(if (screen == "profile") "Profile" else walletName, 17, ink, true).apply { maxLines = 1; ellipsize = TextUtils.TruncateAt.END })
             header.addView(identity, LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f))
             if (screen != "profile") header.addView(iconControl("profile", "Profile") { renderProfile() }, LinearLayout.LayoutParams(dp(44), dp(44)))
-        } else if (screen in setOf("welcome", "locked")) {
+        } else if (screen in setOf("welcome", "locked", "wallets", "wallet_transition")) {
             header.addView(ZeroBrand.wordmark(this, ink, 31f).apply { gravity = Gravity.START or Gravity.CENTER_VERTICAL; setPadding(0, 0, 0, 0) },
                 LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f))
             header.addView(textView("SELF CUSTODY", 9, muted).apply { letterSpacing = 0.1f })
@@ -2967,7 +3284,8 @@ class MainActivity : Activity() {
             header.addView(iconControl("back", "Back") {
                 when (screen) {
                     "asset_picker" -> returnFromAssetPicker()
-                    "restore" -> { clearSensitiveViews(); renderWelcome() }
+                    "restore" -> { clearSensitiveViews(); if (savedWallets.isEmpty()) renderWelcome() else renderAddWallet() }
+                    "add_wallet" -> renderSignedOut()
                     "fee_preview" -> renderSend()
                     "review" -> cancelReviewForEditing()
                     "track" -> renderReceive()

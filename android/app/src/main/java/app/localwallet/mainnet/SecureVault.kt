@@ -43,36 +43,40 @@ class SecureVault internal constructor(
     private val now: () -> Long = System::currentTimeMillis,
     private val decode: (String) -> JSONObject = RpcJson::parse
 ) {
-    constructor(context: Context) : this(AndroidVaultFile(context), AndroidVaultKeys(context))
+    constructor(context: Context) : this(AndroidVaultFile(context, WalletCatalog.LEGACY_ID), AndroidVaultKeys(context))
+    internal constructor(context: Context, walletId: String) : this(AndroidVaultFile(context, walletId), AndroidVaultKeys(context))
     val directory: File get() = file.directory
-    fun exists(): Boolean = file.exists()
+    fun exists(): Boolean = walletStorage { file.exists() }
 
-    @Synchronized fun load(): VaultManifest {
+    fun load(): VaultManifest = walletStorage {
         if (!exists()) throw WalletFailure("No wallet exists on this device.")
-        return VaultManifest.parse(decode(file.read().toString(Charsets.UTF_8)))
+        VaultManifest.parse(decode(file.read().toString(Charsets.UTF_8)))
     }
 
-    fun beginEnrollment(): VaultEnrollment {
+    fun beginEnrollment(): VaultEnrollment = walletStorage {
         if (exists()) throw WalletFailure("A wallet already exists. Open it to continue; it cannot be overwritten.")
-        return keys.create(AppLockMode.OFF)
+        keys.create(AppLockMode.OFF)
     }
 
-    fun beginProtectionChange(mode: AppLockMode): VaultEnrollment {
+    fun beginProtectionChange(mode: AppLockMode): VaultEnrollment = walletStorage {
         if (!exists()) throw WalletFailure("Open the existing wallet before changing app lock.")
-        return keys.create(mode)
+        keys.create(mode)
     }
 
-    fun abortEnrollment(enrollment: VaultEnrollment) {
+    fun abortEnrollment(enrollment: VaultEnrollment): Unit = walletStorage {
         // A late fsync error may follow a committed rename. Never remove either key in that case.
         if (!enrollment.commitAttempted) runCatching { keys.delete(enrollment.alias) }
+        Unit
     }
 
-    @Synchronized fun completeEnrollment(enrollment: VaultEnrollment, authorizedCipher: Cipher, restoreWords: String?): CreatedVault {
+    fun completeEnrollment(enrollment: VaultEnrollment, authorizedCipher: Cipher, restoreWords: String?,
+                           validateAddress: (String) -> Unit = {}): CreatedVault = walletStorage {
         if (exists()) throw WalletFailure("A wallet already exists. Open it to continue; it cannot be overwritten.")
         if (authorizedCipher !== enrollment.cipher || enrollment.lockMode != AppLockMode.OFF) throw WalletFailure("Wallet creation was not bound to its device key operation.")
         val vaultKey = ByteArray(32).also { SecureRandom().nextBytes(it) }
         try {
             val created = JSONObject(if (restoreWords == null) generateWallet(vaultKey) else restoreWallet(restoreWords, vaultKey))
+            validateAddress(created.getString("address"))
             val manifest = wrap(enrollment, authorizedCipher, created.getString("address"), created.getString("vault_hex"), vaultKey, restoreWords != null, null)
             enrollment.commitAttempted = true
             save(manifest)
@@ -80,13 +84,13 @@ class SecureVault internal constructor(
             if (!manifest.sameProtection(readBack) || readBack.backupConfirmed != manifest.backupConfirmed) {
                 throw WalletFailure("The new wallet could not be verified after saving. Its device key has been retained; reopen the wallet.")
             }
-            return CreatedVault(readBack, created.optionalString("mnemonic"))
+            return@walletStorage CreatedVault(readBack, created.optionalString("mnemonic"))
         } catch (error: Exception) { abortEnrollment(enrollment); throw error }
         finally { vaultKey.fill(0) }
     }
 
     /** Current-key authentication is completed by the caller before entering this operation. */
-    @Synchronized fun changeProtection(current: VaultManifest, key: ByteArray, enrollment: VaultEnrollment, authorizedCipher: Cipher, pin: CharArray?, stillAuthorized: () -> Boolean = { true }): VaultManifest {
+    fun changeProtection(current: VaultManifest, key: ByteArray, enrollment: VaultEnrollment, authorizedCipher: Cipher, pin: CharArray?, stillAuthorized: () -> Boolean = { true }): VaultManifest = walletStorage {
         val saved = currentProtection(current)
         if (authorizedCipher !== enrollment.cipher || key.size != 32 || !walletAddress(saved.vaultHex, key).equals(saved.address, true)) {
             throw WalletFailure("The app-lock change was not authorized for this wallet.")
@@ -103,7 +107,7 @@ class SecureVault internal constructor(
             }
             // Only after durable success and read-back can the old wrapping key be retired.
             runCatching { keys.delete(saved.alias) }
-            return readBack
+            return@walletStorage readBack
         } catch (error: Exception) { abortEnrollment(enrollment); throw error }
     }
 
@@ -117,9 +121,9 @@ class SecureVault internal constructor(
         } finally { inner.fill(0) }
     }
 
-    fun decryptionCipher(manifest: VaultManifest): Cipher = keys.decrypt(manifest)
+    fun decryptionCipher(manifest: VaultManifest): Cipher = walletStorage { keys.decrypt(manifest) }
 
-    @Synchronized fun unwrap(manifest: VaultManifest, authorizedCipher: Cipher, pin: CharArray? = null): ByteArray {
+    fun unwrap(manifest: VaultManifest, authorizedCipher: Cipher, pin: CharArray? = null): ByteArray = walletStorage {
         val current = currentProtection(manifest)
         if (current.lockMode == AppLockMode.PIN) {
             VaultPin.requireSixDigits(pin ?: throw WalletFailure("Enter your 6-digit app PIN."))
@@ -144,14 +148,14 @@ class SecureVault internal constructor(
                 val saved = currentProtection(current)
                 save(saved.copy(pinAttempts = 0, pinRetryAfter = 0))
             }
-            return key
+            return@walletStorage key
         } catch (error: Exception) { key.fill(0); throw error }
     }
 
-    @Synchronized fun confirmBackup(): VaultManifest {
+    fun confirmBackup(): VaultManifest = walletStorage {
         val manifest = load().copy(backupConfirmed = true)
         save(manifest)
-        return manifest
+        manifest
     }
 
     private fun currentProtection(expected: VaultManifest): VaultManifest {
@@ -163,14 +167,16 @@ class SecureVault internal constructor(
     private fun save(manifest: VaultManifest) { file.write(manifest.json().toString().toByteArray(Charsets.UTF_8)) }
 }
 
-private class AndroidVaultFile(context: Context) : VaultFile {
-    override val directory: File = File(context.noBackupFilesDir, "wallet-v1").apply {
-        if (!exists() && !mkdirs()) throw WalletFailure("Private wallet storage cannot be created.")
-        Os.chmod(absolutePath, 448)
-    }
+private class AndroidVaultFile(context: Context, walletId: String) : VaultFile {
+    override val directory: File = WalletStoragePaths.directory(context.noBackupFilesDir, walletId)
     private val atomic = AtomicFile(File(directory, "vault.json"))
-    override fun exists(): Boolean = atomic.baseFile.exists() || File(atomic.baseFile.path + ".bak").exists() || File(atomic.baseFile.path + ".new").exists()
+    private fun paths() = listOf(atomic.baseFile, File(atomic.baseFile.path + ".bak"), File(atomic.baseFile.path + ".new"))
+    override fun exists(): Boolean {
+        paths().forEach(WalletStoragePaths::requireRegularOrMissing)
+        return paths().any(WalletStoragePaths::exists)
+    }
     override fun read(): ByteArray = try {
+        paths().forEach(WalletStoragePaths::requireRegularOrMissing)
         atomic.openRead().use { stream ->
             val result = java.io.ByteArrayOutputStream()
             val buffer = ByteArray(1_024)
@@ -186,6 +192,7 @@ private class AndroidVaultFile(context: Context) : VaultFile {
     catch (_: Exception) { throw WalletFailure("The saved wallet could not be opened. Its files have been preserved. Retry opening the wallet.") }
 
     override fun write(value: ByteArray) {
+        paths().forEach(WalletStoragePaths::requireRegularOrMissing)
         var stream: java.io.FileOutputStream? = null
         try {
             stream = atomic.startWrite()

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="app.localwallet.mainnet.PrivateEngineWireTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-11-06T17:16:45" hostname="34d710c0c368" time="0.017">
+  <properties/>
+  <testcase name="messagesFromAnotherSessionCannotReachTheEngineCaller" classname="app.localwallet.mainnet.PrivateEngineWireTest" time="0.001"/>
+  <testcase name="deviceLocalResultDebugTextDoesNotExposeItsPayload" classname="app.localwallet.mainnet.PrivateEngineWireTest" time="0.0"/>
+  <testcase name="aResponseCannotUseZeroOrMalformedRequestIdentity" classname="app.localwallet.mainnet.PrivateEngineWireTest" time="0.0"/>
+  <testcase name="oversizedWireDataIsRejectedBeforeAnyJsonOrAndroidParser" classname="app.localwallet.mainnet.PrivateEngineWireTest" time="0.01"/>
+  <testcase name="progressMustHaveACompleteSafeIdentityAndBoundedInteger" classname="app.localwallet.mainnet.PrivateEngineWireTest" time="0.002"/>
+  <testcase name="failuresExposeOnlyFixedSanitizedCodes" classname="app.localwallet.mainnet.PrivateEngineWireTest" time="0.001"/>
+  <testcase name="closedSchemaRejectsExecutableFieldsAndUnrecognizedPorts" classname="app.localwallet.mainnet.PrivateEngineWireTest" time="0.0"/>
+  <testcase name="exactPinnedEngineHandshakeIsRequired" classname="app.localwallet.mainnet.PrivateEngineWireTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

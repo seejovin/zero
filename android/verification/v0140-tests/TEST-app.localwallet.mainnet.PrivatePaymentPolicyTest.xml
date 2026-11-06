@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="app.localwallet.mainnet.PrivatePaymentPolicyTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2026-11-06T17:16:45" hostname="34d710c0c368" time="0.013">
+  <properties/>
+  <testcase name="feeEqualityOrDeficitNeverProducesAZeroOrNegativeMaximum" classname="app.localwallet.mainnet.PrivatePaymentPolicyTest" time="0.0"/>
+  <testcase name="maximumRequiresACompleteSpendableBalanceAndExplicitConsolidation" classname="app.localwallet.mainnet.PrivatePaymentPolicyTest" time="0.002"/>
+  <testcase name="spendPlanCannotBeMutatedByChangingItsInputList" classname="app.localwallet.mainnet.PrivatePaymentPolicyTest" time="0.001"/>
+  <testcase name="privateDestinationsNeverEnterPublicEvmOrFamilyRecipientPaths" classname="app.localwallet.mainnet.PrivatePaymentPolicyTest" time="0.003"/>
+  <testcase name="integerParsingRejectsAmbiguityAndCheckedAdditionRejectsOverflow" classname="app.localwallet.mainnet.PrivatePaymentPolicyTest" time="0.001"/>
+  <testcase name="moreNotesThanTheCandidateCircuitLimitCannotSilentlyTruncateMaximum" classname="app.localwallet.mainnet.PrivatePaymentPolicyTest" time="0.001"/>
+  <testcase name="releaseHasNoEnabledNetworkOrUserSettingAndCannotOpenAProductionFeature" classname="app.localwallet.mainnet.PrivatePaymentPolicyTest" time="0.002"/>
+  <testcase name="maximumSubtractsExactFeesWithoutDroppingAnySmallestUnit" classname="app.localwallet.mainnet.PrivatePaymentPolicyTest" time="0.001"/>
+  <testcase name="privateDraftUsesRandomCanonicalIdentityAndNeverParsesMaximumThroughFloatingPoint" classname="app.localwallet.mainnet.PrivatePaymentPolicyTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
