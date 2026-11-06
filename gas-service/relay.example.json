@@ -1,0 +1,6 @@
+{
+  "schema_version": 1,
+  "listen": "127.0.0.1:8081",
+  "gateway_url": "https://gateway.example.invalid/ohttp",
+  "cors_origin": null
+}

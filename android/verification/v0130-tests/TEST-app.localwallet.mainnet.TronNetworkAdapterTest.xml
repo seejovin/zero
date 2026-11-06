@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="app.localwallet.mainnet.TronNetworkAdapterTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2026-11-06T15:28:17" hostname="34d710c0c368" time="0.024">
+  <properties/>
+  <testcase name="uncertainBroadcastIsAttemptedExactlyOnce" classname="app.localwallet.mainnet.TronNetworkAdapterTest" time="0.015"/>
+  <testcase name="inactiveSenderExplainsActivationBeforeAnySigning" classname="app.localwallet.mainnet.TronNetworkAdapterTest" time="0.001"/>
+  <testcase name="discoveryIdsAreBoundedAndDeduplicatedWithoutTrustingAmounts" classname="app.localwallet.mainnet.TronNetworkAdapterTest" time="0.002"/>
+  <testcase name="balanceReadsNativeAndOfficialTokenWithoutInventingZeros" classname="app.localwallet.mainnet.TronNetworkAdapterTest" time="0.001"/>
+  <testcase name="malformedIntegersCannotBeCoercedFromFloatsOrSigns" classname="app.localwallet.mainnet.TronNetworkAdapterTest" time="0.0"/>
+  <testcase name="rejectedSimulationAndMissingFeeParametersFailClosed" classname="app.localwallet.mainnet.TronNetworkAdapterTest" time="0.002"/>
+  <testcase name="maximumTokenTransferKeepsEveryUnitAndPricesEnergy" classname="app.localwallet.mainnet.TronNetworkAdapterTest" time="0.002"/>
+  <testcase name="changedHeadRejectsTheEntireBalanceObservation" classname="app.localwallet.mainnet.TronNetworkAdapterTest" time="0.001"/>
+  <testcase name="testnetIdentityStopsAllAccountReads" classname="app.localwallet.mainnet.TronNetworkAdapterTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

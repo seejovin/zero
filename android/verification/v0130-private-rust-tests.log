@@ -1,0 +1,359 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.16s
+     Running unittests src/lib.rs (target/debug/deps/wallet_core-f77021f5fbe3c809)
+
+running 13 tests
+test private_engine_keys::tests::domains_and_identity_are_separated ... ok
+test crypto::tests::review_expiration_boundaries_and_history_validation ... ok
+test crypto::tests::quote_changes_require_new_approval_even_when_unsigned_bytes_are_identical ... ok
+test crypto::tests::signing_checks_review_expiration_before_opening_the_vault ... ok
+test private_journal::resource_limits::encrypted_history_budget_is_checked_without_overflow ... ok
+test private_pool::tests::no_wallet_filters_or_arbitrary_methods ... ok
+test private_pool::tests::complete_block_logs_has_a_closed_wallet_independent_request_schema ... ok
+test private_fee_schedule::tests::checks_signature_time_domain_and_duplicate_fields ... ok
+test private_engine_keys::tests::matches_reference_engine_derivation ... ok
+test crypto::tests::inspection_rejects_high_s_noncanonical_integers_and_access_lists ... ok
+test crypto::tests::arbitrary_or_bridged_usdc_contracts_never_become_signable_by_ticker ... ok
+test crypto::tests::public_fixture_signature_rejects_unsupported_semantics ... ok
+test crypto::tests::token_contract_cannot_be_reused_under_the_wrong_network_identity ... ok
+
+test result: ok. 13 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.07s
+
+     Running tests/activity_validation.rs (target/debug/deps/activity_validation-9f282765506eb0dc)
+
+running 8 tests
+test duplicate_fields_and_oversized_input_are_rejected ... ok
+test self_and_sent_direction_and_stable_receipt_ordinal_identity ... ok
+test wrong_token_or_participant_never_becomes_received ... ok
+test reverted_transfer_zero_address_poisoning_and_mint_semantics ... ok
+test all_receipt_transaction_and_block_links_are_required ... ok
+test malformed_removed_duplicate_or_inconsistent_logs_are_rejected ... ok
+test new_network_activity_ignores_bridged_tokens_and_other_chain_contracts ... ok
+test exact_native_and_allowlisted_tokens_on_all_reviewed_networks ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+
+     Running tests/crypto_policy.rs (target/debug/deps/crypto_policy-7bb29e9ad45714dc)
+
+running 19 tests
+test gas_limit_reserves_the_eip7623_calldata_floor ... ok
+test formatter_preserves_exact_small_and_large_values ... ok
+test changing_any_reviewed_field_is_rejected ... ok
+test amount_precision_is_exact_and_never_uses_floating_point ... ok
+test invalid_phrase_and_invalid_keys_fail_without_echoing_secret_input ... ok
+test lowercase_addresses_and_trailing_fraction_zeroes_normalize_before_approval ... ok
+test mainnet_unknown_fields_invalid_destinations_and_excess_fees_fail_closed ... ok
+test each_vault_encryption_uses_a_fresh_nonce ... ok
+test generated_wallet_has_24_valid_words_and_restores_to_same_address ... ok
+test vault_authentication_rejects_wrong_key_or_any_modified_byte ... ok
+test arbitrary_unicode_inputs_fail_without_panics ... ok
+test arbitrary_transaction_bytes_never_panic ... ok
+test restore_matches_independent_published_ethereum_fixture ... ok
+test repeating_an_identical_signature_returns_identical_bytes ... ok
+test wallet_address_authenticates_the_vault_and_derives_its_identity ... ok
+test restore_accepts_all_standard_english_lengths ... ok
+test wrong_approval_or_a_different_wallet_cannot_sign_review ... ok
+test all_three_assets_sign_only_the_reviewed_payment_and_recover_sender ... ok
+test integer_token_units_round_trip_exactly ... ok
+
+test result: ok. 19 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.42s
+
+     Running tests/family_journal.rs (target/debug/deps/family_journal-af5cb37769c253c1)
+
+running 18 tests
+test balance_evidence_never_silently_overwrites_or_rolls_back ... ok
+test racing_distinct_intents_cannot_reserve_two_payments ... ok
+test append_only_schema_identity_and_signed_history_are_verified_on_open ... ok
+test failed_storage_never_returns_a_signature_as_durable ... ok
+test signed_bytes_commit_before_use_survive_reopen_and_do_not_escape_audit ... ok
+test identical_intents_and_signatures_are_idempotent_even_across_connections ... ok
+test malformed_or_wrong_receipt_never_changes_a_durable_payment ... ok
+test tron_activity_uses_verified_tx_identity_even_when_there_are_no_transfers ... ok
+test unexpectedly_high_solana_cost_keeps_the_actual_confirmed_result ... ok
+test world_readable_or_symlinked_journal_paths_are_rejected ... ok
+test unexpectedly_high_tron_fee_records_finality_and_surfaces_discrepancy ... ok
+test empty_finalized_proofs_cannot_later_become_a_verified_deposit ... ok
+test unsigned_cancellation_is_idempotent_and_never_cancels_signed_bytes ... ok
+test unknown_and_expired_signed_transactions_keep_the_reservation ... ok
+test activity_is_deduplicated_and_missing_or_conflicting_events_remain_visible ... ok
+test tron_solid_receipts_and_large_canonical_blocks_survive_reopen ... ok
+test late_finality_conflicts_block_an_already_prepared_next_signature ... ok
+test confirmations_and_finalized_failures_preserve_exact_status_and_actual_cost ... ok
+
+test result: ok. 18 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.33s
+
+     Running tests/journal_correctness.rs (target/debug/deps/journal_correctness-7c0102f4b302c3d3)
+
+running 21 tests
+test balances_reject_unsupported_assets_accounts_and_unsafe_number_formats ... ok
+test concurrent_writers_cannot_reserve_one_nonce_twice ... ok
+test idempotency_and_nonce_uniqueness_are_intent_level ... ok
+test cancellation_signing_race_has_one_valid_outcome ... ok
+test failed_audit_write_rolls_back_signature_and_never_returns_broadcast_bytes ... ok
+test receipt_gas_charge_is_not_rejected_for_being_below_reserved_calldata_floor ... ok
+test changed_fee_bytes_cannot_hide_under_the_original_approval_digest ... ok
+test loss_of_finalized_evidence_is_flagged_without_automatic_rebroadcast_state ... ok
+test balances_are_observations_and_never_inferred_or_adjusted_by_payment_events ... ok
+test append_only_guards_and_read_validation_prevent_silent_history_changes ... ok
+test storage_is_durable_wal_and_rejects_unsafe_paths ... ok
+test inconsistent_receipts_cannot_silently_overwrite_financial_evidence ... ok
+test signing_requires_preparation_and_persists_exact_bytes_before_submission ... ok
+test reverted_transactions_keep_the_gas_charge_without_payment_success ... ok
+test bounded_receipts_allow_contract_eth_receivers_with_many_logs ... ok
+test reorg_is_an_explicit_correction_with_old_evidence_and_nonce_preserved ... ok
+test receipts_distinguish_execution_inclusion_finality_and_actual_fee ... ok
+test unsigned_cancel_releases_nonce_but_preserves_evidence ... ok
+test signed_metadata_or_signature_tampering_is_rejected ... ok
+test token_success_requires_the_exact_reviewed_contract_and_transfer_event ... ok
+test invalid_receipt_identity_fees_and_logs_do_not_change_records ... ok
+
+test result: ok. 21 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.60s
+
+     Running tests/mainnet_policy.rs (target/debug/deps/mainnet_policy-aea692cb82182896)
+
+running 21 tests
+test fixed_registry_has_only_reviewed_mainnets_and_native_circle_contracts ... ok
+test fee_policy_uses_native_chain_denominations_and_bnb_zero_base_envelope ... ok
+test native_balance_snapshots_reject_eth_aliases_missing_assets_and_nulls ... ok
+test network_journals_allow_same_nonce_but_never_mix_network_observations ... ok
+test all_testnets_other_mainnets_and_wrong_extra_fee_semantics_fail_closed ... ok
+test arbitrum_uses_the_gas_charge_once_and_rejects_separate_rollup_fees ... ok
+test base_receipt_requires_all_actual_fees_and_rejects_execution_cap_violation ... ok
+test previous_testnet_journal_schema_is_preserved_and_not_migrated_into_mainnet ... ok
+test op_mainnet_preserves_reviewed_extra_fees_and_receipt_charges ... ok
+test remaining_evm_registry_pins_native_assets_and_issuer_contracts ... ok
+test base_additional_fee_above_estimate_and_reserve_retains_financial_outcome ... ok
+test reverted_base_payment_keeps_execution_and_additional_charges ... ok
+test unsupported_eurc_never_becomes_a_native_transfer_or_a_balance ... ok
+test quotes_are_in_approval_and_saved_signature_but_not_in_transaction_bytes ... ok
+test both_mainnets_sign_all_assets_with_distinct_chain_identity_and_contract ... ok
+test new_chain_journals_retain_nonce_and_evidence_through_unknown_and_reorg_states ... ok
+test released_schema_two_journals_keep_signed_bytes_events_and_balances_without_migration ... ok
+test schema_three_journals_preserve_old_allowlist_and_unknown_ethereum_usdt ... ok
+test new_network_signatures_are_chain_bound_and_preserve_exact_token_units ... ok
+test all_new_assets_preserve_exact_units_and_bind_review_to_native_currency ... ok
+test browser_kdf_matches_independent_libargon2_vector_and_rejects_invalid_parameters ... ok
+
+test result: ok. 21 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 3.53s
+
+     Running tests/private_journal.rs (target/debug/deps/private_journal-92f47a489898b3c9)
+
+running 25 tests
+test expired_new_approval_is_rejected_without_writing_any_record ... ok
+test contradictory_inclusion_is_recorded_as_conflict_without_overwriting_prior_evidence ... ok
+test approved_and_ready_data_are_encrypted_on_disk_and_survive_reopen ... ok
+test audit_views_do_not_export_recipient_principal_proof_or_ciphertexts ... ok
+test concurrent_duplicate_approval_is_idempotent_and_note_reservations_are_atomic ... ok
+test ciphertext_from_another_same_key_journal_cannot_be_transplanted ... ok
+test automatic_exact_proof_retry_keeps_prior_finalized_reverts_and_ignores_delayed_duplicates ... ok
+test legacy_or_unrecognized_database_is_preserved ... ok
+test ciphertext_corruption_row_substitution_and_suffix_truncation_are_detected ... ok
+test legacy_tree_unaware_journal_is_rejected_without_overwriting_it ... ok
+test independent_connections_cannot_reserve_overlapping_inputs ... ok
+test failed_atomic_execution_cannot_collect_fee_and_same_operation_can_retry ... ok
+test local_ready_cancellation_is_allowed_only_before_any_egress ... ok
+test reservations_scope_nullifiers_to_the_protocol_input_tree ... ok
+test receipt_duplicate_fields_and_unearned_outputs_are_rejected ... ok
+test symlink_and_hardlink_paths_are_rejected ... ok
+test finality_and_reorg_retain_reservations_and_conflicting_finality_blocks_use ... ok
+test released_unknown_operations_cannot_cancel_or_release_reserved_notes ... ok
+test ready_operation_cannot_be_overwritten_with_changed_proof_or_fee ... ok
+test receipt_requires_the_exact_outputs_not_only_spent_nullifiers ... ok
+test reservations_use_tree_scoped_nullifiers_not_commitment_hashes ... ok
+test wrong_key_or_wallet_identity_cannot_open_or_replace_existing_records ... ok
+test unfinalized_revert_cannot_authorize_a_retry_or_replace_its_receipt ... ok
+test reads_remain_consistent_while_another_connection_appends ... ok
+test aggregate_encrypted_history_is_rejected_before_blob_decryption_and_preserved ... ok
+
+test result: ok. 25 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.66s
+
+     Running tests/private_payment.rs (target/debug/deps/private_payment-605cef5e326b5f2e)
+
+running 16 tests
+test exact_maximum_uses_all_atomic_units_and_actual_note_plan ... ok
+test identical_commitments_at_distinct_positions_have_distinct_nullifiers ... ok
+test domain_and_encoding_are_canonical_and_restricted ... ok
+test maximum_never_accepts_duplicate_notes_or_overflow_or_insufficient_fee ... ok
+test local_approval_digest_binds_recipient_amount_and_fee ... ok
+test intent_requires_exact_conservation_and_complete_output_set ... ok
+test oversized_payloads_and_wrong_integer_types_are_rejected ... ok
+test canonical_serialization_is_independent_of_input_json_key_order ... ok
+test shape_acceptance_never_opens_production_or_claims_to_verify_a_proof ... ok
+test operation_digest_covers_proof_ciphertext_and_exact_contract_calldata ... ok
+test exact_envelope_binding_rejects_changed_fees_outputs_and_input_order ... ok
+test preproof_review_binds_semantics_while_allowing_later_randomized_commitments ... ok
+test public_address_cannot_be_passed_as_private_recipient ... ok
+test strict_json_rejects_sensitive_extra_fields_and_critical_duplicates ... ok
+test tree_identity_is_required_bound_and_never_guessed_for_legacy_envelopes ... ok
+test daily_shared_fee_deadline_survives_native_intent_and_review_binding ... ok
+
+test result: ok. 16 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running tests/private_recovery.rs (target/debug/deps/private_recovery-4beef3eddf7a1fc7)
+
+running 17 tests
+test empty_enrollment_must_finalize_the_durably_observed_latest_cutoff ... ok
+test duplicate_funded_commitments_and_recovery_resume_are_exact ... ok
+test equal_nullifier_bytes_in_different_trees_do_not_complete_the_other_sweep ... ok
+test encrypted_backup_restores_exact_unknown_envelope_under_a_different_device_key ... ok
+test finalized_reverted_sweep_can_complete_via_exact_retry_and_old_finality_remains_a_dependency ... ok
+test missing_history_and_unspent_scan_never_silently_clear_quarantine ... ok
+test created_and_imported_quarantined_journals_authenticate_without_clearing_quarantine ... ok
+test exact_prior_authorization_receipt_can_resolve_an_old_input_without_sweeping_it_again ... ok
+test recovery_batches_require_self_recipient_fresh_outputs_disjoint_notes_and_total_fee ... ok
+test multi_batch_recovery_requires_every_input_final_and_rescans_fresh_self_outputs ... ok
+test restored_ready_proof_cannot_be_cancelled_without_complete_release_history ... ok
+test journal_authentication_requires_the_current_vault_and_never_exports_or_changes_history ... ok
+test exporting_a_ready_proof_durably_prevents_source_cancellation_without_claiming_submission ... ok
+test independently_retained_checkpoint_detects_an_older_valid_backup ... ok
+test native_bridge_roundtrip_preserves_the_exact_externally_usable_envelope ... ok
+test sweep_supersedes_older_unknown_proofs_and_finality_conflicts_requarantine ... ok
+test wrong_seed_tampering_wrong_identity_and_overwrite_are_rejected_before_import ... ok
+
+test result: ok. 17 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.71s
+
+     Running tests/solana_policy.rs (target/debug/deps/solana_policy-9420d973650df1b4)
+
+running 11 tests
+test duplicate_or_overallocated_sources_cannot_make_an_inexact_max ... ok
+test expiry_needs_finalized_height_history_lookup_and_invalid_blockhash ... ok
+test blocks_wrong_network_dangerous_address_and_fee_manipulation ... ok
+test bip39_sol_derivation_matches_independent_fixture_and_authenticates_vault ... ok
+test ambiguous_rpc_json_is_rejected_before_value_conversion ... ok
+test review_mutations_and_any_signature_or_message_mutation_fail_closed ... ok
+test a_caught_failed_cpi_cannot_manufacture_a_received_transfer ... ok
+test real_finality_survives_a_fee_or_rent_quote_discrepancy ... ok
+test canonical_asset_mints_and_exact_all_decimal_units_are_bound ... ok
+test incoming_activity_uses_instruction_evidence_and_canonical_mints ... ok
+test confirmed_and_failed_solana_receipts_require_real_exact_canonical_effects ... ok
+
+test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.79s
+
+     Running tests/tron_policy.rs (target/debug/deps/tron_policy-fae72882bb1320ba)
+
+running 19 tests
+test base58check_matches_primary_tron_address_vector ... ok
+test insufficient_native_or_token_balance_prevents_signing ... ok
+test account_creation_uses_fixed_activation_and_staked_bandwidth_only ... ok
+test malformed_duplicated_json_fields_do_not_cross_the_policy_boundary ... ok
+test native_max_reserves_reviewed_fees_and_never_spends_them ... ok
+test energy_is_simulated_and_fee_limit_does_not_include_bandwidth ... ok
+test invalid_precision_signs_or_exponents_are_never_rounded ... ok
+test partial_bandwidth_quotas_cannot_be_added_together ... ok
+test stale_tapos_wrong_block_number_and_excessive_fee_policy_fail_closed ... ok
+test token_max_transfers_every_integer_unit_including_sixth_decimal ... ok
+test unsupported_assets_networks_self_and_contract_transfers_fail ... ok
+test derivation_matches_published_ledger_tron_fixture_and_authenticates_vault ... ok
+test reviewed_bytes_fee_metadata_and_approval_cannot_be_changed ... ok
+test signed_wire_extra_fields_second_signatures_or_broadcast_mutation_are_rejected ... ok
+test mismatched_network_finality_block_receipt_or_signature_never_credit_a_deposit ... ok
+test reverted_transaction_records_fee_without_inventing_token_delivery ... ok
+test token_return_value_amount_contract_and_recipient_all_must_match ... ok
+test exact_solidified_trx_and_usdt_receipts_resolve_success ... ok
+test exact_six_decimal_units_and_official_usdt_contract_are_bound_to_wire ... ok
+
+test result: ok. 19 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.20s
+
+     Running unittests examples/differential_vectors.rs (target/debug/examples/differential_vectors-c8d1bce721659c7f)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests examples/solana_differential_vectors.rs (target/debug/examples/solana_differential_vectors-63074e3ab20e8660)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/lib.rs (target/debug/deps/wallet_gas_service-6e20aa5c39ccbbd5)
+
+running 63 tests
+test relay::tests::config_has_no_secrets_arbitrary_gateway_or_credential_forwarding ... ok
+test relay::tests::circuit_breaker_bounds_repeat_gateway_failures ... ok
+test rpc_tests::historical_configuration_is_bounded_ordered_complete_and_strict ... ok
+test rpc_tests::historical_profiles_cannot_authorize_current_admission_or_release_checks ... ok
+test rpc_tests::elapsed_unknown_attempt_only_reconciles_until_explicit_identical_resubmission ... ok
+test rpc_tests::historical_token_absence_configuration_cannot_skip_pins_or_reappear_after_deployment ... ok
+test rpc_tests::historical_token_absence_rejects_provider_disagreement_unexpected_code_and_bad_pool ... ok
+test rpc_tests::independent_rpc_and_deployment_checks_reject_ambiguous_or_changed_state ... ok
+test rpc_tests::historical_deployment_epochs_support_exact_boundaries_without_future_code ... ok
+test rpc_tests::pool_block_logs_checks_complete_block_before_fixed_pool_filtering ... ok
+test rpc_tests::historical_deployment_missing_or_wrong_epochs_never_fall_back_to_current_pins ... ok
+test rpc_tests::pool_block_logs_rechecks_canonical_block_after_complete_receipts ... ok
+test rpc_tests::live_treasury_check_covers_total_exposure_and_blocks_release_after_balance_loss ... ok
+test rpc_tests::actual_http_rpc_worker_signs_persists_reconciles_and_never_double_counts_l1_fee ... ok
+test rpc_tests::historical_token_absence_is_an_explicit_verified_prefix_not_a_current_exception ... ok
+test rpc_tests::pool_block_logs_bounds_transaction_lists_and_accepts_verified_empty_block ... ok
+test rpc_tests::pool_block_logs_rejects_omitted_duplicate_and_misindexed_receipts ... ok
+test rpc_tests::pool_block_logs_rejects_log_gaps_wrong_context_and_provider_disagreement ... ok
+test rpc_tests::pool_checkpoint_is_exact_finalized_block_with_bounded_active_tree_count_and_root ... ok
+test runtime_tests::daily_shared_schedule_retains_exact_exclusive_expiry_across_service_and_wallet ... ok
+test rpc_tests::pool_port_is_fixed_bulk_data_and_padded_nullifiers_not_arbitrary_rpc ... ok
+test runtime_tests::native_signer_only_reconstructs_admitted_zero_value_pool_call ... ok
+test runtime_tests::loopback_http_accepts_only_ohttp_and_normal_build_stays_closed ... ok
+test rpc_tests::public_pool_receipt_can_reconcile_another_broadcaster_without_charging_operator ... ok
+test rpc_tests::one_slot_batch_does_not_starve_finalized_audit_when_live_job_exists ... ok
+test rpc_tests::finalized_revert_allows_exact_proof_retry_with_fresh_nonce_and_cumulative_native_cost ... ok
+test runtime_tests::shared_fee_packet_interoperates_with_native_wallet_verifier ... ok
+test runtime_tests::opaque_relay_forwards_genuine_ohttp_but_strips_identity_headers_and_enforces_cors ... ok
+test secrets::tests::secret_file_is_bounded_and_rejects_symlinks_or_public_permissions ... ok
+test runtime_tests::public_key_export_is_read_only_and_fee_publisher_never_serializes_private_key ... ok
+test runtime_tests::tree_scoped_nullifiers_do_not_conflict_across_different_trees ... ok
+test rpc_tests::receipt_needs_exact_ciphertexts_log_identity_and_canonical_outer_calldata ... ok
+test rpc_tests::worker_audits_previously_finalized_receipts_and_halts_on_canonical_contradiction ... ok
+test rpc_tests::uncertain_ack_keeps_identical_signed_bytes_and_revert_earns_no_provider_fee ... ok
+test tests::concurrent_admissions_share_atomic_budget_reservations ... ok
+test tests::exact_u256_budget_does_not_pass_through_sqlite_float_or_i64 ... ok
+test tests::diagnostics_do_not_export_request_payloads_or_identifiers ... ok
+test tests::concurrent_exact_retry_creates_one_new_attempt_and_one_remaining_reservation ... ok
+test tests::failed_commit_never_releases_broadcast_bytes ... ok
+test runtime_tests::signed_schedule_rotation_preserves_jobs_claims_and_operator_limits ... ok
+test tests::finalized_reorg_reverses_accounting_and_halts_new_spending ... ok
+test tests::idempotent_admission_after_quote_expiry_preserves_one_reservation ... ok
+test tests::journal_is_policy_bound_append_only_and_preserves_foreign_database ... ok
+test runtime_tests::real_ohttp_gateway_enforces_private_schema_and_durable_idempotence ... ok
+test tests::production_gate_precedes_injected_verifier_or_funding ... ok
+test tests::proof_adapter_cannot_substitute_unbound_calldata ... ok
+test tests::overlapping_nullifiers_and_alias_request_ids_cannot_duplicate_payment ... ok
+test tests::finalized_revert_costs_company_native_gas_but_earns_no_fee ... ok
+test tests::proof_and_fee_rejection_leaves_no_reservations ... ok
+test tests::native_cost_overrun_freezes_operation_and_persists_incident ... ok
+test tests::finalized_success_collects_only_approved_fee_and_actual_native_charge ... ok
+test tests::receipt_relabel_or_finality_regression_is_rejected ... ok
+test tests::provisional_reorg_keeps_reserve_and_same_operation_rebroadcastable ... ok
+test tests::unknown_and_duplicate_customer_fields_are_rejected ... ok
+test tests::spent_nullifiers_without_expected_outputs_do_not_prove_success ... ok
+test tests::signing_requires_exact_target_calldata_sender_nonce_and_gas_budget ... ok
+test tests::unfunded_insufficient_pending_and_lifetime_budgets_are_separate_checks ... ok
+test tests::unknown_submission_survives_reopen_and_releases_identical_bytes ... ok
+test tests::retry_cannot_reset_cumulative_cost_cap_and_survives_reopen_between_attempts ... ok
+test rpc_tests::retry_requires_finalized_revert_and_fresh_unspent_inputs_and_has_three_attempt_limit ... ok
+test subprocess_tests::actual_sdk_provider_verifier_rejects_invalid_proof_without_admission_or_secrets ... ok
+test subprocess_tests::actual_sdk_provider_verifier_accepts_genuine_unfunded_proof_and_rejects_fee_tampering ... ok
+test subprocess_tests::subprocess_contract_binds_fields_rejects_output_leaks_and_changed_artifacts ... ok
+
+test result: ok. 63 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 53.24s
+
+     Running unittests src/main.rs (target/debug/deps/wallet_gas_service-c3be4ac8524249e7)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/relay_main.rs (target/debug/deps/wallet_ohttp_relay-0218aad5d1a02169)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/lib.rs (target/debug/deps/wallet_privacy_transport-f50d984ce0601d26)
+
+running 5 tests
+test tests::pin_and_authority_are_mandatory ... ok
+test tests::real_hpke_roundtrip_has_fixed_headers_padding_and_private_body ... ok
+test tests::tampering_and_cross_request_responses_are_rejected ... ok
+test tests::no_redirect_plaintext_or_oversized_fallback ... ok
+test tests::every_attempt_has_new_encryption_but_same_payment ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.08s
+

@@ -1,0 +1,10 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+npm warn deprecated level-errors@3.0.1: Superseded by abstract-level (https://github.com/Level/community#faq)
+npm warn deprecated level-concat-iterator@3.1.0: Superseded by abstract-level (https://github.com/Level/community#faq)
+npm warn deprecated encoding-down@7.1.0: Superseded by abstract-level (https://github.com/Level/community#faq)
+npm warn deprecated level-codec@10.0.0: Superseded by level-transcoder (https://github.com/Level/community#faq)
+npm warn deprecated deferred-leveldown@7.0.0: Superseded by abstract-level (https://github.com/Level/community#faq)
+npm warn deprecated levelup@5.1.1: Superseded by abstract-level (https://github.com/Level/community#faq)
+npm warn deprecated abstract-leveldown@7.2.0: Superseded by abstract-level (https://github.com/Level/community#faq)
+
+added 179 packages in 2s

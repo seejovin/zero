@@ -1,0 +1,42 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> local-wallet-private-engine@0.1.0 inspect
+> node scripts/inspect-sdk.mjs
+
+{
+  "kind": "actual narrow offline SDK inspection",
+  "versions": {
+    "@railgun-community/engine": "9.9.1",
+    "@railgun-community/circomlibjs": "0.0.8",
+    "ethers": "6.17.0",
+    "snarkjs": "0.7.6",
+    "@noble/hashes": "1.8.0",
+    "browserify-aes": "1.2.0"
+  },
+  "upstream_cryptographic_source_hashes_verified": true,
+  "sdk_primitives_imported": true,
+  "private_address_derived": true,
+  "full_wallet_network_wrapper_loaded": false,
+  "global_witness_proof_cache_used": false,
+  "real_proof_test": "npm run test:protocol -- QUALIFIED_ARTIFACT_DIRECTORY GENERATED_BINDING_DIRECTORY",
+  "abi": {
+    "function": "transact",
+    "selector": "0xd8ae136a",
+    "candidate_chain": 42161
+  },
+  "dependency_advisory_entries": {
+    "info": 0,
+    "low": 0,
+    "moderate": 0,
+    "high": 0,
+    "critical": 0,
+    "total": 0
+  },
+  "production_enabled": false,
+  "remaining_release_gates": [
+    "reviewed deployed verifier/code/proxy identity",
+    "authenticated shared gateway and independently operated relay",
+    "Android build and physical-device qualification",
+    "independent security review"
+  ]
+}

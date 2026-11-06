@@ -1,0 +1,1 @@
+3361d85f6ad423585a91255e02bd058417ba450d20b556f6bc6cdfb553aa5fa9  local-wallet-0.5.0-mainnet.apk

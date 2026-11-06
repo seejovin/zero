@@ -1,0 +1,1109 @@
+{
+  "schema_version": 1,
+  "packages": [
+    {
+      "identity": "@adraffy/ens-normalize@1.11.1",
+      "name": "@adraffy/ens-normalize",
+      "version": "1.11.1",
+      "license": "MIT",
+      "repository": "git+https://github.com/adraffy/ens-normalize.js.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "@ethereumjs/rlp@4.0.1",
+      "name": "@ethereumjs/rlp",
+      "version": "4.0.1",
+      "license": "MPL-2.0",
+      "repository": "https://github.com/ethereumjs/ethereumjs-monorepo.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "@ethereumjs/util@8.1.0",
+      "name": "@ethereumjs/util",
+      "version": "8.1.0",
+      "license": "MPL-2.0",
+      "repository": "https://github.com/ethereumjs/ethereumjs-monorepo.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "@noble/ciphers@0.4.1",
+      "name": "@noble/ciphers",
+      "version": "0.4.1",
+      "license": "MIT",
+      "repository": "https://github.com/paulmillr/noble-ciphers.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "@noble/curves@1.2.0",
+      "name": "@noble/curves",
+      "version": "1.2.0",
+      "license": "MIT",
+      "repository": "https://github.com/paulmillr/noble-curves.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "@noble/curves@1.4.2",
+      "name": "@noble/curves",
+      "version": "1.4.2",
+      "license": "MIT",
+      "repository": "git+https://github.com/paulmillr/noble-curves.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "@noble/ed25519@1.7.5",
+      "name": "@noble/ed25519",
+      "version": "1.7.5",
+      "license": "MIT",
+      "repository": "https://github.com/paulmillr/noble-ed25519.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "@noble/hashes@1.3.2",
+      "name": "@noble/hashes",
+      "version": "1.3.2",
+      "license": "MIT",
+      "repository": "https://github.com/paulmillr/noble-hashes.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "@noble/hashes@1.4.0",
+      "name": "@noble/hashes",
+      "version": "1.4.0",
+      "license": "MIT",
+      "repository": "git+https://github.com/paulmillr/noble-hashes.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "@noble/hashes@1.8.0",
+      "name": "@noble/hashes",
+      "version": "1.8.0",
+      "license": "MIT",
+      "repository": "git+https://github.com/paulmillr/noble-hashes.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "@railgun-community/circomlibjs@0.0.8",
+      "name": "@railgun-community/circomlibjs",
+      "version": "0.0.8",
+      "license": "GPL-3.0",
+      "repository": "git+https://github.com/Railgun-Community/circomlibjs.git",
+      "full_text_present": true,
+      "notice_files": [
+        "COPYING"
+      ]
+    },
+    {
+      "identity": "@railgun-community/engine@9.9.1",
+      "name": "@railgun-community/engine",
+      "version": "9.9.1",
+      "license": "MIT",
+      "repository": "git+https://gitlab.com/railgun-protocol/community/engine.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "@railgun-community/ffjavascript@0.1.0",
+      "name": "@railgun-community/ffjavascript",
+      "version": "0.1.0",
+      "license": "GPL-3.0",
+      "repository": "git+https://github.com/Railgun-Community/ffjavascript.git",
+      "full_text_present": true,
+      "notice_files": [
+        "COPYING"
+      ]
+    },
+    {
+      "identity": "@scure/base@1.2.6",
+      "name": "@scure/base",
+      "version": "1.2.6",
+      "license": "MIT",
+      "repository": "git+https://github.com/paulmillr/scure-base.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "aes-js@4.0.0-beta.5",
+      "name": "aes-js",
+      "version": "4.0.0-beta.5",
+      "license": "MIT",
+      "repository": "git://github.com/ricmoo/aes-js.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE.txt"
+      ]
+    },
+    {
+      "identity": "assert@2.1.0",
+      "name": "assert",
+      "version": "2.1.0",
+      "license": "MIT",
+      "repository": "browserify/commonjs-assert",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "available-typed-arrays@1.0.7",
+      "name": "available-typed-arrays",
+      "version": "1.0.7",
+      "license": "MIT",
+      "repository": "git+https://github.com/inspect-js/available-typed-arrays.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "b4a@1.9.0",
+      "name": "b4a",
+      "version": "1.9.0",
+      "license": "Apache-2.0",
+      "repository": "git+https://github.com/holepunchto/b4a.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "base64-js@1.5.1",
+      "name": "base64-js",
+      "version": "1.5.1",
+      "license": "MIT",
+      "repository": "git://github.com/beatgammit/base64-js.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "big-integer@1.6.52",
+      "name": "big-integer",
+      "version": "1.6.52",
+      "license": "Unlicense",
+      "repository": "git@github.com:peterolson/BigInteger.js.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "blake-hash@2.0.0",
+      "name": "blake-hash",
+      "version": "2.0.0",
+      "license": "MIT",
+      "repository": "https://github.com/cryptocoinjs/blake-hash.git",
+      "full_text_present": false,
+      "notice_files": [
+        "README.md (license section)"
+      ]
+    },
+    {
+      "identity": "blake2b-wasm@2.4.0",
+      "name": "blake2b-wasm",
+      "version": "2.4.0",
+      "license": "MIT",
+      "repository": "https://github.com/mafintosh/blake2b-wasm.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "blake2b@2.1.4",
+      "name": "blake2b",
+      "version": "2.1.4",
+      "license": "ISC",
+      "repository": "git+https://github.com/emilbayes/blake2b.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "bn.js@4.12.3",
+      "name": "bn.js",
+      "version": "4.12.3",
+      "license": "MIT",
+      "repository": "git@github.com:indutny/bn.js",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "bn.js@5.2.5",
+      "name": "bn.js",
+      "version": "5.2.5",
+      "license": "MIT",
+      "repository": "git@github.com:indutny/bn.js",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "browserify-aes@1.2.0",
+      "name": "browserify-aes",
+      "version": "1.2.0",
+      "license": "MIT",
+      "repository": "git://github.com/crypto-browserify/browserify-aes.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "buffer-xor@1.0.3",
+      "name": "buffer-xor",
+      "version": "1.0.3",
+      "license": "MIT",
+      "repository": "https://github.com/crypto-browserify/buffer-xor.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "buffer-xor@2.0.2",
+      "name": "buffer-xor",
+      "version": "2.0.2",
+      "license": "MIT",
+      "repository": "https://github.com/crypto-browserify/buffer-xor.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "buffer@6.0.3",
+      "name": "buffer",
+      "version": "6.0.3",
+      "license": "MIT",
+      "repository": "git://github.com/feross/buffer.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "call-bind-apply-helpers@1.0.2",
+      "name": "call-bind-apply-helpers",
+      "version": "1.0.2",
+      "license": "MIT",
+      "repository": "git+https://github.com/ljharb/call-bind-apply-helpers.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "call-bind@1.0.9",
+      "name": "call-bind",
+      "version": "1.0.9",
+      "license": "MIT",
+      "repository": "git+https://github.com/ljharb/call-bind.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "call-bound@1.0.4",
+      "name": "call-bound",
+      "version": "1.0.4",
+      "license": "MIT",
+      "repository": "git+https://github.com/ljharb/call-bound.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "cipher-base@1.0.7",
+      "name": "cipher-base",
+      "version": "1.0.7",
+      "license": "MIT",
+      "repository": "git+https://github.com/crypto-browserify/cipher-base.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "core-util-is@1.0.2",
+      "name": "core-util-is",
+      "version": "1.0.2",
+      "license": "MIT",
+      "repository": "git://github.com/isaacs/core-util-is",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "define-data-property@1.1.4",
+      "name": "define-data-property",
+      "version": "1.1.4",
+      "license": "MIT",
+      "repository": "git+https://github.com/ljharb/define-data-property.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "define-properties@1.2.1",
+      "name": "define-properties",
+      "version": "1.2.1",
+      "license": "MIT",
+      "repository": "git://github.com/ljharb/define-properties.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "dunder-proto@1.0.1",
+      "name": "dunder-proto",
+      "version": "1.0.1",
+      "license": "MIT",
+      "repository": "git+https://github.com/es-shims/dunder-proto.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "es-define-property@1.0.1",
+      "name": "es-define-property",
+      "version": "1.0.1",
+      "license": "MIT",
+      "repository": "git+https://github.com/ljharb/es-define-property.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "es-errors@1.3.0",
+      "name": "es-errors",
+      "version": "1.3.0",
+      "license": "MIT",
+      "repository": "git+https://github.com/ljharb/es-errors.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "es-object-atoms@1.1.2",
+      "name": "es-object-atoms",
+      "version": "1.1.2",
+      "license": "MIT",
+      "repository": "git+https://github.com/ljharb/es-object-atoms.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "ethereum-bloom-filters@1.2.0",
+      "name": "ethereum-bloom-filters",
+      "version": "1.2.0",
+      "license": "MIT",
+      "repository": "git+https://github.com/joshstevens19/ethereum-bloom-filters.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "ethereum-cryptography@2.2.1",
+      "name": "ethereum-cryptography",
+      "version": "2.2.1",
+      "license": "MIT",
+      "repository": "https://github.com/ethereum/js-ethereum-cryptography",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "ethers@6.17.0",
+      "name": "ethers",
+      "version": "6.17.0",
+      "license": "MIT",
+      "repository": "git://github.com/ethers-io/ethers.js.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE.md"
+      ]
+    },
+    {
+      "identity": "ethjs-unit@0.1.6",
+      "name": "ethjs-unit",
+      "version": "0.1.6",
+      "license": "MIT",
+      "repository": "git://github.com/ethjs/ethjs-unit",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "events@3.3.0",
+      "name": "events",
+      "version": "3.3.0",
+      "license": "MIT",
+      "repository": "git://github.com/Gozala/events.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "evp_bytestokey@1.0.3",
+      "name": "evp_bytestokey",
+      "version": "1.0.3",
+      "license": "MIT",
+      "repository": "https://github.com/crypto-browserify/EVP_BytesToKey.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "fast-text-encoding@1.0.6",
+      "name": "fast-text-encoding",
+      "version": "1.0.6",
+      "license": "Apache-2.0",
+      "repository": "https://github.com/samthor/fast-text-encoding.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "ffjavascript@0.3.1",
+      "name": "ffjavascript",
+      "version": "0.3.1",
+      "license": "GPL-3.0",
+      "repository": "https://github.com/iden3/ffjavascript.git",
+      "full_text_present": true,
+      "notice_files": [
+        "COPYING"
+      ]
+    },
+    {
+      "identity": "for-each@0.3.5",
+      "name": "for-each",
+      "version": "0.3.5",
+      "license": "MIT",
+      "repository": "https://github.com/Raynos/for-each.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "function-bind@1.1.2",
+      "name": "function-bind",
+      "version": "1.1.2",
+      "license": "MIT",
+      "repository": "https://github.com/Raynos/function-bind.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "generator-function@2.0.1",
+      "name": "generator-function",
+      "version": "2.0.1",
+      "license": "MIT",
+      "repository": "git+https://github.com/TimothyGu/generator-function.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE.md"
+      ]
+    },
+    {
+      "identity": "get-intrinsic@1.3.0",
+      "name": "get-intrinsic",
+      "version": "1.3.0",
+      "license": "MIT",
+      "repository": "git+https://github.com/ljharb/get-intrinsic.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "get-proto@1.0.1",
+      "name": "get-proto",
+      "version": "1.0.1",
+      "license": "MIT",
+      "repository": "git+https://github.com/ljharb/get-proto.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "gopd@1.2.0",
+      "name": "gopd",
+      "version": "1.2.0",
+      "license": "MIT",
+      "repository": "git+https://github.com/ljharb/gopd.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "has-property-descriptors@1.0.2",
+      "name": "has-property-descriptors",
+      "version": "1.0.2",
+      "license": "MIT",
+      "repository": "git+https://github.com/inspect-js/has-property-descriptors.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "has-symbols@1.1.0",
+      "name": "has-symbols",
+      "version": "1.1.0",
+      "license": "MIT",
+      "repository": "git://github.com/inspect-js/has-symbols.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "has-tostringtag@1.0.2",
+      "name": "has-tostringtag",
+      "version": "1.0.2",
+      "license": "MIT",
+      "repository": "git+https://github.com/inspect-js/has-tostringtag.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "hash-base@3.1.2",
+      "name": "hash-base",
+      "version": "3.1.2",
+      "license": "MIT",
+      "repository": "https://github.com/crypto-browserify/hash-base.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "hasown@2.0.4",
+      "name": "hasown",
+      "version": "2.0.4",
+      "license": "MIT",
+      "repository": "git+https://github.com/inspect-js/hasOwn.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "ieee754@1.2.1",
+      "name": "ieee754",
+      "version": "1.2.1",
+      "license": "BSD-3-Clause",
+      "repository": "git://github.com/feross/ieee754.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "inherits@2.0.4",
+      "name": "inherits",
+      "version": "2.0.4",
+      "license": "ISC",
+      "repository": "git://github.com/isaacs/inherits",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "is-arguments@1.2.0",
+      "name": "is-arguments",
+      "version": "1.2.0",
+      "license": "MIT",
+      "repository": "git://github.com/inspect-js/is-arguments.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "is-callable@1.2.7",
+      "name": "is-callable",
+      "version": "1.2.7",
+      "license": "MIT",
+      "repository": "git://github.com/inspect-js/is-callable.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "is-generator-function@1.1.2",
+      "name": "is-generator-function",
+      "version": "1.1.2",
+      "license": "MIT",
+      "repository": "git://github.com/inspect-js/is-generator-function.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "is-hex-prefixed@1.0.0",
+      "name": "is-hex-prefixed",
+      "version": "1.0.0",
+      "license": "MIT",
+      "repository": "git+ssh://git@github.com/SilentCicero/is-hex-prefixed.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "is-nan@1.3.2",
+      "name": "is-nan",
+      "version": "1.3.2",
+      "license": "MIT",
+      "repository": "git://github.com/es-shims/is-nan.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "is-regex@1.2.1",
+      "name": "is-regex",
+      "version": "1.2.1",
+      "license": "MIT",
+      "repository": "git://github.com/inspect-js/is-regex.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "is-typed-array@1.1.15",
+      "name": "is-typed-array",
+      "version": "1.1.15",
+      "license": "MIT",
+      "repository": "git://github.com/inspect-js/is-typed-array.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "isarray@1.0.0",
+      "name": "isarray",
+      "version": "1.0.0",
+      "license": "MIT",
+      "repository": "git://github.com/juliangruber/isarray.git",
+      "full_text_present": true,
+      "notice_files": [
+        "README.md (license section)"
+      ]
+    },
+    {
+      "identity": "isarray@2.0.5",
+      "name": "isarray",
+      "version": "2.0.5",
+      "license": "MIT",
+      "repository": "git://github.com/juliangruber/isarray.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "math-intrinsics@1.1.0",
+      "name": "math-intrinsics",
+      "version": "1.1.0",
+      "license": "MIT",
+      "repository": "git+https://github.com/es-shims/math-intrinsics.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "md5.js@1.3.5",
+      "name": "md5.js",
+      "version": "1.3.5",
+      "license": "MIT",
+      "repository": "https://github.com/crypto-browserify/md5.js.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "nanoassert@2.0.0",
+      "name": "nanoassert",
+      "version": "2.0.0",
+      "license": "ISC",
+      "repository": "git+https://github.com/emilbayes/nanoassert.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "number-to-bn@1.7.0",
+      "name": "number-to-bn",
+      "version": "1.7.0",
+      "license": "MIT",
+      "repository": "git+ssh://git@github.com/SilentCicero/number-to-bn.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "object-is@1.1.6",
+      "name": "object-is",
+      "version": "1.1.6",
+      "license": "MIT",
+      "repository": "git://github.com/es-shims/object-is.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "object-keys@1.1.1",
+      "name": "object-keys",
+      "version": "1.1.1",
+      "license": "MIT",
+      "repository": "git://github.com/ljharb/object-keys.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "object.assign@4.1.7",
+      "name": "object.assign",
+      "version": "4.1.7",
+      "license": "MIT",
+      "repository": "git://github.com/ljharb/object.assign.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "possible-typed-array-names@1.1.0",
+      "name": "possible-typed-array-names",
+      "version": "1.1.0",
+      "license": "MIT",
+      "repository": "git+https://github.com/ljharb/possible-typed-array-names.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "process-nextick-args@2.0.1",
+      "name": "process-nextick-args",
+      "version": "2.0.1",
+      "license": "MIT",
+      "repository": "https://github.com/calvinmetcalf/process-nextick-args.git",
+      "full_text_present": true,
+      "notice_files": [
+        "license.md"
+      ]
+    },
+    {
+      "identity": "process@0.11.10",
+      "name": "process",
+      "version": "0.11.10",
+      "license": "MIT",
+      "repository": "git://github.com/shtylman/node-process.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "randombytes@2.1.0",
+      "name": "randombytes",
+      "version": "2.1.0",
+      "license": "MIT",
+      "repository": "git@github.com:crypto-browserify/randombytes.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "readable-stream@2.3.8",
+      "name": "readable-stream",
+      "version": "2.3.8",
+      "license": "MIT",
+      "repository": "git://github.com/nodejs/readable-stream",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "readable-stream@3.6.2",
+      "name": "readable-stream",
+      "version": "3.6.2",
+      "license": "MIT",
+      "repository": "git://github.com/nodejs/readable-stream",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "safe-buffer@5.1.2",
+      "name": "safe-buffer",
+      "version": "5.1.2",
+      "license": "MIT",
+      "repository": "git://github.com/feross/safe-buffer.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "safe-buffer@5.2.1",
+      "name": "safe-buffer",
+      "version": "5.2.1",
+      "license": "MIT",
+      "repository": "git://github.com/feross/safe-buffer.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "safe-regex-test@1.1.0",
+      "name": "safe-regex-test",
+      "version": "1.1.0",
+      "license": "MIT",
+      "repository": "git+https://github.com/ljharb/safe-regex-test.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "set-function-length@1.2.2",
+      "name": "set-function-length",
+      "version": "1.2.2",
+      "license": "MIT",
+      "repository": "git+https://github.com/ljharb/set-function-length.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "snarkjs@0.7.6",
+      "name": "snarkjs",
+      "version": "0.7.6",
+      "license": "GPL-3.0",
+      "repository": "https://github.com/iden3/snarkjs.git",
+      "full_text_present": true,
+      "notice_files": [
+        "COPYING"
+      ]
+    },
+    {
+      "identity": "stream-browserify@3.0.0",
+      "name": "stream-browserify",
+      "version": "3.0.0",
+      "license": "MIT",
+      "repository": "git://github.com/browserify/stream-browserify.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "string_decoder@1.1.1",
+      "name": "string_decoder",
+      "version": "1.1.1",
+      "license": "MIT",
+      "repository": "git://github.com/nodejs/string_decoder.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "string_decoder@1.3.0",
+      "name": "string_decoder",
+      "version": "1.3.0",
+      "license": "MIT",
+      "repository": "git://github.com/nodejs/string_decoder.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "strip-hex-prefix@1.0.0",
+      "name": "strip-hex-prefix",
+      "version": "1.0.0",
+      "license": "MIT",
+      "repository": "git+ssh://git@github.com/SilentCicero/strip-hex-prefix.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "to-buffer@1.2.2",
+      "name": "to-buffer",
+      "version": "1.2.2",
+      "license": "MIT",
+      "repository": "https://github.com/browserify/to-buffer.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "tslib@2.7.0",
+      "name": "tslib",
+      "version": "2.7.0",
+      "license": "0BSD",
+      "repository": "https://github.com/Microsoft/tslib.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE.txt"
+      ]
+    },
+    {
+      "identity": "typed-array-buffer@1.0.3",
+      "name": "typed-array-buffer",
+      "version": "1.0.3",
+      "license": "MIT",
+      "repository": "git+https://github.com/inspect-js/typed-array-buffer.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "utf8@3.0.0",
+      "name": "utf8",
+      "version": "3.0.0",
+      "license": "MIT",
+      "repository": "https://github.com/mathiasbynens/utf8.js.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE-MIT.txt"
+      ]
+    },
+    {
+      "identity": "util-deprecate@1.0.2",
+      "name": "util-deprecate",
+      "version": "1.0.2",
+      "license": "MIT",
+      "repository": "git://github.com/TooTallNate/util-deprecate.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "util@0.12.5",
+      "name": "util",
+      "version": "0.12.5",
+      "license": "MIT",
+      "repository": "git://github.com/browserify/node-util",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "web3-utils@1.10.4",
+      "name": "web3-utils",
+      "version": "1.10.4",
+      "license": "LGPL-3.0",
+      "repository": "https://github.com/ethereum/web3.js/tree/1.x/packages/web3-utils",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    },
+    {
+      "identity": "which-typed-array@1.1.24",
+      "name": "which-typed-array",
+      "version": "1.1.24",
+      "license": "MIT",
+      "repository": "git://github.com/inspect-js/which-typed-array.git",
+      "full_text_present": true,
+      "notice_files": [
+        "LICENSE"
+      ]
+    }
+  ],
+  "missing_full_notice_review": [
+    "blake-hash@2.0.0"
+  ],
+  "distribution_approved": false
+}

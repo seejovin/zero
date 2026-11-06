@@ -1,0 +1,12 @@
+Authenticated 01x03; verification key derived from the pinned proving key.
+Authenticated 02x03; verification key derived from the pinned proving key.
+Authenticated 03x03; verification key derived from the pinned proving key.
+Authenticated 04x03; verification key derived from the pinned proving key.
+Authenticated 05x03; verification key derived from the pinned proving key.
+Authenticated 06x03; verification key derived from the pinned proving key.
+Authenticated 07x03; verification key derived from the pinned proving key.
+Authenticated 08x03; verification key derived from the pinned proving key.
+Authenticated 09x03; verification key derived from the pinned proving key.
+Authenticated 10x03; verification key derived from the pinned proving key.
+Authenticated 11x03; verification key derived from the pinned proving key.
+{"output":"/workspace/scratch/40e54fec01a4/wallet-v090/local-wallet/build/protocol-artifacts/qualified-all","shapes":["01x03","02x03","03x03","04x03","05x03","06x03","07x03","08x03","09x03","10x03","11x03"],"total_artifact_bytes":272781169,"upstream_pins_verified":true,"verification_keys_derived":true,"production_enabled":false}

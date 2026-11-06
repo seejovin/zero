@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="app.localwallet.mainnet.WalletNavigationTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2026-11-05T19:28:37" hostname="52094378b55f" time="0.002">
+  <properties/>
+  <testcase name="lockedAndStartupScreensDoNotReplaceTheRouteWaitingForUnlock" classname="app.localwallet.mainnet.WalletNavigationTest" time="0.0"/>
+  <testcase name="priorApprovalsAndPinFormsCannotBeRestoredAsAuthorizedOperations" classname="app.localwallet.mainnet.WalletNavigationTest" time="0.001"/>
+  <testcase name="invalidRouteMetadataCannotRestoreAChangedOrUnsupportedOperation" classname="app.localwallet.mainnet.WalletNavigationTest" time="0.0"/>
+  <testcase name="legacyExplicitNetworkRoutesStillRestoreWithoutInventingASelection" classname="app.localwallet.mainnet.WalletNavigationTest" time="0.0"/>
+  <testcase name="genericTransferRoutesRemainWithoutANetworkAcrossResume" classname="app.localwallet.mainnet.WalletNavigationTest" time="0.0"/>
+  <testcase name="sameWalletCanReturnToItsExactPublicAssetAndNetworkRoute" classname="app.localwallet.mainnet.WalletNavigationTest" time="0.0"/>
+  <testcase name="serializationIncludesOnlyAllowlistedPublicRouteFields" classname="app.localwallet.mainnet.WalletNavigationTest" time="0.0"/>
+  <testcase name="quoteCallbacksCannotReturnIntoAnotherWalletPageOrForegroundSession" classname="app.localwallet.mainnet.WalletNavigationTest" time="0.001"/>
+  <testcase name="onlyUnselectedActionRoutesMayOmitANetwork" classname="app.localwallet.mainnet.WalletNavigationTest" time="0.0"/>
+  <testcase name="recoveryAndLegacyBackupRoutesResumeAsConcealedRecoveryWithoutAChallenge" classname="app.localwallet.mainnet.WalletNavigationTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

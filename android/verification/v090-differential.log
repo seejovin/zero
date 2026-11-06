@@ -1,0 +1,6 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> local-wallet-verification@0.6.0 test:differential
+> node scripts/check-ethers.mjs
+
+PASS: 20 Rust transactions independently matched ethers: derivation, amount units, fees, unsigned encoding, deterministic signature, recovered sender and hash.

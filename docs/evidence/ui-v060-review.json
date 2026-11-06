@@ -1,0 +1,28 @@
+{
+  "version": "0.6.0",
+  "time": "2026-11-05T15:16:39.846924+00:00",
+  "mode": "Isolated browser fixture; synthetic balances; no wallet secrets or signing access",
+  "viewport_widths": [
+    1363,
+    390,
+    320
+  ],
+  "checks": {
+    "unified_six_positions": true,
+    "primary_actions": [
+      "DEPOSIT",
+      "SEND"
+    ],
+    "no_global_network_switch": true,
+    "narrow_viewport_overflow": false,
+    "long_names_32_code_points": true,
+    "large_exact_amounts_no_horizontal_overflow": true,
+    "partial_network_failure_keeps_base_rows_and_unknown_total": true,
+    "rename_changes_home_labels": true,
+    "deposit_network_label_follows_selection": true,
+    "cost_to_transfer_visible_at_320px": true,
+    "refresh_preserves_edited_amount_and_focus": true
+  },
+  "proof_screenshot": "local-wallet-v060-preview-20261105.jpg",
+  "physical_android_ui": "not tested"
+}

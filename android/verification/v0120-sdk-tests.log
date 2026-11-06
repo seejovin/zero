@@ -1,0 +1,53 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> local-wallet-private-engine@0.1.0 test
+> node --test test/*.test.mjs
+
+✔ real SDK ABI yields exact typed envelope fields without claiming proof validity (22.876616ms)
+✔ rejects unshield, external calls, wrong network, native value and ambiguous encoding (81.759913ms)
+✔ requires trusted exact artifact bytes and refuses missing or unrelated verification keys (7.847671ms)
+✔ production gate cannot be enabled by an environment variable (0.288166ms)
+✔ dense capacity fixtures reproduce ordinary append roots and paths (566.540942ms)
+✔ archival retains exact latest paths while discarding closed unowned public leaves (1428.008044ms)
+✔ archived witnesses and current retained positions survive strict snapshot restore (1678.807544ms)
+✔ closed-tree edits, skipped trees and invalid batches fail without partial mutation (1244.071495ms)
+✔ a rollover must exceed capacity for the exact complete insertion batch (157.145625ms)
+✔ tampered archived witnesses, ambiguous positions and malformed snapshots are rejected (1690.267471ms)
+✔ legacy full-tree migration retains selected leaf positions, including duplicate commitments (55.689119ms)
+✔ genuine SDK requests use identical private Merkle witnesses from archived input trees (357.792626ms)
+✔ SDK encrypted transfer hides sender; wrong key and altered ciphertext fail (93.567519ms)
+✔ append-only Merkle tree rejects gaps/overwrites; paths and reloaded roots agree (52.025823ms)
+✔ local Merkle roots agree with the actual upstream SDK across batch boundaries (55.73661ms)
+✔ encrypted chunked snapshot authenticates wallet identity and key (182.677772ms)
+✔ Max uses exact integer balance minus fee and creates zero-valued private padding (75.047247ms)
+✔ Max refuses a partial spend across trees and sync-incomplete state (28.292703ms)
+✔ duplicate funded commitments remain distinct notes through encryption, scan and restore (105.94071ms)
+✔ cancelled reservations release only their inputs and survive restart; failed persistence restores the reservation (55.451174ms)
+✔ provider opens its exact fee using only the fee viewing key, and cannot open beneficiary/change (123.076058ms)
+✔ wrong viewing keys, amounts, payee binding and output substitutions are rejected (52.510536ms)
+✔ modified ciphertext is rejected even when exact ABI and envelope fields are updated together (51.654641ms)
+✔ sender disclosure and a nonempty memo in the fee note are refused (81.369923ms)
+✔ a different asset encrypted for the right provider cannot be counted as the USDC fee (37.027924ms)
+✔ a decrypted fee does not bypass the mandatory pinned Groth16 verification (45.713952ms)
+✔ durable cutoff is latest, and no empty recovery scan clears an unfinalized interval (51.853342ms)
+✔ full SDK scan retains pending notes and repeated funded commitments at distinct positions (289.367373ms)
+✔ historical initial cutoff is scanned exactly after finalized head has advanced (127.397981ms)
+✔ a historically known prefix root cannot certify truncated current-tail logs as complete (106.223738ms)
+✔ a rejected persisted omission is rescanned on retry without dropping pending reservations (92.90636ms)
+✔ real self-sweep preparation can consume an old pending proof without freeing ordinary reservations (94.693391ms)
+✔ batch selection is tree scoped, explicit, and never claims partial selection is wallet-wide Max (186.329579ms)
+✔ recovery scan rejects an apparently canonical but impossible early tree rollover (87.406998ms)
+✔ a missing old-tree tail before rollover fails the previous-block closure checkpoint (201.741101ms)
+✔ a missing same-block old-tree tail fails complete canonical receipt coverage (195.531154ms)
+✔ complete same-block tail and rollover pass both closure checkpoints with exact owned notes (448.839943ms)
+✔ recovery refuses external recipient, conflicting note opening, duplicate or vanished input, and incomplete scan (100.167438ms)
+✔ canonical cutoff reorg fails and complete rescans recover exact fresh self outputs after nullification (173.040371ms)
+✔ dust cannot be silently omitted and native sealed JSON cannot contain duplicate plan keys (92.659644ms)
+ℹ tests 40
+ℹ suites 0
+ℹ pass 40
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7728.311705

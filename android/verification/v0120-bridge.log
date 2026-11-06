@@ -1,0 +1,15 @@
+   Compiling wallet_core v0.2.0 (/workspace/scratch/40e54fec01a4/wallet-v090/local-wallet/core)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 4.56s
+   Compiling wallet_core v0.2.0 (/workspace/scratch/40e54fec01a4/wallet-v090/local-wallet/core)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 4.89s
+     Running `target/debug/uniffi-bindgen generate --library target/debug/libwallet_core.so --language python --out-dir /workspace/scratch/40e54fec01a4/wallet-v090/local-wallet/build/bridge-check --config core/uniffi.toml`
+writing out /workspace/scratch/40e54fec01a4/wallet-v090/local-wallet/build/bridge-check
+writing /workspace/scratch/40e54fec01a4/wallet-v090/local-wallet/build/bridge-check/wallet_core.py
+PASS: actual generated UniFFI host bridge authenticated the public fixture; verified 7 EVM networks and 18 canonical asset positions; signed and inspected 18 ETH/AVAX/POL/BNB/USDC/EURC/USDT fixtures across Ethereum, Base, OP Mainnet, Arbitrum One, Avalanche C-Chain, Polygon PoS and BNB Smart Chain; preserved every native/token atomic unit; checked OP Stack receipt fees, Arbitrum single-charge fees and BNB equal gas-price caps; reopened each network journal through unknown and final states without changing signed bytes; rejected unsupported assets, wrong native assets, Binance-Peg stablecoin substitution, invalid BNB fee caps and all seven testnets. No RPC, Android runtime or live payment was used.
+PASS: actual generated Python UniFFI bridge authenticated the public BIP39 fixture and derived both expected family addresses.
+PASS: 5 Solana vectors retained independently verified message/signature bytes; 2 fresh synthetic TRON fixtures verified native TRX and canonical USDT wire data and exact units.
+PASS: 7 family journals persisted signed and unknown states; 14 reopens preserved every prepared JSON, signed JSON, raw transaction byte, transaction identifier and event record.
+PASS: 25 wrong-key, cross-family, signature-mutation, signed-cancellation and wrong-journal-identity operations were rejected; duplicate unknown observations were idempotent.
+No RPC, Android runtime, real TAPOS/blockhash, live signature request or network submission was used. All signed material is an unfunded public offline fixture.
+Host library SHA-256: 214f378591b49a72f18d01b62cad77879799e04353373c09b23c32d56eb572d2
+{"kind":"actual generated UniFFI private bridge","passed":true,"rejection_checks":17,"encrypted_journal_reopened":true,"ohttp_ciphertext_generated":true,"single_use_context_checked":true,"valid_zk_proof_tested":false,"network_requests":0,"user_wallets_accessed":0}

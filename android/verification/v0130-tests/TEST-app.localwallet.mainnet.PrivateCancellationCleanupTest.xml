@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="app.localwallet.mainnet.PrivateCancellationCleanupTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-11-06T15:28:14" hostname="34d710c0c368" time="0.004">
+  <properties/>
+  <testcase name="backupImportedRecoveryAndUncertainLiveClaimsAllProtectReusedInputs" classname="app.localwallet.mainnet.PrivateCancellationCleanupTest" time="0.002"/>
+  <testcase name="exposedImportedAndRecoveryCancellationsCannotAuthorizeCacheDeletion" classname="app.localwallet.mainnet.PrivateCancellationCleanupTest" time="0.001"/>
+  <testcase name="restartDoesNotReleaseAnOldCancellationInputNowOwnedByANewerIntent" classname="app.localwallet.mainnet.PrivateCancellationCleanupTest" time="0.0"/>
+  <testcase name="nullifierIdentityIncludesItsTreeAndCompletedCleanupIsNotReplayed" classname="app.localwallet.mainnet.PrivateCancellationCleanupTest" time="0.001"/>
+  <testcase name="partialCleanupReleasesOnlyUnclaimedInputsAndRemainsRetryable" classname="app.localwallet.mainnet.PrivateCancellationCleanupTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,1 @@
+bb236014e9447046ea041db410b80e10de7b43c90e22b7c3c63fd2e9e8b04ce9  local-wallet-0.6.1-mainnet.apk

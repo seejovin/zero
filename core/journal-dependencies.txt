@@ -1,0 +1,18 @@
+rusqlite = { version = "=0.41.1", features = ["bundled"] }
+serde = { features = ["derive"] }
+serde_json
+primitive-types = "=0.13.1"
+sha3
+hex
+Test dependency: tempfile
+
+The journal stores public payment evidence and signed transaction bytes, never
+private keys, vault keys or recovery phrases. SQLite WAL uses synchronous=FULL
+and fullfsync on supported platforms. The native application must store the
+database, WAL and SHM together in its protected application directory, excluded
+from cloud backup. A returned signed journal record is the broadcast boundary.
+
+The native feature owns SQLite and UniFFI. The WASM build excludes them and
+exposes the same pure signature/preparation/receipt validation in validation.rs.
+Each v2 database is bound to one (chain_id, address). v1 testnet journals are
+preserved and rejected, never silently repurposed for mainnet.

@@ -1,0 +1,41 @@
+{
+  "name": "local-wallet-private-engine",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Offline local RAILGUN note engine, proof generation and restricted provider verifier",
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "inspect": "node scripts/inspect-sdk.mjs",
+    "build": "node scripts/build-browser.mjs",
+    "test:browser": "node scripts/test-browser.mjs",
+    "test:bundle": "node scripts/test-bundle.mjs",
+    "test:bundle:protocol": "node scripts/test-bundle-protocol.mjs",
+    "test:protocol": "node scripts/test-protocol.mjs",
+    "qualify:artifacts": "node scripts/qualify-artifacts.mjs"
+  },
+  "dependencies": {
+    "@noble/hashes": "1.8.0",
+    "@railgun-community/circomlibjs": "file:vendor/railgun-community-circomlibjs-0.0.8.tgz",
+    "@railgun-community/engine": "9.9.1",
+    "browserify-aes": "1.2.0",
+    "ethers": "6.17.0",
+    "snarkjs": "0.7.6"
+  },
+  "overrides": {
+    "@railgun-community/circomlibjs": "$@railgun-community/circomlibjs",
+    "ethers": "$ethers",
+    "underscore": "1.13.8",
+    "bn.js@^4.0.0": "4.12.3",
+    "bn.js@4.11.6": "4.12.3"
+  },
+  "devDependencies": {
+    "assert": "2.1.0",
+    "buffer": "6.0.3",
+    "esbuild": "0.25.12",
+    "events": "3.3.0",
+    "playwright-core": "1.56.1",
+    "process": "0.11.10",
+    "stream-browserify": "3.0.0"
+  }
+}

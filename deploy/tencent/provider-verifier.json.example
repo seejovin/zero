@@ -1,0 +1,15 @@
+{
+  "verifier_digest": "<exact 0x-prefixed digest from the reviewed private domain>",
+  "circuits": {
+    "01x03": {
+      "vkey": {
+        "path": "artifacts/01x03.vkey.json",
+        "sha256": "<64 lowercase hexadecimal characters from qualified-circuits.json>"
+      }
+    }
+  },
+  "fee_recipient_address": "<provider-owned reviewed 0zk address>",
+  "fee_viewing_private_key_hex": "<provider-only 32-byte viewing key as 64 lowercase hex characters>",
+  "additional_native_fee_cap_wei": "0",
+  "artifact_directory": "/opt/zero-gas"
+}

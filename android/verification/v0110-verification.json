@@ -1,0 +1,180 @@
+{
+  "captured_at_utc": "2026-11-06T09:34:18.771333+00:00",
+  "source_baseline_commit": "9645b22514c0edc2a9b7c56778b097be1785774c",
+  "candidate": {
+    "android_version_name": "0.11.0-mainnet",
+    "android_version_code": 14,
+    "private_transfers_enabled": false,
+    "protocol": "railgun-v2-candidate",
+    "private_candidate_chain_id": 42161,
+    "private_candidate_asset": "USDC"
+  },
+  "delivered_apk": {
+    "changed": false,
+    "latest_verified_version": "0.8.0-mainnet",
+    "manifest": "docs/APK_MANIFEST.json"
+  },
+  "web_changed_or_deployed": false,
+  "executed_checks": {
+    "rust_workspace": {
+      "passed": 183,
+      "failed": 0,
+      "ignored": 0,
+      "new_tests": 59,
+      "log": "v0110-rust-tests.log"
+    },
+    "rust_format": {
+      "passed": true,
+      "log": "v0110-format.log"
+    },
+    "rust_check": {
+      "passed": true,
+      "log": "v0110-check.log"
+    },
+    "rust_clippy": {
+      "passed": true,
+      "warnings_denied": true,
+      "log": "v0110-clippy.log"
+    },
+    "ethers_differential": {
+      "passed_cases": 36,
+      "log": "v0110-ethers.log"
+    },
+    "solana_differential": {
+      "passed_cases": 5,
+      "log": "v0110-solana.log"
+    },
+    "native_library_and_bindings": {
+      "host_profile": "debug",
+      "host_target": "x86_64-unknown-linux-gnu",
+      "built": true,
+      "kotlin_generated": true,
+      "python_generated": true,
+      "kotlin_compiled": false,
+      "logs": [
+        "v0110-host-build.log",
+        "v0110-bindings.log"
+      ],
+      "library_sha256": "d91959f5575bbdc82ffcd37c48553c697bd20ca3927b2a987933cac5976b34e5"
+    },
+    "public_uniffi": {
+      "evm_cases": 18,
+      "solana_tron_cases": 7,
+      "logs": [
+        "v0110-bridge.log",
+        "v0110-family-bridge.log"
+      ]
+    },
+    "private_uniffi": {
+      "kind": "actual generated UniFFI private bridge",
+      "passed": true,
+      "rejection_checks": 17,
+      "encrypted_journal_reopened": true,
+      "ohttp_ciphertext_generated": true,
+      "single_use_context_checked": true,
+      "valid_zk_proof_tested": false,
+      "network_requests": 0,
+      "user_wallets_accessed": 0,
+      "log": "v0110-private-bridge.log"
+    },
+    "sdk_qualification": {
+      "passed_tests": 4,
+      "real_sdk_imported": true,
+      "valid_protocol_proof_verified": false,
+      "logs": [
+        "v0110-sdk-tests.log",
+        "v0110-sdk-inspection.json"
+      ]
+    },
+    "rustsec": {
+      "exit_code": 0,
+      "vulnerabilities": 0,
+      "database": {
+        "advisory-count": 1409,
+        "last-commit": "26fd2d43f7280a1fb925a3743ec463017afe7119",
+        "last-updated": "2026-11-05T09:50:49+01:00"
+      },
+      "maintenance_warnings": [
+        "basic-toml",
+        "bincode"
+      ],
+      "report": "v0110-cargo-audit.json"
+    },
+    "privacy_sdk_audit": {
+      "exit_code": 1,
+      "passed": false,
+      "advisory_entries": {
+        "info": 0,
+        "low": 16,
+        "moderate": 28,
+        "high": 42,
+        "critical": 3,
+        "total": 89
+      },
+      "report": "../../privacy-engine/qualification-audit.json"
+    },
+    "gas_service_diagnostics": {
+      "ran": true,
+      "production_sponsorship_enabled": false,
+      "report": "v0110-gas-capabilities.json"
+    }
+  },
+  "android_tests": {
+    "new_authored": 26,
+    "executed": 0
+  },
+  "not_executed": [
+    "Android SDK/NDK builds",
+    "Kotlin/Gradle compilation, unit tests, lint and assembly",
+    "APK alignment, signing and upgrade installation",
+    "Physical-device tests",
+    "Real local private proof generation and recovery",
+    "Valid candidate proof verification against reviewed deployed circuit/artifact pins",
+    "Fee ciphertext decryption/binding",
+    "Live OHTTP relay/gateway integration",
+    "Live operator signer, nonce/chain/treasury integration",
+    "Any mainnet private transfer or user-funded transaction",
+    "Independent security audit"
+  ],
+  "build_blocker": {
+    "kind": "prior_automatic_approval_rejection",
+    "actions": [
+      "Android SDK/NDK downloads",
+      "Gradle distribution download",
+      "JDK archive download"
+    ],
+    "prior_evidence": "v090-build-environment.json",
+    "bypass_attempted": false
+  },
+  "remaining_release_gates": [
+    "SDK dependency remediation/review",
+    "Protocol deployment, verifier and circuit pins",
+    "Android private engine, note discovery, witness/prover and ciphertext/fee verification",
+    "Recovery of unresolved released operations; seed + chain rescan alone is insufficient",
+    "Independent relay and authenticated shared configuration",
+    "Operated gateway API and restricted treasury signer",
+    "Canonical chain and fee/nonce/solvency adapters",
+    "Android release build and device acceptance",
+    "Independent security review"
+  ],
+  "user_wallets_accessed": 0,
+  "real_transactions_broadcast": 0,
+  "evidence_sha256": {
+    "v0110-bindings.log": "7c6d8ad827b5acb35b0e941c011173d5d4e50b9e68e05f3974372033e8f3431c",
+    "v0110-bridge.log": "62338663a699821603c4c09fee96ec53836cb00a9729390ce9934aac4b3df3bc",
+    "v0110-cargo-audit.json": "cadd1de17f0f3a35ae2a3faa8b2a9bc87bad099a5c4864c65c6dd8d9be6c0cf0",
+    "v0110-cargo-audit.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "v0110-check.log": "3bbfef5454cc5eb9b92c72c273eab9b98b2b825a0be7b15ae34cd51daca4211d",
+    "v0110-clippy.log": "3f800c479e1b3839610bc8b6de04e9985c65359118b92c8ee9204198006f1f58",
+    "v0110-ethers.log": "58d4762d8ac8031b780257a10c6fcd3afa8d0838912c281d9079c455c10b7785",
+    "v0110-family-bridge.log": "6da85bbcff552777d8a04d3a7569765d73fe11d72a6ec1ea6674eb06a1f5f65f",
+    "v0110-format.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "v0110-gas-capabilities.json": "d6099d43961474cc18500b9f32bf679436d77064ca5b7a6762579e13fa4ee15e",
+    "v0110-host-build.log": "eb66654bfad7946d4dc788c5d041e9532bf69c92eb04cc8c54a0feb8c48b7fdd",
+    "v0110-private-bridge.log": "8b3b209b844583d163bb5d95b1e1efad8b306f16a93a6ed4546ad85d1463b25a",
+    "v0110-rust-tests.log": "74229e31c50cb8f4a3c7cc267a11be1f85efa02300b6b883221e464e90536ece",
+    "v0110-sdk-inspection.json": "fc30289571159dd06eedcbf644b3d4ad1652acc2b94d80aa0c4f44ca49b7f416",
+    "v0110-sdk-tests.log": "f9fa7983610ce3b1b900a96aa5faa56bab7bc49553bec09eb85bde58293a47f6",
+    "v0110-solana.log": "5cbfb73d5844285e9362f4e31597e0ffc89e146aca2e0c28f7c4a7bd834c5a5c"
+  }
+}

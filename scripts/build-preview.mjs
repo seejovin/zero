@@ -1,0 +1,16 @@
+import { readFile, writeFile, mkdir, copyFile } from "node:fs/promises";
+import { fileURLToPath } from "node:url";
+import { resolve } from "node:path";
+import { build } from "../web/node_modules/esbuild/lib/main.js";
+const root = fileURLToPath(new URL("../", import.meta.url));
+const output = resolve(root, "web/preview-dist");
+await mkdir(output, { recursive: true });
+await build({ entryPoints: [resolve(root, "web/dev/preview.ts")], outfile: resolve(output, "preview.js"), bundle: true, format: "esm", platform: "browser", target: "es2022" });
+const script = await readFile(resolve(output, "preview.js"), "utf8");
+if (/wallet_core|IndexedDB|argon2|core-worker|\/api\/rpc/.test(script)) throw new Error("The presentation preview must not contain wallet execution code.");
+await copyFile(resolve(root, "web/public/styles.css"), resolve(output, "styles.css"));
+await writeFile(resolve(output, "screen.html"), '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Local Wallet · Isolated interface preview</title><link rel="stylesheet" href="styles.css"><script type="module" src="preview.js"></script></head><body><div id="preview"></div></body></html>');
+await writeFile(resolve(output, "index.html"), '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Local Wallet · UI verification</title><link rel="stylesheet" href="frame.css"><script src="frame.js" defer></script></head><body><header><strong>INTERFACE REVIEW · SYNTHETIC VALUES · NO WALLET</strong><nav><button data-width="100%">Desktop</button><button data-width="390px">Phone</button><button data-width="320px">Small phone</button></nav></header><iframe title="Wallet interface preview" src="screen.html"></iframe></body></html>');
+await writeFile(resolve(output, "frame.css"), 'body{margin:0;background:#dfe3e8;font:13px system-ui;color:#fff}header{background:#182331;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 20px}header strong{font-size:11px;letter-spacing:.06em}nav{display:flex;gap:8px}button{padding:7px 12px;border:1px solid #8d99aa;border-radius:5px;background:transparent;color:#fff;cursor:pointer}iframe{display:block;border:0;width:100%;height:calc(100vh - 55px);margin:auto;background:white}');
+await writeFile(resolve(output, "frame.js"), 'for(const b of document.querySelectorAll("button[data-width]"))b.addEventListener("click",()=>{document.querySelector("iframe").style.width=b.dataset.width;});');
+console.log(`Built isolated visual review at ${output}`);

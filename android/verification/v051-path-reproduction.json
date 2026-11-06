@@ -1,0 +1,38 @@
+{
+  "recorded_at": "2026-11-05T13:59:47.354451+00:00",
+  "version_under_investigation": "0.5.0-mainnet",
+  "runtime": "Existing compiled Android Kotlin repository and UniFFI bindings, unchanged host Rust library, Linux JVM; temporary synthetic Android-style directory layout",
+  "host_core_sha256": "88eddbda6d2c3c1984e923dcf0da048fba32f1d3c2c93afb062026ebf75246cf",
+  "fixture": "Framework-like data/user/0 symlink to data/data; real app/no_backup/wallet-v1 directory; public synthetic journal records only",
+  "checks": [
+    {
+      "operation": "Unchanged WalletRepository.cachedBalance through a symlinked framework parent",
+      "result": "WalletException.Storage",
+      "reason": "A durable journal operation failed; no unrecorded transaction may be broadcast"
+    },
+    {
+      "operation": "Same repository with only the journal parent resolved to its canonical path",
+      "result": "Empty journal opens; cachedBalance is null"
+    },
+    {
+      "operation": "Save a synthetic 10000-unit USDC observation; reopen same canonical directory through WalletRepository",
+      "result": "Same saved 10000-unit observation is returned"
+    },
+    {
+      "operation": "Open a symlinked database filename under the canonical parent",
+      "result": "WalletException.InvalidInput",
+      "reason": "Journal path must be a regular file"
+    }
+  ],
+  "confirmed_code_effects": [
+    "Startup cachedBalance opens the journal before the initial RPC refresh",
+    "Refresh obtains network balances before saving a durable observation; any failure was rendered as a connection failure",
+    "Native Android RPC providers are fixed public HTTPS endpoints; web hosting is not on this request path"
+  ],
+  "device_filesystem_observed": false,
+  "scope_limit": "This reproduces a concrete platform-path compatibility defect and the diagnostic masking bug. It does not inspect or prove the exact filesystem layout of the reported physical device.",
+  "source_changes_during_reproduction": false,
+  "network_requests": 0,
+  "signatures_created": 0,
+  "funds_sent": false
+}

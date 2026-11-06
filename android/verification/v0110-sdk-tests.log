@@ -1,0 +1,17 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> local-wallet-private-engine-qualification@0.1.0 test
+> node --test test/*.test.mjs
+
+✔ real SDK ABI yields exact typed envelope fields without claiming proof validity (17.562632ms)
+✔ rejects unshield, external calls, wrong network, native value and ambiguous encoding (48.136868ms)
+✔ requires trusted exact artifact bytes and refuses missing or unrelated verification keys (6.224177ms)
+✔ production gate cannot be enabled by an environment variable (0.201925ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 873.925407

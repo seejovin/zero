@@ -1,0 +1,1 @@
+Solana differential checks passed: 5 public offline vectors; independent derivation, ATA, instructions, message, wire bytes and Ed25519 signatures.

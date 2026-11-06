@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ZeroBaseTheme" parent="android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:fontFamily">sans</item>
+        <item name="android:forceDarkAllowed">false</item>
+        <item name="android:colorAccent">#3F6E17</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:statusBarColor">@color/zero_background</item>
+        <item name="android:navigationBarColor">@color/zero_background</item>
+        <item name="android:windowLightNavigationBar">true</item>
+        <item name="android:windowBackground">@color/zero_background</item>
+        <item name="android:colorBackground">@color/zero_background</item>
+        <item name="android:textColorPrimary">@color/zero_ink</item>
+        <item name="android:textColorSecondary">#68736C</item>
+        <item name="android:windowActionModeOverlay">true</item>
+    </style>
+    <style name="AppTheme" parent="ZeroBaseTheme" />
+</resources>

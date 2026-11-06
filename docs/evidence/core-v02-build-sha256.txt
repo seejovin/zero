@@ -1,0 +1,3 @@
+d1b7a161b37ef66aa35a689a545fb276955af272faa5c525222dfe0d31a0e4a5  build/wasm/wallet_core.js
+5c6be735c7d80b9a39fbb9b16d681e77fcb1236ec46baebde97037129d5440ad  build/wasm/wallet_core_bg.wasm
+5ff519e034f9fe2e850285128476e3f4ab3cda9f27c81adeaa092ee0990a3511  target/release/libwallet_core.so

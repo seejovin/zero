@@ -1,0 +1,73 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> local-wallet-web@0.4.0 test
+> node --import tsx --test tests/*.test.ts
+
+✔ the v0.2 database migration preserves the exact vault, signature, nonce reservation and events (67.88065ms)
+✔ incoming observations are idempotent, reloadable and always backed by shared WASM validation (8.294506ms)
+✔ many matching events cannot multiply a bounded RPC proof into unbounded local writes (5.338927ms)
+✔ a later receipt cannot add or remove financial events at an unchanged transaction block (3.813961ms)
+✔ activity re-inclusion requires explicit canonical contradiction, and finality is monotonic (8.922681ms)
+✔ a finalized contradiction remains an incident even when a replacement changes log ordinal (4.973728ms)
+✔ manual lookup distinguishes received, pending, absent, unrelated and reverted without losing history (8.739977ms)
+✔ lookup rejects another hash or a canonical block change and never relabels read failure as transfer failure (1.703254ms)
+✔ recent token scan persists 0.01 receipt evidence, reports partial history and keeps unresolved candidates retryable (4.007293ms)
+✔ an uncertain broadcast preserves exactly one signed payment and never invents failure (67.013064ms)
+✔ locking during the last chain check prevents broadcast of the saved signature (21.885475ms)
+✔ retry submits identical saved bytes without signing again (18.812651ms)
+✔ a canonical receipt that changes after finalized lookup is not accepted (14.228558ms)
+✔ conflicting new receipt cannot erase a still-canonical earlier receipt (29.933271ms)
+✔ a temporarily missing receipt does not erase canonical inclusion (32.905018ms)
+✔ a wallet cannot silently overwrite an existing encrypted vault (19.267204ms)
+✔ concurrent intents cannot reserve two payments on one account/network (12.178874ms)
+✔ Ethereum and Base nonces are separate, and unchanged intent retries are idempotent (16.520013ms)
+✔ unsigned cancellation releases a nonce; a signature never does (21.96489ms)
+✔ signed bytes survive reopen and later uncertain retries do not downgrade acknowledgement (12.937365ms)
+✔ storage abort after a request success rolls back signature and prevents any broadcast (10.776472ms)
+✔ receipt evidence is revalidated, finality is monotonic, actual Base fee is retained (28.50418ms)
+✔ stored receipt projection corruption is detected on reload (29.393368ms)
+✔ failed execution preserves charged gas; successful receipt missing expected transfer remains unresolved (47.419694ms)
+✔ reorgs append evidence and retain signed bytes; lost finality blocks sending (19.541107ms)
+✔ older repeated balances cannot become latest and conflicts at one block are rejected (1.544625ms)
+✔ RPC rejects a wrong chain, wrong response id, duplicate receipt fields, and oversized body (17.911955ms)
+✔ RPC rejects an oversized streaming response even without a content length (18.561111ms)
+✔ only approved endpoints and methods are available (0.4124ms)
+✔ Base quote includes upper-bound L1/operator estimates and exact calldata (18.831048ms)
+✔ Base actual operator fee is queried at the receipt block and mismatches/missing L1 fee fail (23.176609ms)
+✔ Base submission uses the sequencer and validates the returned transaction hash (11.304387ms)
+✔ strict JSON preserves valid JSON semantics and safely treats prototype-like names (3.578111ms)
+✔ conflicting receipt fields and escaped duplicate keys are rejected before normalization (2.211039ms)
+✔ malformed syntax, excessive depth/nodes, and unsafe JSON numbers fail closed (92.617873ms)
+✔ a relay 503 permits complete balance reads from a chain-checked fixed provider (14.868022ms)
+✔ only explicit temporary HTTP statuses authorize relay read fallback (14.627158ms)
+✔ auth failures, invalid evidence, RPC rejection and ambiguous fetch errors cannot trigger relay bypass (3.720882ms)
+✔ caller cancellation overrides a simultaneous relay 503 without starting direct reads (1.26197ms)
+✔ relay cooldown coalesces concurrent clients, expires once, and stays isolated by chain (5.429103ms)
+✔ disqualifying relay evidence invalidates cooldown and defeats stale concurrent availability or success (9.892011ms)
+✔ a cancelled concurrent relay request does not invalidate an independently observed outage (2.448906ms)
+✔ cancelling the shared probe owner lets another reader retry the relay without direct fallback (0.788848ms)
+✔ relay fallback never consumes a wrong-chain direct provider's balance (0.85643ms)
+✔ successful direct read fallback never changes the single configured submission path (20.352879ms)
+✔ direct fallback uses direct request deadlines while explicit timeout overrides remain honored (1.403413ms)
+✔ browser default fetch is invoked without a transport receiver for RPC reads (0.541836ms)
+✔ browser activity discovery is invoked without a transport receiver and preserves request policy (0.748787ms)
+✔ browser relay POST retains a matching Origin with no-referrer (5.55322ms)
+✔ read failover verifies each fixed endpoint's chain before using its values (0.648736ms)
+✔ a wrong-chain primary never supplies the balance and falls back to a verified endpoint (0.400383ms)
+✔ read failures are availability errors, never unknown financial outcomes or zero balances (0.540223ms)
+✔ relay mode retains same-origin gate credentials and never falls back direct after an uncertain send (7.768665ms)
+✔ direct broadcast uses a single sequencer attempt and does not query read fallbacks (6.764402ms)
+✔ read-only preview remains available without ETH but prepare still rejects the unsimulated transfer (3.612458ms)
+✔ a cancelled draft preview performs no reads and never manufactures a fee on unavailable networks (0.353392ms)
+✔ amount parsing uses exact integers and round-trips all supported decimals (1.450033ms)
+✔ ambiguous, negative, overprecise, nonfinite, and overflowing amounts are rejected (1.490043ms)
+✔ RPC quantities must use canonical hexadecimal encoding (5.538988ms)
+✔ account reservation and receive URI are network-specific (0.476697ms)
+ℹ tests 60
+ℹ suites 0
+ℹ pass 60
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 642.092302

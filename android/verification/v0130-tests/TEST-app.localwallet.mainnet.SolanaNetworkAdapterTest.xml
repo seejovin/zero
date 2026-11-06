@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="app.localwallet.mainnet.SolanaNetworkAdapterTest" tests="9" skipped="0" failures="0" errors="0" timestamp="2026-11-06T15:28:17" hostname="34d710c0c368" time="0.059">
+  <properties/>
+  <testcase name="insufficientSolStillDisplaysRealTokenFeeAndRent" classname="app.localwallet.mainnet.SolanaNetworkAdapterTest" time="0.014"/>
+  <testcase name="timedOutBroadcastIsAttemptedExactlyOnce" classname="app.localwallet.mainnet.SolanaNetworkAdapterTest" time="0.01"/>
+  <testcase name="failedSimulationAndChangedFeeNeverReachSigning" classname="app.localwallet.mainnet.SolanaNetworkAdapterTest" time="0.014"/>
+  <testcase name="freshConfirmedBlockhashDoesNotWaitForFinalizedBank" classname="app.localwallet.mainnet.SolanaNetworkAdapterTest" time="0.005"/>
+  <testcase name="exactMaximumKeepsEveryLamportAndTokenUnit" classname="app.localwallet.mainnet.SolanaNetworkAdapterTest" time="0.008"/>
+  <testcase name="countersFitSignedLongWithoutWrappingUnsignedAmounts" classname="app.localwallet.mainnet.SolanaNetworkAdapterTest" time="0.001"/>
+  <testcase name="balanceReadsCanonicalAssetsAtOneBankContext" classname="app.localwallet.mainnet.SolanaNetworkAdapterTest" time="0.003"/>
+  <testcase name="wrongGenesisOrDecimalsNeverBecomeZeroBalances" classname="app.localwallet.mainnet.SolanaNetworkAdapterTest" time="0.003"/>
+  <testcase name="allocationNeverDropsDustOrTreatsFrozenFundsAsSpendable" classname="app.localwallet.mainnet.SolanaNetworkAdapterTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "checked_at_utc": "2026-11-06T05:41:32.242291+00:00",
+  "candidate": {
+    "version_name": "0.9.0-mainnet",
+    "version_code": 12,
+    "application_id": "app.localwallet.mainnet",
+    "status": "host_verified_source_candidate_android_release_blocked"
+  },
+  "artifact": null,
+  "passed": {
+    "rust_format": {
+      "command": "cargo fmt --all -- --check",
+      "log": "v090-rust-format.log"
+    },
+    "rust_tests": {
+      "command": "cargo test --locked --all-targets",
+      "passed": 71,
+      "failed": 0,
+      "ignored": 0,
+      "groups": {
+        "lib": 7,
+        "activity_validation": 8,
+        "crypto_policy": 19,
+        "journal_correctness": 21,
+        "mainnet_policy": 16
+      },
+      "log": "v090-rust-tests.log"
+    },
+    "rust_clippy": {
+      "command": "cargo clippy --locked --all-targets -- -D warnings",
+      "log": "v090-rust-clippy.log"
+    },
+    "independent_ethers_differential": {
+      "fixtures": 20,
+      "chain_ids": [
+        1,
+        8453,
+        10,
+        42161
+      ],
+      "checks": [
+        "derivation",
+        "exact amount units",
+        "fee arithmetic",
+        "unsigned encoding",
+        "deterministic signature",
+        "recovered sender",
+        "transaction hash"
+      ],
+      "log": "v090-differential.log"
+    },
+    "host_release_and_bindings": {
+      "rust": "1.99.1",
+      "host": "x86_64-unknown-linux-gnu",
+      "kotlin_generated": true,
+      "python_generated": true,
+      "host_library_sha256": "59acf69e23189242e3b04d2145c90fbc22364b6e79b17490874936fc834e5ab8",
+      "generated_kotlin_sha256": "0fca0acfb39c5407226737f30ac6b73a34f56536f0172298f5aa558b71788dfb",
+      "log": "v090-host-build-bindings.log"
+    },
+    "actual_generated_host_ffi": {
+      "fixtures": 10,
+      "chain_ids": [
+        1,
+        8453,
+        10,
+        42161
+      ],
+      "checks": [
+        "vault authentication with public development fixture",
+        "ETH and every supported Circle token on each chain",
+        "exact units and network contract identity",
+        "OP Stack execution/L1/operator fees",
+        "Arbitrum gas charge counted once",
+        "missing or inappropriate fee evidence rejected",
+        "per-network journals reopened through unknown and finalized states",
+        "signed bytes preserved across reopen",
+        "duplicate receipt is idempotent",
+        "unsupported EURC and all four testnets rejected"
+      ],
+      "log": "v090-host-ffi.log"
+    }
+  },
+  "not_run": [
+    "Android ARM64 and x86_64 native compilation",
+    "Android/Kotlin release compilation",
+    "Gradle :app:testReleaseUnitTest",
+    "Gradle :app:lintRelease",
+    "Gradle :app:assembleRelease",
+    "APK alignment, signing and signature verification",
+    "Physical-device or emulator checks",
+    "Live mainnet transfer"
+  ],
+  "warnings": [
+    "Kotlin bindings generated successfully; optional ktlint auto-formatting was unavailable. This does not establish Kotlin compilation success."
+  ],
+  "blocker_evidence": "v090-build-environment.json",
+  "host_core_inputs_sha256": "fad651fe7ab79375f4ad597fed01d5c8703cac9a57e77f8821a30500af9f961c",
+  "host_ffi_check_sha256": "35f0eb4c732c03d8a489176cec405f06009843eb19feb084726f85aab7238994",
+  "independent_differential_check_sha256": "134f277a597ef16053f2703a0271e0a219b9391b9a4c665305b53be69f950749",
+  "preserved": [
+    "0.8.0 APK and its manifest unchanged",
+    "App-signing backup unopened",
+    "No prior Android native library reused as the candidate release"
+  ],
+  "scope_note": "Host verification uses offline public fixtures. It is not Android JVM/device verification or independent security audit. No RPC transaction broadcast and no user recovery phrase/private key were used."
+}

@@ -1,0 +1,182 @@
+{
+  "schema_version": 1,
+  "recorded_at_utc": "2026-11-06T15:18:09.855582+00:00",
+  "release_candidate": "0.13.0-mainnet",
+  "source_base_commit": "e533606b7d9fce9a8fd7408462cbcdfb61726366",
+  "head_at_verification_record": "e533606b7d9fce9a8fd7408462cbcdfb61726366",
+  "working_tree_context": {
+    "description": "Recovered 0.13.0 working tree with daily shared-fee deadline and historical-token-absence fixes. This record covers private engine/core/service/transport host verification; Android release evidence is separate.",
+    "private_component_changes_from_base": [
+      "core/src/private_fee_schedule.rs",
+      "core/src/private_payment.rs",
+      "core/tests/private_payment.rs",
+      "gas-service/src/fee_schedule.rs",
+      "gas-service/src/model.rs",
+      "gas-service/src/rpc.rs",
+      "gas-service/src/rpc_tests.rs",
+      "gas-service/src/runtime_tests.rs"
+    ]
+  },
+  "executed": {
+    "rust_workspace": {
+      "command": "cargo test --locked --offline --workspace --all-targets",
+      "environment": "Existing wallet-build-env.sh, with Node retained on PATH",
+      "passed": 256,
+      "failed": 0,
+      "ignored": 0,
+      "gas_service_tests_included": 63,
+      "privacy_transport_tests_included": 5,
+      "log": "v0130-private-rust-tests.log"
+    },
+    "javascript_engine": {
+      "command": "npm test",
+      "working_directory": "privacy-engine",
+      "passed": 40,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "log": "v0130-private-engine-tests.log"
+    },
+    "provider_subprocess": {
+      "included_in_rust_workspace": true,
+      "actual_node_verifier_genuine_unfunded_proof_and_fee_tampering": true,
+      "mainnet_broadcast": false
+    },
+    "rust_format_check": {
+      "command": "cargo fmt --all -- --check",
+      "passed": true
+    }
+  },
+  "logs": [
+    {
+      "file": "v0130-private-rust-tests.log",
+      "sha256": "7cfd31cad3d4e6e5258a5cb726cc801a585949cbc56b49b28452d42c515f61c8",
+      "bytes": 24281
+    },
+    {
+      "file": "v0130-private-engine-tests.log",
+      "sha256": "a43dabeed90bee2523b750cb9d1eda962b73d3ccc8bc9bf01322f070662d4840",
+      "bytes": 4402
+    },
+    {
+      "file": "v0130-private-browser.log",
+      "sha256": "e47090979b52ebea3d55bbff666eeae38cfebd9803b350bd01b31aeada90b29f",
+      "bytes": 4658
+    }
+  ],
+  "release_gates": {
+    "private_production_enabled": false,
+    "funds_spent": false,
+    "gate_bypass_added": false
+  },
+  "not_executed_by_this_verification": [
+    "Android Kotlin/JVM compilation or tests, lint, ABI build, signing, installation or device acceptance",
+    "Actual Android WebView or Chromium CSP, lifecycle, memory and proving performance",
+    "Current or historical live pool/token/proxy/verifier qualification",
+    "Operated independent relay/gateway and production key provisioning",
+    "Funded mainnet private transfer or recovery",
+    "Independent security audit or complete binary-distribution review"
+  ],
+  "deployment_qualification_observation": {
+    "verified_source_behavior": "An explicitly reviewed historical prefix may authenticate exact empty token code with the empty-code Keccak pin and two-provider agreement. Pool, implementation and storage pins remain mandatory. Current profiles, admission, quotes and treasury checks still require current nonempty token code.",
+    "source_policy_changed": true,
+    "regression_checks": [
+      "Exact token deployment boundary selects token-present epoch",
+      "Provider disagreement, unexpected token code and wrong pool code reject",
+      "Token absence cannot reappear after deployment",
+      "Missing current token code rejects pool checks, admission, quote and treasury anchoring",
+      "Top-level token-absence bypass is rejected",
+      "Shared fee deadlines up to exactly 86400 seconds bind service, wallet intent and approval; expired, backwards and oversized intervals reject"
+    ],
+    "unverified_condition": "Actual pool/token upgrade history and current deployment/verifier pins remain unqualified. No mainnet interval was invented."
+  },
+  "attempted_not_executed": {
+    "chromium_runtime": {
+      "command": "npm run test:browser",
+      "result": "blocked before wallet/browser assertions",
+      "reason": "Chromium singleton socket() denied by execution environment: Operation not permitted",
+      "log": "v0130-private-browser.log",
+      "android_webview_tested": false
+    }
+  },
+  "verified_source_sha256": {
+    "Cargo.lock": "ae057f3b53fea86d1ceb292d7ff44dbfd21017c41531ebf7f0871ae713c08b4a",
+    "Cargo.toml": "0d495b7b6f19666603fbe73c385537e3393ef4a6ae25650b67e2b40b0343ae88",
+    "core/Cargo.toml": "dfc6801f131faed21344223966e9e07a5883eab553621f634283e0dd0e07dd15",
+    "core/src/activity.rs": "d07857b9d59606e390514523a3b80516ead41c77ff7a6417e24b641eb9f9d449",
+    "core/src/bin/uniffi-bindgen.rs": "f7a2dd11fb370e9595bdfa6c32fc41a9b67a60bbab06ec711cb7a03eb873ffa6",
+    "core/src/crypto.rs": "b640b434c53a824894391c151247b5c1801115386ea3cb7f627d942dcdb30dab",
+    "core/src/family_journal.rs": "f3a6337d9334a1fc51672bd48966929853127dc8c44930681fc14e13940743b7",
+    "core/src/journal.rs": "20051c407de38fcfb134303d6052b75d8bb87cd2f03b54fc22173b1afc0dd1b7",
+    "core/src/lib.rs": "2268c46d63aa47931d827c869c4000e3321c833cd344d26e30eaa78d7d0a0eb7",
+    "core/src/private_bridge.rs": "d01239283785f78ebaed92666e04509b2cf3b503c51cad77ea275b5e7220c65a",
+    "core/src/private_engine_keys.rs": "55084400dc631de52ffcfd04046ba2d4c2d457a13f83018c62d885d39ca09ee6",
+    "core/src/private_fee_schedule.rs": "01f79db4d09a9fdc95351a4e347e7577f1da6d045c5ed3da124320e79635590c",
+    "core/src/private_journal.rs": "0b63a51e239986500d48a788eb3b7597972a3b9cd5e2323b4fb2c3b70849d972",
+    "core/src/private_payment.rs": "2a8eac7806d532be5f2653e1bb875d3ccf9d236919a8051d086e4a9c06d46852",
+    "core/src/private_pool.rs": "3a89b7bb0b50ea719579cb3105243620f7642286834cfa556ad2272fb5e42ae4",
+    "core/src/private_recovery.rs": "273b75e25441a4c209759f7bd97c6422619e2e5a5129c90a214198094aad1ad6",
+    "core/src/private_recovery_bridge.rs": "cf8d01ccac3039fb7d7091aa636653cb84a1594c4a3ba5e429ab29f55d64e7ee",
+    "core/src/solana.rs": "8560d16f494beeeb8902fd2cd0471e0f7002b272e9d99de24eb8e0e18697e498",
+    "core/src/tron.rs": "6e06ffcc696652c0f81a3d9cb6d3aaddec716b89ab8b1e292ceb2abf4067ac7b",
+    "core/src/validation.rs": "3922d8dea30507f0436ad5123bf4f3bfe9e94a307af5bbca296e556944fc2bb8",
+    "core/src/wasm.rs": "082e8788b44c341957786591fad5f61e35a2c8812ccd70af8e59a2a774c3ab0d",
+    "core/tests/activity_validation.rs": "b43ec20f32bb01af2e434cf819e09cdca25837f42161073ca41c495e20c059bf",
+    "core/tests/crypto_policy.rs": "97257891d6c5fbabe3bd6d69f2dbfbb1c7ef5890fb3a1c02cf38711ae02ce731",
+    "core/tests/family_journal.rs": "fe68e4965afc55f53a69932f9530ee192df5942e3e801706430f75e509d4bb17",
+    "core/tests/fixtures/journal_schema_v2.sql": "365b1ec5ed8a88c8607c1a7ed26df8dcf7b39b37b3ff307252ab95d56e5cc703",
+    "core/tests/fixtures/journal_schema_v3.sql": "ef49e3e6abacd5fcc3a8da7f117b458df292c2bbbccaaec3d970a5b8b8a1f282",
+    "core/tests/journal_correctness.rs": "60084bcf450910d1519e9adb3b7005845b41bdc409b219d671c58a60afdade3e",
+    "core/tests/mainnet_policy.rs": "a5003782a4687e1758851051496587b12488442ac67d9d6a3df744e9eec16494",
+    "core/tests/private_journal.rs": "db2af8e177875315d730010055435e5cf338894620acf845042924b1926148c4",
+    "core/tests/private_payment.rs": "9ab3e3fec0fe3ee81e7e97c6f654112b9527d6a645bf64b09aa449d2b42256cb",
+    "core/tests/private_recovery.rs": "3cc0dc209eaa746c88e57170562a6f5f52c3567e80648d924ba85b194f790180",
+    "core/tests/solana_policy.rs": "5b7af32d6633eda3b946243319dd054ab03db1f05d96764580892ae3322a8b26",
+    "core/tests/tron_policy.rs": "7edad88a720269b2776d7b5ab8750a40e0532e0b7f6d25dbda236cb897104931",
+    "core/tests/wasm_bridge.mjs": "6be8cd859deb159175a440301e25b7c4af4e75975acdda95987220b35f8cd28b",
+    "gas-service/Cargo.toml": "85255a0f47a7c0352d8fe0d696896179a9d0786c7b582d5f12bcd0c8e774f44e",
+    "gas-service/src/fee_schedule.rs": "7f16cbfde7416e69f6dcfe7ad00b74a3a2698c7464817f6f8d38ea749f5347d7",
+    "gas-service/src/gateway.rs": "9db0fa11f13acca13ebed90f4b78c2f80632a1a1f215015708a0c6ca14ee8751",
+    "gas-service/src/lib.rs": "b0acc70efcdc510c83502ca63332b19e14d82e3a62752827006d66dd1b5d0ec7",
+    "gas-service/src/main.rs": "a59c2b9502334fdc1cee7495c6dd859c4224cf5da071c7b0d81b7b3e2ec6edff",
+    "gas-service/src/model.rs": "3d64c6e23ad9d11cbb3db066b74ca12c28762de047d8090addb59b10d9e1e8e9",
+    "gas-service/src/proof_process.rs": "2b8ca8a8851f0900e6f57965cba68ab49cdafa9282d434f31a751cda4167a68c",
+    "gas-service/src/relay.rs": "2557ecd2bdb7d5f601b4963b892c4762c79581837cef1da9d4792a61d66e91ed",
+    "gas-service/src/relay_main.rs": "aa78e01958668d1a77cd0c84ada5863a175c44590109ac841d73d39b38e7af78",
+    "gas-service/src/rpc.rs": "1cc0b0b8334cae47e2a96dc61b398b796708d1e70aae62c1513a25529a397f7d",
+    "gas-service/src/rpc_tests.rs": "71eb064621b1d88e3c036ee6745416d1dde055083ebe6a32f20c0419b7057002",
+    "gas-service/src/runtime.rs": "ebff0a9bb6a9b8ca08fcbb5cbe4ffd91e72e4d1cbe54fbc62b53fe0e6553a708",
+    "gas-service/src/runtime_tests.rs": "bdee1e73745adbbd93b348a75e71075c02349efe6a6821467d183c7236a39e61",
+    "gas-service/src/secrets.rs": "103f830bbc7c9c719cb36ffc93d9b3fba1a32e464aa87b4ffacf197066914516",
+    "gas-service/src/signer.rs": "36852acd8941fe88383d347cba92d75e80cd77946608f267d12ba4bcdf3b83e5",
+    "gas-service/src/subprocess_tests.rs": "c9e420a53585220d85895c2f52af34ccef671cf8e85e90e67067d2ea9656b77f",
+    "gas-service/src/tests.rs": "cbfa09e1ec27e560224d40abe9ad1529a262a7d2f23b429e6532a46db7fe53a2",
+    "gas-service/src/transaction.rs": "c266ed7490e798e6943a170f4b6ed1bb0270586382bd7abe089a951f8e9ec547",
+    "gas-service/src/worker.rs": "6cb5f3d4198a45bd0d6d2aec2928d70c5e8ccc193ce417dc92fc94b9f835695e",
+    "privacy-engine/package-lock.json": "9eb90e7fb91f63c3486e3fdde836fded046467f689ac867b183c8a64c83fc86a",
+    "privacy-engine/package.json": "a48500d4c8edefbb937c7117f5c81c341bdc4f26adfeeda58972badbadd17c58",
+    "privacy-engine/src/bridge-runtime.mjs": "059b53abd5f86fbd1df0a2d5ee055b8f5df3e9c4bbae3fc78dabca6cf12951f3",
+    "privacy-engine/src/browser-crypto.mjs": "7a2823a657fa937def0b1f4e2c819f6eb0754d22a59f1b04ce3e29fc21142451",
+    "privacy-engine/src/browser-entry.mjs": "bda2ca302198497663d765fbb9a93b2ea2d005198503692e9054ac66bb7e8809",
+    "privacy-engine/src/browser-globals.mjs": "6017e97e0c47c53da7e5cc1f4505c019c0d29718703da917b4351c52da348f17",
+    "privacy-engine/src/candidate-calldata.mjs": "29ffef275d84c2bc101656f1cf267d4fd82a953e105f4be6450b1ddf05aae15c",
+    "privacy-engine/src/compact-forest.mjs": "ffa3d28101ae9ad4f81f811645bca64f292b273675683db38ed124dcde1ebb5d",
+    "privacy-engine/src/encrypted-state.mjs": "f94271cd809c9831ec5d75d4ca7fcf1a231e60ee5c98387a2c03f0911371023f",
+    "privacy-engine/src/local-engine.mjs": "14d255fa6f5f085cce9b9e060a6947073076ebb4aceb454756934873e2740d09",
+    "privacy-engine/src/local-prover.mjs": "99a381c4bdc96a9d3942a41a9d72576f17157237fd9af3bade8ed3ea85e5d3f3",
+    "privacy-engine/src/local-verifier.mjs": "1c1f3633bb4c5035d946805d05853b3bcea44f2d216315ee626209de40b8a725",
+    "privacy-engine/src/merkle-forest.mjs": "606f61c9d7e2cc653e530e9d2d44373ccb04a8b8abfed6bfe063bd0612adef5c",
+    "privacy-engine/src/protocol.mjs": "5ba4fc5df3111df5a18d38c065b8ebe3d95f633d598bbe155ff84c6c602e353c",
+    "privacy-engine/src/provider-verifier.mjs": "32a455116977274f7243f7a768b18bfa4dd1c42fda77036bf1b4cfe76edf2b9a",
+    "privacy-engine/src/recovery-engine.mjs": "2bd9605e509cdfa73abfd7aaeafcc9e98a72ca37ff20a7b6689e686d0ad5c773",
+    "privacy-engine/test/candidate.test.mjs": "7c9d3862789aa7d3c09ef6c65c239f615db72b437c4825ba6381a738c05310a0",
+    "privacy-engine/test/compact-forest.test.mjs": "75d7b41939e87032442aa0b25282abaa269c5cb7e18b646422b18e92332ace3e",
+    "privacy-engine/test/fixtures/dense-tree.mjs": "2e182880f09b20299fff36c090f27a0f0f80c7bdb0cacf7ee1aa36e38d4254ec",
+    "privacy-engine/test/local-engine.test.mjs": "7c04b0347d0c1bb961d01f6015bfd5b2fdf55da3b3cb0025d6376e56e6404a3f",
+    "privacy-engine/test/provider-fee.test.mjs": "854e9e21cd5ba951552ab295911b9a0d5a873a8f654d98d2cead29cdbf553672",
+    "privacy-engine/test/recovery-engine.test.mjs": "a4c7c70584b58083acf6028a85414096515d1ed819a7cdc5b706c19ac2bb34ab",
+    "privacy-transport/Cargo.toml": "7bbf0b5e84fd13cb093fc72baf10635b75080d787516f9981d362b71c8786ab1",
+    "privacy-transport/src/lib.rs": "23a0c9eca79f46a93884cde52131dd8c9ef83520e8926a0b80fffa3eeb5db3ab"
+  }
+}

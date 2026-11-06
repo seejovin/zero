@@ -1,0 +1,7 @@
+Unchanged native Rust journal: host reproduction of Android-style parent-directory alias.
+This does not inspect the user device. Only disposable empty test directories are used.
+
+symlink_parent_open=ERROR: Storage operation failed: A durable journal operation failed; no unrecorded transaction may be broadcast
+sqlite_symlink_probe=SqliteFailure(Error { code: CannotOpen, extended_code: 1550 }, Some("unable to open database file: /tmp/wallet-journal-parent-link-6/android-parent-link/journal-8453.sqlite3"))
+canonical_parent_open=OK latest_balance=null payments=[]
+symlink_leaf_rejected=true

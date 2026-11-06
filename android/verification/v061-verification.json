@@ -1,0 +1,217 @@
+{
+  "version": "0.6.1-mainnet",
+  "version_code": 8,
+  "package": "app.localwallet.mainnet",
+  "apk": "local-wallet-0.6.1-mainnet.apk",
+  "bytes": 10074168,
+  "sha256": "bb236014e9447046ea041db410b80e10de7b43c90e22b7c3c63fd2e9e8b04ce9",
+  "certificate_sha256": "da1632404a817505713e77527ef97543fc6c1028148c401462b96683e2392687",
+  "same_signing_identity_as_previous_release": true,
+  "release_build": "passed",
+  "final_build_log": "v061-final-release-build.log",
+  "release_unit_tests": {
+    "total": 79,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "suites": [
+      {
+        "name": "app.localwallet.mainnet.AmountsTest",
+        "tests": "7",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.CoreBridgeTest",
+        "tests": "3",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.DisplayNamesTest",
+        "tests": "8",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.FeeEstimatorTest",
+        "tests": "3",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.NetworkClientTest",
+        "tests": "7",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.PortfolioPreferencesTest",
+        "tests": "3",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.RecoveryPhraseSessionTest",
+        "tests": "13",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.SecureVaultTest",
+        "tests": "14",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.WalletHoldingsTest",
+        "tests": "6",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.WalletPortfolioTest",
+        "tests": "7",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.WalletRepositoryStorageTest",
+        "tests": "8",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      }
+    ]
+  },
+  "lint": {
+    "errors": 0,
+    "warnings": 8,
+    "issues": [
+      {
+        "id": "GradleDependency",
+        "severity": "Warning",
+        "message": "A newer version of androidx.annotation:annotation than 1.9.1 is available: 1.11.0"
+      },
+      {
+        "id": "SetTextI18n",
+        "severity": "Warning",
+        "message": "String literal in `setText` can not be translated. Use Android resources instead."
+      },
+      {
+        "id": "SetTextI18n",
+        "severity": "Warning",
+        "message": "Do not concatenate text displayed with `setText`. Use resource string with placeholders."
+      },
+      {
+        "id": "SetTextI18n",
+        "severity": "Warning",
+        "message": "String literal in `setText` can not be translated. Use Android resources instead."
+      },
+      {
+        "id": "SetTextI18n",
+        "severity": "Warning",
+        "message": "String literal in `setText` can not be translated. Use Android resources instead."
+      },
+      {
+        "id": "SetTextI18n",
+        "severity": "Warning",
+        "message": "String literal in `setText` can not be translated. Use Android resources instead."
+      },
+      {
+        "id": "SetTextI18n",
+        "severity": "Warning",
+        "message": "Do not concatenate text displayed with `setText`. Use resource string with placeholders."
+      },
+      {
+        "id": "SetTextI18n",
+        "severity": "Warning",
+        "message": "String literal in `setText` can not be translated. Use Android resources instead."
+      }
+    ]
+  },
+  "native_libraries_unchanged_from_0_6_0": true,
+  "native_libraries": [
+    {
+      "path": "lib/arm64-v8a/libjnidispatch.so",
+      "sha256": "ddfc6c965bbe366615c000ec1f06552ddf0bb2b4f9d921d0bff8c75b3cb2ca4c",
+      "load_segment_alignment": [
+        16384,
+        16384
+      ],
+      "identical_to_v060": true
+    },
+    {
+      "path": "lib/arm64-v8a/libwallet_core.so",
+      "sha256": "4f99ae2c4e3fee4fa5f5586f2e81a5e661b4ae03071d1565209ffd8e883d4a2a",
+      "load_segment_alignment": [
+        16384,
+        16384,
+        16384,
+        16384
+      ],
+      "identical_to_v060": true
+    },
+    {
+      "path": "lib/x86_64/libjnidispatch.so",
+      "sha256": "288eafff19a70e833498201071c3d724f03f32ee8ff64a14fca50b57d975db70",
+      "load_segment_alignment": [
+        16384,
+        16384
+      ],
+      "identical_to_v060": true
+    },
+    {
+      "path": "lib/x86_64/libwallet_core.so",
+      "sha256": "5e745ea43baf9d15e7d775331e877569853823cb1caf9dbd0c2f45115fea2f38",
+      "load_segment_alignment": [
+        16384,
+        16384,
+        16384,
+        16384
+      ],
+      "identical_to_v060": true
+    }
+  ],
+  "scope": [
+    "Android only; web unchanged",
+    "top-aligned recovery import field",
+    "positive holdings only on home with separate zero, unavailable, stale and filtered empty states",
+    "optional default-off address-scoped small balance filter",
+    "Total USDC/history/asset pickers unchanged by filter",
+    "wallet-only name UI with legacy account metadata preserved",
+    "minimal Profile and Settings management",
+    "concealed recovery pages including new and resumed backup",
+    "explicit reveal with context-bound mutable result disposal",
+    "paused device authentication requires fresh foreground confirmation before key unwrap",
+    "one-use continuation with 30-second confirmation expiry and worker recheck",
+    "verification retains only three mutable expected words"
+  ],
+  "small_balance_thresholds": {
+    "comparison": "strictly below, per asset per network",
+    "USDC": "1",
+    "EURC": "1",
+    "ETH": "0.0001",
+    "enabled_by_default": false
+  },
+  "reviews": {
+    "holdings_names_preferences": "no blocking defect found",
+    "recovery_lifecycle_and_pre_decrypt_gate": "no blocking defect found"
+  },
+  "limitations": [
+    "No physical-device or emulator UI/biometric verification was available.",
+    "Pure JVM tests and source review do not validate OEM credential-screen lifecycle timing or rendering.",
+    "No live signed transaction was broadcast during verification.",
+    "Clipboard/platform text copies remain platform-owned; mutable application buffers and view references are cleared on hide or background."
+  ]
+}

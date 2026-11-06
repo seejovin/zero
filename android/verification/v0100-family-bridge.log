@@ -1,0 +1,6 @@
+PASS: actual generated Python UniFFI bridge authenticated the public BIP39 fixture and derived both expected family addresses.
+PASS: 5 Solana vectors retained independently verified message/signature bytes; 2 fresh synthetic TRON fixtures verified native TRX and canonical USDT wire data and exact units.
+PASS: 7 family journals persisted signed and unknown states; 14 reopens preserved every prepared JSON, signed JSON, raw transaction byte, transaction identifier and event record.
+PASS: 25 wrong-key, cross-family, signature-mutation, signed-cancellation and wrong-journal-identity operations were rejected; duplicate unknown observations were idempotent.
+No RPC, Android runtime, real TAPOS/blockhash, live signature request or network submission was used. All signed material is an unfunded public offline fixture.
+Release library SHA-256: 93be51d2added14269ef70a8638d266dc641b3767e4815449e42407e5525445d

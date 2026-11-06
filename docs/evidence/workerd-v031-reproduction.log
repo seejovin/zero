@@ -1,0 +1,3 @@
+workerd/server/server/run.rs:534: debug: [ TEST ] regression-before
+WALLET_WORKER_EVIDENCE {"scenario":"exact_v031_production_bundle","runtime":"workerd 2026-11-04","status":503,"error_code":-32098,"reached_upstream":0,"elapsed_ms":3,"native_error":{"name":"TypeError","message":"Invalid redirect value, must be one of \"follow\" or \"manual\" (\"error\" won't be implemented since it does not make sense at the edge; use \"manual\" and check the response status code)."}}
+workerd/server/server/run.rs:541: debug: [ PASS ] regression-before (8.000241ms)

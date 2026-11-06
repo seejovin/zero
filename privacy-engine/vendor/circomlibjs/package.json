@@ -1,0 +1,38 @@
+{
+  "name": "@railgun-community/circomlibjs",
+  "version": "0.0.8",
+  "description": "Javascript library to work with circomlib",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Railgun-Community/circomlibjs.git"
+  },
+  "keywords": [
+    "circom",
+    "circomlib",
+    "iden3",
+    "snarkjs",
+    "snark",
+    "zero",
+    "knowledge"
+  ],
+  "author": "Jordi Baylina",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/Railgun-Community/circomlibjs/issues"
+  },
+  "homepage": "https://github.com/Railgun-Community/circomlibjs#readme",
+  "dependencies": {
+    "blake-hash": "^2.0.0",
+    "blake2b": "^2.1.3",
+    "@railgun-community/ffjavascript": "0.1.0",
+    "web3-utils": "^1.6.0"
+  },
+  "files": [
+    "src",
+    "index.js",
+    "README.md",
+    "COPYING",
+    "UPSTREAM.json"
+  ]
+}

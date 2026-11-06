@@ -1,0 +1,10 @@
+Package: app.localwallet.mainnet
+Version: 0.4.0-mainnet
+Version code: 4
+Debuggable: false
+Signature: verified
+Certificate SHA-256: da1632404a817505713e77527ef97543fc6c1028148c401462b96683e2392687
+Matches signed 0.3.0 certificate: true
+ZIP alignment: 16 KiB native libraries; 4-byte other entries verified
+APK SHA-256: 84076b5f57cacecdba271b72263f8835d21e7d111a2b7cbc3c6d934f0308e259
+APK bytes: 9943096

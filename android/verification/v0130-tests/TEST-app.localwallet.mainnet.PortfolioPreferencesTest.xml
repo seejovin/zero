@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="app.localwallet.mainnet.PortfolioPreferencesTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-11-06T15:28:14" hostname="34d710c0c368" time="0.004">
+  <properties/>
+  <testcase name="usdMigrationRetainsTheExistingToggleAndNewThresholdSurvivesReopenWithoutAffectingAnotherWallet" classname="app.localwallet.mainnet.PortfolioPreferencesTest" time="0.0"/>
+  <testcase name="failedSavingIsNotReportedAsSuccessAndUnavailableReadingDefaultsToShowingSmallHoldings" classname="app.localwallet.mainnet.PortfolioPreferencesTest" time="0.001"/>
+  <testcase name="defaultOffDoesNotWriteAndAnExplicitChoiceSurvivesReopenWithinTheSameWalletScope" classname="app.localwallet.mainnet.PortfolioPreferencesTest" time="0.0"/>
+  <testcase name="invalidWalletScopesCannotCreatePreferencesOrAffectExistingLabels" classname="app.localwallet.mainnet.PortfolioPreferencesTest" time="0.002"/>
+  <testcase name="corruptThresholdDefaultsToOneDollarWithoutSilentlyRewritingTheExistingToggle" classname="app.localwallet.mainnet.PortfolioPreferencesTest" time="0.0"/>
+  <testcase name="invalidUsdThresholdOrFailedCommitDoesNotPartiallyChangeTheSavedSetting" classname="app.localwallet.mainnet.PortfolioPreferencesTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

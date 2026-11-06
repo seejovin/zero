@@ -1,0 +1,20 @@
+{
+  "date": "2026-11-05",
+  "kind": "recorded read-only tool observations",
+  "probes": [
+    {
+      "url": "https://ethereum-rpc.publicnode.com",
+      "method": "eth_chainId",
+      "expected_chain_id": 1,
+      "observed": "HTTP Error 403: Forbidden"
+    },
+    {
+      "url": "https://mainnet.base.org",
+      "method": "eth_chainId",
+      "expected_chain_id": 8453,
+      "observed": "HTTP Error 403: Forbidden"
+    }
+  ],
+  "broadcasts": 0,
+  "funded_transactions": 0
+}

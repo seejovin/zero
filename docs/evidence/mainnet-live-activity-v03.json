@@ -1,0 +1,30 @@
+{
+  "time": "2026-11-05T09:53:04.479Z",
+  "mode": "read-only public mainnet fixtures; actual release WASM and in-process production relay; no user wallet or funded send",
+  "checks": [
+    {
+      "chain_id": 1,
+      "result": "passed",
+      "participant_filtered_discovery": "passed",
+      "transaction_hash": "0x8e1f2212bc168e18c297ba994e4acbe8cb7427fa69dd867536522081698c0f36",
+      "block_number": 26347856,
+      "asset": "USDC",
+      "direction": "received",
+      "amount_units": "4268010000",
+      "recipient": "0x937f958f6b5d12ac71f8a1feee780b46da9b1e81",
+      "inclusion": "included"
+    },
+    {
+      "chain_id": 8453,
+      "result": "passed",
+      "participant_filtered_discovery": "passed",
+      "transaction_hash": "0x25a841da448f92d30ca2535139e2c6f29e7054a93882af41dae045a20b01a138",
+      "block_number": 53541542,
+      "asset": "USDC",
+      "direction": "received",
+      "amount_units": "999800000",
+      "recipient": "0xe76a7bd8e02ce5b312f8d6643a1b9c96255b05d2",
+      "inclusion": "included"
+    }
+  ]
+}

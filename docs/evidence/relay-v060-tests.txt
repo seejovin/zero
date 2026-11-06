@@ -1,0 +1,53 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> local-wallet-verification@0.6.0 test:relay
+> node --import ./web/node_modules/tsx/dist/loader.mjs --test worker/relay.test.ts
+
+{"event":"wallet_rpc_upstream_failure","chain_id":8453,"method":"eth_getBalance","provider_host":"base-rpc.publicnode.com","phase":"chain_check","reason":"type_error","elapsed_ms":0}
+{"event":"wallet_rpc_upstream_failure","chain_id":8453,"method":"eth_getBalance","provider_host":"base-rpc.publicnode.com","phase":"chain_check","reason":"wrong_chain","elapsed_ms":1}
+{"event":"wallet_rpc_upstream_failure","chain_id":8453,"method":"eth_sendRawTransaction","provider_host":"mainnet-sequencer.base.org","phase":"request","reason":"network_error","elapsed_ms":0}
+{"event":"wallet_rpc_upstream_failure","chain_id":8453,"method":"eth_chainId","provider_host":"base-rpc.publicnode.com","phase":"validate","reason":"invalid_json","elapsed_ms":0}
+{"event":"wallet_rpc_upstream_failure","chain_id":8453,"method":"eth_chainId","provider_host":"mainnet.base.org","phase":"validate","reason":"invalid_json","elapsed_ms":0}
+{"event":"wallet_rpc_upstream_failure","chain_id":8453,"method":"eth_chainId","provider_host":"base-rpc.publicnode.com","phase":"body","reason":"response_too_large","elapsed_ms":0}
+{"event":"wallet_rpc_upstream_failure","chain_id":8453,"method":"eth_chainId","provider_host":"mainnet.base.org","phase":"body","reason":"response_too_large","elapsed_ms":0}
+{"event":"wallet_rpc_upstream_failure","chain_id":8453,"method":"eth_chainId","provider_host":"base-rpc.publicnode.com","phase":"request","reason":"network_error","elapsed_ms":0}
+{"event":"wallet_rpc_upstream_failure","chain_id":8453,"method":"eth_chainId","provider_host":"mainnet.base.org","phase":"request","reason":"network_error","elapsed_ms":1}
+{"event":"wallet_rpc_cooldown","chain_id":8453,"method":"eth_chainId","remaining_ms":14999}
+{"event":"wallet_rpc_upstream_failure","chain_id":8453,"method":"eth_getBalance","provider_host":"base-rpc.publicnode.com","phase":"chain_check","reason":"redirect","http_status":302,"elapsed_ms":0}
+{"event":"wallet_rpc_upstream_failure","chain_id":8453,"method":"eth_sendRawTransaction","provider_host":"mainnet-sequencer.base.org","phase":"request","reason":"redirect","http_status":300,"elapsed_ms":0}
+{"event":"wallet_rpc_upstream_failure","chain_id":8453,"method":"eth_sendRawTransaction","provider_host":"mainnet-sequencer.base.org","phase":"request","reason":"redirect","http_status":301,"elapsed_ms":0}
+{"event":"wallet_rpc_upstream_failure","chain_id":8453,"method":"eth_sendRawTransaction","provider_host":"mainnet-sequencer.base.org","phase":"request","reason":"redirect","http_status":302,"elapsed_ms":0}
+{"event":"wallet_rpc_upstream_failure","chain_id":8453,"method":"eth_sendRawTransaction","provider_host":"mainnet-sequencer.base.org","phase":"request","reason":"redirect","http_status":303,"elapsed_ms":0}
+{"event":"wallet_rpc_upstream_failure","chain_id":8453,"method":"eth_sendRawTransaction","provider_host":"mainnet-sequencer.base.org","phase":"request","reason":"redirect","http_status":304,"elapsed_ms":0}
+{"event":"wallet_rpc_upstream_failure","chain_id":8453,"method":"eth_sendRawTransaction","provider_host":"mainnet-sequencer.base.org","phase":"request","reason":"redirect","http_status":305,"elapsed_ms":1}
+{"event":"wallet_rpc_upstream_failure","chain_id":8453,"method":"eth_sendRawTransaction","provider_host":"mainnet-sequencer.base.org","phase":"request","reason":"redirect","http_status":307,"elapsed_ms":0}
+{"event":"wallet_rpc_upstream_failure","chain_id":8453,"method":"eth_sendRawTransaction","provider_host":"mainnet-sequencer.base.org","phase":"request","reason":"redirect","http_status":308,"elapsed_ms":0}
+{"event":"wallet_rpc_upstream_failure","chain_id":8453,"method":"eth_sendRawTransaction","provider_host":"mainnet-sequencer.base.org","phase":"request","reason":"redirect","http_status":399,"elapsed_ms":0}
+{"event":"wallet_activity_upstream_failure","chain_id":8453,"method":"GET","provider_host":"api.blockscout.com","phase":"request","reason":"redirect","http_status":307,"elapsed_ms":0}
+{"event":"wallet_activity_upstream_failure","chain_id":8453,"method":"GET","provider_host":"api.blockscout.com","phase":"request","reason":"redirect","http_status":307,"elapsed_ms":1}
+✔ transport failover verifies the replacement chain and preserves the public request (8.104211ms)
+✔ a provider reporting the wrong chain is not used for balances (1.851096ms)
+✔ raw submission timeout is one attempt and stays unknown (1.159134ms)
+✔ malformed, oversized, arbitrary method, testnet and secret-bearing payloads never reach a provider (1.935583ms)
+✔ cross-origin JSON request is rejected without dispatch (2.318839ms)
+✔ duplicate provider fields cannot be normalized into plausible evidence (1.09625ms)
+✔ RPC execution rejection is preserved and never retried into apparent success (0.94337ms)
+✔ upstream response length is bounded before parsing (0.799083ms)
+✔ log queries require allowlisted tokens, a participant and bounded heights (0.622617ms)
+✔ arbitrary calldata and state overrides cannot pass the relay (0.328344ms)
+✔ unconfigured indexer reports limited coverage without pretending no deposit exists (0.671381ms)
+✔ unavailable reads cool down instead of exhausting providers on every refresh (0.936199ms)
+✔ RPC and configured index fetches use the redirect mode supported by Workers (1.21623ms)
+✔ a redirected read never follows Location and can use only the approved replacement provider (1.351584ms)
+✔ every redirect class rejects a submission after exactly one upstream attempt (4.77055ms)
+✔ configured activity redirects cannot supply candidates or forward an API credential (1.321559ms)
+✔ diagnostics retain failure class without exposing account, transaction, credential or raw error (2.427443ms)
+✔ diagnostic logger failure cannot change read failover, submission uncertainty or partial activity (2.875337ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 159.22509

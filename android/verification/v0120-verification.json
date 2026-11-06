@@ -1,0 +1,186 @@
+{
+  "schema_version": 1,
+  "captured_at_utc": "2026-11-06T11:28:15.163909+00:00",
+  "android_source_version": "0.12.0-mainnet",
+  "android_version_code": 15,
+  "source_base_commit": "2becf89dfbc1f2dc884485e2f466b651a85828ab",
+  "source_digest": "50f0a84e13a91f8ae6d28249451089bc97b4335838afd98a9c61f8cab59f1330",
+  "source_digests": "v0120-source-digests.json",
+  "status": "source_integration_and_host_verification_complete_private_production_release_disabled",
+  "scope": {
+    "private_protocol": "RAILGUN V2 candidate",
+    "private_chain_id": 42161,
+    "private_asset": "native USDC",
+    "private_send": "shielded-to-shielded, fixed zero-value pool call",
+    "public_wallet": "existing nine-network source preserved",
+    "web": "unchanged0.6.0"
+  },
+  "executed": {
+    "rust_workspace": {
+      "command": "cargo test --locked --offline --workspace --all-targets",
+      "passed": 251,
+      "failed": 0,
+      "ignored": 0,
+      "service_tests_included": 59,
+      "log": "v0120-rust-tests.log"
+    },
+    "rust_fmt": {
+      "passed": true,
+      "log": "v0120-format.log"
+    },
+    "rust_all_target_check": {
+      "passed": true,
+      "log": "v0120-check.log"
+    },
+    "rust_all_target_clippy_warnings_denied": {
+      "passed": true,
+      "log": "v0120-clippy.log"
+    },
+    "javascript": {
+      "passed": 40,
+      "failed": 0,
+      "log": "v0120-sdk-tests.log"
+    },
+    "positive_groth16": {
+      "circuits": [
+        "01x03",
+        "11x03"
+      ],
+      "parameters": "authenticated upstream WASM/zkey; vkey derived and published key compared",
+      "recipient_and_fee_ciphertexts_verified": true,
+      "native_review_envelope_journal_interop": true,
+      "records": [
+        "v0120-protocol-01x03.json",
+        "v0120-protocol-11x03.json"
+      ]
+    },
+    "packaged_engine": {
+      "passed": true,
+      "actual_transferred_message_port": true,
+      "lost_acknowledgement_receipt_discovery": true,
+      "wrong_calldata_and_missing_outputs_rejected": true,
+      "encrypted_chunked_cache": true,
+      "environment": "Node VM with string code generation disabled; not Chromium/Android",
+      "records": [
+        "v0120-bundle-vm.json",
+        "v0120-bundle-protocol.json"
+      ]
+    },
+    "parameter_qualification": {
+      "circuits": 11,
+      "uncompressed_bytes": 272781169,
+      "each_wasm_and_zkey_hash_verified": true,
+      "each_vkey_derived_and_published_key_compared": true,
+      "every_shape_positive_proof_tested": false,
+      "deployed_vkey_correspondence_checked": false,
+      "record": "v0120-circuit-qualification.json"
+    },
+    "native_bridge": {
+      "evm_cases": 18,
+      "evm_networks": 7,
+      "solana_cases": 5,
+      "tron_cases": 2,
+      "family_reopen_cases": 14,
+      "family_rejection_cases": 25,
+      "private_rejection_cases": 17,
+      "actual_encrypted_journal_restart_and_ohttp": true,
+      "log": "v0120-bridge.log"
+    },
+    "independent_public_differential": {
+      "ethers_vectors": 36,
+      "solana_vectors": 5,
+      "logs": [
+        "v0120-ethers.log",
+        "v0120-solana.log"
+      ]
+    },
+    "kotlin_bindings": {
+      "generated_from_current_native_source": true,
+      "compiled": false,
+      "optional_ktlint_unavailable": true,
+      "log": "v0120-kotlin-bindings.log"
+    },
+    "source_peer_reviews": {
+      "completed": [
+        "private note engine/state/bridge/artifact boundaries",
+        "native recovery and vault binding",
+        "operator retry/cap/nonce/fee/finality logic",
+        "Android cancellation reservation cleanup"
+      ],
+      "independent_external_audit": false
+    },
+    "manifest_and_configuration_parse": {
+      "android_xml": true,
+      "example_json": true,
+      "python_build_fixture_syntax": true
+    },
+    "operator_cli": {
+      "production_available": false,
+      "relay_example_config_valid": true,
+      "records": [
+        "v0120-gas-capabilities.json",
+        "v0120-relay-config.log"
+      ]
+    },
+    "dependency_audit": {
+      "npm_vulnerability_entries": 0,
+      "rust_vulnerability_entries": 0,
+      "rust_unsound_entries": 0,
+      "rust_maintenance_notices": [
+        "basic-toml",
+        "bincode"
+      ],
+      "rustls": "0.23.46",
+      "rustls_webpki": "0.103.16",
+      "tokio": "1.53.3",
+      "rust_advisory_database": {
+        "advisory-count": 1409,
+        "last-commit": "26fd2d43f7280a1fb925a3743ec463017afe7119",
+        "last-updated": "2026-11-05T09:50:49+01:00"
+      },
+      "records": [
+        "v0120-cargo-audit-before.json",
+        "v0120-cargo-audit.json",
+        "v0120-npm-audit.json"
+      ]
+    },
+    "bundled_notice_inventory": {
+      "packages": 100,
+      "upstream_missing_full_notice_text": [
+        "blake-hash@2.0.0"
+      ],
+      "distribution_approved": false,
+      "record": "v0120-js-notices-inventory.json"
+    }
+  },
+  "android_test_source": {
+    "private_test_declarations": 63,
+    "executed": false
+  },
+  "unrun": [
+    "Android Kotlin/JVM tests/lint/native ABI build/sign/install/device tests",
+    "Actual Chromium/WebView CSP and lifecycle",
+    "Live deployment/current and historical code/proxy/verifier qualification",
+    "Operated independent relay/gateway infrastructure",
+    "Funded mainnet private transfer or recovery",
+    "Independent security audit",
+    "Complete distribution/corresponding-source review"
+  ],
+  "release_gates": {
+    "private_production_enabled": false,
+    "remote_or_settings_bypass": false,
+    "ordinary_public_fallback": false,
+    "new_apk": false,
+    "funds_spent": false,
+    "build_environment_record": "v0120-build-environment.json"
+  },
+  "known_limits": [
+    "Two-provider canonical evidence is not a consensus light client or receipt-trie proof",
+    "Initial/history synchronization and proving memory/time not measured on Android",
+    "Fee-insufficient recovery dust retains quarantine",
+    "Only private0zk recipients/already shielded USDC supported by this new route",
+    "Managed runtime/OS crash telemetry cannot be represented as zero platform data collection",
+    "Company stores opaque operational records; not zero data retention",
+    "Current/history pins and independent operation still require external qualification"
+  ]
+}

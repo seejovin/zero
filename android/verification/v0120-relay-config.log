@@ -1,0 +1,4 @@
+   Compiling wallet_gas_service v0.11.0 (/workspace/scratch/40e54fec01a4/wallet-v090/local-wallet/gas-service)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.58s
+     Running `target/debug/wallet-ohttp-relay check-config gas-service/relay.example.json`
+{"configuration_valid":true,"independent_operator_verified":false}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="app.localwallet.mainnet.WithdrawalFlowTest" tests="12" skipped="0" failures="0" errors="0" timestamp="2026-11-05T19:28:37" hostname="52094378b55f" time="0.01">
+  <properties/>
+  <testcase name="tokenOrGasShortfallCannotEnableReviewAndConservativeBudgetDoesNotClaimSimulation" classname="app.localwallet.mainnet.WithdrawalFlowTest" time="0.002"/>
+  <testcase name="quotesExpireFromMonotonicRequestStartAndRejectClockRollback" classname="app.localwallet.mainnet.WithdrawalFlowTest" time="0.001"/>
+  <testcase name="failedOrMalformedCurrentResponsesLeaveNoFeeOrPreparationAuthority" classname="app.localwallet.mainnet.WithdrawalFlowTest" time="0.001"/>
+  <testcase name="maxUsesEveryTokenUnitAndExactlyOneEthReserveWithoutDecimalTruncation" classname="app.localwallet.mainnet.WithdrawalFlowTest" time="0.001"/>
+  <testcase name="availableAmountComesFromTheSameFreshObservationThatGatesReview" classname="app.localwallet.mainnet.WithdrawalFlowTest" time="0.0"/>
+  <testcase name="tokenFeesRemainSeparateFromRecipientUnitsAndUseOnlyAvailableUsdQuotes" classname="app.localwallet.mainnet.WithdrawalFlowTest" time="0.001"/>
+  <testcase name="inputsRequireAnExplicitSupportedNetworkAndPreserveEveryNativeUnit" classname="app.localwallet.mainnet.WithdrawalFlowTest" time="0.001"/>
+  <testcase name="pastedRecipientIsTrimmedWithoutRemovingItsChecksumAndKnownTokenContractsAreRejected" classname="app.localwallet.mainnet.WithdrawalFlowTest" time="0.001"/>
+  <testcase name="maxRequiresMatchingFreshEvidenceAndCannotBeInjectedIntoAManualAmount" classname="app.localwallet.mainnet.WithdrawalFlowTest" time="0.001"/>
+  <testcase name="pageInvalidationAndAnotherFlowCannotReviveAnOutstandingQuote" classname="app.localwallet.mainnet.WithdrawalFlowTest" time="0.0"/>
+  <testcase name="oldNewOldDraftSequenceAndReplayedRepliesCannotOverwriteTheCurrentQuote" classname="app.localwallet.mainnet.WithdrawalFlowTest" time="0.0"/>
+  <testcase name="oneCurrentObservationCanBeClaimedOnlyOnceAndEditsInvalidateItsPreparationResult" classname="app.localwallet.mainnet.WithdrawalFlowTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

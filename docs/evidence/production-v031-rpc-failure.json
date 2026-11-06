@@ -1,0 +1,89 @@
+{
+  "release": "0.3.1",
+  "source": "native production Worker logs",
+  "observed_failures": 8,
+  "requests": [
+    {
+      "time_utc": "2026-11-05T10:54:08.936Z",
+      "route": "/api/rpc",
+      "method": "POST",
+      "status": 503,
+      "outcome": "ok",
+      "origin_matched": true,
+      "fetch_site": "same-origin",
+      "elapsed_ms": 1
+    },
+    {
+      "time_utc": "2026-11-05T10:54:08.902Z",
+      "route": "/api/rpc",
+      "method": "POST",
+      "status": 503,
+      "outcome": "ok",
+      "origin_matched": true,
+      "fetch_site": "same-origin",
+      "elapsed_ms": 1
+    },
+    {
+      "time_utc": "2026-11-05T10:54:01.688Z",
+      "route": "/api/rpc",
+      "method": "POST",
+      "status": 503,
+      "outcome": "ok",
+      "origin_matched": true,
+      "fetch_site": "same-origin",
+      "elapsed_ms": 1
+    },
+    {
+      "time_utc": "2026-11-05T10:54:01.668Z",
+      "route": "/api/rpc",
+      "method": "POST",
+      "status": 503,
+      "outcome": "ok",
+      "origin_matched": true,
+      "fetch_site": "same-origin",
+      "elapsed_ms": 2
+    },
+    {
+      "time_utc": "2026-11-05T10:53:48.212Z",
+      "route": "/api/rpc",
+      "method": "POST",
+      "status": 503,
+      "outcome": "ok",
+      "origin_matched": true,
+      "fetch_site": "same-origin",
+      "elapsed_ms": 1
+    },
+    {
+      "time_utc": "2026-11-05T10:53:48.195Z",
+      "route": "/api/rpc",
+      "method": "POST",
+      "status": 503,
+      "outcome": "ok",
+      "origin_matched": true,
+      "fetch_site": "same-origin",
+      "elapsed_ms": 1
+    },
+    {
+      "time_utc": "2026-11-05T10:53:39.163Z",
+      "route": "/api/rpc",
+      "method": "POST",
+      "status": 503,
+      "outcome": "ok",
+      "origin_matched": true,
+      "fetch_site": "same-origin",
+      "elapsed_ms": 1
+    },
+    {
+      "time_utc": "2026-11-05T10:53:39.107Z",
+      "route": "/api/rpc",
+      "method": "POST",
+      "status": 503,
+      "outcome": "ok",
+      "origin_matched": true,
+      "fetch_site": "same-origin",
+      "elapsed_ms": 4
+    }
+  ],
+  "interpretation": "Requests reached the Worker and passed Origin, JSON, method, chain and parameter admission. HTTP503 was emitted by the relay's failed upstream read path. Exact v0.3.1 bundle reproduced503 in real workerd before any outbound request because redirect:error is unsupported.",
+  "limits": "This is a bounded log sample. Request bodies, public wallet addresses, transaction hashes, cookies, identities and raw headers are deliberately excluded."
+}

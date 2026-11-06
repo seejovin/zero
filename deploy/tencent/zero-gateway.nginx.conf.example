@@ -1,0 +1,58 @@
+# HTTP-context fragment for a dedicated gateway host. Replace hostname/cert paths.
+# Also review the MAIN/default TLS server logging configuration: this fragment
+# cannot suppress logs produced before nginx selects this virtual server.
+# Do not route users directly here. In production, restrict 443 to the
+# independently operated relay's agreed egress addresses.
+limit_conn_zone $server_name zone=zero_gateway:64k;
+
+server {
+    listen 443 ssl;
+    server_name gas.example.invalid;
+    ssl_certificate /etc/zero-tls/fullchain.pem;
+    ssl_certificate_key /etc/zero-tls/privkey.pem;
+    ssl_protocols TLSv1.2 TLSv1.3;
+    server_tokens off;
+    gzip off;
+
+    access_log off;
+    error_log /dev/null crit;
+    client_header_timeout 3s;
+    client_body_timeout 10s;
+    client_max_body_size 540672;
+    client_body_buffer_size 540672;
+    client_body_in_single_buffer on;
+    client_body_in_file_only off;
+    keepalive_timeout 0;
+    # One constant-host bucket; no per-client identifier is retained here.
+    limit_conn zero_gateway 32;
+    limit_conn_status 503;
+
+    location = /ohttp {
+        if ($request_method != POST) { return 405; }
+        if ($args != "") { return 404; }
+        if ($content_length = "") { return 411; }
+        if ($http_transfer_encoding != "") { return 400; }
+        if ($http_content_type != "message/ohttp-req") { return 415; }
+
+        proxy_pass http://127.0.0.1:8080;
+        proxy_http_version 1.1;
+        # The Rust gateway rejects non-allowlisted headers. In particular, do
+        # not add client IP, authentication, cookies, tracing or request IDs.
+        proxy_pass_request_headers off;
+        proxy_set_header Host gas.example.invalid;
+        proxy_set_header Content-Type message/ohttp-req;
+        proxy_set_header Content-Length $content_length;
+        proxy_set_header Connection close;
+        proxy_request_buffering on;
+        proxy_buffering off;
+        proxy_max_temp_file_size 0;
+        proxy_cache off;
+        proxy_no_cache 1;
+        proxy_next_upstream off;
+        proxy_connect_timeout 3s;
+        proxy_send_timeout 60s;
+        proxy_read_timeout 65s;
+    }
+
+    location / { return 404; }
+}

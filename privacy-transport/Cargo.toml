@@ -1,0 +1,17 @@
+[package]
+name = "wallet_privacy_transport"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.99"
+publish = false
+description = "Restricted RFC 9458 client envelope; no HTTP or direct fallback"
+
+[dependencies]
+ohttp = { version = "=0.8.0", default-features = false, features = ["client", "rust-hpke"] }
+bhttp = { version = "=0.8.0", default-features = false }
+sha2 = "=0.10.9"
+thiserror = "=2.0.21"
+zeroize = "=1.9.1"
+
+[dev-dependencies]
+ohttp = { version = "=0.8.0", default-features = false, features = ["client", "server", "rust-hpke"] }

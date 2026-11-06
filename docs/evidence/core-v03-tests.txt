@@ -1,0 +1,103 @@
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+   Compiling wallet_core v0.2.0 (/workspace/scratch/40e54fec01a4/wallet-v02/local-wallet/core)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.92s
+     Running unittests src/lib.rs (target/debug/deps/wallet_core-bb6f0c2c667eb361)
+
+running 6 tests
+test crypto::tests::review_expiration_boundaries_and_history_validation ... ok
+test crypto::tests::quote_changes_require_new_approval_even_when_unsigned_bytes_are_identical ... ok
+test crypto::tests::signing_checks_review_expiration_before_opening_the_vault ... ok
+test crypto::tests::inspection_rejects_high_s_noncanonical_integers_and_access_lists ... ok
+test crypto::tests::token_contract_cannot_be_reused_under_the_wrong_network_identity ... ok
+test crypto::tests::public_fixture_signature_rejects_unsupported_semantics ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.05s
+
+     Running tests/activity_validation.rs (target/debug/deps/activity_validation-4125d7a5fde6d1d7)
+
+running 7 tests
+test duplicate_fields_and_oversized_input_are_rejected ... ok
+test reverted_transfer_zero_address_poisoning_and_mint_semantics ... ok
+test self_and_sent_direction_and_stable_receipt_ordinal_identity ... ok
+test wrong_token_or_participant_never_becomes_received ... ok
+test all_receipt_transaction_and_block_links_are_required ... ok
+test malformed_removed_duplicate_or_inconsistent_logs_are_rejected ... ok
+test exact_native_and_allowlisted_tokens_on_both_networks ... ok
+
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running tests/crypto_policy.rs (target/debug/deps/crypto_policy-852ed80b405c6d92)
+
+running 19 tests
+test formatter_preserves_exact_small_and_large_values ... ok
+test gas_limit_reserves_the_eip7623_calldata_floor ... ok
+test amount_precision_is_exact_and_never_uses_floating_point ... ok
+test changing_any_reviewed_field_is_rejected ... ok
+test invalid_phrase_and_invalid_keys_fail_without_echoing_secret_input ... ok
+test lowercase_addresses_and_trailing_fraction_zeroes_normalize_before_approval ... ok
+test mainnet_unknown_fields_invalid_destinations_and_excess_fees_fail_closed ... ok
+test generated_wallet_has_24_valid_words_and_restores_to_same_address ... ok
+test each_vault_encryption_uses_a_fresh_nonce ... ok
+test arbitrary_unicode_inputs_fail_without_panics ... ok
+test vault_authentication_rejects_wrong_key_or_any_modified_byte ... ok
+test restore_matches_independent_published_ethereum_fixture ... ok
+test wallet_address_authenticates_the_vault_and_derives_its_identity ... ok
+test arbitrary_transaction_bytes_never_panic ... ok
+test repeating_an_identical_signature_returns_identical_bytes ... ok
+test restore_accepts_all_standard_english_lengths ... ok
+test wrong_approval_or_a_different_wallet_cannot_sign_review ... ok
+test integer_token_units_round_trip_exactly ... ok
+test all_three_assets_sign_only_the_reviewed_payment_and_recover_sender ... ok
+
+test result: ok. 19 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.21s
+
+     Running tests/journal_correctness.rs (target/debug/deps/journal_correctness-187713dd92b726b9)
+
+running 21 tests
+test balances_reject_unsupported_assets_accounts_and_unsafe_number_formats ... ok
+test concurrent_writers_cannot_reserve_one_nonce_twice ... ok
+test idempotency_and_nonce_uniqueness_are_intent_level ... ok
+test changed_fee_bytes_cannot_hide_under_the_original_approval_digest ... ok
+test failed_audit_write_rolls_back_signature_and_never_returns_broadcast_bytes ... ok
+test append_only_guards_and_read_validation_prevent_silent_history_changes ... ok
+test balances_are_observations_and_never_inferred_or_adjusted_by_payment_events ... ok
+test cancellation_signing_race_has_one_valid_outcome ... ok
+test bounded_receipts_allow_contract_eth_receivers_with_many_logs ... ok
+test inconsistent_receipts_cannot_silently_overwrite_financial_evidence ... ok
+test loss_of_finalized_evidence_is_flagged_without_automatic_rebroadcast_state ... ok
+test storage_is_durable_wal_and_rejects_unsafe_paths ... ok
+test receipt_gas_charge_is_not_rejected_for_being_below_reserved_calldata_floor ... ok
+test signed_metadata_or_signature_tampering_is_rejected ... ok
+test reverted_transactions_keep_the_gas_charge_without_payment_success ... ok
+test reorg_is_an_explicit_correction_with_old_evidence_and_nonce_preserved ... ok
+test unsigned_cancel_releases_nonce_but_preserves_evidence ... ok
+test signing_requires_preparation_and_persists_exact_bytes_before_submission ... ok
+test receipts_distinguish_execution_inclusion_finality_and_actual_fee ... ok
+test token_success_requires_the_exact_reviewed_contract_and_transfer_event ... ok
+test invalid_receipt_identity_fees_and_logs_do_not_change_records ... ok
+
+test result: ok. 21 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.00s
+
+     Running tests/mainnet_policy.rs (target/debug/deps/mainnet_policy-f4896483962dd77c)
+
+running 10 tests
+test fixed_registry_has_only_both_mainnets_and_native_circle_contracts ... ok
+test all_testnets_other_mainnets_and_wrong_extra_fee_semantics_fail_closed ... ok
+test previous_testnet_journal_schema_is_preserved_and_not_migrated_into_mainnet ... ok
+test network_journals_allow_same_nonce_but_never_mix_network_observations ... ok
+test reverted_base_payment_keeps_execution_and_additional_charges ... ok
+test quotes_are_in_approval_and_saved_signature_but_not_in_transaction_bytes ... ok
+test base_additional_fee_above_estimate_and_reserve_retains_financial_outcome ... ok
+test base_receipt_requires_all_actual_fees_and_rejects_execution_cap_violation ... ok
+test both_mainnets_sign_all_assets_with_distinct_chain_identity_and_contract ... ok
+test browser_kdf_matches_independent_libargon2_vector_and_rejects_invalid_parameters ... ok
+
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.30s
+
+   Doc-tests wallet_core
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

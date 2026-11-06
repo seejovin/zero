@@ -1,0 +1,59 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> local-wallet-web@0.3.0 test
+> node --import tsx --test tests/*.test.ts
+
+✔ the v0.2 database migration preserves the exact vault, signature, nonce reservation and events (54.098699ms)
+✔ incoming observations are idempotent, reloadable and always backed by shared WASM validation (3.896314ms)
+✔ many matching events cannot multiply a bounded RPC proof into unbounded local writes (6.669247ms)
+✔ a later receipt cannot add or remove financial events at an unchanged transaction block (4.94995ms)
+✔ activity re-inclusion requires explicit canonical contradiction, and finality is monotonic (3.919077ms)
+✔ a finalized contradiction remains an incident even when a replacement changes log ordinal (9.291644ms)
+✔ manual lookup distinguishes received, pending, absent, unrelated and reverted without losing history (10.395235ms)
+✔ lookup rejects another hash or a canonical block change and never relabels read failure as transfer failure (1.216611ms)
+✔ recent token scan persists 0.01 receipt evidence, reports partial history and keeps unresolved candidates retryable (2.57839ms)
+✔ an uncertain broadcast preserves exactly one signed payment and never invents failure (77.966712ms)
+✔ locking during the last chain check prevents broadcast of the saved signature (25.007146ms)
+✔ retry submits identical saved bytes without signing again (22.299732ms)
+✔ a canonical receipt that changes after finalized lookup is not accepted (13.297552ms)
+✔ conflicting new receipt cannot erase a still-canonical earlier receipt (22.335636ms)
+✔ a temporarily missing receipt does not erase canonical inclusion (16.875508ms)
+✔ a wallet cannot silently overwrite an existing encrypted vault (24.629478ms)
+✔ concurrent intents cannot reserve two payments on one account/network (11.274078ms)
+✔ Ethereum and Base nonces are separate, and unchanged intent retries are idempotent (8.294914ms)
+✔ unsigned cancellation releases a nonce; a signature never does (22.991132ms)
+✔ signed bytes survive reopen and later uncertain retries do not downgrade acknowledgement (12.918804ms)
+✔ storage abort after a request success rolls back signature and prevents any broadcast (8.549767ms)
+✔ receipt evidence is revalidated, finality is monotonic, actual Base fee is retained (27.194008ms)
+✔ stored receipt projection corruption is detected on reload (13.434199ms)
+✔ failed execution preserves charged gas; successful receipt missing expected transfer remains unresolved (22.672884ms)
+✔ reorgs append evidence and retain signed bytes; lost finality blocks sending (17.982303ms)
+✔ older repeated balances cannot become latest and conflicts at one block are rejected (1.370502ms)
+✔ RPC rejects a wrong chain, wrong response id, duplicate receipt fields, and oversized body (8.677971ms)
+✔ RPC rejects an oversized streaming response even without a content length (11.545266ms)
+✔ only approved endpoints and methods are available (0.26572ms)
+✔ Base quote includes upper-bound L1/operator estimates and exact calldata (8.848417ms)
+✔ Base actual operator fee is queried at the receipt block and mismatches/missing L1 fee fail (17.389813ms)
+✔ Base submission uses the sequencer and validates the returned transaction hash (6.836979ms)
+✔ strict JSON preserves valid JSON semantics and safely treats prototype-like names (1.943895ms)
+✔ conflicting receipt fields and escaped duplicate keys are rejected before normalization (0.470368ms)
+✔ malformed syntax, excessive depth/nodes, and unsafe JSON numbers fail closed (36.146591ms)
+✔ read failover verifies each fixed endpoint's chain before using its values (4.884341ms)
+✔ a wrong-chain primary never supplies the balance and falls back to a verified endpoint (1.019575ms)
+✔ read failures are availability errors, never unknown financial outcomes or zero balances (0.73088ms)
+✔ relay mode retains same-origin gate credentials and never falls back direct after an uncertain send (22.445582ms)
+✔ direct broadcast uses a single sequencer attempt and does not query read fallbacks (8.805742ms)
+✔ read-only preview remains available without ETH but prepare still rejects the unsimulated transfer (14.912122ms)
+✔ a cancelled draft preview performs no reads and never manufactures a fee on unavailable networks (8.755817ms)
+✔ amount parsing uses exact integers and round-trips all supported decimals (1.426748ms)
+✔ ambiguous, negative, overprecise, nonfinite, and overflowing amounts are rejected (0.360482ms)
+✔ RPC quantities must use canonical hexadecimal encoding (0.231839ms)
+✔ account reservation and receive URI are network-specific (0.406492ms)
+ℹ tests 46
+ℹ suites 0
+ℹ pass 46
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 739.329052

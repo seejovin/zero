@@ -1,0 +1,1 @@
+PASS: actual WASM wallet entropy, vault, independent Argon2id vector, both-mainnet USDC signing, shared immutable validation and receipt finality. No network calls.

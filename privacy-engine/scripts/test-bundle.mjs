@@ -1,0 +1,23 @@
+import vm from 'node:vm';import {webcrypto} from 'node:crypto';import {MessageChannel} from 'node:worker_threads';
+import {readFile,writeFile,mkdir} from 'node:fs/promises';import {spawnSync} from 'node:child_process';import {resolve} from 'node:path';import assert from 'node:assert/strict';
+import {localKeys,feeRecipientCommitment,TOKEN} from '../src/protocol.mjs';import {CANDIDATE} from '../src/candidate-calldata.mjs';
+const root=resolve(new URL('..',import.meta.url).pathname),out=resolve(root,'../build/private-engine-vm-test');await mkdir(out,{recursive:true});
+const hash=x=>'0x'+x.repeat(64).slice(0,64),fee=await localKeys('21'.repeat(32),'22'.repeat(32));const domain={protocol:CANDIDATE.protocol,chain_id:42161,pool_contract:CANDIDATE.pool,token_contract:TOKEN,token_decimals:6,verifier_digest:hash('1')};
+const fixture={schema_version:1,approved:false,domain,fee_recipient_address:fee.address,deployment_block:0,circuits:{}};
+await writeFile(resolve(out,'fixture-manifest.json'),JSON.stringify(fixture));const build=spawnSync(process.execPath,[resolve(root,'scripts/build-browser.mjs'),out,resolve(out,'fixture-manifest.json')],{cwd:root,encoding:'utf8'});if(build.status!==0)throw Error(build.stderr);
+let listener,networkAttempts=0;const sandbox={crypto:webcrypto,TextEncoder,TextDecoder,Uint8Array,Uint32Array,ArrayBuffer,DataView,WebAssembly,URL,Blob,ReadableStream,WritableStream,TransformStream,MessageChannel,atob,btoa,setTimeout,clearTimeout,setInterval,clearInterval,queueMicrotask,performance,navigator:{product:'Gecko',hardwareConcurrency:1},location:{origin:'https://private.local-wallet.invalid',href:'https://private.local-wallet.invalid/index.html'},console:{log(){},warn(){},error(){}},addEventListener(kind,f){if(kind==='message')listener=f},fetch(){networkAttempts++;throw Error('NETWORK_DISABLED')}};
+sandbox.window=sandbox;sandbox.self=sandbox;sandbox.globalThis=sandbox;
+const context=vm.createContext(sandbox,{codeGeneration:{strings:false,wasm:true}});vm.runInContext(await readFile(resolve(out,'engine.js'),'utf8'),context,{timeout:15000});assert.equal(typeof listener,'function');
+const channel=new MessageChannel(),pending=new Map();let readyResolve;const ready=new Promise(r=>readyResolve=r);const session=hash('7');const wireKinds=[];
+channel.port1.on('message',value=>{const m=JSON.parse(value);wireKinds.push(m.kind);if(m.kind==='ready')readyResolve(m);else if(m.kind==='port_request'){
+ assert.equal(m.port,'storage_read');channel.port1.postMessage(JSON.stringify({schema_version:1,kind:'port_result',session_id:session,request_id:m.request_id,port_request_id:m.port_request_id,result:{exists:false,base64:null,offset:0,total_bytes:0,sha256:null}}));
+ }else if(m.kind==='result'||m.kind==='error'){pending.get(m.request_id)?.(m);pending.delete(m.request_id)}});
+listener({data:JSON.stringify({schema_version:1,kind:'connect',session_id:session}),ports:[channel.port2],origin:sandbox.location.origin});
+const bounded=p=>Promise.race([p,new Promise((_,reject)=>{const t=setTimeout(()=>reject(Error('wiretimeout')),20000);t.unref()})]);await bounded(ready);
+const call=(n,command,payload)=>bounded(new Promise(r=>{pending.set(hash(n),r);channel.port1.postMessage(JSON.stringify({schema_version:1,kind:'request',session_id:session,request_id:hash(n),command,payload}))}));
+try{
+ const init=await call('8','initialize',{wallet_identity:hash('9'),spending_private_key_hex:'11'.repeat(32),viewing_private_key_hex:'12'.repeat(32),encrypted_state_key_hex:'13'.repeat(32),domain,fee_recipient_address:fee.address,fee_recipient_commitment:feeRecipientCommitment(fee.address),creation_block:0});assert.equal(init.kind,'result',JSON.stringify(init));assert.equal(init.result.private_address.length,127);
+ const balance=await call('a','balance',{chain_id:42161,token_contract:TOKEN});assert.equal(balance.result.units,'0');assert.equal(balance.result.scan_complete,false);
+ const close=await call('b','close',{});assert.equal(close.result.closed,true);assert.equal(networkAttempts,0);
+ const result={schema_version:1,passed:true,test:'actual browser bundle executed in isolated JS realm with string code generation disabled and network blocked',checks:['transferred MessagePort handshake','SDK address derivation','closed native storage port','explicit unscanned balance','session key destruction','zero network calls'],browser_csp_tested:false,android_webview_tested:false,mainnet_funds_used:false};await writeFile(resolve(out,'bundle-verification.json'),JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify(result));
+}finally{channel.port1.close();channel.port2.close()}

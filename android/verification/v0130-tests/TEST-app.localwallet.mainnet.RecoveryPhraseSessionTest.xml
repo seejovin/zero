@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="app.localwallet.mainnet.RecoveryPhraseSessionTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2026-11-06T15:28:14" hostname="34d710c0c368" time="0.01">
+  <properties/>
+  <testcase name="explicitRevealConsumesAuthorizationAndErasesInputBeforeWordsCanBeRead" classname="app.localwallet.mainnet.RecoveryPhraseSessionTest" time="0.001"/>
+  <testcase name="aSystemPromptMayResumeOnlyTheSamePendingRequestAndNeverPreservesVisibleWords" classname="app.localwallet.mainnet.RecoveryPhraseSessionTest" time="0.0"/>
+  <testcase name="backgroundDeliveryIsConsumedAndCannotRevealOnLaterResume" classname="app.localwallet.mainnet.RecoveryPhraseSessionTest" time="0.0"/>
+  <testcase name="invalidDeferredCapabilityAndOldCancellationCannotConsumeNewerAuthorization" classname="app.localwallet.mainnet.RecoveryPhraseSessionTest" time="0.002"/>
+  <testcase name="staleSuccessAndCancellationCannotRevokeANewerRevealRequest" classname="app.localwallet.mainnet.RecoveryPhraseSessionTest" time="0.0"/>
+  <testcase name="verificationRetainsOnlyThreeRequestedWordsAndNoCompletePhrase" classname="app.localwallet.mainnet.RecoveryPhraseSessionTest" time="0.001"/>
+  <testcase name="clearingChallengeErasesRetainedBuffersAndMalformedResultsAreErased" classname="app.localwallet.mainnet.RecoveryPhraseSessionTest" time="0.001"/>
+  <testcase name="pausedAuthenticationDefersActualOperationUntilOneFreshForegroundConfirmation" classname="app.localwallet.mainnet.RecoveryPhraseSessionTest" time="0.0"/>
+  <testcase name="publicContextAndGenerationCannotSubstituteForTheIssuedRequestInstance" classname="app.localwallet.mainnet.RecoveryPhraseSessionTest" time="0.001"/>
+  <testcase name="deferredOperationCannotRunAfterAnotherPauseCancelWrongContextOrExpiry" classname="app.localwallet.mainnet.RecoveryPhraseSessionTest" time="0.001"/>
+  <testcase name="hideOrOrdinaryPauseRevokesAnInFlightDecryptionWithoutOnStop" classname="app.localwallet.mainnet.RecoveryPhraseSessionTest" time="0.001"/>
+  <testcase name="wrongWalletEpochOrPageCannotReceiveDecryptedWords" classname="app.localwallet.mainnet.RecoveryPhraseSessionTest" time="0.0"/>
+  <testcase name="creationAndReopenedBackupBeginConcealedAndUnrequestedDataIsRejected" classname="app.localwallet.mainnet.RecoveryPhraseSessionTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

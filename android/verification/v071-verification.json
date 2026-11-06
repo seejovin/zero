@@ -1,0 +1,240 @@
+{
+  "version": "0.7.1-mainnet",
+  "version_code": 10,
+  "package": "app.localwallet.mainnet",
+  "apk": "local-wallet-0.7.1-mainnet.apk",
+  "bytes": 10139704,
+  "sha256": "3f713f0799e65178e3ca788a96ddd8d7558c7f7602d678ac4b7c3586c31af3f9",
+  "certificate_sha256": "da1632404a817505713e77527ef97543fc6c1028148c401462b96683e2392687",
+  "same_signing_identity_as_previous_release": true,
+  "release_build": "passed",
+  "final_build_log": "v071-final-release-build.log",
+  "release_unit_tests": {
+    "total": 140,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "suites": [
+      {
+        "name": "app.localwallet.mainnet.AmountsTest",
+        "tests": "7",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.AssetSelectionTest",
+        "tests": "8",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.CoinbasePriceClientTest",
+        "tests": "11",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.CoreBridgeTest",
+        "tests": "3",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.DisplayNamesTest",
+        "tests": "8",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.FeeEstimatorTest",
+        "tests": "3",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.MaxTransferTest",
+        "tests": "11",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.NetworkClientTest",
+        "tests": "7",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.PortfolioPreferencesTest",
+        "tests": "6",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.RecoveryPhraseSessionTest",
+        "tests": "13",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.SecureVaultTest",
+        "tests": "16",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.UsdPricesTest",
+        "tests": "9",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.WalletHoldingsTest",
+        "tests": "6",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.WalletNavigationTest",
+        "tests": "10",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.WalletPortfolioTest",
+        "tests": "7",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.WalletRepositoryMaxTest",
+        "tests": "7",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.WalletRepositoryStorageTest",
+        "tests": "8",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      }
+    ]
+  },
+  "lint": {
+    "errors": 0,
+    "warnings": 5,
+    "issues": [
+      {
+        "id": "GradleDependency",
+        "severity": "Warning",
+        "message": "A newer version of androidx.annotation:annotation than 1.9.1 is available: 1.11.0"
+      },
+      {
+        "id": "SetTextI18n",
+        "severity": "Warning",
+        "message": "String literal in `setText` can not be translated. Use Android resources instead."
+      },
+      {
+        "id": "SetTextI18n",
+        "severity": "Warning",
+        "message": "String literal in `setText` can not be translated. Use Android resources instead."
+      },
+      {
+        "id": "SetTextI18n",
+        "severity": "Warning",
+        "message": "Do not concatenate text displayed with `setText`. Use resource string with placeholders."
+      },
+      {
+        "id": "SetTextI18n",
+        "severity": "Warning",
+        "message": "String literal in `setText` can not be translated. Use Android resources instead."
+      }
+    ]
+  },
+  "native_libraries_unchanged_from_0_7_0": true,
+  "native_libraries": [
+    {
+      "path": "lib/arm64-v8a/libjnidispatch.so",
+      "sha256": "ddfc6c965bbe366615c000ec1f06552ddf0bb2b4f9d921d0bff8c75b3cb2ca4c",
+      "load_segment_alignment": [
+        16384,
+        16384
+      ],
+      "identical_to_v070": true
+    },
+    {
+      "path": "lib/arm64-v8a/libwallet_core.so",
+      "sha256": "4f99ae2c4e3fee4fa5f5586f2e81a5e661b4ae03071d1565209ffd8e883d4a2a",
+      "load_segment_alignment": [
+        16384,
+        16384,
+        16384,
+        16384
+      ],
+      "identical_to_v070": true
+    },
+    {
+      "path": "lib/x86_64/libjnidispatch.so",
+      "sha256": "288eafff19a70e833498201071c3d724f03f32ee8ff64a14fca50b57d975db70",
+      "load_segment_alignment": [
+        16384,
+        16384
+      ],
+      "identical_to_v070": true
+    },
+    {
+      "path": "lib/x86_64/libwallet_core.so",
+      "sha256": "5e745ea43baf9d15e7d775331e877569853823cb1caf9dbd0c2f45115fea2f38",
+      "load_segment_alignment": [
+        16384,
+        16384,
+        16384,
+        16384
+      ],
+      "identical_to_v070": true
+    }
+  ],
+  "scope": [
+    "Android Deposit and Send flow only; web and Rust core unchanged",
+    "Asset picker lists USDC, EURC and ETH once each",
+    "Separate Network dropdown contains only canonical supported positions for that asset",
+    "Generic actions require explicit network selection; no QR, receiving address controls, Max or transfer details before selection",
+    "Contextual asset shortcuts retain their explicit network while exposing the editable Network dropdown",
+    "Network changes rebuild network-bound content and invalidate page callbacks, Max quotes, fee previews and review state",
+    "Outgoing draft is saved under its old wallet, chain and asset key before the destination draft is loaded",
+    "Native dropdown callbacks are wallet/page/epoch/foreground-bound and the menu is dismissed on pause or navigation",
+    "Public route version 2 preserves an unchosen network; legacy explicit version 1 routes remain readable",
+    "Deposit QR, copy/share text, fee-funding shortcut and tracking target are bound to the selected network",
+    "Prior vault, optional lock, recovery concealment, exact Max, USD estimates and durable transaction behavior retained"
+  ],
+  "new_regressions": {
+    "AssetSelectionTest": 8,
+    "WalletNavigationTest_added": 3
+  },
+  "reviews": {
+    "root_integration": "no blocking defect found",
+    "independent_ui_lifecycle_and_network_binding": "no blocking defect found"
+  },
+  "limitations": [
+    "No physical-device or emulator UI, dropdown, biometric or OEM lifecycle verification was available.",
+    "JVM policy tests and source review do not validate phone rendering or platform interaction timing.",
+    "No live signed transaction was broadcast during verification.",
+    "Price transport and RPC production code are unchanged from v0.7.0; no new live network smoke was required for this UI-only release."
+  ]
+}

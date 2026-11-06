@@ -1,0 +1,24 @@
+{
+  "date": "2026-11-05",
+  "preview": {
+    "url": "http://terminal.local:4173/",
+    "result": "Application correctly rejected insecure context; no wallet operation performed"
+  },
+  "deployment": {
+    "url": "[REDACTED_PRIVATE_DEPLOYMENT_URL]",
+    "native_status": "succeeded",
+    "access": "owner-private"
+  },
+  "browser": {
+    "result": "Reached private ChatGPT sign-in gate; redirected to OpenAI sign-in with no existing session",
+    "interactive_wallet_flow_verified": false,
+    "credential_entry": false,
+    "security_guard_bypassed": false,
+    "funds_moved": false
+  },
+  "publication_redaction": {
+    "sanitized": true,
+    "note": "The private hosted-wallet origin was removed for source publication. Original historical test outcomes are retained; this is a sanitized evidence copy.",
+    "historical_digest_policy": "Historical digest inventories remain unchanged and refer to the original evidence bytes, not this sanitized copy."
+  }
+}

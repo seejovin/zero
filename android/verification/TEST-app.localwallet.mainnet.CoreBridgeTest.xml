@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="app.localwallet.mainnet.CoreBridgeTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-11-05T08:46:31" hostname="52094378b55f" time="0.166">
+  <properties/>
+  <testcase name="generatedJournalBridgeCommitsSignedBytesAndPreservesUncertainOutcome" classname="app.localwallet.mainnet.CoreBridgeTest" time="0.147"/>
+  <testcase name="actualGeneratedKotlinBridgeRestoresAndSignsBothMainnets" classname="app.localwallet.mainnet.CoreBridgeTest" time="0.019"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

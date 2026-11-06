@@ -1,0 +1,8 @@
+    Finished `release` profile [optimized] target(s) in 0.13s
+     Running `target/release/uniffi-bindgen generate --library target/release/libwallet_core.so --language kotlin --config core/uniffi.toml --out-dir android/app/src/main/generated`
+Code generation complete, formatting with ktlint (use --no-format to disable)
+Warning: Unable to auto-format wallet_core.kt using ktlint: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+    Finished `release` profile [optimized] target(s) in 0.12s
+     Running `target/release/uniffi-bindgen generate --library target/release/libwallet_core.so --language python --config core/uniffi.toml --out-dir /workspace/scratch/40e54fec01a4/wallet-v0100-bindings/python`
+writing out /workspace/scratch/40e54fec01a4/wallet-v0100-bindings/python
+writing /workspace/scratch/40e54fec01a4/wallet-v0100-bindings/python/wallet_core.py

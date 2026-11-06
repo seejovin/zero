@@ -1,0 +1,5 @@
+   Compiling wallet_core v0.2.0 (/workspace/scratch/40e54fec01a4/wallet-v090/local-wallet/core)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 2.39s
+     Running `target/debug/uniffi-bindgen generate --library target/debug/libwallet_core.so --language kotlin --out-dir android/app/src/main/generated --config core/uniffi.toml`
+Code generation complete, formatting with ktlint (use --no-format to disable)
+Warning: Unable to auto-format wallet_core.kt using ktlint: Os { code: 2, kind: NotFound, message: "No such file or directory" }

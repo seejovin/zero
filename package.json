@@ -1,0 +1,15 @@
+{
+  "name": "local-wallet-verification",
+  "private": true,
+  "version": "0.6.0",
+  "description": "Independent Ethereum transaction checks; never used by the wallet app",
+  "type": "module",
+  "scripts": {
+    "test:differential": "node scripts/check-ethers.mjs",
+    "build": "npm --prefix web run build && node scripts/build-hosted.mjs",
+    "test:relay": "node --import ./web/node_modules/tsx/dist/loader.mjs --test worker/relay.test.ts"
+  },
+  "devDependencies": {
+    "ethers": "6.17.0"
+  }
+}

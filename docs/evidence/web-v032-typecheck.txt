@@ -1,0 +1,4 @@
+
+> local-wallet-web@0.3.2 typecheck
+> tsc --noEmit
+

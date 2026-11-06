@@ -1,0 +1,10 @@
+{
+  "warning": "Public deterministic development keys. Genuine proof over synthetic local tree. NOT a mainnet deposit, approved deployment, privacy audit or real payment. Never fund these keys or broadcast this envelope.",
+  "generated_utc_date": "2026-11-06",
+  "circuit": "01x03",
+  "envelope_sha256": "8c12d1a8428bcddad88088e3a201a5ed6b542b1e62b9ec2a5a67a6d8dd44d3d1",
+  "vkey_sha256": "b77a9a7b82eb1fde9fdf7184447115552f687c1e4d4aa03b91a2378517dd812a",
+  "wasm_sha256": "72e55865fccca077f443bae9f1e6762a156ea478a137efc1324fb79153050276",
+  "zkey_sha256": "477aeca6a8ed3706f572bce0e99a7054e700a4e3c2ee4499d7013a4d7770e0d0",
+  "fixture_provider_viewing_key_is_public": true
+}

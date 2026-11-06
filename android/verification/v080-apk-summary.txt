@@ -1,0 +1,15 @@
+Local Wallet Android 0.8.0-mainnet (versionCode 11)
+Package: app.localwallet.mainnet
+APK: local-wallet-0.8.0-mainnet.apk
+Bytes: 10205240
+SHA-256: 5096819858a6065a61917a167e7e1118c96bcc609df9c2211d06081c13b3c3f7
+Certificate SHA-256: da1632404a817505713e77527ef97543fc6c1028148c401462b96683e2392687
+Signature: verified; same identity as v0.7.1; APK Signature Scheme v3
+Release unit tests: 154 passed; 0 failures, 0 errors, 0 skipped; 18 suites
+Lint: 0 errors; 9 warnings (GradleDependency 1, ViewConstructor 2, SetTextI18n 6)
+Build: testReleaseUnitTest lintRelease assembleRelease passed offline
+Android: minSdk 30, targetSdk 35, non-debuggable, arm64-v8a/x86_64
+16KiB ZIP/native alignment: passed
+Native libraries: four; all byte-identical to v0.7.1
+Physical phone/emulator verification: unavailable
+Live user transaction/signature/broadcast: none

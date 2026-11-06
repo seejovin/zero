@@ -1,0 +1,113 @@
+name: Android release candidate
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - '**.md'
+      - 'docs/**'
+  pull_request:
+    paths-ignore:
+      - '**.md'
+      - 'docs/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: android-release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    env:
+      CARGO_TERM_COLOR: never
+      GRADLE_OPTS: -Dorg.gradle.daemon=false
+    steps:
+      - name: Check out reviewed source
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+
+      - name: Select and record build tools
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p build/ci
+          test -x "${JAVA_HOME_17_X64}/bin/java"
+          printf 'JAVA_HOME=%s\n' "${JAVA_HOME_17_X64}" >> "$GITHUB_ENV"
+          printf '%s/bin\n' "${JAVA_HOME_17_X64}" >> "$GITHUB_PATH"
+          test -d "${ANDROID_HOME}"
+          "${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager" --install \
+            'platforms;android-35' 'build-tools;35.0.0' 'ndk;27.2.12479018'
+          rustup toolchain install 1.99.1 --profile minimal --component clippy --component rustfmt
+          rustup show active-toolchain
+          {
+            printf 'source_commit=%s\n' "$GITHUB_SHA"
+            printf 'runner_image=%s\n' "${ImageVersion:-unknown}"
+            "${JAVA_HOME_17_X64}/bin/java" -version 2>&1
+            rustc --version
+            cargo --version
+            node --version
+            npm --version
+            "${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager" --list_installed
+          } > build/ci/toolchain.txt
+
+      - name: Install pinned private verifier dependencies
+        shell: bash
+        run: npm --prefix privacy-engine ci --ignore-scripts --no-fund --no-audit
+
+      - name: Verify Rust and native interfaces
+        shell: bash
+        run: |
+          set -euo pipefail
+          cargo fmt --all -- --check 2>&1 | tee build/ci/rust-format.log
+          cargo test --locked --workspace --all-targets 2>&1 | tee build/ci/rust-tests.log
+          ./scripts/verify-bridge.sh 2>&1 | tee build/ci/native-bridge.log
+
+      - name: Verify packaged private computation
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm --prefix privacy-engine run inspect 2>&1 | tee build/ci/private-inspect.log
+          npm --prefix privacy-engine test 2>&1 | tee build/ci/private-tests.log
+          npm --prefix privacy-engine run build 2>&1 | tee build/ci/private-build.log
+          npm --prefix privacy-engine run test:bundle 2>&1 | tee build/ci/private-bundle.log
+
+      - name: Compile, test, lint and assemble Android
+        shell: bash
+        run: |
+          set -euo pipefail
+          ./scripts/build-android.sh 2>&1 | tee build/ci/android-build.log
+
+      - name: Align and inspect unsigned release
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/package-android-release.py \
+            --sdk "${ANDROID_HOME}" \
+            --source-commit "$GITHUB_SHA" \
+            --output build/android-release
+
+      - name: Preserve build and test evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: zero-android-evidence-${{ github.run_number }}
+          path: |
+            build/ci/
+            android/app/build/reports/
+            android/app/build/test-results/
+          if-no-files-found: warn
+          retention-days: 30
+
+      - name: Preserve unsigned APK and local signing tools
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: zero-android-unsigned-${{ github.run_number }}
+          path: build/android-release/
+          if-no-files-found: error
+          retention-days: 30

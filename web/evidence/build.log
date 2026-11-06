@@ -1,0 +1,7 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> local-wallet-web@0.2.0 build
+> node scripts/build.mjs
+
+Built Local Wallet web 0.2.0: /workspace/scratch/40e54fec01a4/wallet-v02/local-wallet/web/dist
+Shared Rust WASM SHA-256: 5c6be735c7d80b9a39fbb9b16d681e77fcb1236ec46baebde97037129d5440ad

@@ -1,0 +1,11 @@
+{
+  "file": "local-wallet-0.6.0-web-bundle.zip",
+  "bytes": 332650,
+  "sha256": "39f36a04bfb00f8e56623ee412b6ae93ac3f5ea30293f6935ee5f310ffb4e135",
+  "version": "0.6.0",
+  "transport": "standalone direct RPC; existing hosted Site uses relay with restricted read-only fallback",
+  "networks": [
+    1,
+    8453
+  ]
+}

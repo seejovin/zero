@@ -1,0 +1,257 @@
+{
+  "version": "0.7.0-mainnet",
+  "version_code": 9,
+  "package": "app.localwallet.mainnet",
+  "apk": "local-wallet-0.7.0-mainnet.apk",
+  "bytes": 10123320,
+  "sha256": "2ab98c9099d7545637d23a231f51432b5407aa7269be684f84062551edcc0551",
+  "certificate_sha256": "da1632404a817505713e77527ef97543fc6c1028148c401462b96683e2392687",
+  "same_signing_identity_as_previous_release": true,
+  "release_build": "passed",
+  "final_build_log": "v070-final-release-build.log",
+  "release_unit_tests": {
+    "total": 129,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "suites": [
+      {
+        "name": "app.localwallet.mainnet.AmountsTest",
+        "tests": "7",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.CoinbasePriceClientTest",
+        "tests": "11",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.CoreBridgeTest",
+        "tests": "3",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.DisplayNamesTest",
+        "tests": "8",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.FeeEstimatorTest",
+        "tests": "3",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.MaxTransferTest",
+        "tests": "11",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.NetworkClientTest",
+        "tests": "7",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.PortfolioPreferencesTest",
+        "tests": "6",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.RecoveryPhraseSessionTest",
+        "tests": "13",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.SecureVaultTest",
+        "tests": "16",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.UsdPricesTest",
+        "tests": "9",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.WalletHoldingsTest",
+        "tests": "6",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.WalletNavigationTest",
+        "tests": "7",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.WalletPortfolioTest",
+        "tests": "7",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.WalletRepositoryMaxTest",
+        "tests": "7",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.WalletRepositoryStorageTest",
+        "tests": "8",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      }
+    ]
+  },
+  "lint": {
+    "errors": 0,
+    "warnings": 5,
+    "issues": [
+      {
+        "id": "GradleDependency",
+        "severity": "Warning",
+        "message": "A newer version of androidx.annotation:annotation than 1.9.1 is available: 1.11.0"
+      },
+      {
+        "id": "SetTextI18n",
+        "severity": "Warning",
+        "message": "String literal in `setText` can not be translated. Use Android resources instead."
+      },
+      {
+        "id": "SetTextI18n",
+        "severity": "Warning",
+        "message": "String literal in `setText` can not be translated. Use Android resources instead."
+      },
+      {
+        "id": "SetTextI18n",
+        "severity": "Warning",
+        "message": "Do not concatenate text displayed with `setText`. Use resource string with placeholders."
+      },
+      {
+        "id": "SetTextI18n",
+        "severity": "Warning",
+        "message": "String literal in `setText` can not be translated. Use Android resources instead."
+      }
+    ]
+  },
+  "native_libraries_unchanged_from_0_6_1": true,
+  "native_libraries": [
+    {
+      "path": "lib/arm64-v8a/libjnidispatch.so",
+      "sha256": "ddfc6c965bbe366615c000ec1f06552ddf0bb2b4f9d921d0bff8c75b3cb2ca4c",
+      "load_segment_alignment": [
+        16384,
+        16384
+      ],
+      "identical_to_v061": true
+    },
+    {
+      "path": "lib/arm64-v8a/libwallet_core.so",
+      "sha256": "4f99ae2c4e3fee4fa5f5586f2e81a5e661b4ae03071d1565209ffd8e883d4a2a",
+      "load_segment_alignment": [
+        16384,
+        16384,
+        16384,
+        16384
+      ],
+      "identical_to_v061": true
+    },
+    {
+      "path": "lib/x86_64/libjnidispatch.so",
+      "sha256": "288eafff19a70e833498201071c3d724f03f32ee8ff64a14fca50b57d975db70",
+      "load_segment_alignment": [
+        16384,
+        16384
+      ],
+      "identical_to_v061": true
+    },
+    {
+      "path": "lib/x86_64/libwallet_core.so",
+      "sha256": "5e745ea43baf9d15e7d775331e877569853823cb1caf9dbd0c2f45115fea2f38",
+      "load_segment_alignment": [
+        16384,
+        16384,
+        16384,
+        16384
+      ],
+      "identical_to_v061": true
+    }
+  ],
+  "scope": [
+    "Android only; web unchanged",
+    "Coinbase USD estimates per asset and full unfiltered portfolio",
+    "explicit complete, partial-known-value and unavailable valuation states",
+    "independent public-price worker and cache",
+    "adjustable USD small-balance threshold, default off with threshold 1 USD",
+    "unknown/stale prices and stale positive balances remain visible",
+    "exact Max transfer amounts, token full balance and ETH minus fee reserve",
+    "fresh Max recomputation before immutable final review",
+    "no display rounding reused in transfer calculations",
+    "immediate wallet opening after durable creation and readback; no mandatory backup verification",
+    "backupConfirmed metadata retained without using it as an access gate",
+    "creation custody and recovery-location message",
+    "public navigation route restoration with recovery concealed after optional unlock",
+    "prepared reviews resume Activity without restoring approval",
+    "financial UI callbacks and worker authorization invalidated by pause even without onStop",
+    "one timeout-only retry per public Coinbase GET; HTTP, TLS, redirect, authentication and parser failures never retried"
+  ],
+  "display_threshold": {
+    "currency": "USD",
+    "default": "1",
+    "minimum": "0.01",
+    "maximum": "1000000",
+    "decimal_places": 2,
+    "comparison": "strictly below, per asset per network",
+    "enabled_by_default": false
+  },
+  "reviews": {
+    "startup_vault_readback": "no blocking defect found",
+    "usd_prices_filter": "no blocking defect found",
+    "max_backend_and_ui_lifecycle": "no blocking defect found"
+  },
+  "live_price_observation": {
+    "result": "passed",
+    "checked_at_utc": "2026-11-05T16:39:26.146548909Z",
+    "evidence": "v070-coinbase-live.json",
+    "scope": "Actual compiled production pricing client on host JVM, all three USD pairs in one refresh. Executor-provided proxy and trust bundle used only by the verification JVM; standard certificate and hostname checks retained. No Android device claim.",
+    "android_proxy_or_tls_policy_changed": false
+  },
+  "limitations": [
+    "No physical-device or emulator UI/biometric verification was available.",
+    "JVM policy tests and source review do not validate OEM credential-screen lifecycle timing or rendering.",
+    "No live signed transaction was broadcast during verification.",
+    "USD prices are indicative and may be unavailable or stale; they do not authorize transfers.",
+    "Clipboard/platform text copies remain platform-owned; mutable application buffers and recovery view references are cleared on hide or background."
+  ],
+  "public_price_retry": {
+    "maximum_transport_attempts_per_symbol": 2,
+    "retryable": "SocketTimeoutException only",
+    "app_proxy_or_tls_policy_changed": false
+  }
+}

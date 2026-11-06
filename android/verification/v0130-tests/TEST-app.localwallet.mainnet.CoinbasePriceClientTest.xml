@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="app.localwallet.mainnet.CoinbasePriceClientTest" tests="11" skipped="0" failures="0" errors="0" timestamp="2026-11-06T15:28:14" hostname="34d710c0c368" time="0.126">
+  <properties/>
+  <testcase name="priceCacheWriteFailureDoesNotInvalidateLiveQuotesOrInventDurability" classname="app.localwallet.mainnet.CoinbasePriceClientTest" time="0.006"/>
+  <testcase name="publicQuoteCacheSurvivesReopenAndARefreshFailureNeverRenewsOldTimestamps" classname="app.localwallet.mainnet.CoinbasePriceClientTest" time="0.002"/>
+  <testcase name="oneColdConnectionTimeoutRetriesTheSamePublicPairAndRecoversWithoutDuplicatingOtherReads" classname="app.localwallet.mainnet.CoinbasePriceClientTest" time="0.001"/>
+  <testcase name="tlsHttpAndMalformedPayloadFailuresAreNeverRetried" classname="app.localwallet.mainnet.CoinbasePriceClientTest" time="0.0"/>
+  <testcase name="strictSpotParserRejectsWrongIdentityDuplicateKeysTrailingOrOversizedData" classname="app.localwallet.mainnet.CoinbasePriceClientTest" time="0.001"/>
+  <testcase name="capturedLivePublicPayloadsForUsdcEurcAndEthPreserveDecimalPrecisionAndSource" classname="app.localwallet.mainnet.CoinbasePriceClientTest" time="0.001"/>
+  <testcase name="partialRefreshKeepsOnlyEligibleCachedQuotesAndDoesNotCrossBindTheirSymbols" classname="app.localwallet.mainnet.CoinbasePriceClientTest" time="0.001"/>
+  <testcase name="transportOnlyOpensTheThreeFixedHttpsUrlsAndSendsNoWalletOrAuthenticationData" classname="app.localwallet.mainnet.CoinbasePriceClientTest" time="0.105"/>
+  <testcase name="redirectsErrorsWrongContentAndOversizedBodiesFailClosedWithTheConnectionClosed" classname="app.localwallet.mainnet.CoinbasePriceClientTest" time="0.005"/>
+  <testcase name="partialFailureIsIsolatedAndNeverReplacedByAOneDollarStablecoinAssumption" classname="app.localwallet.mainnet.CoinbasePriceClientTest" time="0.001"/>
+  <testcase name="repeatedTimeoutStopsAfterTwoAttemptsAndDoesNotStopOtherPublicPairs" classname="app.localwallet.mainnet.CoinbasePriceClientTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -1,0 +1,61 @@
+{
+  "version": "0.2.0-mainnet",
+  "unsigned_apk_bytes": 9689493,
+  "unsigned_apk_sha256": "078a30ad793fa52ffe20c3df1cff9ec05308dc5a449ef92ac826456935fde22f",
+  "jvm_tests": 9,
+  "jvm_failures": 0,
+  "lint_errors": 0,
+  "lint_warnings": 4,
+  "native_libraries": [
+    {
+      "name": "lib/arm64-v8a/libjnidispatch.so",
+      "bytes": 165992,
+      "sha256": "ddfc6c965bbe366615c000ec1f06552ddf0bb2b4f9d921d0bff8c75b3cb2ca4c",
+      "load_alignments": [
+        16384,
+        16384
+      ],
+      "gnu_relro": true,
+      "executable_stack": false
+    },
+    {
+      "name": "lib/arm64-v8a/libwallet_core.so",
+      "bytes": 3110528,
+      "sha256": "3d05f907bbc385104e1afb0c1f06f8e91dfce21f88b997c58c0d169bd446d123",
+      "load_alignments": [
+        16384,
+        16384,
+        16384,
+        16384
+      ],
+      "gnu_relro": true,
+      "executable_stack": false
+    },
+    {
+      "name": "lib/x86_64/libjnidispatch.so",
+      "bytes": 116904,
+      "sha256": "288eafff19a70e833498201071c3d724f03f32ee8ff64a14fca50b57d975db70",
+      "load_alignments": [
+        16384,
+        16384
+      ],
+      "gnu_relro": true,
+      "executable_stack": false
+    },
+    {
+      "name": "lib/x86_64/libwallet_core.so",
+      "bytes": 3315008,
+      "sha256": "3e7f0cd7a7248cf441d7b0c1e8a4a5ad3c43a05a1a53694df2702bdd702dfb12",
+      "load_alignments": [
+        16384,
+        16384,
+        16384,
+        16384
+      ],
+      "gnu_relro": true,
+      "executable_stack": false
+    }
+  ],
+  "physical_android_tests_performed": false,
+  "funded_transaction_tests_performed": false
+}

@@ -1,0 +1,1 @@
+PASS: 36 Rust transactions independently matched ethers: derivation, amount units, fees, unsigned encoding, deterministic signature, recovered sender and hash.

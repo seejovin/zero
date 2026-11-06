@@ -1,0 +1,13 @@
+Local Wallet 0.7.1-mainnet (versionCode 10)
+Package: app.localwallet.mainnet
+APK: /workspace/scratch/40e54fec01a4/local-wallet-0.7.1-mainnet.apk
+Bytes: 10139704
+SHA-256: 3f713f0799e65178e3ca788a96ddd8d7558c7f7602d678ac4b7c3586c31af3f9
+Certificate SHA-256: da1632404a817505713e77527ef97543fc6c1028148c401462b96683e2392687
+Release JVM tests: 140 passed, 0 failed, 0 skipped
+Lint: 0 errors, 5 warnings
+ZIP alignment: passed 16 KiB
+Native libraries: byte-identical to 0.7.0; all PT_LOAD alignments >= 16 KiB
+Asset flow: one row per asset, followed by an explicit per-asset Network dropdown
+Physical device/emulator verification: not performed
+No fund broadcasts

@@ -1,0 +1,17 @@
+Verifies
+Verified using v1 scheme (JAR signing): false
+Verified using v2 scheme (APK Signature Scheme v2): false
+Verified using v3 scheme (APK Signature Scheme v3): true
+Verified using v3.1 scheme (APK Signature Scheme v3.1): false
+Verified using v4 scheme (APK Signature Scheme v4): false
+Verified for SourceStamp: false
+Number of signers: 1
+Signer #1 certificate DN: CN=Local Wallet Development, O=Local Wallet
+Signer #1 certificate SHA-256 digest: da1632404a817505713e77527ef97543fc6c1028148c401462b96683e2392687
+Signer #1 certificate SHA-1 digest: 3d4d1a8f9b93a328316aafd1aab528bc289b661d
+Signer #1 certificate MD5 digest: 73e75266c2ff4493d043ef27788aa925
+Signer #1 key algorithm: RSA
+Signer #1 key size (bits): 4096
+Signer #1 public key SHA-256 digest: 50f4d20c66ff0c2b1ac6de3d9db0dab1b52af0d6c5a1d3af4d80ed6a262d4a00
+Signer #1 public key SHA-1 digest: f562348c29af629eb59bd5a822d012616d8b0d9c
+Signer #1 public key MD5 digest: da85e1544d8cdc6fe0de509178b69d27

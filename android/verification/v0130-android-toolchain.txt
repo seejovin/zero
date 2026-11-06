@@ -1,0 +1,36 @@
+/workspace/scratch/40e54fec01a4/wallet-build-tooling/android-sdk/platforms/android-35/source.properties
+Pkg.Desc=Android SDK Platform 15
+Pkg.UserSrc=false
+Platform.Version=15
+Platform.CodeName=
+Pkg.Revision=2
+AndroidVersion.ApiLevel=35
+AndroidVersion.ExtensionLevel=13
+AndroidVersion.IsBaseSdk=true
+Layoutlib.Api=15
+Layoutlib.Revision=1
+Platform.MinToolsRev=22
+
+/workspace/scratch/40e54fec01a4/wallet-build-tooling/android-sdk/build-tools/35.0.0/source.properties
+Pkg.UserSrc=false
+Pkg.Revision=35.0.0
+#Pkg.Revision=35.0.0 rc4
+
+/workspace/scratch/40e54fec01a4/wallet-build-tooling/android-sdk/ndk/27.2.12479018/source.properties
+Pkg.Desc = Android NDK
+Pkg.Revision = 27.2.12479018
+Pkg.BaseRevision = 27.2.12479018
+Pkg.ReleaseName = r27c
+
+/workspace/scratch/40e54fec01a4/wallet-build-tooling/android-sdk/cmdline-tools/16.0/source.properties
+Pkg.Revision=16.0
+Pkg.Path=cmdline-tools;16.0
+Pkg.Desc=Android SDK Command-line Tools
+
+openjdk version "17.0.21" 2026-10-20 LTS
+OpenJDK Runtime Environment Corretto-17.0.21.0.11 (build 17.0.21+11-LTS)
+OpenJDK 64-Bit Server VM Corretto-17.0.21.0.11 (build 17.0.21+11-LTS, mixed mode, sharing)
+
+javac 17.0.21
+
+Gradle 8.11.1 (wrapper-pinned SHA256 f397b287023acdba1e9f6fc5ea72d22dd63669d59ed4a289a29b1a76eee151c6)

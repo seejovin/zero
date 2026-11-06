@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "recorded_at_utc": "2026-11-06T05:33:19.075781+00:00",
+  "release": "0.9.0-mainnet",
+  "android_version_code": 12,
+  "status": "android_build_blocked",
+  "restored": {
+    "rustc": "1.99.1 (58cf8f9c3 2026-10-13)",
+    "cargo": "1.99.1 (5f94df478 2026-08-27)",
+    "rust_targets": [
+      "x86_64-unknown-linux-gnu",
+      "aarch64-linux-android",
+      "x86_64-linux-android"
+    ],
+    "cargo_dependencies": "cargo fetch --locked completed",
+    "rustup_installer_sha256": "b1c8cb14e30889e7e2999e6b69e62d9e9b9ffc0f4df8180564d306d9680e6c55",
+    "rustup_installer_verification": "Matched published HTTPS .sha256 before execution",
+    "local_java": "OpenJDK 21.0.13; java -m jdk.compiler/com.sun.tools.javac.Main -version succeeds; no javac launcher in PATH"
+  },
+  "missing_prerequisites": [
+    "Gradle 8.11.1 distribution",
+    "Android SDK platform 35",
+    "Android build-tools 35.0.0",
+    "Android NDK 27.2.12479018"
+  ],
+  "automatic_approval_rejections": [
+    {
+      "action": "Download official public Android repository metadata",
+      "url": "https://dl.google.com/android/repository/repository2-3.xml",
+      "reason": "dl.google.com is outside the environment explicitly allowed network destinations; approving would bypass stated network controls"
+    },
+    {
+      "action": "Download official Temurin JDK 17.0.21+9 archive",
+      "url": "https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.21%2B9/OpenJDK17U-jdk_x64_linux_hotspot_17.0.21_9.tar.gz",
+      "reason": "github.com is outside the environment explicitly allowed network destinations; approving would bypass active network controls"
+    },
+    {
+      "action": "Download pinned Gradle 8.11.1 distribution",
+      "url": "https://downloads.gradle.org/distributions/gradle-8.11.1-bin.zip",
+      "reason": "downloads.gradle.org is outside the environment explicitly allowed network destinations; approving would bypass stated network controls"
+    }
+  ],
+  "local_cache_check": "No existing Gradle distribution, Android SDK/NDK, sdkmanager, apksigner or zipalign found in workspace, common tool/cache locations or installed package inventory.",
+  "security_handling": [
+    "No rejected download retried through a mirror, proxy change, indirect route or disabled security check.",
+    "No old native library reused as a newly compiled release.",
+    "Existing private app-signing backup has not been opened.",
+    "No signed transaction broadcast and no wallet recovery phrase used."
+  ],
+  "not_completed": [
+    "Android native library compilation",
+    "Android release JVM tests through Gradle",
+    "Android release lint",
+    "APK assembly",
+    "APK signing",
+    "Device or emulator tests"
+  ],
+  "release_artifact": null
+}

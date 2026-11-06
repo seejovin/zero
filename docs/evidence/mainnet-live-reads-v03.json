@@ -1,0 +1,51 @@
+{
+  "time": "2026-11-05T09:41:12.747Z",
+  "mode": "read-only live mainnet; in-process production relay; no funded transaction",
+  "checks": [
+    {
+      "chain_id": 1,
+      "balances": {
+        "result": "passed",
+        "account": "0x000000000000000000000000000000000000dEaD",
+        "block": 26347802,
+        "values": {
+          "ETH": "12642703605445804653273",
+          "USDC": "57469542527",
+          "EURC": "2045106"
+        },
+        "provider": "PublicNode"
+      },
+      "fee_preview": {
+        "result": "passed",
+        "estimated_total_fee_wei": "2474588535588",
+        "fee_reserve_wei": "6186470656230",
+        "estimate_source": "simulation",
+        "shortages": [],
+        "warnings": []
+      }
+    },
+    {
+      "chain_id": 8453,
+      "balances": {
+        "result": "passed",
+        "account": "0x000000000000000000000000000000000000dEaD",
+        "block": 53541198,
+        "values": {
+          "ETH": "4584840095343594376",
+          "USDC": "26050199337",
+          "EURC": "1941551"
+        },
+        "provider": "PublicNode"
+      },
+      "fee_preview": {
+        "result": "passed",
+        "estimated_total_fee_wei": "278434716023",
+        "fee_reserve_wei": "636369432046",
+        "estimate_source": "simulation",
+        "shortages": [],
+        "warnings": []
+      }
+    }
+  ],
+  "rpc_requests": 36
+}

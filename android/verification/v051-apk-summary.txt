@@ -1,0 +1,16 @@
+Package: app.localwallet.mainnet
+Version: 0.5.1-mainnet
+Version code: 6
+Debuggable: false
+Signature: verified
+Certificate SHA-256: da1632404a817505713e77527ef97543fc6c1028148c401462b96683e2392687
+Matches signed 0.5.0 certificate: true
+ZIP alignment: 16 KiB native libraries; 4-byte other entries verified
+APK SHA-256: 6434cc9dfedb1a101ce1e489a75a9582f418d9cb5ee4f54d1c63bf8c2dfca95b
+APK bytes: 9992248
+JVM tests: 42 passed; 0 failures/errors/skips
+New storage regression tests: 8 passed
+Android lint: 0 errors; 7 warnings (English UI string localization and dependency version notice)
+Physical Android device validation: not performed; device filesystem layout unobserved
+Real-fund broadcasts: none
+Native core and JNA libraries: byte-identical to 0.5.0

@@ -1,0 +1,1 @@
+84076b5f57cacecdba271b72263f8835d21e7d111a2b7cbc3c6d934f0308e259  local-wallet-0.4.0-mainnet.apk

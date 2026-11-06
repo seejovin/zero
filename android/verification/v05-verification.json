@@ -1,0 +1,165 @@
+{
+  "version": "0.5.0-mainnet",
+  "version_code": 5,
+  "verified_at": "2026-11-05T13:31:07.014854+00:00",
+  "unsigned_apk": {
+    "path": "android/app/build/outputs/apk/release/app-release-unsigned.apk",
+    "bytes": 9959541,
+    "sha256": "f131d3cf5b6e6f293d38c20dcae50ef3cde8dd27995fdd7a93d82cc8cfc46689"
+  },
+  "jvm_suites": [
+    {
+      "name": "app.localwallet.mainnet.AmountsTest",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "app.localwallet.mainnet.CoreBridgeTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "app.localwallet.mainnet.FeeEstimatorTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "app.localwallet.mainnet.NetworkClientTest",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "app.localwallet.mainnet.SecureVaultTest",
+      "tests": 14,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "jvm_total": 34,
+  "jvm_failures": 0,
+  "jvm_errors": 0,
+  "jvm_skipped": 0,
+  "lint_errors": 0,
+  "lint_warnings": [
+    {
+      "id": "GradleDependency",
+      "severity": "Warning"
+    },
+    {
+      "id": "SetTextI18n",
+      "severity": "Warning"
+    },
+    {
+      "id": "SetTextI18n",
+      "severity": "Warning"
+    },
+    {
+      "id": "SetTextI18n",
+      "severity": "Warning"
+    },
+    {
+      "id": "SetTextI18n",
+      "severity": "Warning"
+    },
+    {
+      "id": "SetTextI18n",
+      "severity": "Warning"
+    },
+    {
+      "id": "SetTextI18n",
+      "severity": "Warning"
+    }
+  ],
+  "release_assembly": "passed",
+  "native_wallet_core": [
+    {
+      "entry": "lib/arm64-v8a/libwallet_core.so",
+      "sha256": "4f99ae2c4e3fee4fa5f5586f2e81a5e661b4ae03071d1565209ffd8e883d4a2a",
+      "unchanged_from_0_4_0": true
+    },
+    {
+      "entry": "lib/x86_64/libwallet_core.so",
+      "sha256": "5e745ea43baf9d15e7d775331e877569853823cb1caf9dbd0c2f45115fea2f38",
+      "unchanged_from_0_4_0": true
+    }
+  ],
+  "startup_regressions": {
+    "generated_24_word_vault_restart": "same vault/address/words, backup remains incomplete, resumes verification",
+    "legacy_v1_restart": "device authentication retained; same vault/address/words",
+    "real_Rust_core_registry_repository_construction": "passed",
+    "original_reported_device_exception": "not reproduced; original device cause remains unconfirmed"
+  },
+  "protection_regressions": [
+    "Off to six-digit PIN to Off preserves encrypted vault, address and backup status",
+    "PIN delay survives restart; attempt reservation precedes decryption",
+    "Before-commit and after-commit write failures retain necessary wrapping keys",
+    "Cancellation checkpoint, stale wrapper, malformed metadata and AAD tampering fail without replacing wallet",
+    "Persisted records contain neither recovery phrase nor PIN"
+  ],
+  "physical_device_validation": "not performed; Android Keystore hardware, biometrics, clipboard/screenshots and UI require android/DEVICE_TESTS.md checks",
+  "real_funds_sent": false,
+  "signed_apk": {
+    "path": "/workspace/scratch/40e54fec01a4/local-wallet-0.5.0-mainnet.apk",
+    "bytes": 9975864,
+    "sha256": "3361d85f6ad423585a91255e02bd058417ba450d20b556f6bc6cdfb553aa5fa9",
+    "signature_verified": true,
+    "certificate_sha256": "da1632404a817505713e77527ef97543fc6c1028148c401462b96683e2392687",
+    "certificate_matches_0_4_0": true,
+    "zipalign_16k_verified": true,
+    "package": "app.localwallet.mainnet",
+    "version_code": 5,
+    "version_name": "0.5.0-mainnet",
+    "debuggable": false,
+    "native_elf_alignment": [
+      {
+        "entry": "lib/arm64-v8a/libjnidispatch.so",
+        "load_segment_alignment": [
+          16384,
+          16384
+        ],
+        "supports_16k_alignment": true,
+        "unchanged_from_0_4_0": true
+      },
+      {
+        "entry": "lib/arm64-v8a/libwallet_core.so",
+        "load_segment_alignment": [
+          16384,
+          16384,
+          16384,
+          16384
+        ],
+        "supports_16k_alignment": true,
+        "unchanged_from_0_4_0": true
+      },
+      {
+        "entry": "lib/x86_64/libjnidispatch.so",
+        "load_segment_alignment": [
+          16384,
+          16384
+        ],
+        "supports_16k_alignment": true,
+        "unchanged_from_0_4_0": true
+      },
+      {
+        "entry": "lib/x86_64/libwallet_core.so",
+        "load_segment_alignment": [
+          16384,
+          16384,
+          16384,
+          16384
+        ],
+        "supports_16k_alignment": true,
+        "unchanged_from_0_4_0": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "time": "2026-11-05T09:55:22.584968+00:00",
+  "version": "0.3.0",
+  "preview": "isolated shared UI components and production CSS; synthetic values only",
+  "actual_wallet_initialized": false,
+  "wallet_storage_accessed": false,
+  "funds_moved": false,
+  "reviewed": [
+    "desktop layout",
+    "390px phone layout",
+    "network switch visibility",
+    "compact asset balances",
+    "incoming activity presentation",
+    "send form",
+    "expanded cost-to-transfer and Base fee breakdown"
+  ],
+  "authenticated_hosted_browser_flow": "not verified; owner sign-in gate preserved",
+  "controller_checks_reported_by_ui_reviewer": [
+    "network/session response isolation",
+    "unavailable lookup does not reverify cached data",
+    "reorg updates open details",
+    "lookup serializes with discovery",
+    "background display refresh excludes send/password fields"
+  ]
+}

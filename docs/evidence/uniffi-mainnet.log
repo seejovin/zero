@@ -1,0 +1,8 @@
+   Compiling wallet_core v0.2.0 (/workspace/scratch/40e54fec01a4/wallet-v02/local-wallet/core)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 2.20s
+   Compiling wallet_core v0.2.0 (/workspace/scratch/40e54fec01a4/wallet-v02/local-wallet/core)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 2.91s
+     Running `target/debug/uniffi-bindgen generate --library target/debug/libwallet_core.so --language python --out-dir /workspace/scratch/40e54fec01a4/wallet-v02/local-wallet/build/bridge-check --config core/uniffi.toml`
+writing out /workspace/scratch/40e54fec01a4/wallet-v02/local-wallet/build/bridge-check
+writing /workspace/scratch/40e54fec01a4/wallet-v02/local-wallet/build/bridge-check/wallet_core.py
+PASS: generated UniFFI bridge restored and authenticated the public fixture, signed both mainnets, persisted/reopened/reconciled Ethereum, accounted for Base L1/operator fees and rejected testnet.

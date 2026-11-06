@@ -1,0 +1,141 @@
+info: component rust-std for target aarch64-linux-android is up to date
+info: component rust-std for target x86_64-linux-android is up to date
+    Finished `release` profile [optimized] target(s) in 0.21s
+   Compiling syn v3.0.9
+   Compiling memchr v2.8.3
+   Compiling rustc-hash v2.1.3
+   Compiling indexmap v2.14.2
+   Compiling minimal-lexical v0.2.1
+   Compiling glob v0.3.4
+   Compiling scroll_derive v0.12.1
+   Compiling smawk v0.3.3
+   Compiling siphasher v1.0.4
+   Compiling winnow v1.0.5
+   Compiling nom v7.1.3
+   Compiling textwrap v0.16.4
+   Compiling camino v1.2.6
+   Compiling fs-err v3.3.2
+   Compiling serde_spanned v1.1.2
+   Compiling toml_datetime v1.1.2+spec-1.1.0
+   Compiling scroll v0.12.0
+   Compiling toml_parser v1.1.5+spec-1.1.0
+   Compiling plain v0.2.3
+   Compiling log v0.4.35
+   Compiling clap_lex v1.1.1
+   Compiling toml_writer v1.2.0+spec-1.1.0
+   Compiling uniffi_pipeline v0.32.2
+   Compiling strsim v0.11.1
+   Compiling anstyle v1.0.14
+   Compiling uniffi_meta v0.32.2
+   Compiling clap_builder v4.6.7
+   Compiling toml v1.2.0+spec-1.1.0
+   Compiling goblin v0.8.2
+   Compiling weedle2 v5.0.0
+   Compiling serde_derive v1.0.229
+   Compiling clap_derive v4.6.7
+   Compiling thiserror-impl v2.0.21
+   Compiling uniffi_udl v0.32.2
+   Compiling thiserror v2.0.21
+   Compiling clap v4.6.7
+   Compiling serde v1.0.229
+   Compiling askama_parser v0.16.1
+   Compiling basic-toml v0.1.10
+   Compiling uniffi_macros v0.32.2
+   Compiling bip39 v2.2.2
+   Compiling askama_derive v0.16.1
+   Compiling askama_macros v0.16.1
+   Compiling askama v0.16.1
+   Compiling uniffi_bindgen v0.32.2
+   Compiling uniffi v0.32.2
+   Compiling wallet_core v0.2.0 (/workspace/scratch/40e54fec01a4/wallet-v02/local-wallet/core)
+    Finished `release` profile [optimized] target(s) in 2m 03s
+     Running `target/release/uniffi-bindgen generate --library /workspace/scratch/40e54fec01a4/wallet-v02/local-wallet/target/release/libwallet_core.so --language kotlin --config core/uniffi.toml --out-dir android/app/src/main/generated`
+Code generation complete, formatting with ktlint (use --no-format to disable)
+Warning: Unable to auto-format wallet_core.kt using ktlint: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+   Compiling wallet_core v0.2.0 (/workspace/scratch/40e54fec01a4/wallet-v02/local-wallet/core)
+    Finished `release` profile [optimized] target(s) in 9.71s
+   Compiling wallet_core v0.2.0 (/workspace/scratch/40e54fec01a4/wallet-v02/local-wallet/core)
+    Finished `release` profile [optimized] target(s) in 9.64s
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.11.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+Checking the license for package Android SDK Platform-Tools in /workspace/scratch/40e54fec01a4/android-tooling/sdk/licenses
+Warning: License for package Android SDK Platform-Tools not accepted.
+WARNING: platform-tools package is not installed. Please accept the installation licence to continue
+> Task :app:buildKotlinToolingMetadata UP-TO-DATE
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preReleaseBuild UP-TO-DATE
+> Task :app:checkReleaseAarMetadata UP-TO-DATE
+> Task :app:generateReleaseResValues UP-TO-DATE
+> Task :app:mapReleaseSourceSetPaths UP-TO-DATE
+> Task :app:generateReleaseResources UP-TO-DATE
+> Task :app:mergeReleaseResources UP-TO-DATE
+> Task :app:packageReleaseResources UP-TO-DATE
+> Task :app:parseReleaseLocalResources UP-TO-DATE
+> Task :app:createReleaseCompatibleScreenManifests UP-TO-DATE
+> Task :app:extractDeepLinksRelease UP-TO-DATE
+> Task :app:processReleaseMainManifest UP-TO-DATE
+> Task :app:processReleaseManifest UP-TO-DATE
+> Task :app:processReleaseManifestForPackage UP-TO-DATE
+> Task :app:processReleaseResources UP-TO-DATE
+> Task :app:javaPreCompileRelease UP-TO-DATE
+> Task :app:preReleaseUnitTestBuild UP-TO-DATE
+> Task :app:javaPreCompileReleaseUnitTest UP-TO-DATE
+> Task :app:extractProguardFiles UP-TO-DATE
+> Task :app:mergeReleaseJniLibFolders
+> Task :app:checkReleaseDuplicateClasses UP-TO-DATE
+> Task :app:desugarReleaseFileDependencies UP-TO-DATE
+> Task :app:mergeReleaseStartupProfile UP-TO-DATE
+> Task :app:mergeExtDexRelease UP-TO-DATE
+> Task :app:mergeReleaseArtProfile UP-TO-DATE
+> Task :app:mergeReleaseShaders UP-TO-DATE
+> Task :app:compileReleaseShaders NO-SOURCE
+> Task :app:generateReleaseAssets UP-TO-DATE
+> Task :app:mergeReleaseNativeLibs
+> Task :app:mergeReleaseAssets UP-TO-DATE
+> Task :app:compressReleaseAssets UP-TO-DATE
+> Task :app:extractReleaseVersionControlInfo UP-TO-DATE
+> Task :app:stripReleaseDebugSymbols
+> Task :app:collectReleaseDependencies UP-TO-DATE
+> Task :app:sdkReleaseDependencyData UP-TO-DATE
+> Task :app:writeReleaseAppMetadata UP-TO-DATE
+> Task :app:writeReleaseSigningConfigVersions UP-TO-DATE
+> Task :app:optimizeReleaseResources
+> Task :app:extractReleaseNativeSymbolTables
+> Task :app:mergeReleaseNativeDebugMetadata
+> Task :app:compileReleaseKotlin
+> Task :app:compileReleaseJavaWithJavac NO-SOURCE
+> Task :app:processReleaseJavaRes UP-TO-DATE
+> Task :app:bundleReleaseClassesToCompileJar
+> Task :app:bundleReleaseClassesToRuntimeJar
+> Task :app:generateReleaseLintReportModel
+> Task :app:generateReleaseUnitTestLintModel
+> Task :app:compileReleaseUnitTestKotlin
+> Task :app:dexBuilderRelease
+> Task :app:compileReleaseUnitTestJavaWithJavac NO-SOURCE
+> Task :app:processReleaseUnitTestJavaRes UP-TO-DATE
+> Task :app:testReleaseUnitTest
+> Task :app:mergeReleaseGlobalSynthetics UP-TO-DATE
+> Task :app:generateReleaseLintVitalReportModel
+> Task :app:mergeReleaseJavaResource UP-TO-DATE
+> Task :app:mergeDexRelease
+> Task :app:compileReleaseArtProfile
+> Task :app:lintAnalyzeReleaseUnitTest
+> Task :app:lintVitalAnalyzeRelease
+> Task :app:lintVitalReportRelease SKIPPED
+> Task :app:lintVitalRelease SKIPPED
+> Task :app:packageRelease
+> Task :app:createReleaseApkListingFileRedirect
+> Task :app:assembleRelease
+> Task :app:lintAnalyzeRelease
+
+> Task :app:lintReportRelease
+Wrote HTML report to file:///workspace/scratch/40e54fec01a4/wallet-v02/local-wallet/android/app/build/reports/lint-results-release.html
+
+> Task :app:lintRelease
+w: Detected multiple Kotlin daemon sessions at 
+
+BUILD SUCCESSFUL in 1m 1s
+58 actionable tasks: 24 executed, 34 up-to-date
+Unsigned release APK: /workspace/scratch/40e54fec01a4/wallet-v02/local-wallet/android/app/build/outputs/apk/release/app-release-unsigned.apk
+Align with zipalign -P 16, then sign with your own app distribution key using apksigner. Wallet keys are separate.

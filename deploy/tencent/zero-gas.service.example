@@ -1,0 +1,35 @@
+# Install as /etc/systemd/system/zero-gas.service only after operator.json passes
+# validation. This unit does not activate the compiled private release gates.
+[Unit]
+Description=zero private gas gateway
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=zero-gas
+Group=zero-gas
+WorkingDirectory=/opt/zero-gas
+ExecStartPre=/opt/zero-gas/bin/wallet-gas-service check-runtime /etc/zero-gas/operator.json
+ExecStart=/opt/zero-gas/bin/wallet-gas-service serve /etc/zero-gas/operator.json
+Restart=on-failure
+RestartSec=5s
+# The current runtime handles Ctrl-C; allow its bounded requests to drain.
+KillSignal=SIGINT
+TimeoutStopSec=70s
+UMask=0077
+LimitCORE=0
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/zero-gas
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+CapabilityBoundingSet=
+AmbientCapabilities=
+# Only fixed startup/configuration errors are emitted by this application.
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

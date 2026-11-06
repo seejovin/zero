@@ -1,0 +1,3 @@
+    Checking wallet_core v0.2.0 (/workspace/scratch/40e54fec01a4/wallet-v090/local-wallet/core)
+    Checking wallet_gas_service v0.11.0 (/workspace/scratch/40e54fec01a4/wallet-v090/local-wallet/gas-service)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 5.24s

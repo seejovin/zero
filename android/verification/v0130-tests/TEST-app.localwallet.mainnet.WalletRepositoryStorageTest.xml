@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="app.localwallet.mainnet.WalletRepositoryStorageTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2026-11-06T15:28:17" hostname="34d710c0c368" time="0.082">
+  <properties/>
+  <testcase name="savedRecordsForAnotherAccountOrNetworkRemainBlockedOnRead" classname="app.localwallet.mainnet.WalletRepositoryStorageTest" time="0.012"/>
+  <testcase name="appControlledWalletDirectorySymlinkIsRejectedBeforeOpeningAnyJournal" classname="app.localwallet.mainnet.WalletRepositoryStorageTest" time="0.002"/>
+  <testcase name="frameworkParentAliasReopensTheSameDurableBalancesAndHistory" classname="app.localwallet.mainnet.WalletRepositoryStorageTest" time="0.011"/>
+  <testcase name="wrongAccountNetworkAndOlderObservationsCannotReplaceTheLastBalance" classname="app.localwallet.mainnet.WalletRepositoryStorageTest" time="0.005"/>
+  <testcase name="rejectedObservationDoesNotEraseLastBalanceOrExistingHistory" classname="app.localwallet.mainnet.WalletRepositoryStorageTest" time="0.01"/>
+  <testcase name="databaseLeafSymlinkIsRejectedWithoutModifyingItsTarget" classname="app.localwallet.mainnet.WalletRepositoryStorageTest" time="0.002"/>
+  <testcase name="newNativeBalanceJournalsUseSeparatePathsAndLegacyEthereumUsdtStaysUnknown" classname="app.localwallet.mainnet.WalletRepositoryStorageTest" time="0.01"/>
+  <testcase name="refreshDiagnosticsDistinguishLocalRecordsFromRpcAndDoNotExposeRawErrors" classname="app.localwallet.mainnet.WalletRepositoryStorageTest" time="0.001"/>
+  <testcase name="newNetworkJournalsShareAnExistingWalletWithoutReplacingItsVaultOrBaseRecords" classname="app.localwallet.mainnet.WalletRepositoryStorageTest" time="0.025"/>
+  <testcase name="unreadableExistingJournalIsPreservedAndNeverReplacedWithAnEmptyOne" classname="app.localwallet.mainnet.WalletRepositoryStorageTest" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

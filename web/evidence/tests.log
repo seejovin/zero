@@ -1,0 +1,43 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> local-wallet-web@0.2.0 test
+> node --import tsx --test tests/*.test.ts
+
+✔ an uncertain broadcast preserves exactly one signed payment and never invents failure (40.220895ms)
+✔ locking during the last chain check prevents broadcast of the saved signature (13.669604ms)
+✔ retry submits identical saved bytes without signing again (15.75989ms)
+✔ a canonical receipt that changes after finalized lookup is not accepted (11.530784ms)
+✔ conflicting new receipt cannot erase a still-canonical earlier receipt (31.916908ms)
+✔ a temporarily missing receipt does not erase canonical inclusion (16.591762ms)
+✔ a wallet cannot silently overwrite an existing encrypted vault (11.975554ms)
+✔ concurrent intents cannot reserve two payments on one account/network (10.303557ms)
+✔ Ethereum and Base nonces are separate, and unchanged intent retries are idempotent (5.672077ms)
+✔ unsigned cancellation releases a nonce; a signature never does (20.003827ms)
+✔ signed bytes survive reopen and later uncertain retries do not downgrade acknowledgement (14.516708ms)
+✔ storage abort after a request success rolls back signature and prevents any broadcast (9.225615ms)
+✔ receipt evidence is revalidated, finality is monotonic, actual Base fee is retained (36.80912ms)
+✔ stored receipt projection corruption is detected on reload (17.629964ms)
+✔ failed execution preserves charged gas; successful receipt missing expected transfer remains unresolved (22.062395ms)
+✔ reorgs append evidence and retain signed bytes; lost finality blocks sending (16.176247ms)
+✔ older repeated balances cannot become latest and conflicts at one block are rejected (1.486727ms)
+✔ RPC rejects a wrong chain, wrong response id, duplicate receipt fields, and oversized body (6.167743ms)
+✔ RPC rejects an oversized streaming response even without a content length (6.927035ms)
+✔ only approved endpoints and methods are available (0.330607ms)
+✔ Base quote includes upper-bound L1/operator estimates and exact calldata (11.092506ms)
+✔ Base actual operator fee is queried at the receipt block and mismatches/missing L1 fee fail (14.084988ms)
+✔ Base submission uses the sequencer and validates the returned transaction hash (7.429201ms)
+✔ strict JSON preserves valid JSON semantics and safely treats prototype-like names (1.854521ms)
+✔ conflicting receipt fields and escaped duplicate keys are rejected before normalization (0.473894ms)
+✔ malformed syntax, excessive depth/nodes, and unsafe JSON numbers fail closed (40.419694ms)
+✔ amount parsing uses exact integers and round-trips all supported decimals (1.414399ms)
+✔ ambiguous, negative, overprecise, nonfinite, and overflowing amounts are rejected (0.361454ms)
+✔ RPC quantities must use canonical hexadecimal encoding (0.22641ms)
+✔ account reservation and receive URI are network-specific (0.367383ms)
+ℹ tests 30
+ℹ suites 0
+ℹ pass 30
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 477.071234

@@ -1,0 +1,3 @@
+info: component rust-std for target wasm32-unknown-unknown is up to date
+   Compiling wallet_core v0.2.0 (/workspace/scratch/40e54fec01a4/wallet-v02/local-wallet/core)
+    Finished `release` profile [optimized] target(s) in 4.36s

@@ -1,0 +1,35 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.11.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+Checking the license for package Android SDK Platform-Tools in /workspace/scratch/40e54fec01a4/android-tooling/sdk/licenses
+Warning: License for package Android SDK Platform-Tools not accepted.
+WARNING: platform-tools package is not installed. Please accept the installation licence to continue
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preReleaseBuild UP-TO-DATE
+> Task :app:checkReleaseAarMetadata UP-TO-DATE
+> Task :app:generateReleaseResValues UP-TO-DATE
+> Task :app:mapReleaseSourceSetPaths UP-TO-DATE
+> Task :app:generateReleaseResources UP-TO-DATE
+> Task :app:mergeReleaseResources UP-TO-DATE
+> Task :app:packageReleaseResources UP-TO-DATE
+> Task :app:parseReleaseLocalResources UP-TO-DATE
+> Task :app:createReleaseCompatibleScreenManifests
+> Task :app:extractDeepLinksRelease UP-TO-DATE
+> Task :app:processReleaseMainManifest
+> Task :app:processReleaseManifest
+> Task :app:processReleaseManifestForPackage
+> Task :app:processReleaseResources
+
+> Task :app:compileReleaseKotlin
+w: file:///workspace/scratch/40e54fec01a4/wallet-v02/local-wallet/android/app/src/main/java/app/localwallet/mainnet/ActivityStore.kt:95:90 Type argument for reified type parameter 'T' was inferred to the intersection of ['Comparable<*>' & 'Serializable']. Reification of an intersection type results in the common supertype being used. This may lead to subtle issues and an explicit type argument is encouraged. This will become an error in a future release.
+w: file:///workspace/scratch/40e54fec01a4/wallet-v02/local-wallet/android/app/src/main/java/app/localwallet/mainnet/ActivityStore.kt:99:106 Type argument for reified type parameter 'T' was inferred to the intersection of ['Comparable<*>' & 'Serializable']. Reification of an intersection type results in the common supertype being used. This may lead to subtle issues and an explicit type argument is encouraged. This will become an error in a future release.
+w: file:///workspace/scratch/40e54fec01a4/wallet-v02/local-wallet/android/app/src/main/java/app/localwallet/mainnet/ActivityStore.kt:112:105 Type argument for reified type parameter 'T' was inferred to the intersection of ['Comparable<*>?' & 'Serializable?']. Reification of an intersection type results in the common supertype being used. This may lead to subtle issues and an explicit type argument is encouraged. This will become an error in a future release.
+w: file:///workspace/scratch/40e54fec01a4/wallet-v02/local-wallet/android/app/src/main/java/app/localwallet/mainnet/MainActivity.kt:157:19 'fun onBackPressed(): Unit' is deprecated. Deprecated in Java.
+w: file:///workspace/scratch/40e54fec01a4/wallet-v02/local-wallet/android/app/src/main/java/app/localwallet/mainnet/ActivityStore.kt:95:90 Type argument for reified type parameter 'T' was inferred to the intersection of ['Comparable<*>' & 'Serializable']. Reification of an intersection type results in the common supertype being used. This may lead to subtle issues and an explicit type argument is encouraged. This will become an error in a future release.
+w: file:///workspace/scratch/40e54fec01a4/wallet-v02/local-wallet/android/app/src/main/java/app/localwallet/mainnet/ActivityStore.kt:99:106 Type argument for reified type parameter 'T' was inferred to the intersection of ['Comparable<*>' & 'Serializable']. Reification of an intersection type results in the common supertype being used. This may lead to subtle issues and an explicit type argument is encouraged. This will become an error in a future release.
+w: file:///workspace/scratch/40e54fec01a4/wallet-v02/local-wallet/android/app/src/main/java/app/localwallet/mainnet/ActivityStore.kt:112:105 Type argument for reified type parameter 'T' was inferred to the intersection of ['Comparable<*>?' & 'Serializable?']. Reification of an intersection type results in the common supertype being used. This may lead to subtle issues and an explicit type argument is encouraged. This will become an error in a future release.
+w: file:///workspace/scratch/40e54fec01a4/wallet-v02/local-wallet/android/app/src/main/java/app/localwallet/mainnet/MainActivity.kt:157:19 'fun onBackPressed(): Unit' is deprecated. Deprecated in Java.
+w: Detected multiple Kotlin daemon sessions at 
+
+BUILD SUCCESSFUL in 49s
+14 actionable tasks: 6 executed, 8 up-to-date

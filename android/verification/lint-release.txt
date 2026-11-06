@@ -1,0 +1,27 @@
+/workspace/scratch/40e54fec01a4/wallet-v02/local-wallet/android/app/src/main/java/app/localwallet/mainnet/MainActivity.kt:245: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+                            status.text = "Authentication cancelled or unavailable. Nothing was signed."
+                                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspace/scratch/40e54fec01a4/wallet-v02/local-wallet/android/app/src/main/java/app/localwallet/mainnet/MainActivity.kt:344: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+                text = "${index + 1}. $word"
+                       ~~~~~~~~~~~~~~~~~~~~~
+/workspace/scratch/40e54fec01a4/wallet-v02/local-wallet/android/app/src/main/java/app/localwallet/mainnet/MainActivity.kt:344: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+                text = "${index + 1}. $word"
+                          ~~~~~~~~~
+/workspace/scratch/40e54fec01a4/wallet-v02/local-wallet/android/app/src/main/java/app/localwallet/mainnet/MainActivity.kt:355: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+        val checked = CheckBox(this).apply { text = "I wrote the words down in order, somewhere private."; textSize = 15f; setTextColor(ink); isSaveEnabled = false }
+                                                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "SetTextI18n":
+   When calling TextView#setText
+   * Never call Number#toString() to format numbers; it will not handle
+   fraction separators and locale-specific digits properly. Consider using
+   String#format with proper format specifications (%d or %f) instead.
+   * Do not pass a string literal (e.g. "Hello") to display text. Hardcoded
+   text can not be properly translated to other languages. Consider using
+   Android resource strings instead.
+   * Do not build messages by concatenating text chunks. Such messages can not
+   be properly translated.
+
+   https://developer.android.com/guide/topics/resources/localization.html
+
+0 errors, 4 warnings

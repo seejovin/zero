@@ -1,0 +1,5 @@
+# UniFFI 0.32 global configuration; pass explicitly using --config.
+[crates.wallet_core.bindings.kotlin]
+package_name = "uniffi.wallet_core"
+cdylib_name = "wallet_core"
+android = true

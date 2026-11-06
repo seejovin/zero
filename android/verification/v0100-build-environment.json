@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "recorded_at_utc": "2026-11-06T06:56:58.919652+00:00",
+  "release": "0.10.0-mainnet",
+  "android_version_code": 13,
+  "status": "android_build_blocked",
+  "prior_rejection_evidence": "v090-build-environment.json",
+  "missing_prerequisites": [
+    "Gradle 8.11.1 distribution",
+    "Android SDK platform 35",
+    "Android build-tools 35.0.0",
+    "Android NDK 27.2.12479018"
+  ],
+  "automatic_approval_rejections": [
+    {
+      "action": "Download official public Android repository metadata",
+      "url": "https://dl.google.com/android/repository/repository2-3.xml",
+      "reason": "dl.google.com is outside the environment explicitly allowed network destinations; approving would bypass stated network controls"
+    },
+    {
+      "action": "Download official Temurin JDK 17.0.21+9 archive",
+      "url": "https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.21%2B9/OpenJDK17U-jdk_x64_linux_hotspot_17.0.21_9.tar.gz",
+      "reason": "github.com is outside the environment explicitly allowed network destinations; approving would bypass active network controls"
+    },
+    {
+      "action": "Download pinned Gradle 8.11.1 distribution",
+      "url": "https://downloads.gradle.org/distributions/gradle-8.11.1-bin.zip",
+      "reason": "downloads.gradle.org is outside the environment explicitly allowed network destinations; approving would bypass stated network controls"
+    }
+  ],
+  "retry_status": "The earlier rejected destinations were not retried through mirrors, proxies, alternate downloaders or other routes.",
+  "host_available": {
+    "rustc": "1.99.1 (58cf8f9c3 2026-10-13)",
+    "cargo": "1.99.1 (5f94df478 2026-08-27)",
+    "host_release_built": true,
+    "kotlin_and_python_bindings_generated": true
+  },
+  "not_completed": [
+    "Android native library compilation",
+    "Android release JVM tests through Gradle",
+    "Android release lint",
+    "APK assembly",
+    "APK signing",
+    "Device or emulator tests",
+    "Compiled-runtime third-party binary-distribution notice bundle",
+    "Live RPC/provider and funded-send validation"
+  ],
+  "release_artifact": null,
+  "preserved": [
+    "Verified 0.8.0 APK and APK_MANIFEST.json unchanged",
+    "Private distribution signing backup unopened",
+    "No prior Android native binary reused as a new candidate release"
+  ]
+}

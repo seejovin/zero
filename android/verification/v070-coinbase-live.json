@@ -1,0 +1,135 @@
+{
+  "scope": "Compiled production CoinbasePriceClient on host JVM; no Android device claim",
+  "attempts": [
+    {
+      "checked_at_utc": "2026-11-05T16:29:27.660842504Z",
+      "client": "compiled production CoinbasePriceClient",
+      "pairs": [
+        {
+          "pair": "USDC-USD",
+          "status": "unavailable",
+          "diagnostic_category": "UnknownHostException"
+        },
+        {
+          "pair": "EURC-USD",
+          "status": "unavailable",
+          "diagnostic_category": "UnknownHostException"
+        },
+        {
+          "pair": "ETH-USD",
+          "status": "unavailable",
+          "diagnostic_category": "UnknownHostException"
+        }
+      ],
+      "execution_route": "Direct JVM networking",
+      "implementation_phase": "Before timeout-only retry"
+    },
+    {
+      "checked_at_utc": "2026-11-05T16:30:43.276046969Z",
+      "client": "compiled production CoinbasePriceClient",
+      "pairs": [
+        {
+          "pair": "USDC-USD",
+          "status": "unavailable",
+          "diagnostic_category": "SSLHandshakeException"
+        },
+        {
+          "pair": "EURC-USD",
+          "status": "unavailable",
+          "diagnostic_category": "SocketTimeoutException"
+        },
+        {
+          "pair": "ETH-USD",
+          "status": "unavailable",
+          "diagnostic_category": "SSLHandshakeException"
+        }
+      ],
+      "execution_route": "Executor-provided HTTPS proxy; default TLS certificate and hostname checks retained",
+      "implementation_phase": "Before timeout-only retry"
+    },
+    {
+      "checked_at_utc": "2026-11-05T16:32:29.760386865Z",
+      "client": "compiled production CoinbasePriceClient",
+      "pairs": [
+        {
+          "pair": "USDC-USD",
+          "status": "unavailable",
+          "diagnostic_category": "DiagnosticRetrySucceeded"
+        },
+        {
+          "pair": "EURC-USD",
+          "status": "ok",
+          "http_status": 200,
+          "usd_per_unit": "1.1210895427850637",
+          "received_at_utc": "2026-11-05T16:32:29.734Z"
+        },
+        {
+          "pair": "ETH-USD",
+          "status": "ok",
+          "http_status": 200,
+          "usd_per_unit": "2270.89",
+          "received_at_utc": "2026-11-05T16:32:29.759Z"
+        }
+      ],
+      "execution_route": "Executor-provided HTTPS proxy and trusted CA bundle; certificate chain and hostname validation retained",
+      "implementation_phase": "Before timeout-only retry"
+    },
+    {
+      "checked_at_utc": "2026-11-05T16:33:12.669556045Z",
+      "client": "compiled production CoinbasePriceClient",
+      "pairs": [
+        {
+          "pair": "USDC-USD",
+          "status": "unavailable",
+          "diagnostic_category": "DiagnosticRetrySucceeded"
+        },
+        {
+          "pair": "EURC-USD",
+          "status": "ok",
+          "http_status": 200,
+          "usd_per_unit": "1.121093142337542",
+          "received_at_utc": "2026-11-05T16:33:12.644Z"
+        },
+        {
+          "pair": "ETH-USD",
+          "status": "ok",
+          "http_status": 200,
+          "usd_per_unit": "2268.5",
+          "received_at_utc": "2026-11-05T16:33:12.668Z"
+        }
+      ],
+      "execution_route": "Executor-provided HTTPS proxy and trusted CA bundle; certificate chain and hostname validation retained",
+      "implementation_phase": "Before timeout-only retry"
+    },
+    {
+      "checked_at_utc": "2026-11-05T16:39:26.146548909Z",
+      "client": "compiled production CoinbasePriceClient",
+      "pairs": [
+        {
+          "pair": "USDC-USD",
+          "status": "ok",
+          "http_status": 200,
+          "usd_per_unit": "1",
+          "received_at_utc": "2026-11-05T16:39:25.939Z"
+        },
+        {
+          "pair": "EURC-USD",
+          "status": "ok",
+          "http_status": 200,
+          "usd_per_unit": "1.121782129950415",
+          "received_at_utc": "2026-11-05T16:39:26.045Z"
+        },
+        {
+          "pair": "ETH-USD",
+          "status": "ok",
+          "http_status": 200,
+          "usd_per_unit": "2266.83",
+          "received_at_utc": "2026-11-05T16:39:26.145Z"
+        }
+      ],
+      "implementation_phase": "With one bounded timeout-only retry per public pair",
+      "execution_route": "Executor-provided HTTPS proxy and trusted CA bundle; certificate chain and hostname validation retained"
+    }
+  ],
+  "latest_result": "passed"
+}

@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self'; img-src 'self' data:; connect-src 'self' https://ethereum-rpc.publicnode.com https://eth-mainnet.g.alchemy.com https://base-rpc.publicnode.com https://mainnet.base.org https://mainnet-sequencer.base.org; worker-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; manifest-src 'self'">
+  <meta name="description" content="Read-only Local Wallet connection and transfer diagnostics using public blockchain data.">
+  <title>Local Wallet · Read-only diagnostics</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./diagnostics.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div id="app"><main class="loading-screen" id="main"><div class="spinner"></div><h1>Wallet diagnostics</h1><p>Loading the local receipt validator…</p></main></div>
+  <noscript>These read-only checks require JavaScript and WebAssembly.</noscript>
+</body>
+</html>

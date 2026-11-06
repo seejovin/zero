@@ -1,0 +1,354 @@
+{
+  "verified_at_utc": "2026-11-05T19:31:44.742409+00:00",
+  "version": "0.8.0-mainnet",
+  "version_code": 11,
+  "package": "app.localwallet.mainnet",
+  "apk": "local-wallet-0.8.0-mainnet.apk",
+  "bytes": 10205240,
+  "sha256": "5096819858a6065a61917a167e7e1118c96bcc609df9c2211d06081c13b3c3f7",
+  "certificate_sha256": "da1632404a817505713e77527ef97543fc6c1028148c401462b96683e2392687",
+  "same_signing_identity_as_previous_release": true,
+  "signature_verified": true,
+  "signature_scheme": "v3",
+  "min_sdk": 30,
+  "target_sdk": 35,
+  "debuggable": false,
+  "supported_abis": [
+    "arm64-v8a",
+    "x86_64"
+  ],
+  "release_build": "passed",
+  "final_build_log": "v080-final-release-build.log",
+  "build_tasks": [
+    "testReleaseUnitTest",
+    "lintRelease",
+    "assembleRelease"
+  ],
+  "build_mode": "Installed Gradle 8.11.1, --offline --no-daemon",
+  "release_unit_tests": {
+    "total": 154,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "suites": [
+      {
+        "name": "app.localwallet.mainnet.AmountsTest",
+        "tests": "7",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.AssetSelectionTest",
+        "tests": "8",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.CoinbasePriceClientTest",
+        "tests": "11",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.CoreBridgeTest",
+        "tests": "3",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.DisplayNamesTest",
+        "tests": "8",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.FeeEstimatorTest",
+        "tests": "3",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.MaxTransferTest",
+        "tests": "11",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.NetworkClientTest",
+        "tests": "7",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.PortfolioPreferencesTest",
+        "tests": "6",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.RecoveryPhraseSessionTest",
+        "tests": "13",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.SecureVaultTest",
+        "tests": "16",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.UsdPricesTest",
+        "tests": "9",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.WalletHoldingsTest",
+        "tests": "6",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.WalletNavigationTest",
+        "tests": "10",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.WalletPortfolioTest",
+        "tests": "7",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.WalletRepositoryMaxTest",
+        "tests": "9",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.WalletRepositoryStorageTest",
+        "tests": "8",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "app.localwallet.mainnet.WithdrawalFlowTest",
+        "tests": "12",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      }
+    ]
+  },
+  "lint": {
+    "errors": 0,
+    "warnings": 9,
+    "issues": [
+      {
+        "id": "GradleDependency",
+        "severity": "Warning",
+        "message": "A newer version of androidx.annotation:annotation than 1.9.1 is available: 1.11.0",
+        "locations": [
+          {
+            "file": "/workspace/scratch/40e54fec01a4/wallet-v02/local-wallet/android/app/build.gradle.kts",
+            "line": "46",
+            "column": "20"
+          }
+        ]
+      },
+      {
+        "id": "ViewConstructor",
+        "severity": "Warning",
+        "message": "Custom view `WithdrawalFormViews` is missing constructor used by tools: `(Context)` or `(Context,AttributeSet)` or `(Context,AttributeSet,int)`",
+        "locations": [
+          {
+            "file": "/workspace/scratch/40e54fec01a4/wallet-v02/local-wallet/android/app/src/main/java/app/localwallet/mainnet/WithdrawalViews.kt",
+            "line": "33",
+            "column": "16"
+          }
+        ]
+      },
+      {
+        "id": "ViewConstructor",
+        "severity": "Warning",
+        "message": "Custom view `WithdrawalDock` is missing constructor used by tools: `(Context)` or `(Context,AttributeSet)` or `(Context,AttributeSet,int)`",
+        "locations": [
+          {
+            "file": "/workspace/scratch/40e54fec01a4/wallet-v02/local-wallet/android/app/src/main/java/app/localwallet/mainnet/WithdrawalViews.kt",
+            "line": "136",
+            "column": "16"
+          }
+        ]
+      },
+      {
+        "id": "SetTextI18n",
+        "severity": "Warning",
+        "message": "String literal in `setText` can not be translated. Use Android resources instead.",
+        "locations": [
+          {
+            "file": "/workspace/scratch/40e54fec01a4/wallet-v02/local-wallet/android/app/src/main/java/app/localwallet/mainnet/MainActivity.kt",
+            "line": "389",
+            "column": "44"
+          }
+        ]
+      },
+      {
+        "id": "SetTextI18n",
+        "severity": "Warning",
+        "message": "Do not concatenate text displayed with `setText`. Use resource string with placeholders.",
+        "locations": [
+          {
+            "file": "/workspace/scratch/40e54fec01a4/wallet-v02/local-wallet/android/app/src/main/java/app/localwallet/mainnet/MainActivity.kt",
+            "line": "1588",
+            "column": "30"
+          }
+        ]
+      },
+      {
+        "id": "SetTextI18n",
+        "severity": "Warning",
+        "message": "String literal in `setText` can not be translated. Use Android resources instead.",
+        "locations": [
+          {
+            "file": "/workspace/scratch/40e54fec01a4/wallet-v02/local-wallet/android/app/src/main/java/app/localwallet/mainnet/MainActivity.kt",
+            "line": "2007",
+            "column": "21"
+          }
+        ]
+      },
+      {
+        "id": "SetTextI18n",
+        "severity": "Warning",
+        "message": "Do not concatenate text displayed with `setText`. Use resource string with placeholders.",
+        "locations": [
+          {
+            "file": "/workspace/scratch/40e54fec01a4/wallet-v02/local-wallet/android/app/src/main/java/app/localwallet/mainnet/MainActivity.kt",
+            "line": "2142",
+            "column": "35"
+          }
+        ]
+      },
+      {
+        "id": "SetTextI18n",
+        "severity": "Warning",
+        "message": "String literal in `setText` can not be translated. Use Android resources instead.",
+        "locations": [
+          {
+            "file": "/workspace/scratch/40e54fec01a4/wallet-v02/local-wallet/android/app/src/main/java/app/localwallet/mainnet/MainActivity.kt",
+            "line": "2142",
+            "column": "36"
+          }
+        ]
+      },
+      {
+        "id": "SetTextI18n",
+        "severity": "Warning",
+        "message": "String literal in `setText` can not be translated. Use Android resources instead.",
+        "locations": [
+          {
+            "file": "/workspace/scratch/40e54fec01a4/wallet-v02/local-wallet/android/app/src/main/java/app/localwallet/mainnet/WithdrawalViews.kt",
+            "line": "147",
+            "column": "17"
+          }
+        ]
+      }
+    ]
+  },
+  "zip_alignment_16k": "passed",
+  "native_libraries_unchanged_from_0_7_1": true,
+  "native_libraries": [
+    {
+      "path": "lib/arm64-v8a/libjnidispatch.so",
+      "sha256": "ddfc6c965bbe366615c000ec1f06552ddf0bb2b4f9d921d0bff8c75b3cb2ca4c",
+      "load_segment_alignment": [
+        16384,
+        16384
+      ],
+      "identical_to_v071": true
+    },
+    {
+      "path": "lib/arm64-v8a/libwallet_core.so",
+      "sha256": "4f99ae2c4e3fee4fa5f5586f2e81a5e661b4ae03071d1565209ffd8e883d4a2a",
+      "load_segment_alignment": [
+        16384,
+        16384,
+        16384,
+        16384
+      ],
+      "identical_to_v071": true
+    },
+    {
+      "path": "lib/x86_64/libjnidispatch.so",
+      "sha256": "288eafff19a70e833498201071c3d724f03f32ee8ff64a14fca50b57d975db70",
+      "load_segment_alignment": [
+        16384,
+        16384
+      ],
+      "identical_to_v071": true
+    },
+    {
+      "path": "lib/x86_64/libwallet_core.so",
+      "sha256": "5e745ea43baf9d15e7d775331e877569853823cb1caf9dbd0c2f45115fea2f38",
+      "load_segment_alignment": [
+        16384,
+        16384,
+        16384,
+        16384
+      ],
+      "identical_to_v071": true
+    }
+  ],
+  "scope": [
+    "Android withdrawal form, inline quote lifecycle, final approval and result presentation; web, Rust core and vault format unchanged",
+    "Single asset-first Send form with explicit Paste, network bottom sheet, exact amount and Max, available balance and fixed review footer",
+    "Generic network stays unchosen; first network selection preserves a recipient entered before selection; later switches use chain-scoped drafts",
+    "Read-only quote worker coalesces to one running request and one latest pending request; input, wallet, page and freshness checks discard obsolete results",
+    "Accepted quote provides pinned asset availability, exact integer units and separate ETH fee reserve; cached availability is labelled Last checked",
+    "Max uses full supported precision; ERC-20 token amount is not reduced by the separate ETH network fee",
+    "Fee quotes and preparation claims are single-use and expire; successful preparation is revalidated before authentication and broadcast",
+    "Explicit Edit, toolbar Back and hardware Back require successful durable cancellation of the exact unsigned prepared intent",
+    "Final review exposes exact amount, complete recipient, selected network and inspectable token contract and fee budget",
+    "Submission acknowledgment is awaiting confirmation; uncertain or signed outcomes retain recovery through Activity and never imply finality",
+    "Secure bottom sheets dismiss on pause or navigation; explicit edge-to-edge ownership handles system bars, cutouts and keyboard insets",
+    "Existing optional authentication, concealed recovery phrase, Coinbase price freshness and transaction durability are preserved"
+  ],
+  "new_regressions": {
+    "WithdrawalFlowTest": 12,
+    "WalletRepositoryMaxTest_added": 2
+  },
+  "reviews": {
+    "root_integration": "no blocking defect found",
+    "independent_ui_lifecycle_and_network_binding": "no blocking defect found",
+    "independent_withdrawal_mechanism_and_wording": "no blocking defect found"
+  },
+  "environment_notes": [
+    "Initial Gradle wrapper invocation attempted a missing distribution download and failed before compilation; the existing installed Gradle distribution completed the offline gate. See v080-wrapper-environment.log.",
+    "Signing password files were temporary and removed after signing; a first invocation exhausted a shared password-file stream, then separate temporary store/key password files completed signing. No application rebuild was needed."
+  ],
+  "limitations": [
+    "No physical-device or emulator UI, keyboard, bottom-sheet, biometric or OEM lifecycle verification was available.",
+    "JVM regression tests and source review do not validate phone rendering or platform interaction timing.",
+    "No live signed transaction was broadcast and no user funds were moved during verification.",
+    "This release did not re-run live RPC or Coinbase endpoint smoke tests; transport implementations are unchanged.",
+    "Lint has nine non-fatal warnings: one dependency update, two constructors for programmatically created native views and six translatable-text warnings."
+  ]
+}

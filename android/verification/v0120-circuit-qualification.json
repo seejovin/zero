@@ -1,0 +1,288 @@
+{
+  "schema_version": 1,
+  "sdk_engine_version": "9.9.1",
+  "catalog_source": "@railgun-community/wallet@11.3.0",
+  "ipfs_cid": "QmUsmnK4PFc7zDp2cmC4wBZxYLjNyRgWfs5GNcJJ2uLcpU",
+  "circuits": {
+    "01x03": {
+      "wasm": {
+        "path": "artifacts/01x03.wasm",
+        "sha256": "72e55865fccca077f443bae9f1e6762a156ea478a137efc1324fb79153050276",
+        "bytes": 3918931
+      },
+      "zkey": {
+        "path": "artifacts/01x03.zkey",
+        "sha256": "477aeca6a8ed3706f572bce0e99a7054e700a4e3c2ee4499d7013a4d7770e0d0",
+        "bytes": 6361742
+      },
+      "vkey": {
+        "path": "artifacts/01x03.vkey.json",
+        "sha256": "b77a9a7b82eb1fde9fdf7184447115552f687c1e4d4aa03b91a2378517dd812a",
+        "bytes": 3419
+      }
+    },
+    "02x03": {
+      "wasm": {
+        "path": "artifacts/02x03.wasm",
+        "sha256": "20ab2f0987f94b6e959fcf11c9d37415c98848acd6a900a0ca75768db3938afa",
+        "bytes": 4098477
+      },
+      "zkey": {
+        "path": "artifacts/02x03.zkey",
+        "sha256": "75611fffbc675993e55964404136df2a4e59821b40103ebe7afafc6c76863d11",
+        "bytes": 8700194
+      },
+      "vkey": {
+        "path": "artifacts/02x03.vkey.json",
+        "sha256": "b1171ed1811e63db098d56648102b88f7d3884faa2bd73422e6fc3953dbf8007",
+        "bytes": 3584
+      }
+    },
+    "03x03": {
+      "wasm": {
+        "path": "artifacts/03x03.wasm",
+        "sha256": "6ee412340538ddafb422906711c2fdcc4bf8e945c525e336bd54d093820f9922",
+        "bytes": 4214558
+      },
+      "zkey": {
+        "path": "artifacts/03x03.zkey",
+        "sha256": "e008d46ba4a249ba79727417b314cf8a4bd4d1cb400468437f791cd8da4410de",
+        "bytes": 12084774
+      },
+      "vkey": {
+        "path": "artifacts/03x03.vkey.json",
+        "sha256": "7daf67513fd0574480abd415594d5520803debbb8c0d8fbc4b91ab3ae84f51ee",
+        "bytes": 3744
+      }
+    },
+    "04x03": {
+      "wasm": {
+        "path": "artifacts/04x03.wasm",
+        "sha256": "cdb8b87485cc1e5676663b805e132f276fe9678f84962c6e6543b34687437bd2",
+        "bytes": 4246989
+      },
+      "zkey": {
+        "path": "artifacts/04x03.zkey",
+        "sha256": "5c6c5d8d61440a4e5e32113782efd1ea951edfb4d3419c4e43718afcfc248a48",
+        "bytes": 14417538
+      },
+      "vkey": {
+        "path": "artifacts/04x03.vkey.json",
+        "sha256": "3036d23ec4378753c43b32004b035e1fe4e5ee427976b8cb530e6c05ad6cb120",
+        "bytes": 3915
+      }
+    },
+    "05x03": {
+      "wasm": {
+        "path": "artifacts/05x03.wasm",
+        "sha256": "5fce9eabbdf5412ae58d87af2807965834ff8ac6b4b5317f8f01c100e5a81429",
+        "bytes": 4642791
+      },
+      "zkey": {
+        "path": "artifacts/05x03.zkey",
+        "sha256": "83370aa6aff6ae16f1a2675eef41555748c99bdc6b1a8f2974e4d849633b6cd9",
+        "bytes": 16774254
+      },
+      "vkey": {
+        "path": "artifacts/05x03.vkey.json",
+        "sha256": "db082d74123b768e31437635b645986f800e9ca6c4e4a62ec5140860a4ada8f9",
+        "bytes": 4080
+      }
+    },
+    "06x03": {
+      "wasm": {
+        "path": "artifacts/06x03.wasm",
+        "sha256": "b0c2130ee0e1467daa06aaa440bd402b304e2fe2054c0bcbf03aa765a61c0e6e",
+        "bytes": 4518800
+      },
+      "zkey": {
+        "path": "artifacts/06x03.zkey",
+        "sha256": "0b696aa4b265abf2c1826b319fd96a901bc56f3bc9e9d77717fd3ba3cd1e6fdc",
+        "bytes": 21199442
+      },
+      "vkey": {
+        "path": "artifacts/06x03.vkey.json",
+        "sha256": "6f965392e9421938b8d6c463ea09033a75ba94ce2ba3dad4654a9a01b7741a76",
+        "bytes": 4250
+      }
+    },
+    "07x03": {
+      "wasm": {
+        "path": "artifacts/07x03.wasm",
+        "sha256": "16279ec5785dd21c61553cc6c83abf8f4270bae38b8b9124151688d4d9003d63",
+        "bytes": 4909790
+      },
+      "zkey": {
+        "path": "artifacts/07x03.zkey",
+        "sha256": "b54ad3b22009c28bb247f7d524096f1dec32fb906cfd0e5ac65a166db7cd6972",
+        "bytes": 23558630
+      },
+      "vkey": {
+        "path": "artifacts/07x03.vkey.json",
+        "sha256": "b76151e0f50e91423b17ca946afccc57b468cd8677194f814294d099dd8bc5e8",
+        "bytes": 4405
+      }
+    },
+    "08x03": {
+      "wasm": {
+        "path": "artifacts/08x03.wasm",
+        "sha256": "24db86144ccd6cbac570b83568f229acdf52dacaf56de5789a2fa12e82f45e00",
+        "bytes": 5362478
+      },
+      "zkey": {
+        "path": "artifacts/08x03.zkey",
+        "sha256": "a4707623598f4ab9123bc11cd4a0626a454f175a13e88c7d7c926381c8f180b5",
+        "bytes": 25920986
+      },
+      "vkey": {
+        "path": "artifacts/08x03.vkey.json",
+        "sha256": "d56b4a2fa3bfc3f5b0a50781b84e732494739189ca848778be5aab1628527196",
+        "bytes": 4570
+      }
+    },
+    "09x03": {
+      "wasm": {
+        "path": "artifacts/09x03.wasm",
+        "sha256": "43cb8f45d0429dcafa3494ad92402fef89142ae5171ba49f97e85f9426e4de1c",
+        "bytes": 4927241
+      },
+      "zkey": {
+        "path": "artifacts/09x03.zkey",
+        "sha256": "02a62fc89b07f81b745b3c0d64b461c4a57e0fdfee2aa1fd9bd0004e83a7cf6f",
+        "bytes": 28240430
+      },
+      "vkey": {
+        "path": "artifacts/09x03.vkey.json",
+        "sha256": "06d4a7597e9056b37758f8a94e2452407b914df4c4da425e6ef2abcef187e5e9",
+        "bytes": 4740
+      }
+    },
+    "10x03": {
+      "wasm": {
+        "path": "artifacts/10x03.wasm",
+        "sha256": "10d98876372c4e49dcc1e5a9b1ece74999c774103e9bfd561884f5821810c1b6",
+        "bytes": 5313550
+      },
+      "zkey": {
+        "path": "artifacts/10x03.zkey",
+        "sha256": "30f3d3d33e66f618ea3f67152c15c3bfc09861e68b8b65206ef072c57bdd1c2f",
+        "bytes": 30603938
+      },
+      "vkey": {
+        "path": "artifacts/10x03.vkey.json",
+        "sha256": "0660afe3cf7457611957b46ac153ac70097e41b442b3249cd0dd2261f966b881",
+        "bytes": 4906
+      }
+    },
+    "11x03": {
+      "wasm": {
+        "path": "artifacts/11x03.wasm",
+        "sha256": "05db0f635acdcf3254df9ea929d099466b5a8f23e2b3e727acd4679c8f71cb57",
+        "bytes": 5748607
+      },
+      "zkey": {
+        "path": "artifacts/11x03.zkey",
+        "sha256": "c27df36649e3799ccc4792032eafe4fac54eddd58d15379bf2e19e40c83f666a",
+        "bytes": 32970350
+      },
+      "vkey": {
+        "path": "artifacts/11x03.vkey.json",
+        "sha256": "c8a716da58fa1b2e8fb517041ef396281986703eb7c1b6f3ce67d8192c30d82b",
+        "bytes": 5066
+      }
+    }
+  },
+  "checks": [
+    {
+      "shape": "01x03",
+      "wasm_upstream_pin": true,
+      "zkey_upstream_pin": true,
+      "verification_key_derived": true,
+      "published_key_matches": true,
+      "public_signals": 6
+    },
+    {
+      "shape": "02x03",
+      "wasm_upstream_pin": true,
+      "zkey_upstream_pin": true,
+      "verification_key_derived": true,
+      "published_key_matches": true,
+      "public_signals": 7
+    },
+    {
+      "shape": "03x03",
+      "wasm_upstream_pin": true,
+      "zkey_upstream_pin": true,
+      "verification_key_derived": true,
+      "published_key_matches": true,
+      "public_signals": 8
+    },
+    {
+      "shape": "04x03",
+      "wasm_upstream_pin": true,
+      "zkey_upstream_pin": true,
+      "verification_key_derived": true,
+      "published_key_matches": true,
+      "public_signals": 9
+    },
+    {
+      "shape": "05x03",
+      "wasm_upstream_pin": true,
+      "zkey_upstream_pin": true,
+      "verification_key_derived": true,
+      "published_key_matches": true,
+      "public_signals": 10
+    },
+    {
+      "shape": "06x03",
+      "wasm_upstream_pin": true,
+      "zkey_upstream_pin": true,
+      "verification_key_derived": true,
+      "published_key_matches": true,
+      "public_signals": 11
+    },
+    {
+      "shape": "07x03",
+      "wasm_upstream_pin": true,
+      "zkey_upstream_pin": true,
+      "verification_key_derived": true,
+      "published_key_matches": true,
+      "public_signals": 12
+    },
+    {
+      "shape": "08x03",
+      "wasm_upstream_pin": true,
+      "zkey_upstream_pin": true,
+      "verification_key_derived": true,
+      "published_key_matches": true,
+      "public_signals": 13
+    },
+    {
+      "shape": "09x03",
+      "wasm_upstream_pin": true,
+      "zkey_upstream_pin": true,
+      "verification_key_derived": true,
+      "published_key_matches": true,
+      "public_signals": 14
+    },
+    {
+      "shape": "10x03",
+      "wasm_upstream_pin": true,
+      "zkey_upstream_pin": true,
+      "verification_key_derived": true,
+      "published_key_matches": true,
+      "public_signals": 15
+    },
+    {
+      "shape": "11x03",
+      "wasm_upstream_pin": true,
+      "zkey_upstream_pin": true,
+      "verification_key_derived": true,
+      "published_key_matches": true,
+      "public_signals": 16
+    }
+  ],
+  "deployed_verifier_correspondence_checked": false,
+  "independent_review": false,
+  "production_enabled": false
+}

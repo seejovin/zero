@@ -1,0 +1,96 @@
+/workspace/scratch/40e54fec01a4/wallet-v090/local-wallet/android/app/build.gradle.kts:81: Warning: A newer version of androidx.annotation:annotation than 1.9.1 is available: 1.11.0 [GradleDependency]
+    implementation("androidx.annotation:annotation:1.9.1")
+                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "GradleDependency":
+   This detector looks for usages of libraries where the version you are using
+   is not the current stable release. Using older versions is fine, and there
+   are cases where you deliberately want to stick with an older version.
+   However, you may simply not be aware that a more recent version is
+   available, and that is what this lint check helps find.
+
+/workspace/scratch/40e54fec01a4/wallet-v090/local-wallet/android/app/src/main/res/mipmap-anydpi-v26: Warning: This folder configuration (v26) is unnecessary; minSdkVersion is 30. Merge all the resources in this folder into mipmap-anydpi. [ObsoleteSdkInt]
+
+   Explanation for issues of type "ObsoleteSdkInt":
+   This check flags version checks that are not necessary, because the
+   minSdkVersion (or surrounding known API level) is already at least as high
+   as the version checked for.
+
+   Similarly, it also looks for resources in -vNN folders, such as values-v14
+   where the version qualifier is less than or equal to the minSdkVersion,
+   where the contents should be merged into the best folder.
+
+/workspace/scratch/40e54fec01a4/wallet-v090/local-wallet/android/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml:2: Warning: The application adaptive icon is missing a monochrome tag [MonochromeLauncherIcon]
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+^
+
+   Explanation for issues of type "MonochromeLauncherIcon":
+   If android:roundIcon and android:icon are both in your manifest, you must
+   either remove the reference to android:roundIcon if it is not needed; or,
+   supply the monochrome icon in the drawable defined by the android:roundIcon
+   and android:icon attribute.
+
+   For example, if android:roundIcon and android:icon are both in the
+   manifest, a launcher might choose to use android:roundIcon over
+   android:icon to display the adaptive app icon. Therefore, your themed
+   application iconwill not show if your monochrome attribute is not also
+   specified in android:roundIcon.
+
+/workspace/scratch/40e54fec01a4/wallet-v090/local-wallet/android/app/src/main/java/app/localwallet/mainnet/WithdrawalViews.kt:33: Warning: Custom view WithdrawalFormViews is missing constructor used by tools: (Context) or (Context,AttributeSet) or (Context,AttributeSet,int) [ViewConstructor]
+internal class WithdrawalFormViews(
+               ~~~~~~~~~~~~~~~~~~~
+/workspace/scratch/40e54fec01a4/wallet-v090/local-wallet/android/app/src/main/java/app/localwallet/mainnet/WithdrawalViews.kt:140: Warning: Custom view WithdrawalDock is missing constructor used by tools: (Context) or (Context,AttributeSet) or (Context,AttributeSet,int) [ViewConstructor]
+internal class WithdrawalDock(context: Context, private val colors: WithdrawalPalette, feeLabel: String = "Network fee") : LinearLayout(context) {
+               ~~~~~~~~~~~~~~
+/workspace/scratch/40e54fec01a4/wallet-v090/local-wallet/android/app/src/main/java/app/localwallet/mainnet/ZeroOpeningTransition.kt:65: Warning: Custom view ZeroOpeningTransition is missing constructor used by tools: (Context) or (Context,AttributeSet) or (Context,AttributeSet,int) [ViewConstructor]
+internal class ZeroOpeningTransition(
+               ~~~~~~~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "ViewConstructor":
+   Some layout tools (such as the Android layout editor) need to find a
+   constructor with one of the following signatures:
+   * View(Context context)
+   * View(Context context, AttributeSet attrs)
+   * View(Context context, AttributeSet attrs, int defStyle)
+
+   If your custom view needs to perform initialization which does not apply
+   when used in a layout editor, you can surround the given code with a check
+   to see if View#isInEditMode() is false, since that method will return false
+   at runtime but true within a user interface editor.
+
+/workspace/scratch/40e54fec01a4/wallet-v090/local-wallet/android/app/src/main/java/app/localwallet/mainnet/MainActivity.kt:425: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+                            status.text = "Authentication cancelled or unavailable. Nothing was signed."
+                                           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspace/scratch/40e54fec01a4/wallet-v090/local-wallet/android/app/src/main/java/app/localwallet/mainnet/MainActivity.kt:1700: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+        dock.received.text = "$amount $symbol"
+                             ~~~~~~~~~~~~~~~~~
+/workspace/scratch/40e54fec01a4/wallet-v090/local-wallet/android/app/src/main/java/app/localwallet/mainnet/MainActivity.kt:1874: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+        dock.received.text = "$amount $symbol"
+                             ~~~~~~~~~~~~~~~~~
+/workspace/scratch/40e54fec01a4/wallet-v090/local-wallet/android/app/src/main/java/app/localwallet/mainnet/MainActivity.kt:2300: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+            text = "Hide small balances"; textSize = 16f; setTextColor(ink)
+                    ~~~~~~~~~~~~~~~~~~~
+/workspace/scratch/40e54fec01a4/wallet-v090/local-wallet/android/app/src/main/java/app/localwallet/mainnet/MainActivity.kt:2555: Warning: Do not concatenate text displayed with setText. Use resource string with placeholders. [SetTextI18n]
+                    status.text = "App lock updated: ${changed.lockMode.label}"
+                                  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/workspace/scratch/40e54fec01a4/wallet-v090/local-wallet/android/app/src/main/java/app/localwallet/mainnet/MainActivity.kt:2555: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+                    status.text = "App lock updated: ${changed.lockMode.label}"
+                                   ~~~~~~~~~~~~~~~~~~
+/workspace/scratch/40e54fec01a4/wallet-v090/local-wallet/android/app/src/main/java/app/localwallet/mainnet/WithdrawalViews.kt:151: Warning: String literal in setText can not be translated. Use Android resources instead. [SetTextI18n]
+        text = "Review transfer"; textSize = 16f; isAllCaps = false
+                ~~~~~~~~~~~~~~~
+
+   Explanation for issues of type "SetTextI18n":
+   When calling TextView#setText
+   * Never call Number#toString() to format numbers; it will not handle
+   fraction separators and locale-specific digits properly. Consider using
+   String#format with proper format specifications (%d or %f) instead.
+   * Do not pass a string literal (e.g. "Hello") to display text. Hardcoded
+   text can not be properly translated to other languages. Consider using
+   Android resource strings instead.
+   * Do not build messages by concatenating text chunks. Such messages can not
+   be properly translated.
+
+   https://developer.android.com/guide/topics/resources/localization.html
+
+0 errors, 13 warnings

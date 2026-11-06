@@ -1,0 +1,16 @@
+{
+  "apk": "local-wallet-0.8.0-mainnet.apk",
+  "bytes": 10205240,
+  "sha256": "5096819858a6065a61917a167e7e1118c96bcc609df9c2211d06081c13b3c3f7",
+  "package_id": "app.localwallet.mainnet",
+  "version_code": 11,
+  "version_name": "0.8.0-mainnet",
+  "certificate_sha256": "da1632404a817505713e77527ef97543fc6c1028148c401462b96683e2392687",
+  "same_certificate_as_v02": true,
+  "debuggable": false,
+  "minimum_android_api": 30,
+  "architectures": [
+    "arm64-v8a",
+    "x86_64"
+  ]
+}

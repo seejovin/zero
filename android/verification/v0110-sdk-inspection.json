@@ -1,0 +1,37 @@
+{
+  "kind": "offline SDK qualification only",
+  "versions": {
+    "@railgun-community/wallet": "11.3.0",
+    "@railgun-community/engine": "9.9.1",
+    "@railgun-community/shared-models": "8.2.1",
+    "snarkjs": "0.7.6"
+  },
+  "actualSdkImported": true,
+  "engineStarted": false,
+  "walletCreated": false,
+  "proofGenerated": false,
+  "verifierFunctionRegistered": true,
+  "validProtocolProofVerified": false,
+  "abi": {
+    "function": "transact",
+    "selector": "0xd8ae136a",
+    "candidateChain": 42161
+  },
+  "dependencyAdvisoryEntries": {
+    "info": 0,
+    "low": 16,
+    "moderate": 28,
+    "high": 42,
+    "critical": 3,
+    "total": 89
+  },
+  "productionEnabled": false,
+  "blockers": [
+    "SDK dependency remediation and review",
+    "deployed verifier and circuit/artifact pins",
+    "Android local note sync, recovery and prover integration",
+    "fee-output and ciphertext verification",
+    "independent relay and authenticated shared gateway configuration",
+    "independent security review and real-device build"
+  ]
+}

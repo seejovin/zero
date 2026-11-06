@@ -1,0 +1,15 @@
+{
+  "verifier_digest": "0xb77a9a7b82eb1fde9fdf7184447115552f687c1e4d4aa03b91a2378517dd812a",
+  "circuits": {
+    "01x03": {
+      "vkey": {
+        "path": "01x03.vkey.json",
+        "sha256": "b77a9a7b82eb1fde9fdf7184447115552f687c1e4d4aa03b91a2378517dd812a"
+      }
+    }
+  },
+  "fee_recipient_address": "0zk1qyns6e8q8uwlrgqmdgvnwmtzt96lslcspdyuhaqju3nresvtwsfxfrv7j6fe3z53l7sf4f050fn4nqp0l92l3hpd9g22tjvaywlf07ryzflljwp52kj0qudpay9",
+  "fee_viewing_private_key_hex": "2222222222222222222222222222222222222222222222222222222222222222",
+  "additional_native_fee_cap_wei": "0",
+  "artifact_directory": "."
+}

@@ -1,0 +1,42 @@
+[
+  {
+    "path": "lib/arm64-v8a/libjnidispatch.so",
+    "sha256": "ddfc6c965bbe366615c000ec1f06552ddf0bb2b4f9d921d0bff8c75b3cb2ca4c",
+    "load_segment_alignment": [
+      16384,
+      16384
+    ],
+    "identical_to_v070": true
+  },
+  {
+    "path": "lib/arm64-v8a/libwallet_core.so",
+    "sha256": "4f99ae2c4e3fee4fa5f5586f2e81a5e661b4ae03071d1565209ffd8e883d4a2a",
+    "load_segment_alignment": [
+      16384,
+      16384,
+      16384,
+      16384
+    ],
+    "identical_to_v070": true
+  },
+  {
+    "path": "lib/x86_64/libjnidispatch.so",
+    "sha256": "288eafff19a70e833498201071c3d724f03f32ee8ff64a14fca50b57d975db70",
+    "load_segment_alignment": [
+      16384,
+      16384
+    ],
+    "identical_to_v070": true
+  },
+  {
+    "path": "lib/x86_64/libwallet_core.so",
+    "sha256": "5e745ea43baf9d15e7d775331e877569853823cb1caf9dbd0c2f45115fea2f38",
+    "load_segment_alignment": [
+      16384,
+      16384,
+      16384,
+      16384
+    ],
+    "identical_to_v070": true
+  }
+]

@@ -1,0 +1,19 @@
+{
+  "time": "2026-11-05T15:11:56.141Z",
+  "result": "passed",
+  "version": "0.6.0",
+  "preserved_project_id": "[REDACTED_PRIVATE_PROJECT_ID]",
+  "valid_esm_fetch": true,
+  "embedded_wasm_valid": true,
+  "sri_assets_verified": 4,
+  "hosted_relay_meta": true,
+  "strict_headers": true,
+  "preview_excluded": true,
+  "bundle_bytes": 1344505,
+  "wasm_sha256": "d8a7ff53c6cf2301ffed8d230ee6de2c7d54fd424b0c869714648a76f9daa6e1",
+  "publication_redaction": {
+    "sanitized": true,
+    "note": "The private deployment project identifier was removed for source publication. Original historical test outcomes are retained; this is a sanitized evidence copy.",
+    "historical_digest_policy": "Historical digest inventories remain unchanged and refer to the original evidence bytes, not this sanitized copy."
+  }
+}

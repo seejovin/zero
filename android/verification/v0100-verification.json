@@ -1,0 +1,154 @@
+{
+  "schema_version": 1,
+  "checked_at_utc": "2026-11-06T06:56:58.919652+00:00",
+  "candidate": {
+    "version_name": "0.10.0-mainnet",
+    "version_code": 13,
+    "application_id": "app.localwallet.mainnet",
+    "status": "host_verified_source_candidate_android_release_blocked"
+  },
+  "artifact": null,
+  "networks": {
+    "evm_chain_ids": [
+      1,
+      8453,
+      10,
+      42161,
+      43114,
+      137,
+      56
+    ],
+    "other_protocols": [
+      "solana-mainnet",
+      "tron-mainnet"
+    ],
+    "asset_network_positions": 24,
+    "asset_choices": 9
+  },
+  "passed": {
+    "rust_format": {
+      "command": "cargo fmt --all -- --check",
+      "log": "v0100-format.log"
+    },
+    "rust_check": {
+      "command": "cargo check --locked --workspace",
+      "log": "v0100-check.log"
+    },
+    "rust_tests": {
+      "command": "cargo test --locked --workspace",
+      "passed": 124,
+      "failed": 0,
+      "ignored": 0,
+      "groups": {
+        "lib": 7,
+        "activity_validation": 8,
+        "crypto_policy": 19,
+        "family_journal": 18,
+        "journal_correctness": 21,
+        "mainnet_policy": 21,
+        "solana_policy": 11,
+        "tron_policy": 19
+      },
+      "log": "v0100-rust-tests.log"
+    },
+    "rust_clippy": {
+      "command": "cargo clippy --locked --workspace --all-targets -- -D warnings",
+      "log": "v0100-clippy.log"
+    },
+    "independent_ethers_differential": {
+      "fixtures": 36,
+      "log": "v0100-ethers.log",
+      "checks": [
+        "derivation",
+        "atomic units",
+        "fees",
+        "encoding",
+        "signature",
+        "sender",
+        "hash"
+      ]
+    },
+    "independent_solana_differential": {
+      "fixtures": 5,
+      "log": "v0100-solana-differential.log",
+      "packages": {
+        "@solana/web3.js": "1.98.4",
+        "@solana/spl-token": "0.4.15",
+        "ed25519-hd-key": "2.0.0"
+      },
+      "checks": [
+        "SLIP-0010 derivation",
+        "associated token addresses",
+        "instruction/account permissions",
+        "message serialization",
+        "wire bytes",
+        "Ed25519 signatures"
+      ]
+    },
+    "host_release_and_bindings": {
+      "host": "x86_64-unknown-linux-gnu",
+      "host_library_sha256": "93be51d2added14269ef70a8638d266dc641b3767e4815449e42407e5525445d",
+      "kotlin_generated": true,
+      "python_generated": true,
+      "generated_kotlin_sha256": "6c379a83e966c4730c46b5f0592a09cd8c92f9af9c70fad6ac41e4eb24bde699",
+      "logs": [
+        "v0100-host-build.log",
+        "v0100-bindings.log"
+      ]
+    },
+    "actual_evm_host_ffi": {
+      "fixtures": 18,
+      "networks": 7,
+      "log": "v0100-bridge.log"
+    },
+    "actual_family_host_ffi": {
+      "solana_fixtures": 5,
+      "tron_fixtures": 2,
+      "durable_journals": 7,
+      "signed_unknown_reopens": 14,
+      "negative_checks": 25,
+      "log": "v0100-family-bridge.log"
+    },
+    "source_whitespace_check": {
+      "command": "git diff --check"
+    },
+    "bridge_runner_shell_syntax": {
+      "command": "bash -n scripts/verify-bridge.sh"
+    }
+  },
+  "not_run": [
+    "Android ARM64/x86_64 native compilation",
+    "Kotlin/Java compilation",
+    "Gradle release unit tests",
+    "Android lint",
+    "APK assembly, alignment, signing and signature inspection",
+    "Physical-device/emulator installation, upgrade, UI and lifecycle checks",
+    "Live RPC/provider and Coinbase checks for this candidate",
+    "Funded mainnet transfers",
+    "Independent third-party TRON transaction-codec differential test"
+  ],
+  "not_completed": [
+    "Compiled-runtime third-party license/copyright notice bundle for binary distribution"
+  ],
+  "warnings": [
+    "Optional ktlint formatting was unavailable; Kotlin generation is not Kotlin compilation.",
+    "Solana/TRON fee preparation currently requires sufficient funds; unfunded fee preview remains a UX improvement.",
+    "History is bounded and provider observations are not consensus proofs."
+  ],
+  "blocker_evidence": "v0100-build-environment.json",
+  "host_core_inputs_sha256": "4279a2842bacaee5814aded801ac29f42378973ae640e0a6491ecd073773c200",
+  "android_source_inputs_sha256": "dfc1cb75676439d642aad9f8c41508bcd87dbe7151f89b60dabf9993e3b1c68f",
+  "verification_script_sha256": {
+    "check-bridge.py": "6ac8c067e4204e623d6fea5b740782378d2d0d726cddcc0c58a41006888d03e4",
+    "check-family-bridge.py": "c77c54234dab205feb6a98d720b48e03767035ff0fc898216e7f72b6160ec66c",
+    "check-ethers.mjs": "0c856e43436f696762283c672318fae856fec6d3b2051dbcb362f173cb204694",
+    "check-solana.mjs": "825fbbb10ab7a14017edcb752b80d37f07ea7cb50791a4149ca9da4d0e866112",
+    "verify-bridge.sh": "dfb009a64961f69e5446c23964c1d482f02dfb71de5f0b1c988b62344244bf75"
+  },
+  "preserved": [
+    "0.8.0 APK manifest unchanged",
+    "App-signing backup unopened",
+    "Hosted web runtime remains 0.6.0"
+  ],
+  "scope_note": "All current execution checks are host/offline with deliberately public development fixtures, synthetic balances and nonce assumptions. Solana/TRON use synthetic block references. No user recovery phrase/private key was used, no user payment was signed and no transaction broadcast. This is not an Android runtime test or an independent security audit."
+}

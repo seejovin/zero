@@ -1,0 +1,278 @@
+   Compiling ohttp v0.8.0
+   Compiling wallet_privacy_transport v0.1.0 (/workspace/scratch/40e54fec01a4/wallet-v090/local-wallet/privacy-transport)
+   Compiling wallet_core v0.2.0 (/workspace/scratch/40e54fec01a4/wallet-v090/local-wallet/core)
+   Compiling wallet_gas_service v0.11.0 (/workspace/scratch/40e54fec01a4/wallet-v090/local-wallet/gas-service)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 10.77s
+     Running unittests src/lib.rs (target/debug/deps/wallet_core-c32561078e67b21b)
+
+running 8 tests
+test private_journal::resource_limits::encrypted_history_budget_is_checked_without_overflow ... ok
+test crypto::tests::review_expiration_boundaries_and_history_validation ... ok
+test crypto::tests::signing_checks_review_expiration_before_opening_the_vault ... ok
+test crypto::tests::quote_changes_require_new_approval_even_when_unsigned_bytes_are_identical ... ok
+test crypto::tests::inspection_rejects_high_s_noncanonical_integers_and_access_lists ... ok
+test crypto::tests::public_fixture_signature_rejects_unsupported_semantics ... ok
+test crypto::tests::arbitrary_or_bridged_usdc_contracts_never_become_signable_by_ticker ... ok
+test crypto::tests::token_contract_cannot_be_reused_under_the_wrong_network_identity ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.06s
+
+     Running tests/activity_validation.rs (target/debug/deps/activity_validation-427b81a2750d0223)
+
+running 8 tests
+test duplicate_fields_and_oversized_input_are_rejected ... ok
+test self_and_sent_direction_and_stable_receipt_ordinal_identity ... ok
+test wrong_token_or_participant_never_becomes_received ... ok
+test reverted_transfer_zero_address_poisoning_and_mint_semantics ... ok
+test all_receipt_transaction_and_block_links_are_required ... ok
+test malformed_removed_duplicate_or_inconsistent_logs_are_rejected ... ok
+test new_network_activity_ignores_bridged_tokens_and_other_chain_contracts ... ok
+test exact_native_and_allowlisted_tokens_on_all_reviewed_networks ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+
+     Running tests/crypto_policy.rs (target/debug/deps/crypto_policy-7a887a1c51e9adda)
+
+running 19 tests
+test formatter_preserves_exact_small_and_large_values ... ok
+test gas_limit_reserves_the_eip7623_calldata_floor ... ok
+test invalid_phrase_and_invalid_keys_fail_without_echoing_secret_input ... ok
+test lowercase_addresses_and_trailing_fraction_zeroes_normalize_before_approval ... ok
+test mainnet_unknown_fields_invalid_destinations_and_excess_fees_fail_closed ... ok
+test amount_precision_is_exact_and_never_uses_floating_point ... ok
+test changing_any_reviewed_field_is_rejected ... ok
+test generated_wallet_has_24_valid_words_and_restores_to_same_address ... ok
+test each_vault_encryption_uses_a_fresh_nonce ... ok
+test restore_matches_independent_published_ethereum_fixture ... ok
+test arbitrary_unicode_inputs_fail_without_panics ... ok
+test vault_authentication_rejects_wrong_key_or_any_modified_byte ... ok
+test wallet_address_authenticates_the_vault_and_derives_its_identity ... ok
+test arbitrary_transaction_bytes_never_panic ... ok
+test repeating_an_identical_signature_returns_identical_bytes ... ok
+test integer_token_units_round_trip_exactly ... ok
+test restore_accepts_all_standard_english_lengths ... ok
+test wrong_approval_or_a_different_wallet_cannot_sign_review ... ok
+test all_three_assets_sign_only_the_reviewed_payment_and_recover_sender ... ok
+
+test result: ok. 19 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.22s
+
+     Running tests/family_journal.rs (target/debug/deps/family_journal-bca68bc6b8d45adb)
+
+running 18 tests
+test balance_evidence_never_silently_overwrites_or_rolls_back ... ok
+test racing_distinct_intents_cannot_reserve_two_payments ... ok
+test failed_storage_never_returns_a_signature_as_durable ... ok
+test append_only_schema_identity_and_signed_history_are_verified_on_open ... ok
+test tron_activity_uses_verified_tx_identity_even_when_there_are_no_transfers ... ok
+test malformed_or_wrong_receipt_never_changes_a_durable_payment ... ok
+test identical_intents_and_signatures_are_idempotent_even_across_connections ... ok
+test signed_bytes_commit_before_use_survive_reopen_and_do_not_escape_audit ... ok
+test unexpectedly_high_solana_cost_keeps_the_actual_confirmed_result ... ok
+test world_readable_or_symlinked_journal_paths_are_rejected ... ok
+test unexpectedly_high_tron_fee_records_finality_and_surfaces_discrepancy ... ok
+test empty_finalized_proofs_cannot_later_become_a_verified_deposit ... ok
+test unsigned_cancellation_is_idempotent_and_never_cancels_signed_bytes ... ok
+test unknown_and_expired_signed_transactions_keep_the_reservation ... ok
+test activity_is_deduplicated_and_missing_or_conflicting_events_remain_visible ... ok
+test tron_solid_receipts_and_large_canonical_blocks_survive_reopen ... ok
+test late_finality_conflicts_block_an_already_prepared_next_signature ... ok
+test confirmations_and_finalized_failures_preserve_exact_status_and_actual_cost ... ok
+
+test result: ok. 18 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.12s
+
+     Running tests/journal_correctness.rs (target/debug/deps/journal_correctness-7e2ab2c60879246f)
+
+running 21 tests
+test balances_reject_unsupported_assets_accounts_and_unsafe_number_formats ... ok
+test concurrent_writers_cannot_reserve_one_nonce_twice ... ok
+test idempotency_and_nonce_uniqueness_are_intent_level ... ok
+test changed_fee_bytes_cannot_hide_under_the_original_approval_digest ... ok
+test append_only_guards_and_read_validation_prevent_silent_history_changes ... ok
+test failed_audit_write_rolls_back_signature_and_never_returns_broadcast_bytes ... ok
+test cancellation_signing_race_has_one_valid_outcome ... ok
+test balances_are_observations_and_never_inferred_or_adjusted_by_payment_events ... ok
+test loss_of_finalized_evidence_is_flagged_without_automatic_rebroadcast_state ... ok
+test inconsistent_receipts_cannot_silently_overwrite_financial_evidence ... ok
+test storage_is_durable_wal_and_rejects_unsafe_paths ... ok
+test bounded_receipts_allow_contract_eth_receivers_with_many_logs ... ok
+test reverted_transactions_keep_the_gas_charge_without_payment_success ... ok
+test receipt_gas_charge_is_not_rejected_for_being_below_reserved_calldata_floor ... ok
+test receipts_distinguish_execution_inclusion_finality_and_actual_fee ... ok
+test unsigned_cancel_releases_nonce_but_preserves_evidence ... ok
+test signed_metadata_or_signature_tampering_is_rejected ... ok
+test reorg_is_an_explicit_correction_with_old_evidence_and_nonce_preserved ... ok
+test signing_requires_preparation_and_persists_exact_bytes_before_submission ... ok
+test token_success_requires_the_exact_reviewed_contract_and_transfer_event ... ok
+test invalid_receipt_identity_fees_and_logs_do_not_change_records ... ok
+
+test result: ok. 21 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.01s
+
+     Running tests/mainnet_policy.rs (target/debug/deps/mainnet_policy-775fe8b146119725)
+
+running 21 tests
+test fixed_registry_has_only_reviewed_mainnets_and_native_circle_contracts ... ok
+test fee_policy_uses_native_chain_denominations_and_bnb_zero_base_envelope ... ok
+test native_balance_snapshots_reject_eth_aliases_missing_assets_and_nulls ... ok
+test all_testnets_other_mainnets_and_wrong_extra_fee_semantics_fail_closed ... ok
+test network_journals_allow_same_nonce_but_never_mix_network_observations ... ok
+test arbitrum_uses_the_gas_charge_once_and_rejects_separate_rollup_fees ... ok
+test previous_testnet_journal_schema_is_preserved_and_not_migrated_into_mainnet ... ok
+test base_additional_fee_above_estimate_and_reserve_retains_financial_outcome ... ok
+test op_mainnet_preserves_reviewed_extra_fees_and_receipt_charges ... ok
+test remaining_evm_registry_pins_native_assets_and_issuer_contracts ... ok
+test base_receipt_requires_all_actual_fees_and_rejects_execution_cap_violation ... ok
+test reverted_base_payment_keeps_execution_and_additional_charges ... ok
+test unsupported_eurc_never_becomes_a_native_transfer_or_a_balance ... ok
+test quotes_are_in_approval_and_saved_signature_but_not_in_transaction_bytes ... ok
+test new_chain_journals_retain_nonce_and_evidence_through_unknown_and_reorg_states ... ok
+test both_mainnets_sign_all_assets_with_distinct_chain_identity_and_contract ... ok
+test released_schema_two_journals_keep_signed_bytes_events_and_balances_without_migration ... ok
+test new_network_signatures_are_chain_bound_and_preserve_exact_token_units ... ok
+test schema_three_journals_preserve_old_allowlist_and_unknown_ethereum_usdt ... ok
+test all_new_assets_preserve_exact_units_and_bind_review_to_native_currency ... ok
+test browser_kdf_matches_independent_libargon2_vector_and_rejects_invalid_parameters ... ok
+
+test result: ok. 21 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 2.46s
+
+     Running tests/private_journal.rs (target/debug/deps/private_journal-aabbfb1ae91eb936)
+
+running 20 tests
+test expired_new_approval_is_rejected_without_writing_any_record ... ok
+test audit_views_do_not_export_recipient_principal_proof_or_ciphertexts ... ok
+test concurrent_duplicate_approval_is_idempotent_and_note_reservations_are_atomic ... ok
+test legacy_or_unrecognized_database_is_preserved ... ok
+test contradictory_inclusion_is_recorded_as_conflict_without_overwriting_prior_evidence ... ok
+test failed_atomic_execution_cannot_collect_fee_and_same_operation_can_retry ... ok
+test approved_and_ready_data_are_encrypted_on_disk_and_survive_reopen ... ok
+test independent_connections_cannot_reserve_overlapping_inputs ... ok
+test ciphertext_from_another_same_key_journal_cannot_be_transplanted ... ok
+test local_ready_cancellation_is_allowed_only_before_any_egress ... ok
+test symlink_and_hardlink_paths_are_rejected ... ok
+test receipt_duplicate_fields_and_unearned_outputs_are_rejected ... ok
+test ciphertext_corruption_row_substitution_and_suffix_truncation_are_detected ... ok
+test ready_operation_cannot_be_overwritten_with_changed_proof_or_fee ... ok
+test finality_and_reorg_retain_reservations_and_conflicting_finality_blocks_use ... ok
+test receipt_requires_the_exact_outputs_not_only_spent_nullifiers ... ok
+test wrong_key_or_wallet_identity_cannot_open_or_replace_existing_records ... ok
+test released_unknown_operations_cannot_cancel_or_release_reserved_notes ... ok
+test reads_remain_consistent_while_another_connection_appends ... ok
+test aggregate_encrypted_history_is_rejected_before_blob_decryption_and_preserved ... ok
+
+test result: ok. 20 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.51s
+
+     Running tests/private_payment.rs (target/debug/deps/private_payment-44f370fdce254682)
+
+running 12 tests
+test exact_maximum_uses_all_atomic_units_and_actual_note_plan ... ok
+test maximum_never_accepts_duplicate_notes_or_overflow_or_insufficient_fee ... ok
+test domain_and_encoding_are_canonical_and_restricted ... ok
+test local_approval_digest_binds_recipient_amount_and_fee ... ok
+test public_address_cannot_be_passed_as_private_recipient ... ok
+test oversized_payloads_and_wrong_integer_types_are_rejected ... ok
+test intent_requires_exact_conservation_and_complete_output_set ... ok
+test shape_acceptance_never_opens_production_or_claims_to_verify_a_proof ... ok
+test strict_json_rejects_sensitive_extra_fields_and_critical_duplicates ... ok
+test canonical_serialization_is_independent_of_input_json_key_order ... ok
+test exact_envelope_binding_rejects_changed_fees_outputs_and_input_order ... ok
+test operation_digest_covers_proof_ciphertext_and_exact_contract_calldata ... ok
+
+test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running tests/solana_policy.rs (target/debug/deps/solana_policy-e6595b7660decf0d)
+
+running 11 tests
+test expiry_needs_finalized_height_history_lookup_and_invalid_blockhash ... ok
+test blocks_wrong_network_dangerous_address_and_fee_manipulation ... ok
+test duplicate_or_overallocated_sources_cannot_make_an_inexact_max ... ok
+test bip39_sol_derivation_matches_independent_fixture_and_authenticates_vault ... ok
+test ambiguous_rpc_json_is_rejected_before_value_conversion ... ok
+test review_mutations_and_any_signature_or_message_mutation_fail_closed ... ok
+test a_caught_failed_cpi_cannot_manufacture_a_received_transfer ... ok
+test real_finality_survives_a_fee_or_rent_quote_discrepancy ... ok
+test canonical_asset_mints_and_exact_all_decimal_units_are_bound ... ok
+test incoming_activity_uses_instruction_evidence_and_canonical_mints ... ok
+test confirmed_and_failed_solana_receipts_require_real_exact_canonical_effects ... ok
+
+test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.77s
+
+     Running tests/tron_policy.rs (target/debug/deps/tron_policy-29c42df23a2282ed)
+
+running 19 tests
+test base58check_matches_primary_tron_address_vector ... ok
+test insufficient_native_or_token_balance_prevents_signing ... ok
+test account_creation_uses_fixed_activation_and_staked_bandwidth_only ... ok
+test malformed_duplicated_json_fields_do_not_cross_the_policy_boundary ... ok
+test native_max_reserves_reviewed_fees_and_never_spends_them ... ok
+test energy_is_simulated_and_fee_limit_does_not_include_bandwidth ... ok
+test partial_bandwidth_quotas_cannot_be_added_together ... ok
+test invalid_precision_signs_or_exponents_are_never_rounded ... ok
+test token_max_transfers_every_integer_unit_including_sixth_decimal ... ok
+test stale_tapos_wrong_block_number_and_excessive_fee_policy_fail_closed ... ok
+test unsupported_assets_networks_self_and_contract_transfers_fail ... ok
+test reviewed_bytes_fee_metadata_and_approval_cannot_be_changed ... ok
+test derivation_matches_published_ledger_tron_fixture_and_authenticates_vault ... ok
+test signed_wire_extra_fields_second_signatures_or_broadcast_mutation_are_rejected ... ok
+test reverted_transaction_records_fee_without_inventing_token_delivery ... ok
+test token_return_value_amount_contract_and_recipient_all_must_match ... ok
+test mismatched_network_finality_block_receipt_or_signature_never_credit_a_deposit ... ok
+test exact_six_decimal_units_and_official_usdt_contract_are_bound_to_wire ... ok
+test exact_solidified_trx_and_usdt_receipts_resolve_success ... ok
+
+test result: ok. 19 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.16s
+
+     Running unittests examples/differential_vectors.rs (target/debug/examples/differential_vectors-6a5a2a9aa1a3f235)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests examples/solana_differential_vectors.rs (target/debug/examples/solana_differential_vectors-8f37c165a15b7984)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/lib.rs (target/debug/deps/wallet_gas_service-6f0f9dbf055ecf12)
+
+running 21 tests
+test tests::exact_u256_budget_does_not_pass_through_sqlite_float_or_i64 ... ok
+test tests::journal_is_policy_bound_append_only_and_preserves_foreign_database ... ok
+test tests::idempotent_admission_after_quote_expiry_preserves_one_reservation ... ok
+test tests::concurrent_admissions_share_atomic_budget_reservations ... ok
+test tests::diagnostics_do_not_export_request_payloads_or_identifiers ... ok
+test tests::overlapping_nullifiers_and_alias_request_ids_cannot_duplicate_payment ... ok
+test tests::proof_adapter_cannot_substitute_unbound_calldata ... ok
+test tests::production_gate_precedes_injected_verifier_or_funding ... ok
+test tests::proof_and_fee_rejection_leaves_no_reservations ... ok
+test tests::failed_commit_never_releases_broadcast_bytes ... ok
+test tests::finalized_revert_costs_company_native_gas_but_earns_no_fee ... ok
+test tests::finalized_reorg_reverses_accounting_and_halts_new_spending ... ok
+test tests::unknown_and_duplicate_customer_fields_are_rejected ... ok
+test tests::finalized_success_collects_only_approved_fee_and_actual_native_charge ... ok
+test tests::native_cost_overrun_freezes_operation_and_persists_incident ... ok
+test tests::spent_nullifiers_without_expected_outputs_do_not_prove_success ... ok
+test tests::receipt_relabel_or_finality_regression_is_rejected ... ok
+test tests::provisional_reorg_keeps_reserve_and_same_operation_rebroadcastable ... ok
+test tests::signing_requires_exact_target_calldata_sender_nonce_and_gas_budget ... ok
+test tests::unfunded_insufficient_pending_and_lifetime_budgets_are_separate_checks ... ok
+test tests::unknown_submission_survives_reopen_and_releases_identical_bytes ... ok
+
+test result: ok. 21 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.12s
+
+     Running unittests src/main.rs (target/debug/deps/wallet_gas_service-dd41bd56f7def647)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/lib.rs (target/debug/deps/wallet_privacy_transport-8662b5abb2a32ce3)
+
+running 5 tests
+test tests::pin_and_authority_are_mandatory ... ok
+test tests::real_hpke_roundtrip_has_fixed_headers_padding_and_private_body ... ok
+test tests::no_redirect_plaintext_or_oversized_fallback ... ok
+test tests::tampering_and_cross_request_responses_are_rejected ... ok
+test tests::every_attempt_has_new_encryption_but_same_payment ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.08s
+

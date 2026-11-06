@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "listen": "127.0.0.1:8080",
+  "authority": "gateway.example.invalid",
+  "gateway_key_id": 1,
+  "gateway_secret": { "source": "file", "path": "/etc/wallet-gas/gateway-hpke-seed.hex" },
+  "journal": "/var/lib/wallet-gas/operator.sqlite",
+  "policy": {
+    "schema_version": 1,
+    "domain": {
+      "protocol": "railgun-v2-candidate",
+      "chain_id": 42161,
+      "pool_contract": "0xfa7093cdd9ee6932b4eb2c9e1cde7ce00b1fa4b9",
+      "token_contract": "0xaf88d065e77c8cc2239327c5edb3a432268e5831",
+      "token_decimals": 6,
+      "verifier_digest": "<reviewed verifier digest>"
+    },
+    "broadcaster_address": "<isolated operator address>",
+    "schedule_id": "<shared epoch digest>",
+    "fee_recipient_commitment": "<provider fee-recipient commitment>",
+    "fee_units": "<exact integer USDC base units>",
+    "gas_limit": 1000000,
+    "max_native_fee_wei": "<cumulative native cap for one private operation>",
+    "valid_from": 0,
+    "valid_until": 0,
+    "max_pending_operations": 16,
+    "max_pending_native_wei": "<global outstanding native cap>",
+    "max_total_native_spend_wei": "<lifetime native cap>",
+    "max_envelope_bytes": 400000,
+    "allowed_selectors": ["0xd8ae136a"]
+  },
+  "fee_schedule": "<replace with exact SignedFeeSchedule object from offline publication>",
+  "pinned_fee_public_key": "<independently authenticated 32-byte Ed25519 public key>",
+  "proof_verifier": {
+    "node_executable": "/opt/wallet-gas/node/bin/node",
+    "node_sha256": "<0x-prefixed SHA256>",
+    "script": "/opt/wallet-gas/privacy-engine/scripts/provider-verifier.mjs",
+    "script_sha256": "<0x-prefixed SHA256>",
+    "operator_config": "/etc/wallet-gas/provider-verifier.json",
+    "operator_config_sha256": "<0x-prefixed SHA256>",
+    "additional_native_fee_cap_wei": "0"
+  },
+  "rpc": {
+    "primary_url": "https://first-independent-provider.example.invalid/",
+    "secondary_url": "https://second-independent-provider.example.invalid/",
+    "pool_code_keccak256": "<reviewed pool bytecode hash>",
+    "token_code_keccak256": "<reviewed token bytecode hash>",
+    "implementation_code_pins": [{"address":"<reviewed implementation address>","keccak256":"<reviewed implementation code hash>"}],
+    "proxy_storage_pins": [{"address":"<reviewed proxy address>","slot":"<reviewed implementation slot>","value":"<reviewed storage value>"}],
+    "historical_deployments": [{
+      "until_block": "<reviewed exclusive upgrade block as an integer>",
+      "pool_code_keccak256": "<reviewed historical pool bytecode hash>",
+      "token_code_keccak256": "<reviewed historical token bytecode hash>",
+      "token_not_yet_deployed": false,
+      "implementation_code_pins": [{"address":"<reviewed historical implementation address>","keccak256":"<reviewed historical implementation code hash>"}],
+      "proxy_storage_pins": [{"address":"<reviewed historical proxy address>","slot":"<reviewed historical implementation slot>","value":"<reviewed historical storage value>"}]
+    }],
+    "verification_keys": [{"inputs":1,"outputs":3,"encoded_key_keccak256":"<Keccak256 of deployed getVerificationKey ABI result>"}],
+    "max_head_age_seconds": 60,
+    "deployment_block": 0
+  },
+  "treasury_secret": {"source":"file","path":"/etc/wallet-gas/native-treasury-key.hex"}
+}

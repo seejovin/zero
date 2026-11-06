@@ -1,0 +1,4 @@
+lib/arm64-v8a/libjnidispatch.so: ELF PT_LOAD alignment 16384,16384; 16 KiB verified; unchanged from 0.5.0
+lib/arm64-v8a/libwallet_core.so: ELF PT_LOAD alignment 16384,16384,16384,16384; 16 KiB verified; unchanged from 0.5.0
+lib/x86_64/libjnidispatch.so: ELF PT_LOAD alignment 16384,16384; 16 KiB verified; unchanged from 0.5.0
+lib/x86_64/libwallet_core.so: ELF PT_LOAD alignment 16384,16384,16384,16384; 16 KiB verified; unchanged from 0.5.0

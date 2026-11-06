@@ -1,0 +1,24 @@
+{
+  "blockers": [
+    "exact_protocol_deployment_and_circuit_review",
+    "local_prover_and_fee_verifier_release_qualification",
+    "independent_rpc_finality_and_deployment_pin_qualification",
+    "independent_relay_gateway_operation_and_pin_distribution",
+    "isolated_treasury_deployment_and_funding",
+    "android_and_independent_security_acceptance"
+  ],
+  "chain_evidence_adapter_available": false,
+  "durable_operator_journal_available": true,
+  "independent_rpc_adapter_implementation": true,
+  "oblivious_transport_available": false,
+  "ohttp_gateway_implementation": true,
+  "opaque_relay_implementation": true,
+  "pinned_verifier_process_implementation": true,
+  "production_sponsorship_available": false,
+  "proof_verifier_available": false,
+  "restricted_native_signer_implementation": true,
+  "schema_version": 1,
+  "signer_available": false,
+  "storage_adapter": "sqlite-wal-full",
+  "version": "0.11.0"
+}

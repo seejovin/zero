@@ -1,0 +1,19 @@
+# Exact direct dependency versions used by crypto.rs.
+# Cryptographic primitives and BIP derivation are delegated to these libraries.
+aes-gcm = { version = "=0.10.3", features = ["std", "zeroize"] }
+bip39 = { version = "=2.2.2", features = ["zeroize"] }
+bip32 = { version = "=0.6.0", default-features = false, features = ["alloc", "secp256k1"] }
+k256 = { version = "=0.14.0", default-features = false, features = ["std", "ecdsa"] }
+sha3 = "=0.10.9"
+getrandom = "=0.3.4"
+zeroize = { version = "=1.9.1", features = ["derive"] }
+primitive-types = "=0.13.1"
+rlp = "=0.6.1"
+hex = "=0.4.3"
+# serde (derive) and serde_json are shared with the journal; root pins versions.
+
+# Web password KDF and WASM bridge (SQLite and UniFFI are native-only).
+argon2 = { version = "=0.6.0", default-features = false, features = ["alloc", "zeroize"] }
+wasm-bindgen = "=0.2.130"
+js-sys = "=0.3.107"
+# See Cargo.toml for explicit target-specific browser entropy feature selection.

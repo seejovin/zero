@@ -1,0 +1,4 @@
+writing out build/bridge-private-upgrade
+writing build/bridge-private-upgrade/wallet_core.py
+Code generation complete, formatting with ktlint (use --no-format to disable)
+Warning: Unable to auto-format wallet_core.kt using ktlint: Os { code: 2, kind: NotFound, message: "No such file or directory" }

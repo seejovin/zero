@@ -1,0 +1,6 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> local-wallet-private-engine@0.1.0 test:bundle
+> node scripts/test-bundle.mjs
+
+{"schema_version":1,"passed":true,"test":"actual browser bundle executed in isolated JS realm with string code generation disabled and network blocked","checks":["transferred MessagePort handshake","SDK address derivation","closed native storage port","explicit unscanned balance","session key destruction","zero network calls"],"browser_csp_tested":false,"android_webview_tested":false,"mainnet_funds_used":false}
