@@ -46,6 +46,12 @@ Build integration corrected the private-engine asset task declaration, three hid
 
 No physical Android device installation, on-device proving, funded private transfer or recovery was executed. The attempted desktop Chromium qualification was blocked by the environment before application assertions ran.
 
+## Clean GitHub build
+
+[GitHub Actions run 42244968958](https://github.com/seejovin/zero/actions/runs/42244968958) completed successfully on source commit `0adb6bc027cb0b33f851eba0ab45e0e2ac58d859`. The clean runner passed Rust/native bridge checks, packaged private computation, Android compilation/tests/lint/assembly, unsigned APK alignment/inspection and artifact uploads.
+
+The workflow copies the runner-provided Node executable with mode `0755` before verifier tests, retaining the verifier's rejection of writable executable files. This CI-only change does not alter the delivered APK's runtime source, identified above.
+
 ## Earlier evidence
 
 The previous exact results are retained in `android/verification/v0120-verification.json` and the historical verification report. They cover 251 Rust tests, 40 JavaScript engine tests, real Groth16 proof/ciphertext checks, native bridge checks and packaged-runtime fixtures. They were executed on the earlier source and are identified as historical until rerun for this release.
