@@ -45,6 +45,12 @@ jobs:
             'platforms;android-35' 'build-tools;35.0.0' 'ndk;27.2.12479018'
           rustup toolchain install 1.99.1 --profile minimal --component clippy --component rustfmt
           rustup show active-toolchain
+          # The runner makes /usr/local/bin world-writable. The verifier rejects
+          # writable executables, so test the same Node bytes at a fixed 0755 path.
+          wallet_ci_node="${RUNNER_TEMP}/zero-verifier-node"
+          install -d -m 0755 "$wallet_ci_node"
+          install -m 0755 "$(readlink -f "$(command -v node)")" "$wallet_ci_node/node"
+          printf '%s\n' "$wallet_ci_node" >> "$GITHUB_PATH"
           {
             printf 'source_commit=%s\n' "$GITHUB_SHA"
             printf 'runner_image=%s\n' "${ImageVersion:-unknown}"
@@ -52,6 +58,8 @@ jobs:
             rustc --version
             cargo --version
             node --version
+            stat --format='verifier_node_mode=%a verifier_node_bytes=%s' "$wallet_ci_node/node"
+            sha256sum "$wallet_ci_node/node"
             npm --version
             "${ANDROID_HOME}/cmdline-tools/latest/bin/sdkmanager" --list_installed
           } > build/ci/toolchain.txt

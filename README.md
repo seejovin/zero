@@ -2,12 +2,12 @@
 
 An Android non-custodial wallet for receiving, holding and sending supported mainnet assets. The Android app stores wallet secrets and signs locally; the repository also retains the earlier web client and the private gas sponsorship service.
 
-## Current release candidate: 0.13.0
+## Current engineering release: 0.13.0
 
 - **App:** zerø, with a native opening transition and matching launcher icon. The existing `app.localwallet.mainnet` package, wallet storage and app-signing identity are preserved for an in-place update.
 - **Public wallet:** nine supported networks and the retained asset-first Deposit/Send flow. Balances, network fees, recovery and transaction signing remain local-client workflows.
 - **Private gas abstraction:** the local RAILGUN V2 engine, Groth16 prover, Android bridge, encrypted recovery, OHTTP transport and restricted operator service are implemented. **Production private sending is disabled pending the release qualifications below.**
-- **Build:** [Android CI](.github/workflows/android.yml) builds ARM64 and x86-64 native libraries, runs release JVM tests and lint, and produces an aligned unsigned APK. The original distribution key stays outside GitHub. [Release evidence](docs/RELEASE_0.13.0.md) records what has actually run.
+- **APK:** `zero-0.13.0-mainnet.apk` has been built and signed with the original certificate. The local release passed 270 Android JVM tests and lint (zero errors), plus native/ZIP alignment, package identity and asset checks. [Release evidence](docs/RELEASE_0.13.0.md) records the binary hash and source commit. [Android CI](.github/workflows/android.yml) separately rebuilds an unsigned APK; signing credentials remain outside GitHub.
 - **Hosting:** the public wallet does not require a company backend. The private service requires operated infrastructure, production pins and a separately operated privacy relay. Follow [the Tencent deployment guide](docs/TENCENT_DEPLOYMENT.md) for the supplied deployment files and remaining provisioning work.
 
 The private qualification target is **RAILGUN V2 on Arbitrum One with native USDC**. The principal and private recipient are represented by encrypted notes and proofs; the operator sees its own fee and request timing. This flow requires already shielded funds and a private `0zk` recipient. Public shielding, unshielding and public-wallet transactions remain outside that privacy claim.

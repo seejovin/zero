@@ -1,16 +1,46 @@
 {
-  "apk": "local-wallet-0.8.0-mainnet.apk",
-  "bytes": 10205240,
-  "sha256": "5096819858a6065a61917a167e7e1118c96bcc609df9c2211d06081c13b3c3f7",
+  "apk": "zero-0.13.0-mainnet.apk",
+  "bytes": 16796124,
+  "sha256": "5652b48b7f8323f0918b0a69f0df740468a4338d192b9d61d8f9548394e92de9",
   "package_id": "app.localwallet.mainnet",
-  "version_code": 11,
-  "version_name": "0.8.0-mainnet",
-  "certificate_sha256": "da1632404a817505713e77527ef97543fc6c1028148c401462b96683e2392687",
-  "same_certificate_as_v02": true,
+  "display_name": "zer\u00f8",
+  "version_code": 16,
+  "version_name": "0.13.0-mainnet",
   "debuggable": false,
   "minimum_android_api": 30,
+  "target_android_api": 35,
   "architectures": [
     "arm64-v8a",
     "x86_64"
-  ]
+  ],
+  "zip_alignment_bytes": 16384,
+  "native_load_alignments": {
+    "lib/arm64-v8a/libjnidispatch.so": [
+      16384,
+      16384
+    ],
+    "lib/arm64-v8a/libwallet_core.so": [
+      16384,
+      16384,
+      16384,
+      16384
+    ],
+    "lib/x86_64/libjnidispatch.so": [
+      16384,
+      16384
+    ],
+    "lib/x86_64/libwallet_core.so": [
+      16384,
+      16384,
+      16384,
+      16384
+    ]
+  },
+  "private_engine_asset_manifest_sha256": "cc6b7b23e3e65bba36f5416ee8fcce8192da143e49bbab70f4c129c85996cb75",
+  "private_engine_checked_assets": 3,
+  "private_transfer_qualification": "not qualified for production",
+  "source_commit": "dbfda7a3dca7393dd7d626b5ffbf7b41f4f5e556",
+  "signed": true,
+  "certificate_sha256": "da1632404a817505713e77527ef97543fc6c1028148c401462b96683e2392687",
+  "same_certificate_as_v02": true
 }
