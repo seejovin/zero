@@ -183,6 +183,11 @@
     "scripts/android_release.py": "e29b1287f7b6c153c506813667fd551a23561a705f38e9b55f7cfe57be381036",
     "scripts/build-android.sh": "4f58158cfe7a5e1fd5d701d1ba639212465952044dde49feea624b8690b1659b",
     "scripts/package-android-release.py": "a9c233fd440f06513ae50dd9e0d07e8242ff999c1a2397bc206c741890efd2b5",
-    "scripts/sign-android-release.py": "e3efb083c9304fc6d150f8095d1acdf3a4bbf1c7c8dd08cbc847be97c3c865ff"
+    "scripts/sign-android-release.py": "16f3e89ca79d1d95a0880fb7e8d9e6cb51a44e9e8384a49c69137998684d64a4"
+  },
+  "packaging_tool_validation": {
+    "default_store_password_reuse": "passed with original signing key after omitting duplicate --key-pass file option",
+    "change_after_android_compilation": "Only local signing helper changed; Android runtime and compilation inputs are unchanged",
+    "original_certificate_sha256": "da1632404a817505713e77527ef97543fc6c1028148c401462b96683e2392687"
   }
 }

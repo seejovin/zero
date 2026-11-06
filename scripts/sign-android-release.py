@@ -39,10 +39,13 @@ def main():
         signed = Path(temp) / destination.name
         command = [tools / "apksigner", "sign", "--ks", args.keystore.resolve(),
                    "--ks-pass", "file:" + str(args.ks_pass_file.resolve()),
-                   "--key-pass", "file:" + str((args.key_pass_file or args.ks_pass_file).resolve()),
                    "--v1-signing-enabled", "false", "--v2-signing-enabled", "true",
                    "--v3-signing-enabled", "true", "--v4-signing-enabled", "false",
                    "--out", signed]
+        # With no key password argument apksigner reuses the store password.
+        # Passing the same file twice consumes a second line instead of reusing it.
+        if args.key_pass_file:
+            command.extend(["--key-pass", "file:" + str(args.key_pass_file.resolve())])
         if args.key_alias:
             command.extend(["--ks-key-alias", args.key_alias])
         command.append(args.input.resolve())
