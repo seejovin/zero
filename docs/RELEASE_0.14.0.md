@@ -20,10 +20,21 @@ Switching clears account-specific cached balances, drafts, reviews, recovery vie
 
 ## Release status
 
-Source version is `0.14.0-mainnet`, Android version code `17`, with the existing `app.localwallet.mainnet` package. Android compilation, release assembly, all 296 JVM tests across 34 suites, and lint passed (zero errors, 13 warnings). The focused tests include 13 catalog/storage, eight routing/session-authority and five document-request regressions. Final signing and binary provenance will be recorded below after packaging.
+Source version is `0.14.0-mainnet`, Android version code `17`, with the existing `app.localwallet.mainnet` package. Android compilation, release assembly, all 296 JVM tests across 34 suites, and lint passed (zero errors, 13 warnings). The focused tests include 13 catalog/storage, eight routing/session-authority and five document-request regressions. The APK has been signed with the original distribution certificate and passed inspection again after signing.
 
 The unsigned APK passed package/version/display-name checks, both 64-bit ABI checks, 16 KiB ELF/ZIP alignment and all declared private-engine asset hashes. The four native libraries match the previous signed 0.13.0 APK byte-for-byte; all 77 recorded Rust/private source hashes are unchanged. Evidence: `android/verification/v0140-android-build.json`, the matching lint reports and `v0140-tests/`.
 
 Install the signed update over the existing app; do not uninstall or clear application data. Physical-device upgrade and UI instrumentation are separate from host JVM tests and have not been performed here.
 
 The private gas-transfer production gate remains disabled; this release changes wallet management.
+
+## Delivered APK
+
+- File: `zero-0.14.0-mainnet.apk`.
+- Source commit: [`39b140e83ef6be4e9a1975df8ea4f9a84dd3d2cf`](https://github.com/seejovin/zero/commit/39b140e83ef6be4e9a1975df8ea4f9a84dd3d2cf).
+- Size: 16,861,660 bytes.
+- SHA-256: `4e7d730ae5edadc7f46d86155ef6c963f2cc2362766edcd1ac04c1b7163159e7`.
+- Original certificate SHA-256: `da1632404a817505713e77527ef97543fc6c1028148c401462b96683e2392687`.
+- [Binary manifest](APK_MANIFEST.json) and [signature verification](evidence/v0140-apk-signature.txt).
+
+The APK is supplied separately from this repository. No signing credential is published. Documentation-only follow-up commits do not change the runtime source identified above.

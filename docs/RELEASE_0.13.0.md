@@ -9,7 +9,7 @@ The installable **`zero-0.13.0-mainnet.apk`** has been built, signed with the or
 - Binary source commit: [`dbfda7a3dca7393dd7d626b5ffbf7b41f4f5e556`](https://github.com/seejovin/zero/commit/dbfda7a3dca7393dd7d626b5ffbf7b41f4f5e556).
 - Size: **16,796,124 bytes**.
 - SHA-256: `5652b48b7f8323f0918b0a69f0df740468a4338d192b9d61d8f9548394e92de9`.
-- Exact binary metadata: [`APK_MANIFEST.json`](APK_MANIFEST.json).
+- Exact binary metadata: [`APK_MANIFEST_0.13.0.json`](APK_MANIFEST_0.13.0.json).
 - Install over the existing app; do not uninstall or clear wallet data.
 
 Subsequent release-documentation or CI-only commits do not change this APK. No physical-device installation or upgrade was tested here.
